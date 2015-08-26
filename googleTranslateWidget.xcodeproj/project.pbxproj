@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDD1B8E690300547F5C /* AppDelegate.m */; };
+		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
+		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
+		CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE41B8E690300547F5C /* Images.xcassets */; };
+		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
+		CDCFCCF41B8E690300547F5C /* googleTranslateWidgetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDCFCCEE1B8E690300547F5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDCFCCCF1B8E690200547F5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDCFCCD61B8E690300547F5C;
+			remoteInfo = googleTranslateWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CDCFCCDD1B8E690300547F5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CDCFCCDF1B8E690300547F5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CDCFCCE11B8E690300547F5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CDCFCCE21B8E690300547F5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CDCFCCE41B8E690300547F5C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CDCFCCE71B8E690300547F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = googleTranslateWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCFCCF21B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = googleTranslateWidgetTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CDCFCCD41B8E690300547F5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDCFCCEA1B8E690300547F5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CDCFCCCE1B8E690200547F5C = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCD91B8E690300547F5C /* googleTranslateWidget */,
+				CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */,
+				CDCFCCD81B8E690300547F5C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CDCFCCD81B8E690300547F5C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */,
+				CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDCFCCD91B8E690300547F5C /* googleTranslateWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
+				CDCFCCDD1B8E690300547F5C /* AppDelegate.m */,
+				CDCFCCE11B8E690300547F5C /* ViewController.h */,
+				CDCFCCE21B8E690300547F5C /* ViewController.m */,
+				CDCFCCE41B8E690300547F5C /* Images.xcassets */,
+				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
+				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
+			);
+			path = googleTranslateWidget;
+			sourceTree = "<group>";
+		};
+		CDCFCCDA1B8E690300547F5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCDB1B8E690300547F5C /* Info.plist */,
+				CDCFCCDF1B8E690300547F5C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */ = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */,
+				CDCFCCF11B8E690300547F5C /* Supporting Files */,
+			);
+			path = googleTranslateWidgetTests;
+			sourceTree = "<group>";
+		};
+		CDCFCCF11B8E690300547F5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDCFCCF21B8E690300547F5C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CDCFCCD61B8E690300547F5C /* googleTranslateWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidget" */;
+			buildPhases = (
+				CDCFCCD31B8E690300547F5C /* Sources */,
+				CDCFCCD41B8E690300547F5C /* Frameworks */,
+				CDCFCCD51B8E690300547F5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = googleTranslateWidget;
+			productName = googleTranslateWidget;
+			productReference = CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDCFCCEC1B8E690300547F5C /* googleTranslateWidgetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDCFCCFA1B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidgetTests" */;
+			buildPhases = (
+				CDCFCCE91B8E690300547F5C /* Sources */,
+				CDCFCCEA1B8E690300547F5C /* Frameworks */,
+				CDCFCCEB1B8E690300547F5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDCFCCEF1B8E690300547F5C /* PBXTargetDependency */,
+			);
+			name = googleTranslateWidgetTests;
+			productName = googleTranslateWidgetTests;
+			productReference = CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDCFCCCF1B8E690200547F5C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Mark Vasiv";
+				TargetAttributes = {
+					CDCFCCD61B8E690300547F5C = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					CDCFCCEC1B8E690300547F5C = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = CDCFCCD61B8E690300547F5C;
+					};
+				};
+			};
+			buildConfigurationList = CDCFCCD21B8E690200547F5C /* Build configuration list for PBXProject "googleTranslateWidget" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CDCFCCCE1B8E690200547F5C;
+			productRefGroup = CDCFCCD81B8E690300547F5C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDCFCCD61B8E690300547F5C /* googleTranslateWidget */,
+				CDCFCCEC1B8E690300547F5C /* googleTranslateWidgetTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CDCFCCD51B8E690300547F5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */,
+				CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDCFCCEB1B8E690300547F5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CDCFCCD31B8E690300547F5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
+				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
+				CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDCFCCE91B8E690300547F5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDCFCCF41B8E690300547F5C /* googleTranslateWidgetTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDCFCCEF1B8E690300547F5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDCFCCD61B8E690300547F5C /* googleTranslateWidget */;
+			targetProxy = CDCFCCEE1B8E690300547F5C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CDCFCCE61B8E690300547F5C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDCFCCE71B8E690300547F5C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CDCFCCF51B8E690300547F5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CDCFCCF61B8E690300547F5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CDCFCCF81B8E690300547F5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CDCFCCF91B8E690300547F5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		CDCFCCFB1B8E690300547F5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = googleTranslateWidgetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/googleTranslateWidget.app/Contents/MacOS/googleTranslateWidget";
+			};
+			name = Debug;
+		};
+		CDCFCCFC1B8E690300547F5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = googleTranslateWidgetTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/googleTranslateWidget.app/Contents/MacOS/googleTranslateWidget";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CDCFCCD21B8E690200547F5C /* Build configuration list for PBXProject "googleTranslateWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDCFCCF51B8E690300547F5C /* Debug */,
+				CDCFCCF61B8E690300547F5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDCFCCF81B8E690300547F5C /* Debug */,
+				CDCFCCF91B8E690300547F5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		CDCFCCFA1B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidgetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDCFCCFB1B8E690300547F5C /* Debug */,
+				CDCFCCFC1B8E690300547F5C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CDCFCCCF1B8E690200547F5C /* Project object */;
+}

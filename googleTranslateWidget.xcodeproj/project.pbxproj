@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
+		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
+		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
+		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
+		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDD1B8E690300547F5C /* AppDelegate.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
@@ -16,6 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		CD8EEB941B8E69AA00E2991B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDCFCCCF1B8E690200547F5C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD8EEB831B8E69AA00E2991B;
+			remoteInfo = todayWidget;
+		};
 		CDCFCCEE1B8E690300547F5C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CDCFCCCF1B8E690200547F5C /* Project object */;
@@ -25,7 +37,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CD8EEB9A1B8E69AA00E2991B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD8EEB8B1B8E69AA00E2991B /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = todayWidget.entitlements; sourceTree = "<group>"; };
+		CD8EEB8D1B8E69AA00E2991B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -41,6 +75,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CD8EEB811B8E69AA00E2991B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDCFCCD41B8E690300547F5C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,11 +100,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD8EEB851B8E69AA00E2991B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
+				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
+				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
+				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
+			);
+			path = todayWidget;
+			sourceTree = "<group>";
+		};
+		CD8EEB891B8E69AA00E2991B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD8EEB8A1B8E69AA00E2991B /* Info.plist */,
+				CD8EEB8B1B8E69AA00E2991B /* todayWidget.entitlements */,
+				CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		CDCFCCCE1B8E690200547F5C = {
 			isa = PBXGroup;
 			children = (
 				CDCFCCD91B8E690300547F5C /* googleTranslateWidget */,
 				CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */,
+				CD8EEB881B8E69AA00E2991B /* todayWidget */,
+				CD8EEB851B8E69AA00E2991B /* Frameworks */,
 				CDCFCCD81B8E690300547F5C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,6 +145,7 @@
 			children = (
 				CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */,
 				CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */,
+				CD8EEB841B8E69AA00E2991B /* todayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -119,6 +193,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		CD8EEB831B8E69AA00E2991B /* todayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "todayWidget" */;
+			buildPhases = (
+				CD8EEB801B8E69AA00E2991B /* Sources */,
+				CD8EEB811B8E69AA00E2991B /* Frameworks */,
+				CD8EEB821B8E69AA00E2991B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = todayWidget;
+			productName = todayWidget;
+			productReference = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		CDCFCCD61B8E690300547F5C /* googleTranslateWidget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidget" */;
@@ -126,10 +217,12 @@
 				CDCFCCD31B8E690300547F5C /* Sources */,
 				CDCFCCD41B8E690300547F5C /* Frameworks */,
 				CDCFCCD51B8E690300547F5C /* Resources */,
+				CD8EEB9A1B8E69AA00E2991B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */,
 			);
 			name = googleTranslateWidget;
 			productName = googleTranslateWidget;
@@ -163,6 +256,9 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Mark Vasiv";
 				TargetAttributes = {
+					CD8EEB831B8E69AA00E2991B = {
+						CreatedOnToolsVersion = 6.4;
+					};
 					CDCFCCD61B8E690300547F5C = {
 						CreatedOnToolsVersion = 6.4;
 					};
@@ -187,11 +283,21 @@
 			targets = (
 				CDCFCCD61B8E690300547F5C /* googleTranslateWidget */,
 				CDCFCCEC1B8E690300547F5C /* googleTranslateWidgetTests */,
+				CD8EEB831B8E69AA00E2991B /* todayWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CD8EEB821B8E69AA00E2991B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */,
+				CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDCFCCD51B8E690300547F5C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -211,6 +317,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CD8EEB801B8E69AA00E2991B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CDCFCCD31B8E690300547F5C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,6 +346,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD8EEB831B8E69AA00E2991B /* todayWidget */;
+			targetProxy = CD8EEB941B8E69AA00E2991B /* PBXContainerItemProxy */;
+		};
 		CDCFCCEF1B8E690300547F5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CDCFCCD61B8E690300547F5C /* googleTranslateWidget */;
@@ -240,6 +359,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD8EEB8D1B8E69AA00E2991B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		CDCFCCE61B8E690300547F5C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -251,6 +378,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CD8EEB971B8E69AA00E2991B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = todayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CD8EEB981B8E69AA00E2991B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = todayWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		CDCFCCF51B8E690300547F5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,6 +548,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "todayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD8EEB971B8E69AA00E2991B /* Debug */,
+				CD8EEB981B8E69AA00E2991B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		CDCFCCD21B8E690200547F5C /* Build configuration list for PBXProject "googleTranslateWidget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -407,6 +572,7 @@
 				CDCFCCF91B8E690300547F5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CDCFCCFA1B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidgetTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +581,7 @@
 				CDCFCCFC1B8E690300547F5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

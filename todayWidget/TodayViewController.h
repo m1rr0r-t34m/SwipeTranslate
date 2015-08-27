@@ -8,6 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+
 @interface TodayViewController : NSViewController
+
+@property IBOutlet NSTextField *outputText;
+@property IBOutlet NSTextField *inputText;
+
+
+-(IBAction)swapButton: (id)sender;
+
 
 @end

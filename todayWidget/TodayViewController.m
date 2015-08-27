@@ -23,7 +23,7 @@
 }
 -(IBAction)swapButton: (id)sender {
     GoogleRequest *newRequest=[[GoogleRequest alloc] init];
-    NSString *result=[newRequest sendRequestWithSourceLanguage:@"auto" TargetLanguage:@"ru" Text:[_inputText stringValue]];
+    NSString *result=[newRequest sendRequestWithSourceLanguage:@"ru" TargetLanguage:@"en" Text:[_inputText stringValue]];
     
     [_outputText setStringValue:result];
     

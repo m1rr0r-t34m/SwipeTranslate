@@ -11,9 +11,15 @@
 @implementation GoogleRequest
 -(NSString*) sendRequestWithSourceLanguage:(NSString *)sLanguage TargetLanguage:(NSString *)tLanguage Text:(NSString *)inputText {
     
+    
+    
+    
+    
+    NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
+    NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=",sLanguage,@"&tl=",tLanguage,@"&dt=t&q=",escapedInput];
 
-    NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://translate.googleapis.com/translate_a/single?client=gtx&sl=",sLanguage,@"&tl=",tLanguage,@"&dt=t&q=",inputText];
-
+   
+    
     NSURL *url=[NSURL URLWithString:urlString];
     
     NSError *err;
@@ -25,11 +31,7 @@
     NSData *receivedData = [NSMutableData dataWithCapacity: 0];
     receivedData =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
     
-    if (receivedData != nil)
-    {
-        NSDictionary *jsonArray = [NSJSONSerialization JSONObjectWithData:receivedData options: NSJSONReadingMutableContainers error: &err];
-    }
-    else
+    if (receivedData == nil)
     {
         if (err != nil)
         {

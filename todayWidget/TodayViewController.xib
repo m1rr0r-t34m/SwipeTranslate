@@ -44,25 +44,6 @@
                         <color key="backgroundColor" red="0.14888422106190452" green="0.14854765620039059" blue="0.14958278795811519" alpha="0.61305961879432624" colorSpace="calibratedRGB"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dqX-LG-jcn">
-                    <rect key="frame" x="128" y="358" width="175" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="5rD-TL-P23"/>
-                        <constraint firstAttribute="width" constant="170" id="nyN-O1-Zk5"/>
-                    </constraints>
-                    <animations/>
-                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="nko-S4-uM8" id="LqK-s9-FOQ">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="Hgy-Ye-HfX">
-                            <items>
-                                <menuItem title="Item 1" state="on" id="nko-S4-uM8"/>
-                                <menuItem title="Item 2" id="gC4-l8-VWG"/>
-                                <menuItem title="Item 3" id="HSJ-YN-6vg"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="coX-Z8-cqE">
                     <rect key="frame" x="128" y="331" width="175" height="26"/>
                     <constraints>
@@ -70,12 +51,12 @@
                         <constraint firstAttribute="width" constant="170" id="G1M-WD-hrb"/>
                     </constraints>
                     <animations/>
-                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="uc4-tO-pZT" id="oW1-d7-cU7">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="oW1-d7-cU7">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="rNp-2N-Btz">
                             <items>
-                                <menuItem title="Item 1" state="on" id="uc4-tO-pZT"/>
+                                <menuItem title="Item 1" id="uc4-tO-pZT"/>
                                 <menuItem title="Item 2" id="6sy-UH-11J"/>
                                 <menuItem title="Item 3" id="owD-iV-cq3"/>
                             </items>
@@ -97,6 +78,25 @@
                         <action selector="swapButton:" target="-2" id="XHZ-tW-hdN"/>
                     </connections>
                 </button>
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqX-LG-jcn">
+                    <rect key="frame" x="128" y="357" width="175" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="5rD-TL-P23"/>
+                        <constraint firstAttribute="width" constant="170" id="nyN-O1-Zk5"/>
+                    </constraints>
+                    <animations/>
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="LqK-s9-FOQ">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" id="Hgy-Ye-HfX">
+                            <items>
+                                <menuItem title="Item 1" id="nko-S4-uM8"/>
+                                <menuItem title="Item 2" id="gC4-l8-VWG"/>
+                                <menuItem title="Item 3" id="HSJ-YN-6vg"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="4uV-7P-knb"/>

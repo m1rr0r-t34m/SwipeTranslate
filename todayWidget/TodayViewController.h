@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "GoogleRequest.h"
 
 
 @interface TodayViewController : NSViewController

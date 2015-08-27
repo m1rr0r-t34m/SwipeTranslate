@@ -21,6 +21,13 @@
     // time we called you
     completionHandler(NCUpdateResultNoData);
 }
+-(IBAction)swapButton: (id)sender {
+    GoogleRequest *newRequest=[[GoogleRequest alloc] init];
+    NSString *result=[newRequest sendRequestWithSourceLanguage:@"auto" TargetLanguage:@"ru" Text:[_inputText stringValue]];
+    
+    [_outputText setStringValue:result];
+    
+}
 
 @end
 

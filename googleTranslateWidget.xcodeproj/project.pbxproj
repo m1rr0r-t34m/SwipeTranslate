@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* GoogleRequest.m */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
@@ -52,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD338B531B8F198500CDB0D8 /* GoogleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleRequest.m; sourceTree = "<group>"; };
+		CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleRequest.h; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +114,8 @@
 		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
+				CD338B531B8F198500CDB0D8 /* GoogleRequest.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
 				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
@@ -321,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */,
 				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +561,7 @@
 				CD8EEB981B8E69AA00E2991B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CDCFCCD21B8E690200547F5C /* Build configuration list for PBXProject "googleTranslateWidget" */ = {
 			isa = XCConfigurationList;

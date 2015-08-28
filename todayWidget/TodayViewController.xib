@@ -70,7 +70,7 @@
                         <constraint firstAttribute="width" constant="48" id="Qb8-dI-NNh"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="left" alignment="left" borderStyle="border" inset="2" id="QU2-fI-R09">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="swapButton" imagePosition="left" alignment="left" inset="2" id="QU2-fI-R09">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -121,4 +121,7 @@
             <point key="canvasLocation" x="305" y="357"/>
         </customView>
     </objects>
+    <resources>
+        <image name="swapButton" width="61.439998626708984" height="61.439998626708984"/>
+    </resources>
 </document>

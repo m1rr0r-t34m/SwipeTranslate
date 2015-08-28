@@ -13,6 +13,7 @@
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDB27F511B90C1D000FA198B /* swapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB27F501B90C1D000FA198B /* swapButton.png */; };
 		CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDD1B8E690300547F5C /* AppDelegate.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
@@ -63,6 +64,7 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		CDB27F501B90C1D000FA198B /* swapButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swapButton.png; sourceTree = "<group>"; };
 		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CDB27F501B90C1D000FA198B /* swapButton.png */,
 				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
 				CD338B531B8F198500CDB0D8 /* GoogleRequest.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
@@ -298,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB27F511B90C1D000FA198B /* swapButton.png in Resources */,
 				CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */,
 				CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */,
 			);

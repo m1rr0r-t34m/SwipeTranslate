@@ -21,6 +21,6 @@
 
 
 -(IBAction)swapButton: (id)sender;
-
+- (void)controlTextDidChange:(NSNotification *)notification;
 
 @end

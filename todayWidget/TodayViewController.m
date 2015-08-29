@@ -39,5 +39,13 @@
     
 }
 
+- (void)controlTextDidChange:(NSNotification *)notification {
+    NSTextField *textField = [notification object];
+    NSLog(@"controlTextDidChange: stringValue == %@", [textField stringValue]);
+    GoogleRequest *newRequest=[[GoogleRequest alloc] init];
+    [newRequest sendRequestWithSourceLanguage:@"ru" TargetLanguage:@"en" Text:[_inputText stringValue] Sender:self];
+    
+}
+
 @end
 

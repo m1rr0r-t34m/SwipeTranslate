@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "GoogleRequest.h"
 
 
+@protocol asynchronousRequests <NSObject>
+
+-(void)didFinishLoadingStuff:(NSData *)stuff;
+
+@end
 @interface TodayViewController : NSViewController
 
 @property IBOutlet NSTextField *outputText;

@@ -9,49 +9,38 @@
 #import "GoogleRequest.h"
 
 @implementation GoogleRequest
--(NSString*) sendRequestWithSourceLanguage:(NSString *)sLanguage TargetLanguage:(NSString *)tLanguage Text:(NSString *)inputText {
-    
-    
-    
-    
-    
-    NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
-    NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=",sLanguage,@"&tl=",tLanguage,@"&dt=t&q=",escapedInput];
 
-   
+-(void)sendRequestWithSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText Sender:(id)sender {
+    [self getDataFromUrlWithSourceLanguage:sLang TargetLanguage:tLang Text:inputText WithDelegate:sender];
+}
+- (void)getDataFromUrlWithSourceLanguage:(NSString *)SLanguage TargetLanguage:(NSString *)TLanguage Text:(NSString *)inputText WithDelegate:(NSObject<asynchronousRequests> *)delegate {
+
+    //encode input
+    NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
+    //prepare url
+    NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=",SLanguage,@"&tl=",TLanguage,@"&dt=t&q=",escapedInput];
     NSURL *url=[NSURL URLWithString:urlString];
     
-    NSError *err;
-    NSURLResponse *response;
+    //prepare request
+    NSURLRequest *request=[NSURLRequest requestWithURL:url];
     
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [request setHTTPMethod :@"POST"];
-    
-    NSData *receivedData = [NSMutableData dataWithCapacity: 0];
-    receivedData =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&err];
-    
-    if (receivedData == nil)
-    {
-        if (err != nil)
+    //make asynchronous request
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
+        if (error)
         {
-            NSLog(@"Error description=%@", [err description]);
+            //newWord=[NSString stringWithFormat:@"%@",error];
+            
         }
-    }
-    
-    
-    NSString *strData = [[NSString alloc]initWithData:receivedData encoding:NSUTF8StringEncoding];
-   
-    int startNewWord = 4,endNewWord=0;
-    for(int i=4;i<[strData length];i++) {
-        if([[strData substringWithRange:NSMakeRange(i,1)] isEqual:@"\""]) {
-            endNewWord=i;
-            break;
+        else
+        {
+            [delegate didFinishLoadingStuff:receivedData];
+            
         }
-    }
+    }];
     
-    NSString *newWord=[strData substringWithRange:NSMakeRange(startNewWord, endNewWord-startNewWord)];
-    
-    return newWord;
 }
+
 @end
+

@@ -19,8 +19,21 @@
 @property IBOutlet NSTextField *outputText;
 @property IBOutlet NSTextField *inputText;
 
+@property (strong) IBOutlet NSDictionaryController *dictController;
+
+@property NSDictionary *langList;
+
+-(NSDictionary*) createList;
+
 
 -(IBAction)swapButton: (id)sender;
 - (void)controlTextDidChange:(NSNotification *)notification;
 
+
+
 @end
+
+
+
+
+

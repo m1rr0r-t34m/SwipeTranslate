@@ -15,7 +15,6 @@
 		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CDB27F511B90C1D000FA198B /* swapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB27F501B90C1D000FA198B /* swapButton.png */; };
 		CDB27F551B90D6C800FA198B /* SwitchArrows.png in Resources */ = {isa = PBXBuildFile; fileRef = CDB27F541B90D6C800FA198B /* SwitchArrows.png */; };
-		CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDD1B8E690300547F5C /* AppDelegate.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
 		CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE41B8E690300547F5C /* Images.xcassets */; };
@@ -70,7 +69,6 @@
 		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		CDCFCCDD1B8E690300547F5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CDCFCCDF1B8E690300547F5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDCFCCE11B8E690300547F5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CDCFCCE21B8E690300547F5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
-				CDCFCCDD1B8E690300547F5C /* AppDelegate.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
 				CDCFCCE41B8E690300547F5C /* Images.xcassets */,
@@ -345,7 +342,6 @@
 			files = (
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
-				CDCFCCDE1B8E690300547F5C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,3 +15,14 @@
 -(void)sendRequestWithSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText Sender:(id)sender;
 
 @end
+
+
+@interface languageList : NSObject
+
+
+
+@property NSDictionary *langList;
+
+-(NSDictionary*) createList;
+
+@end

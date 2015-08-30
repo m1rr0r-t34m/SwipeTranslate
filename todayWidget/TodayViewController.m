@@ -15,6 +15,12 @@
 @end
 
 @implementation TodayViewController
+
+@synthesize dictController;
+@synthesize langList;
+
+
+
 - (void)didFinishLoadingStuff:(NSData *)stuff {
     NSString *strData = [[NSString alloc]initWithData:stuff encoding:NSUTF8StringEncoding];
     int startNewWord = 4,endNewWord=0;
@@ -37,6 +43,9 @@
     GoogleRequest *newRequest=[[GoogleRequest alloc] init];
     [newRequest sendRequestWithSourceLanguage:@"ru" TargetLanguage:@"en" Text:[_inputText stringValue] Sender:self];
     
+    
+    
+    
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -47,5 +56,33 @@
     
 }
 
+//- (id)init {
+//    if (!(self = [super init]))
+//        return nil;
+//
+//    languageList *newList=[[languageList alloc] init];
+//    [newList createList];
+//    [dictController addObject:[languageList.langList];
+//
+//    return self;
+//}
+
+-(NSDictionary*) createList {
+    
+    NSArray *keys = @[@"English", @"Russian", @"Finnish"];
+    NSArray *values = @[@"en", @"ru", @"fi"];
+    
+    langList = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    
+    return langList;
+}
+
+
 @end
+
+
+
+
+
+
 

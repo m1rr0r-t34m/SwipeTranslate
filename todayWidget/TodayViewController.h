@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@import AppKit;
+#import "SeparatedButton.h"
 
 
 @protocol asynchronousRequests <NSObject>
@@ -25,11 +27,14 @@
 
 -(NSDictionary*) createList;
 
-
 -(IBAction)swapButton: (id)sender;
 - (void)controlTextDidChange:(NSNotification *)notification;
 @property (weak) IBOutlet NSPopUpButtonCell *sourceLanguagePopUp;
 @property (weak) IBOutlet NSPopUpButtonCell *targetLanguagePopUp;
+@property (weak) IBOutlet SeparatedButton *sourceSegmentedButton;
+@property (strong) IBOutlet NSMenu *sourceLanguageMenu;
+
+-(void)sourceTabClick:(id)sender;
 
 
 

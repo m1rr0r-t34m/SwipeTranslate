@@ -20,6 +20,7 @@
 		CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE41B8E690300547F5C /* Images.xcassets */; };
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
 		CDCFCCF41B8E690300547F5C /* googleTranslateWidgetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */; };
+		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,8 @@
 		CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = googleTranslateWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCF21B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = googleTranslateWidgetTests.m; sourceTree = "<group>"; };
+		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatedButton.h; sourceTree = "<group>"; };
+		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatedButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
+				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
 				CDB27F501B90C1D000FA198B /* swapButton.png */,
 				CDB27F541B90D6C800FA198B /* SwitchArrows.png */,
 				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
@@ -331,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
 				CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */,
 				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 			);

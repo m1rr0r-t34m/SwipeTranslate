@@ -47,8 +47,17 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [ _sourceLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
+    [_sourceLanguageMenu setAutoenablesItems:NO];
+    for(int a=0;a<[[[self createList] allKeys] count];a++) {
+        NSMenuItem *item=[ _sourceLanguageMenu addItemWithTitle:[[[self createList]allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabClick:) keyEquivalent:@""];
+        [item setTarget:self];
+        [item setEnabled:YES];
+    }
+    
+
     [ _targetLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
+    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
@@ -81,6 +90,9 @@
 }
 
 
+- (void)sourceTabClick:(id)sender {
+    [_sourceSegmentedButton pushNewChosenLanguage:[sender title]];
+}
 @end
 
 

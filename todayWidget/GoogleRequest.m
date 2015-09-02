@@ -44,22 +44,4 @@
 
 @end
 
-@implementation languageList
-
-@synthesize langList;
-
--(NSDictionary*) createList {
-    
-    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukraine"];
-    NSArray *values = @[@"en", @"ru", @"fi", @"ua"];
-    
-    langList = [NSDictionary dictionaryWithObjects:values forKeys:keys];
-    
-    return langList;
-}
-
-
-   
-
-@end
 

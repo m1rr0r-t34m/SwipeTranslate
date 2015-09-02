@@ -17,12 +17,3 @@
 @end
 
 
-@interface languageList : NSObject
-
-
-
-@property NSDictionary *langList;
-
--(NSDictionary*) createList;
-
-@end

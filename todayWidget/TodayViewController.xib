@@ -9,9 +9,9 @@
             <connections>
                 <outlet property="inputText" destination="p6U-Vm-Jkp" id="9pp-dC-9Ak"/>
                 <outlet property="outputText" destination="62t-eA-VkA" id="FK6-Re-YYn"/>
-                <outlet property="sourceLanguageMenu" destination="Ir4-fd-QH2" id="GFC-dO-ZLl"/>
+                <outlet property="sourceLanguageMenu" destination="Qht-LF-uau" id="Fuz-Eh-FOL"/>
                 <outlet property="sourceSegmentedButton" destination="zqb-PA-hYv" id="vxy-Jz-8zV"/>
-                <outlet property="targetLanguageMenu" destination="IVZ-5j-MVh" id="vHI-Ia-fd6"/>
+                <outlet property="targetLanguageMenu" destination="Yt6-Cr-4dE" id="XAd-od-3sJ"/>
                 <outlet property="targetSegmentedButton" destination="xtp-nf-q79" id="r9w-fH-eSF"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -51,12 +51,9 @@
                             <segment label="Russian" width="68" tag="1"/>
                             <segment label="Finnish" width="66"/>
                             <segment label="&gt;">
-                                <menu key="menu" id="Ir4-fd-QH2"/>
+                                <menu key="menu" id="Qht-LF-uau"/>
                             </segment>
                         </segments>
-                        <connections>
-                            <action selector="sourceTabClick:" target="-2" id="iRy-7w-6Pz"/>
-                        </connections>
                     </segmentedCell>
                 </segmentedControl>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
@@ -88,13 +85,10 @@
                             <segment label="Russian" width="68" tag="1"/>
                             <segment label="Finnish" width="66"/>
                             <segment label="&gt;">
-                                <menu key="menu" id="IVZ-5j-MVh"/>
+                                <menu key="menu" id="Yt6-Cr-4dE"/>
                             </segment>
                         </segments>
                     </segmentedCell>
-                    <connections>
-                        <action selector="targetTabClick:" target="-2" id="xtA-3B-DB2"/>
-                    </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="62t-eA-VkA">
                     <rect key="frame" x="18" y="155" width="244" height="17"/>

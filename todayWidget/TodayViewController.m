@@ -32,7 +32,7 @@
         }
     }
     NSString *newWord=[strData substringWithRange:NSMakeRange(startNewWord, endNewWord-startNewWord)];
-    _outputText.stringValue=newWord;
+    self.outputText.stringValue=newWord;
 }
 
 
@@ -58,19 +58,23 @@
     [_sourceLanguageMenu setAutoenablesItems:NO];
     [_targetLanguageMenu setAutoenablesItems:NO];
     
-  /*list for source*/
+
+    _requestHandler=[[GoogleRequest alloc] init];
+ 
     
-        for(int a=0;a<[[_languagesDictionary allKeys] count];a++) {
-        NSMenuItem *item=[ _sourceLanguageMenu addItemWithTitle:[[_languagesDictionary allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabClick:) keyEquivalent:@""];
+  
+    
+        for(int a=0;a<[[[self createLanguages] allKeys] count];a++) {
+        NSMenuItem *item=[ _sourceLanguageMenu addItemWithTitle:[[[self createLanguages] allKeys] objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabDropDownClick:) keyEquivalent:@""];
         [item setTarget:self];
         [item setEnabled:YES];
     }
     
-  /*list for target*/
+  
 
     
-    for(int a=0;a<[[_languagesDictionary allKeys] count];a++) {
-        NSMenuItem *item=[ _targetLanguageMenu addItemWithTitle:[[_languagesDictionary allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(targetTabClick:) keyEquivalent:@""];
+    for(int a=0;a<[[[self createLanguages] allKeys] count];a++) {
+        NSMenuItem *item=[ _targetLanguageMenu addItemWithTitle:[[[self createLanguages] allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(targetTabDropDownClick:) keyEquivalent:@""];
         [item setTarget:self];
         [item setEnabled:YES];
     }
@@ -79,18 +83,20 @@
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
     
-    _requestHandler=[[GoogleRequest alloc] init];
     
+    
+    
+}
+-(NSDictionary *)createLanguages {
     NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian"];
     NSArray *values = @[@"en", @"ru", @"fi", @"ua"];
-    _languagesDictionary = [NSDictionary dictionaryWithObjects:values forKeys:keys];
+    return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 
 
-
 -(void)controlTextDidChange:(NSNotification *)notification {
-    _sLanguage = [_languagesDictionary valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
-    _tLanguage = [_languagesDictionary valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
+    _sLanguage = [[self createLanguages] valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
+    _tLanguage = [[self createLanguages] valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
     
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
     
@@ -132,17 +138,17 @@
         [_targetSegmentedButton pushNewChosenLanguage:[sender title]];
         
     }
-    _tLanguage = [_languagesDictionary valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
-    [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
 }
 
 - (IBAction)sourceTabClick:(id)sender {
-    _sLanguage = [_languagesDictionary valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
+    _sLanguage = [[self createLanguages] valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
 }
 
 - (IBAction)targetTabClick:(id)sender {
-    _tLanguage = [_languagesDictionary valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
+    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    _tLanguage = [[self createLanguages] valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
 }
 @end

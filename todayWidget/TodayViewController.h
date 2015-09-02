@@ -52,7 +52,7 @@
 
 @property NSString * sLanguage;
 @property NSString * tLanguage;
-@property NSDictionary *languagesDictionary;
+
 
 
 

@@ -18,26 +18,24 @@
 
 -(void)didFinishLoadingStuff:(NSData *)stuff;
 
+
 @end
 @interface TodayViewController : NSViewController
 
-@property IBOutlet NSTextField *outputText;
 
 
 
 @property IBOutlet NSTextField *inputText;
+@property (strong) IBOutlet NSTextField *outputText;
 
-@property (strong) IBOutlet NSDictionaryController *dictController;
 
-@property NSDictionary *langList;
 
--(NSDictionary*) createList;
+
 
 -(IBAction)swapButton: (id)sender;
 - (void)controlTextDidChange:(NSNotification *)notification;
 
-@property (weak) IBOutlet NSPopUpButtonCell *sourceLanguagePopUp;
-@property (weak) IBOutlet NSPopUpButtonCell *targetLanguagePopUp;
+
 
 
 @property (weak) IBOutlet SeparatedButton *sourceSegmentedButton;
@@ -54,11 +52,15 @@
 
 @property NSString * sLanguage;
 @property NSString * tLanguage;
+@property NSDictionary *languagesDictionary;
 
 
 
 
--(void)sourceTabClick:(id)sender;
+-(void)sourceTabDropDownClick:(id)sender;
+-(void)targetTabDropDownClick:(id)sender;
+- (IBAction)sourceTabClick:(id)sender;
+- (IBAction)targetTabClick:(id)sender;
 
 
 

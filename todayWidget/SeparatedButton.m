@@ -16,6 +16,7 @@
     [self setLabel:language forSegment:0];
     [self setLabel:firstElement forSegment:1];
     [self setLabel:secondElement forSegment:2];
+    [self setSelectedSegment:(NSInteger)0];
 }
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];

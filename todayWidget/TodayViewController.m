@@ -19,7 +19,17 @@
 @implementation TodayViewController
 
 
-
+void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will add a command on the main thread to execute instantly
+{
+    if ([NSThread isMainThread])
+    {
+        block();
+    }
+    else
+    {
+        dispatch_sync(dispatch_get_main_queue(), block);
+    }
+}
 
 
 - (void)didFinishLoadingStuff:(NSData *)stuff {
@@ -32,7 +42,14 @@
         }
     }
     NSString *newWord=[strData substringWithRange:NSMakeRange(startNewWord, endNewWord-startNewWord)];
-    self.outputText.stringValue=newWord;
+    
+   
+    runOnMainQueueWithoutDeadlocking(^{
+        
+    
+        self.outputText.stringValue=newWord;
+   
+    });
 }
 
 
@@ -142,13 +159,15 @@
 
 - (IBAction)sourceTabClick:(id)sender {
     _sLanguage = [[self createLanguages] valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
+    _tLanguage = [[self createLanguages] valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
+    
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
 }
 
 - (IBAction)targetTabClick:(id)sender {
-    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
-    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    _sLanguage = [[self createLanguages] valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
     _tLanguage = [[self createLanguages] valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
+    
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
 }
 @end

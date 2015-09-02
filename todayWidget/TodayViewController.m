@@ -18,6 +18,7 @@
 
 @synthesize dictController;
 @synthesize langList;
+@synthesize sLanguage, tLanguage;
 
 
 
@@ -41,30 +42,48 @@
     
 }
 -(IBAction)swapButton: (id)sender {
-    GoogleRequest *newRequest=[[GoogleRequest alloc] init];
-    [newRequest sendRequestWithSourceLanguage:[[self createList]valueForKey:[_sourceLanguagePopUp titleOfSelectedItem]] TargetLanguage:[[self createList]valueForKey:[_targetLanguagePopUp titleOfSelectedItem]] Text:[_inputText stringValue] Sender:self];
+    
     
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_sourceLanguageMenu setAutoenablesItems:NO];
-    for(int a=0;a<[[[self createList] allKeys] count];a++) {
+    [_targetLanguageMenu setAutoenablesItems:NO];
+    
+  /*list for source*/
+    
+        for(int a=0;a<[[[self createList] allKeys] count];a++) {
         NSMenuItem *item=[ _sourceLanguageMenu addItemWithTitle:[[[self createList]allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabClick:) keyEquivalent:@""];
         [item setTarget:self];
         [item setEnabled:YES];
     }
     
+  /*list for target*/
 
-    [ _targetLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
+    
+    for(int a=0;a<[[[self createList] allKeys] count];a++) {
+        NSMenuItem *item=[ _targetLanguageMenu addItemWithTitle:[[[self createList]allKeys]objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabClick:) keyEquivalent:@""];
+        [item setTarget:self];
+        [item setEnabled:YES];
+    }
+    
+
+   // [ _targetLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
-
+    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
 }
 
-- (void)controlTextDidChange:(NSNotification *)notification {
+
+
+    -(void)controlTextDidChange:(NSNotification *)notification
+{
+    sLanguage = [[self createList] valueForKey:[_sourceSegmentedButton selectedCell]];  
+    tLanguage = [[self createList] valueForKey:[_targetSegmentedButton selectedCell]];
+        
     NSTextField *textField = [notification object];
     NSLog(@"controlTextDidChange: stringValue == %@", [textField stringValue]);
     GoogleRequest *newRequest=[[GoogleRequest alloc] init];
-    [newRequest sendRequestWithSourceLanguage:[[self createList]valueForKey:[_sourceLanguagePopUp titleOfSelectedItem]] TargetLanguage:[[self createList]valueForKey:[_targetLanguagePopUp titleOfSelectedItem]] Text:[_inputText stringValue] Sender:self];
+    [newRequest sendRequestWithSourceLanguage: sLanguage TargetLanguage: tLanguage Text:[_inputText stringValue] Sender:self];
     
 }
 
@@ -81,8 +100,8 @@
 
 -(NSDictionary*) createList {
     
-    NSArray *keys = @[@"English", @"Russian", @"Finnish"];
-    NSArray *values = @[@"en", @"ru", @"fi"];
+    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian"];
+    NSArray *values = @[@"en", @"ru", @"fi", @"ua"];
     
     langList = [NSDictionary dictionaryWithObjects:values forKeys:keys];
     
@@ -90,9 +109,24 @@
 }
 
 
+
+
 - (void)sourceTabClick:(id)sender {
-    [_sourceSegmentedButton pushNewChosenLanguage:[sender title]];
-}
+    
+    if ([_targetSegmentedButton labelForSegment:(NSInteger)0] != [sender title] && [_targetSegmentedButton labelForSegment:1] != [sender title] && [_targetSegmentedButton labelForSegment:2] != [sender title]){
+    
+    
+        [_targetSegmentedButton pushNewChosenLanguage:[sender title]];
+    
+    }
+    
+    if ([_sourceSegmentedButton labelForSegment:0] != [sender title] && [_sourceSegmentedButton labelForSegment:1] != [sender title] && [_sourceSegmentedButton labelForSegment:2] != [sender title]){
+        
+        
+        [_sourceSegmentedButton pushNewChosenLanguage:[sender title]];
+    }
+    
+    }
 @end
 
 

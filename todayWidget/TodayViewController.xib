@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15A262e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
@@ -12,8 +12,8 @@
                 <outlet property="outputText" destination="PPu-eZ-HN3" id="W6m-bc-UfZ"/>
                 <outlet property="sourceLanguageMenu" destination="Ir4-fd-QH2" id="GFC-dO-ZLl"/>
                 <outlet property="sourceSegmentedButton" destination="zqb-PA-hYv" id="vxy-Jz-8zV"/>
-                <outlet property="targetLAnguagePopUp" destination="1dY-vf-igL" id="wWW-6w-apl"/>
-                <outlet property="targetLanguagePopUp" destination="i98-sa-swX" id="mWn-h9-bW1"/>
+                <outlet property="targetLanguageMenu" destination="IVZ-5j-MVh" id="vHI-Ia-fd6"/>
+                <outlet property="targetSegmentedButton" destination="xtp-nf-q79" id="r9w-fH-eSF"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -55,6 +55,9 @@
                             </segment>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="sourceSelectedLang:" target="-2" id="zyR-o1-VsA"/>
+                    </connections>
                 </segmentedControl>
                 <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
                     <rect key="frame" x="104" y="225" width="103" height="42"/>
@@ -70,8 +73,8 @@
                         <action selector="swapButton:" target="-2" id="XHZ-tW-hdN"/>
                     </connections>
                 </button>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79">
-                    <rect key="frame" x="20" y="194" width="210" height="23"/>
+                <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
+                    <rect key="frame" x="20" y="194" width="240" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="QOC-S0-mHm"/>
                         <constraint firstAttribute="width" constant="210" id="tbF-1h-NQ7"/>
@@ -83,8 +86,14 @@
                             <segment label="English" width="68" selected="YES"/>
                             <segment label="Russian" width="68" tag="1"/>
                             <segment label="Finnish" width="66"/>
+                            <segment label="&gt;">
+                                <menu key="menu" id="IVZ-5j-MVh"/>
+                            </segment>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="targetSelectedLang:" target="-2" id="ZnZ-K5-Kr6"/>
+                    </connections>
                 </segmentedControl>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQ3-aI-xJE">
                     <rect key="frame" x="20" y="90" width="271" height="97"/>
@@ -110,32 +119,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1dY-vf-igL">
-                    <rect key="frame" x="236" y="192" width="27" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="22" id="ayK-IC-2S3"/>
-                    </constraints>
-                    <animations/>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="i98-sa-swX">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="ds4-xS-dSQ"/>
-                    </popUpButtonCell>
-                </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="AQ3-aI-xJE" secondAttribute="bottom" constant="90" id="2Qs-Zg-Rhw"/>
-                <constraint firstItem="1dY-vf-igL" firstAttribute="top" secondItem="p6U-Vm-Jkp" secondAttribute="bottom" constant="59" id="72G-Ot-UgM"/>
                 <constraint firstAttribute="trailing" secondItem="p6U-Vm-Jkp" secondAttribute="trailing" constant="25" id="AjG-6E-hC8"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="p6U-Vm-Jkp" secondAttribute="bottom" constant="8" id="Byx-Zr-Yb6"/>
                 <constraint firstAttribute="trailing" secondItem="xtp-nf-q79" secondAttribute="trailing" constant="25" id="KcJ-CQ-dRa"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="104" id="Lf6-wa-oQ0"/>
                 <constraint firstItem="PPu-eZ-HN3" firstAttribute="top" secondItem="AQ3-aI-xJE" secondAttribute="bottom" constant="20" id="PaR-dc-q25"/>
                 <constraint firstItem="AQ3-aI-xJE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="8" id="REC-Ac-KIe"/>
-                <constraint firstAttribute="trailing" secondItem="1dY-vf-igL" secondAttribute="trailing" constant="26" id="Rye-Hh-pHN"/>
                 <constraint firstItem="p6U-Vm-Jkp" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="8" id="TO5-rY-nY5"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Uwt-8Y-Ibs"/>
-                <constraint firstItem="AQ3-aI-xJE" firstAttribute="top" secondItem="1dY-vf-igL" secondAttribute="bottom" constant="8" id="Y7N-PZ-Jgh"/>
                 <constraint firstAttribute="trailing" secondItem="cZ1-fA-h2i" secondAttribute="trailing" constant="109" id="a9F-LD-grj"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="bgj-Pa-LL9"/>
                 <constraint firstAttribute="bottom" secondItem="PPu-eZ-HN3" secondAttribute="bottom" constant="53" id="jhj-8Z-qtG"/>
@@ -143,7 +137,6 @@
                 <constraint firstAttribute="trailing" secondItem="AQ3-aI-xJE" secondAttribute="trailing" constant="25" id="ogZ-Ro-Shj"/>
                 <constraint firstItem="AQ3-aI-xJE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="vfI-W2-Ojy"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="vl0-Ni-a4f"/>
-                <constraint firstItem="1dY-vf-igL" firstAttribute="leading" secondItem="xtp-nf-q79" secondAttribute="trailing" constant="8" id="x5X-wF-qhM"/>
                 <constraint firstAttribute="trailing" secondItem="zqb-PA-hYv" secondAttribute="trailing" constant="25" id="yKt-rm-9Nu"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="yUS-KK-8iX"/>
                 <constraint firstItem="p6U-Vm-Jkp" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="yfF-2M-ft1"/>

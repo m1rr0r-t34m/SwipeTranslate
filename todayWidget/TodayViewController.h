@@ -11,6 +11,9 @@
 #import "SeparatedButton.h"
 
 
+
+
+
 @protocol asynchronousRequests <NSObject>
 
 -(void)didFinishLoadingStuff:(NSData *)stuff;
@@ -19,6 +22,9 @@
 @interface TodayViewController : NSViewController
 
 @property IBOutlet NSTextField *outputText;
+
+
+
 @property IBOutlet NSTextField *inputText;
 
 @property (strong) IBOutlet NSDictionaryController *dictController;
@@ -29,10 +35,28 @@
 
 -(IBAction)swapButton: (id)sender;
 - (void)controlTextDidChange:(NSNotification *)notification;
+
 @property (weak) IBOutlet NSPopUpButtonCell *sourceLanguagePopUp;
 @property (weak) IBOutlet NSPopUpButtonCell *targetLanguagePopUp;
+
+
 @property (weak) IBOutlet SeparatedButton *sourceSegmentedButton;
+
 @property (strong) IBOutlet NSMenu *sourceLanguageMenu;
+
+
+
+
+@property (strong) IBOutlet NSMenu *targetLanguageMenu;
+
+@property (weak) IBOutlet SeparatedButton *targetSegmentedButton;
+
+
+@property NSString * sLanguage;
+@property NSString * tLanguage;
+
+
+
 
 -(void)sourceTabClick:(id)sender;
 

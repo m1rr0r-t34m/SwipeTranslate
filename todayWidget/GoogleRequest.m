@@ -50,8 +50,8 @@
 
 -(NSDictionary*) createList {
     
-    NSArray *keys = @[@"English", @"Russian", @"Finnish"];
-    NSArray *values = @[@"en", @"ru", @"fi"];
+    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukraine"];
+    NSArray *values = @[@"en", @"ru", @"fi", @"ua"];
     
     langList = [NSDictionary dictionaryWithObjects:values forKeys:keys];
     

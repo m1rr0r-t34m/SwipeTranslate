@@ -68,8 +68,24 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will
 
 -(IBAction)swapButton: (id)sender {
     
+    NSInteger SwapSpace;
+    SwapSpace = [_sourceSegmentedButton selectedSegment];
+    [_sourceSegmentedButton setSelectedSegment:[_targetSegmentedButton selectedSegment]];
+    [_targetSegmentedButton setSelectedSegment:SwapSpace];
+    
+    
+    _sLanguage = [[self createLanguages] valueForKey:[_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]]];
+    _tLanguage = [[self createLanguages] valueForKey:[_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]]];
+    
+    _inputText.stringValue = _outputText.stringValue;
+    [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
+    
     
 }
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_sourceLanguageMenu setAutoenablesItems:NO];
@@ -106,7 +122,7 @@ void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will
 }
 -(NSDictionary *)createLanguages {
     NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian"];
-    NSArray *values = @[@"en", @"ru", @"fi", @"ua"];
+    NSArray *values = @[@"en", @"ru", @"fi", @"uk"];
     return [NSDictionary dictionaryWithObjects:values forKeys:keys];
 }
 

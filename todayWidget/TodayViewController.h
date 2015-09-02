@@ -28,6 +28,8 @@
 
 -(IBAction)swapButton: (id)sender;
 - (void)controlTextDidChange:(NSNotification *)notification;
+@property (weak) IBOutlet NSPopUpButtonCell *sourceLanguagePopUp;
+@property (weak) IBOutlet NSPopUpButtonCell *targetLanguagePopUp;
 
 
 

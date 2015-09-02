@@ -38,21 +38,24 @@
     // with NoData if nothing has changed or NewData if there is new data since the last
     // time we called you
     completionHandler(NCUpdateResultNoData);
+    
 }
 -(IBAction)swapButton: (id)sender {
     GoogleRequest *newRequest=[[GoogleRequest alloc] init];
-    [newRequest sendRequestWithSourceLanguage:@"ru" TargetLanguage:@"en" Text:[_inputText stringValue] Sender:self];
+    [newRequest sendRequestWithSourceLanguage:[[self createList]valueForKey:[_sourceLanguagePopUp titleOfSelectedItem]] TargetLanguage:[[self createList]valueForKey:[_targetLanguagePopUp titleOfSelectedItem]] Text:[_inputText stringValue] Sender:self];
     
-    
-    
-    
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [ _sourceLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
+    [ _targetLanguagePopUp addItemsWithTitles:[[self createList] allKeys]];
 }
 
 - (void)controlTextDidChange:(NSNotification *)notification {
     NSTextField *textField = [notification object];
     NSLog(@"controlTextDidChange: stringValue == %@", [textField stringValue]);
     GoogleRequest *newRequest=[[GoogleRequest alloc] init];
-    [newRequest sendRequestWithSourceLanguage:@"ru" TargetLanguage:@"en" Text:[_inputText stringValue] Sender:self];
+    [newRequest sendRequestWithSourceLanguage:[[self createList]valueForKey:[_sourceLanguagePopUp titleOfSelectedItem]] TargetLanguage:[[self createList]valueForKey:[_targetLanguagePopUp titleOfSelectedItem]] Text:[_inputText stringValue] Sender:self];
     
 }
 

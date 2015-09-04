@@ -13,7 +13,7 @@
 @interface GoogleRequest : NSObject
 - (void)getDataFromUrlWithSourceLanguage:(NSString *)SLanguage TargetLanguage:(NSString *)TLanguage Text:(NSString *)inputText WithDelegate:(NSObject <asynchronousRequests> *)delegate;
 -(void)sendRequestWithSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText Sender:(id)sender;
-
+@property NSDictionary *languagesMap;
 @end
 
 

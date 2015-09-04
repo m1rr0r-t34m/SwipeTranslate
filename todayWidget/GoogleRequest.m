@@ -10,8 +10,14 @@
 
 @implementation GoogleRequest
 
+-(GoogleRequest *)init {
+    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian"];
+    NSArray *values = @[@"en", @"ru", @"fi", @"uk"];
+    _languagesMap=[NSDictionary dictionaryWithObjects:values forKeys:keys];
+    return [super init];
+}
 -(void)sendRequestWithSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText Sender:(id)sender {
-    [self getDataFromUrlWithSourceLanguage:sLang TargetLanguage:tLang Text:inputText WithDelegate:sender];
+    [self getDataFromUrlWithSourceLanguage:[_languagesMap valueForKey:sLang] TargetLanguage:[_languagesMap valueForKey:tLang] Text:inputText WithDelegate:sender];
 }
 - (void)getDataFromUrlWithSourceLanguage:(NSString *)SLanguage TargetLanguage:(NSString *)TLanguage Text:(NSString *)inputText WithDelegate:(NSObject<asynchronousRequests> *)delegate {
 
@@ -35,7 +41,7 @@
         }
         else
         {
-            [delegate didFinishLoadingStuff:receivedData];
+            [delegate receivedResponseFromRequest:receivedData];
             
         }
     }];

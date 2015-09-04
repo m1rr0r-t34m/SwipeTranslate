@@ -10,4 +10,7 @@
 
 @interface SeparatedButton : NSSegmentedControl
 -(void)pushNewChosenLanguage:(NSString *)language;
+-(int)indexForSegmentWithLabel:(NSString *)label;
+-(void)tryToPushNewLanguage:(NSString *)language;
+-(NSPoint)calculateMenuOrigin;
 @end

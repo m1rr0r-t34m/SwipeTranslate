@@ -23,5 +23,28 @@
     
     // Drawing code here.
 }
-
+-(int)indexForSegmentWithLabel:(NSString *)label {
+    for (int i = 0; i < [self segmentCount]; i++)
+    {
+        if ([[self labelForSegment:i] isEqualToString:label])
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+-(void)tryToPushNewLanguage:(NSString *)language {
+    //If clicked menu element language is already in segmented button, select this segment
+    //If not, push this element to segmented button
+    int selectedIndex=[self indexForSegmentWithLabel:language];
+    if(selectedIndex!=-1)
+        [self setSelectedSegment:selectedIndex];
+    else
+        [self pushNewChosenLanguage:language];
+}
+-(NSPoint)calculateMenuOrigin {
+    NSPoint menuOrigin = [self frame].origin;
+    menuOrigin.x = NSMaxX([self frame]) - [self widthForSegment:3];
+    return menuOrigin;
+}
 @end

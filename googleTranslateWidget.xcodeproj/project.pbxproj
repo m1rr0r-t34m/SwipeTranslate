@@ -13,6 +13,7 @@
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* GoogleString.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
 		CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE41B8E690300547F5C /* Images.xcassets */; };
@@ -63,6 +64,8 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		CDBFD8321B9A257500C5414D /* GoogleString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleString.h; sourceTree = "<group>"; };
+		CDBFD8331B9A257500C5414D /* GoogleString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleString.m; sourceTree = "<group>"; };
 		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CDBFD8321B9A257500C5414D /* GoogleString.h */,
+				CDBFD8331B9A257500C5414D /* GoogleString.m */,
 				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
 				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
 				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
@@ -329,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
+				CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */,
 				CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */,
 				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 			);

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @import AppKit;
 #import "SeparatedButton.h"
+#import "GoogleString.h"
 
 //Ptotocol for getting response from asyncronous request
 @protocol asynchronousRequests <NSObject>
@@ -53,7 +54,6 @@
 -(void)updateTargetLanguage;
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
-
 
 @end
 

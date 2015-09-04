@@ -25,7 +25,7 @@
     _requestHandler=[[GoogleRequest alloc] init];
     
     //Initialize languages array
-    _languages = [NSArray arrayWithObjects:@"English", @"Russian", @"Finnish", @"Ukrainian", nil];
+    _languages = [NSArray arrayWithObjects:@"English", @"Russian", @"Finnish", @"Ukrainian",@"Chinese Simplified", nil];
     
     
     //Generate menu elelements for source language button
@@ -70,24 +70,28 @@
     //Convert received data to NSString using NSUTF8StringEncoding
     NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
-    //Parse received string to find indexes of beginning and end of translated text
-    int startNewWord = 4,endNewWord=0;
-    for(int i=4;i<[strData length];i++) {
-        if([[strData substringWithRange:NSMakeRange(i,1)] isEqual:@"\""]) {
-            endNewWord=i;
-            break;
-        }
+    strData=[strData parseFirstDive];
+    NSInteger numberOfLines=[strData numberOfLines];
+    NSString *outputString=[[NSString alloc] init];
+    
+    
+    while(numberOfLines){
+        NSString *strLine=[[NSString alloc]init];
+        strLine=[strData parseSecondDive];
+        if([strLine length]!=[strData length])
+            strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
+        strLine=[strLine parseThirdDive];
+        
+        outputString =[outputString stringByAppendingString:strLine];
+        numberOfLines--;
     }
     
-    //Get translated text from received string
-    NSString *newWord=[strData substringWithRange:NSMakeRange(startNewWord, endNewWord-startNewWord)];
-    
     //Make end of line siymbols visible by NSTextView
-    newWord=[newWord stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    newWord=[newWord stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
+    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
     
     //Write translated text to the output
-    [self setOutputValue:newWord];
+    [self setOutputValue:outputString];
 }
 
 - (IBAction)sourceTabClick:(id)sender {

@@ -11,8 +11,8 @@
 @implementation GoogleRequest
 
 -(GoogleRequest *)init {
-    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian"];
-    NSArray *values = @[@"en", @"ru", @"fi", @"uk"];
+    NSArray *keys = @[@"English", @"Russian", @"Finnish", @"Ukrainian",@"Chinese Simplified"];
+    NSArray *values = @[@"en", @"ru", @"fi", @"uk",@"zh-CN"];
     _languagesMap=[NSDictionary dictionaryWithObjects:values forKeys:keys];
     return [super init];
 }

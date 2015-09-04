@@ -22,8 +22,9 @@
 //Outlets from view
 @property (strong) IBOutlet NSView *widgetMainView;
 
-@property IBOutlet NSTextField *inputText;
-@property (strong) IBOutlet NSTextField *outputText;
+@property (strong) IBOutlet NSTextView *inputText;
+@property (strong) IBOutlet NSTextView *outputText;
+
 
 @property (weak) IBOutlet SeparatedButton *sourceSegmentedButton;
 @property (weak) IBOutlet SeparatedButton *targetSegmentedButton;
@@ -44,7 +45,7 @@
 - (IBAction)swapButton: (id)sender;
 - (void)sourceTabDropDownClick:(id)sender;
 - (void)targetTabDropDownClick:(id)sender;
-- (void)controlTextDidChange:(NSNotification *)notification;
+- (void)textDidChange:(NSNotification *)notification;
 
 
 //Methods for managing data

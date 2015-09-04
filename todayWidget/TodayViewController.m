@@ -18,7 +18,7 @@
 
 @implementation TodayViewController
 
-- (void)viewDidLoad {
+- (void)awakeFromNib {
     [super viewDidLoad];
     
     //Initialize requestHandler
@@ -82,6 +82,10 @@
     //Get translated text from received string
     NSString *newWord=[strData substringWithRange:NSMakeRange(startNewWord, endNewWord-startNewWord)];
     
+    //Make end of line siymbols visible by NSTextView
+    newWord=[newWord stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    newWord=[newWord stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
+    
     //Write translated text to the output
     [self setOutputValue:newWord];
 }
@@ -103,7 +107,7 @@
     [self updateSourceLanguage];
     
     //Perform request
-    if(![[_inputText stringValue] isEqualToString:@""])
+    if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
     
 }
@@ -126,18 +130,16 @@
     [self updateTargetLanguage];
     
     //Perform request
-    if(![[_inputText stringValue] isEqualToString:@""])
+    if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
 }
 
--(void)controlTextDidChange:(NSNotification *)notification {
+-(void)textDidChange:(NSNotification *)notification{
     //Perform request
-    
-    if([[_inputText stringValue] isEqualToString:@""])
+    if([[[_inputText textStorage] string] isEqualToString:@""])
         [self setOutputValue:@""];
     else
         [self performGoogleRequest];
-
 }
 
 - (void)sourceTabDropDownClick:(id)sender {
@@ -165,7 +167,7 @@
     [self updateTargetLanguage];
     [self updateSourceLanguage];
     
-    if(![[_inputText stringValue] isEqualToString:@""])
+    if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
     
 }
@@ -180,11 +182,11 @@
 }
 
 -(void)performGoogleRequest{
-    [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[_inputText stringValue] Sender:self];
+    [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[[_inputText textStorage] string] Sender:self];
 }
 -(void)setOutputValue:(NSString *)value{
     runOnMainQueueWithoutDeadlocking(^{
-        [_outputText setStringValue:value];
+        [_outputText setString:value];
     });
 }
 

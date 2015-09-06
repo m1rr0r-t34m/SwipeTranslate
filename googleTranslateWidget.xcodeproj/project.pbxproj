@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* GoogleRequest.m */; };
+		CD6343871B9CA96E00C92593 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6343861B9CA96E00C92593 /* Images.xcassets */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		CD338B531B8F198500CDB0D8 /* GoogleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleRequest.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleRequest.h; sourceTree = "<group>"; };
+		CD6343861B9CA96E00C92593 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
 				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
+				CD6343861B9CA96E00C92593 /* Images.xcassets */,
 				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
 			);
 			path = todayWidget;
@@ -305,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6343871B9CA96E00C92593 /* Images.xcassets in Resources */,
 				CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */,
 				CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */,
 			);
@@ -395,6 +399,7 @@
 		CD8EEB971B8E69AA00E2991B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -413,6 +418,7 @@
 		CD8EEB981B8E69AA00E2991B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;

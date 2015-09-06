@@ -56,6 +56,10 @@
     [self updateTargetLanguage];
     [self updateSourceLanguage];
     
+    [_inputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    [_outputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    [_inputText setInsertionPointColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {

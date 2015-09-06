@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
@@ -23,13 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="356" height="340"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-PA-hYv" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="309" width="270" height="23"/>
+                    <rect key="frame" x="0.0" y="309" width="270" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="270" id="HUz-AX-k1X"/>
-                        <constraint firstAttribute="height" constant="22" id="JtX-0s-ypM"/>
+                        <constraint firstAttribute="height" constant="22" id="6pc-dd-vML"/>
+                        <constraint firstAttribute="width" constant="266" id="meg-4j-WV0"/>
                     </constraints>
                     <animations/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="RNt-q7-X9c">
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="RNt-q7-X9c">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="English" width="78" selected="YES"/>
@@ -45,13 +44,13 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="127" width="270" height="23"/>
+                    <rect key="frame" x="0.0" y="127" width="270" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="gJK-l2-YUN"/>
-                        <constraint firstAttribute="width" constant="270" id="nfz-6C-m49"/>
+                        <constraint firstAttribute="height" constant="21" id="9Dj-Pp-Miu"/>
+                        <constraint firstAttribute="width" constant="266" id="H10-7s-jrh"/>
                     </constraints>
                     <animations/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="pCn-0v-RPQ">
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
                         <font key="font" metaFont="system"/>
                         <segments>
                             <segment label="English" width="78" selected="YES"/>
@@ -69,8 +68,8 @@
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
                     <rect key="frame" x="105" y="158" width="60" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="31" id="2i2-QC-Mx3"/>
-                        <constraint firstAttribute="width" constant="60" id="8hX-Wm-QKZ"/>
+                        <constraint firstAttribute="height" constant="31" id="c3I-id-EQs"/>
+                        <constraint firstAttribute="width" constant="60" id="ofD-dg-YMu"/>
                     </constraints>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwitchArrows" imagePosition="below" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
@@ -81,6 +80,64 @@
                         <action selector="swapButton:" target="-2" id="XHZ-tW-hdN"/>
                     </connections>
                 </button>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5s-ki-bf7">
+                    <rect key="frame" x="0.0" y="15" width="270" height="100"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="OAj-Ak-ris">
+                        <rect key="frame" x="1" y="1" width="223" height="133"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8L9-5u-vwl">
+                                <rect key="frame" x="0.0" y="0.0" width="223" height="135"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
+                                <size key="minSize" width="270" height="100"/>
+                                <size key="maxSize" width="463" height="10000000"/>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="270" height="100"/>
+                                <size key="maxSize" width="463" height="10000000"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
+                    </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="bJp-xo-M60"/>
+                        <constraint firstAttribute="width" constant="270" id="w0P-Ks-DsL"/>
+                    </constraints>
+                    <animations/>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fVh-3B-4ch">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="pDs-cv-KRe">
+                        <rect key="frame" x="224" y="1" width="15" height="133"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </scroller>
+                </scrollView>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
+                    <rect key="frame" x="0.0" y="195" width="356" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="6WJ-im-GM7"/>
+                        <constraint firstAttribute="width" constant="356" id="6w5-vd-bOW"/>
+                    </constraints>
+                    <animations/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-hq-vCE">
+                    <rect key="frame" x="0.0" y="13" width="356" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="4eK-M7-VIY"/>
+                    </constraints>
+                    <animations/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-2u-mcD">
                     <rect key="frame" x="0.0" y="197" width="270" height="100"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Njq-R8-DRO">
@@ -107,8 +164,8 @@
                         <color key="backgroundColor" red="0.020712003111839294" green="0.85464102029800415" blue="0.95223218202590942" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="width" constant="270" id="Ipp-Px-3qp"/>
-                        <constraint firstAttribute="height" constant="100" id="bbd-XF-p1F"/>
+                        <constraint firstAttribute="height" constant="100" id="RRh-W9-dRo"/>
+                        <constraint firstAttribute="width" constant="270" id="bcx-1Z-kCk"/>
                     </constraints>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pKo-xL-9Xg">
@@ -122,82 +179,25 @@
                         <animations/>
                     </scroller>
                 </scrollView>
-                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5s-ki-bf7">
-                    <rect key="frame" x="0.0" y="15" width="270" height="100"/>
-                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="OAj-Ak-ris">
-                        <rect key="frame" x="1" y="1" width="223" height="133"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8L9-5u-vwl">
-                                <rect key="frame" x="0.0" y="0.0" width="223" height="135"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="270" height="100"/>
-                                <size key="maxSize" width="463" height="10000000"/>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="270" height="100"/>
-                                <size key="maxSize" width="463" height="10000000"/>
-                            </textView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                    </clipView>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="270" id="Fs6-rS-Txa"/>
-                        <constraint firstAttribute="height" constant="100" id="iWA-SN-rSq"/>
-                    </constraints>
-                    <animations/>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fVh-3B-4ch">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="pDs-cv-KRe">
-                        <rect key="frame" x="224" y="1" width="15" height="133"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </scroller>
-                </scrollView>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
-                    <rect key="frame" x="0.0" y="195" width="356" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="gwR-aB-68m"/>
-                    </constraints>
-                    <animations/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
-                <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-hq-vCE">
-                    <rect key="frame" x="0.0" y="13" width="356" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="yin-Zw-hgV"/>
-                    </constraints>
-                    <animations/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <font key="titleFont" metaFont="system"/>
-                </box>
             </subviews>
             <constraints>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="112" id="5p5-dT-sfb"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="LZt-Mn-ZzT" secondAttribute="bottom" constant="8" id="6Bh-r5-U3v"/>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="8" id="6Jb-jm-LJz"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="JZj-zI-SbO"/>
-                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="Qln-e7-KG4"/>
-                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="SJD-6B-DEI"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="T1Y-IG-EME"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="XLF-iH-yVW"/>
-                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="XZd-Vz-PCD"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Z3d-b9-YXf"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="ZWu-1y-oat"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="13" id="fW1-Ur-lvo"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="fvK-bp-Xie"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hfF-mU-QZH"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="13" id="lep-3a-KOu"/>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="rER-3t-Eap"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="112" id="rVF-2n-1qQ"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3fu-Tn-YVY"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="3zm-Eq-hpf"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="6qr-bW-vDX"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="9tq-oS-0Rn"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="BQ7-Oz-HZe"/>
+                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="HEQ-1v-Lqp"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="HSW-vN-GC4"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="IaV-C0-PBc"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="K2v-z7-QMf"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="PlF-1f-n8e"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RRC-J6-Th0"/>
+                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="S75-O1-22N"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dKh-6r-1du"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="hvK-T3-jaj"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="LZt-Mn-ZzT" secondAttribute="bottom" constant="8" id="nqG-yb-a2h"/>
+                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="rpb-4b-hqJ"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="xH0-hV-v2m"/>
             </constraints>
             <animations/>
             <point key="canvasLocation" x="307" y="357"/>

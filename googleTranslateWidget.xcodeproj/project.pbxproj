@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD149F361B9DCE3B00CBF7F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */; };
+		CD149F391B9DCE6B00CBF7F5 /* 256_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CD149F371B9DCE6B00CBF7F5 /* 256_3.png */; };
+		CD149F3A1B9DCE6B00CBF7F5 /* 256_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD149F381B9DCE6B00CBF7F5 /* 256_3@2x.png */; };
 		CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* GoogleRequest.m */; };
-		CD6343871B9CA96E00C92593 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD6343861B9CA96E00C92593 /* Images.xcassets */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
@@ -17,7 +19,6 @@
 		CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* GoogleString.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
-		CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE41B8E690300547F5C /* Images.xcassets */; };
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
 		CDCFCCF41B8E690300547F5C /* googleTranslateWidgetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */; };
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
@@ -55,9 +56,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CD149F371B9DCE6B00CBF7F5 /* 256_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 256_3.png; sourceTree = "<group>"; };
+		CD149F381B9DCE6B00CBF7F5 /* 256_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "256_3@2x.png"; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* GoogleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleRequest.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleRequest.h; sourceTree = "<group>"; };
-		CD6343861B9CA96E00C92593 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,7 +77,6 @@
 		CDCFCCDF1B8E690300547F5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CDCFCCE11B8E690300547F5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CDCFCCE21B8E690300547F5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CDCFCCE41B8E690300547F5C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CDCFCCE71B8E690300547F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = googleTranslateWidgetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCF21B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,8 +130,10 @@
 				CD338B531B8F198500CDB0D8 /* GoogleRequest.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
+				CD149F371B9DCE6B00CBF7F5 /* 256_3.png */,
+				CD149F381B9DCE6B00CBF7F5 /* 256_3@2x.png */,
 				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
-				CD6343861B9CA96E00C92593 /* Images.xcassets */,
+				CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */,
 				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
 			);
 			path = todayWidget;
@@ -172,7 +176,6 @@
 				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
-				CDCFCCE41B8E690300547F5C /* Images.xcassets */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
 			);
@@ -308,9 +311,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6343871B9CA96E00C92593 /* Images.xcassets in Resources */,
+				CD149F361B9DCE3B00CBF7F5 /* Images.xcassets in Resources */,
+				CD149F3A1B9DCE6B00CBF7F5 /* 256_3@2x.png in Resources */,
 				CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */,
 				CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */,
+				CD149F391B9DCE6B00CBF7F5 /* 256_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +323,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDCFCCE51B8E690300547F5C /* Images.xcassets in Resources */,
 				CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -512,7 +516,6 @@
 		CDCFCCF81B8E690300547F5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -524,7 +527,6 @@
 		CDCFCCF91B8E690300547F5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

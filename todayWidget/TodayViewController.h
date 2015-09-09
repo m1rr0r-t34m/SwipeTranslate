@@ -55,6 +55,10 @@
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
 
+
+//Preferences 
+
+
 @end
 
 

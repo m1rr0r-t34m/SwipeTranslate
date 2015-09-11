@@ -27,6 +27,7 @@
     //Initialize languages array
     _languages = [NSArray arrayWithObjects:@"English", @"Russian", @"Finnish", @"Ukrainian",@"Chinese Simplified", nil];
     
+    self.quotesArray = [[NSMutableArray alloc] init];
     
     //Generate menu elelements for source language button
     [_sourceLanguageMenu setAutoenablesItems:NO];
@@ -84,7 +85,7 @@
         strLine=[strData parseSecondDive];
         if([strLine length]!=[strData length])
             strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
-        strLine=[strLine parseThirdDive];
+        strLine=[strLine parseThirdDiveWithQuotes:[[self.quotesArray objectAtIndex:[self.quotesArray count]-numberOfLines]intValue]];
         
         outputString =[outputString stringByAppendingString:strLine];
         numberOfLines--;
@@ -146,8 +147,30 @@
     //Perform request
     if([[[_inputText textStorage] string] isEqualToString:@""])
         [self setOutputValue:@""];
-    else
+    else {
+        int countOfLines=1;
+        
+        for(int i=0;i<[[[_inputText textStorage] string] length];i++){
+            if([[[_inputText textStorage] string] characterAtIndex:i]=='\n')
+                countOfLines++;
+        }
+        
+        int line=0;
+        
+        
+        for(int i=0;i<countOfLines;i++){
+            [self.quotesArray addObject:[[NSNumber alloc] initWithInt:0]];
+        }
+        
+        for(int i=0;i<[[[_inputText textStorage] string] length];i++) {
+            if([[[_inputText textStorage] string] characterAtIndex:i]=='"')
+                [self.quotesArray replaceObjectAtIndex:(NSUInteger)line withObject:[[NSNumber alloc] initWithInt:[[self.quotesArray objectAtIndex:(NSUInteger)line] intValue]+1]];
+            if([[[_inputText textStorage] string] characterAtIndex:i]=='\n')
+                line++;
+        }
         [self performGoogleRequest];
+    }
+    
 }
 
 - (void)sourceTabDropDownClick:(id)sender {
@@ -190,12 +213,13 @@
 }
 
 -(void)performGoogleRequest{
+    
     [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[[_inputText textStorage] string] Sender:self];
 }
 -(void)setOutputValue:(NSString *)value{
     runOnMainQueueWithoutDeadlocking(^{
         [_outputText setString:value];
-    });
+   });
 }
 
 void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will add a command on the main thread to execute instantly

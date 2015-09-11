@@ -13,7 +13,6 @@
 -(NSString *)parseFirstDive;
 -(NSInteger)numberOfLines;
 -(NSString *)parseSecondDive;
--(NSString *)parseThirdDive;
-
+-(NSString *)parseThirdDiveWithQuotes:(int)numberOfQuotesInInput;
 
 @end

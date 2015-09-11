@@ -26,9 +26,12 @@
     return [self substringWithRange:NSMakeRange(2, endIndex-2)];
 }
 -(NSString *)parseSecondDive {
+    int quoteCount=0;
     NSInteger endIndex;
     for(int i=0;i<[self length];i++){
-        if([[self substringWithRange:NSMakeRange(i, 1)]isEqualToString:@"]"]){
+        if([self characterAtIndex:i]=='"')
+            quoteCount++;
+        if([self characterAtIndex:i]==']'&&quoteCount%2==0){
             endIndex=i;
             break;
         }
@@ -36,22 +39,31 @@
     return [self substringWithRange:NSMakeRange(0, endIndex+1)];
 }
 -(NSInteger)numberOfLines {
-    return [[self componentsSeparatedByString:@"["] count]-1;
+    int quoteCount=0;
+    int numberOfLines=0;
+    for(int i=0;i<[self length];i++){
+        if([self characterAtIndex:i]=='"')
+            quoteCount++;
+        if(([self characterAtIndex:i]=='[')&&(quoteCount%2==0))
+            numberOfLines++;
+        
+    }
+    return numberOfLines;
 }
--(NSString *)parseThirdDive {
-    bool isThatSecondQuote=NO;
+-(NSString *)parseThirdDiveWithQuotes:(int)numberOfQuotesInInput {
+
+    int countOfQuotes=0;
     NSInteger endIndex;
-    for(int i=(int)[self length]-1;i>0;i--){
-        if([[self substringWithRange:NSMakeRange(i, 1)]isEqualToString:@"\""]){
-            if(!isThatSecondQuote)
-                isThatSecondQuote=YES;
-            else{
+    for(int i=0;i<[self length];i++){
+        if([self characterAtIndex:i]=='"'){
+            countOfQuotes++;
+            if(countOfQuotes==numberOfQuotesInInput+2) {
                 endIndex=i;
                 break;
             }
         }
     }
-    return [self substringWithRange:NSMakeRange(2, endIndex-4)];
+    return [self substringWithRange:NSMakeRange(2, endIndex-2)];
 }
 
 @end

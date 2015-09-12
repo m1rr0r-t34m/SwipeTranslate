@@ -18,6 +18,7 @@
 
 @implementation TodayViewController
 
+
 - (void)awakeFromNib {
     [super viewDidLoad];
     
@@ -27,7 +28,24 @@
     _requestHandler=[[GoogleRequest alloc] init];
     
     //Initialize languages array
-    _languages = [NSArray arrayWithObjects:@"English", @"Russian", @"Finnish", @"Ukrainian",@"Chinese Simplified", nil];
+    _languages = [NSArray arrayWithObjects:@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",
+                  @"Basque", @"Belarusian", @"Bengali", @"Bosnian", @"Bulgarian",
+                  @"Catalan", @"Cebuano", @"Chichewa", @"Chinese Simplified", @"Chinese Traditional",
+                  @"Croatian", @"Czech", @"Danish", @"Dutch", @"English",
+                  @"Esperanto", @"Estonian", @"Filipino", @"Finnish", @"French", @"Galician",
+                  @"Georgian", @"German", @"Greek", @"Gujarati", @"Haitian Creole",
+                  @"Hausa", @"Hebrew", @"Hindi", @"Hmong", @"Hungarian",
+                  @"Icelandic", @"Igbo", @"Indonesian", @"Irish", @"Italian",
+                  @"Japanese", @"Javanese", @"Kannada", @"Kazakh", @"Khmer",
+                  @"Korean", @"Lao", @"Latin", @"Latvian", @"Lithuanian",
+                  @"Macedonian", @"Malagasy", @"Malay", @"Malayalam", @"Maltese",
+                  @"Maori", @"Marathi", @"Mongolian", @"Myanmar", @"Nepale",
+                  @"Norwegian", @"Persian", @"Polish", @"Portuguese", @"Punjabi", @"Romanian",
+                  @"Russian", @"Serbian", @"Sesotho", @"Sinhala", @"Slovak",
+                  @"Slovenian", @"Somali", @"Spanish", @"Sudanese", @"Swahili",
+                  @"Swedish", @"Tajik", @"Tamil", @"Telugu", @"Thai", @"Turkish",
+                  @"Ukrainian", @"Urdu", @"Uzbek", @"Vietnamese", @"Welsh",
+                  @"Yiddish", @"Yoruba", @"Zulu"	, nil];
     
     
     //Generate menu elelements for source language button

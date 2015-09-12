@@ -38,7 +38,6 @@
 @property NSArray* languages;
 @property NSString * sLanguage;
 @property NSString * tLanguage;
-@property NSMutableArray * quotesArray;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

@@ -29,7 +29,6 @@
     //Initialize languages array
     _languages = [NSArray arrayWithObjects:@"English", @"Russian", @"Finnish", @"Ukrainian",@"Chinese Simplified", nil];
     
-    self.quotesArray = [[NSMutableArray alloc] init];
     
     //Generate menu elelements for source language button
     [_sourceLanguageMenu setAutoenablesItems:NO];
@@ -121,7 +120,7 @@
         strLine=[strData parseSecondDive];
         if([strLine length]!=[strData length])
             strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
-        strLine=[strLine parseThirdDiveWithQuotes:[[self.quotesArray objectAtIndex:[self.quotesArray count]-numberOfLines]intValue]];
+        strLine=[strLine parseThirdDive];
         
         outputString =[outputString stringByAppendingString:strLine];
         numberOfLines--;
@@ -196,26 +195,7 @@
     if([[[_inputText textStorage] string] isEqualToString:@""])
         [self setOutputValue:@""];
     else {
-        int countOfLines=1;
-        
-        for(int i=0;i<[[[_inputText textStorage] string] length];i++){
-            if([[[_inputText textStorage] string] characterAtIndex:i]=='\n')
-                countOfLines++;
-        }
-        
-        int line=0;
-        
-        
-        for(int i=0;i<countOfLines;i++){
-            [self.quotesArray addObject:[[NSNumber alloc] initWithInt:0]];
-        }
-        
-        for(int i=0;i<[[[_inputText textStorage] string] length];i++) {
-            if([[[_inputText textStorage] string] characterAtIndex:i]=='"')
-                [self.quotesArray replaceObjectAtIndex:(NSUInteger)line withObject:[[NSNumber alloc] initWithInt:[[self.quotesArray objectAtIndex:(NSUInteger)line] intValue]+1]];
-            if([[[_inputText textStorage] string] characterAtIndex:i]=='\n')
-                line++;
-        }
+        [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
         [self performGoogleRequest];
     }
     

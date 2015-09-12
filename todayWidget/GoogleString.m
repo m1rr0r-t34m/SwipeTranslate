@@ -50,14 +50,14 @@
     }
     return numberOfLines;
 }
--(NSString *)parseThirdDiveWithQuotes:(int)numberOfQuotesInInput {
+-(NSString *)parseThirdDive {
 
     int countOfQuotes=0;
     NSInteger endIndex;
     for(int i=0;i<[self length];i++){
         if([self characterAtIndex:i]=='"'){
             countOfQuotes++;
-            if(countOfQuotes==numberOfQuotesInInput+2) {
+            if(countOfQuotes==2) {
                 endIndex=i;
                 break;
             }

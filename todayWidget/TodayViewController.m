@@ -21,6 +21,8 @@
 - (void)awakeFromNib {
     [super viewDidLoad];
     
+    _targetButtonDefaultValues = [[NSMutableDictionary alloc]init];
+    _sourceButtonDefaultValues = [[NSMutableDictionary alloc]init];
     //Initialize requestHandler
     _requestHandler=[[GoogleRequest alloc] init];
     
@@ -38,10 +40,33 @@
         [item setEnabled:YES];
     }
     
+    
+    //Define labels for the buttons 
+    
+    NSDictionary *sourceDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"sourceDefault"];
+    NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
+    
+    if (sourceDefault != nil){
+        
+        for (int i = 0; i < 3; i++) {
+            [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
+                                            
+        }
+        
+    }
+        
+    else
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+   
     
-    
-    //Generate menu elelements for target language button
+    if (targetDefault != nil) {
+        
+        for (int i = 0; i < 3; i++){
+            [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
+            }
+        
+    }
+    else
     [_targetLanguageMenu setAutoenablesItems:NO];
     
     for(int a=0;a<[_languages count];a++) {
@@ -51,6 +76,17 @@
     }
     
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    
+    //Set default selection for buttons if exists
+    NSInteger defaultSourceSelecion, defaultTargetSelection;
+    defaultSourceSelecion = [[NSUserDefaults standardUserDefaults] integerForKey:@"sourceDefaultSelection"];
+    defaultTargetSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"targetDefaultSelection"];
+    
+    if (defaultSourceSelecion)
+        [_sourceSegmentedButton setSelectedSegment:defaultSourceSelecion];
+    if (defaultTargetSelection)
+        [_targetSegmentedButton setSelectedSegment:defaultTargetSelection];
+        
     
     
     //Assign initial source and target language values
@@ -119,6 +155,9 @@
     if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
     
+    _sourceDefaultSelection = [NSNumber numberWithInteger:[_sourceSegmentedButton selectedSegment]];
+    [[NSUserDefaults standardUserDefaults] setObject:_sourceDefaultSelection forKey:@"sourceDefaultSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)targetTabClick:(id)sender {
@@ -141,6 +180,15 @@
     //Perform request
     if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
+    
+    //Update defaults
+    
+    _targetDefaultSelection = [NSNumber numberWithInteger:[_targetSegmentedButton selectedSegment]];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_targetDefaultSelection forKey:@"targetDefaultSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 }
 
 -(void)textDidChange:(NSNotification *)notification{
@@ -177,6 +225,17 @@
     //Push clicked menu element language to the button
     [_sourceSegmentedButton tryToPushNewLanguage:[sender title]];
     
+    //Update default values for button
+    
+    for (int i = 0; i < 3; i++) {
+        
+        [_sourceButtonDefaultValues setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
+        
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_sourceButtonDefaultValues forKey:@"sourceDefault"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     //Update source language
     [self updateSourceLanguage];
 }
@@ -184,6 +243,18 @@
 - (void)targetTabDropDownClick:(id)sender {
     //Push clicked menu element language to the button
     [_targetSegmentedButton tryToPushNewLanguage:[sender title]];
+    
+    //Update default values for button
+    
+    for (int i = 0; i < 3; i++) {
+        
+        [_targetButtonDefaultValues setValue:[_targetSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
+       
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:_targetButtonDefaultValues forKey:@"targetDefault"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     
     //Update source language
     [self updateTargetLanguage];

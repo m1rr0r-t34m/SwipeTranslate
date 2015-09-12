@@ -56,7 +56,12 @@
 -(void)setOutputValue:(NSString *)value;
 
 
-//Preferences 
+//Preferences
+
+@property NSMutableDictionary* sourceButtonDefaultValues;
+@property NSMutableDictionary* targetButtonDefaultValues;
+@property NSNumber* sourceDefaultSelection;
+@property NSNumber* targetDefaultSelection;
 
 
 @end

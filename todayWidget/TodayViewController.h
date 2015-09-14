@@ -63,6 +63,8 @@
 @property NSMutableDictionary* targetButtonDefaultValues;
 @property NSNumber* sourceDefaultSelection;
 @property NSNumber* targetDefaultSelection;
+@property NSString* defaultInputText;
+@property NSString* defaultOutputText;
 
 
 @end

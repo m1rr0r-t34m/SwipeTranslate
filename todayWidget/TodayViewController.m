@@ -28,7 +28,18 @@
     _requestHandler=[[GoogleRequest alloc] init];
     
   
-        
+    //Initialize menu layouts
+    subMenuItem* menuLayoutWithSubmenus = [[subMenuItem alloc]init];
+    
+   
+    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+    _sourceLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
+    
+  
+    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    _targetLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
+    
+
     //Define labels for the buttons
     
     NSDictionary *sourceDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"sourceDefault"];
@@ -38,33 +49,19 @@
         
         for (int i = 0; i < 3; i++) {
             [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
-                                            
+            
         }
         
     }
     
-   if (targetDefault != nil) {
+    if (targetDefault != nil) {
         
         for (int i = 0; i < 3; i++){
             [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
-            }
+        }
         
     }
-
-    //Initialize menu layouts
-    subMenuItem* sample = [[subMenuItem alloc]init];
     
-    //[_sourceLanguageMenu setAutoenablesItems:NO];
-   
-    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
-    _sourceLanguageMenu = [sample createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
-    
-    //[_targetLanguageMenu setAutoenablesItems:NO];
-  
-    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
-    _targetLanguageMenu = [sample createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
-    
-
     
     //Set default selection for buttons if exists
     NSInteger defaultSourceSelecion, defaultTargetSelection;
@@ -75,9 +72,17 @@
         [_sourceSegmentedButton setSelectedSegment:defaultSourceSelecion];
     if (defaultTargetSelection)
         [_targetSegmentedButton setSelectedSegment:defaultTargetSelection];
+    
+    //Set default text field values
+    NSString *defaultInput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultInput"];
+    NSString *defaultOutput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultOutput"];
+    if (defaultInput){
+        [_inputText setString:defaultInput];
+        runOnMainQueueWithoutDeadlocking(^{
+            [_outputText setString:defaultOutput];
         
-    
-    
+        });
+    }
     //Assign initial source and target language values
     [self updateTargetLanguage];
     [self updateSourceLanguage];
@@ -144,6 +149,7 @@
     if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
     
+    //Save new selection to defaults
     _sourceDefaultSelection = [NSNumber numberWithInteger:[_sourceSegmentedButton selectedSegment]];
     [[NSUserDefaults standardUserDefaults] setObject:_sourceDefaultSelection forKey:@"sourceDefaultSelection"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -170,11 +176,9 @@
     if(![[[_inputText textStorage] string] isEqualToString:@""])
         [self performGoogleRequest];
     
-    //Update defaults
     
+    //Save new selection to defaults
     _targetDefaultSelection = [NSNumber numberWithInteger:[_targetSegmentedButton selectedSegment]];
-    
-    
     [[NSUserDefaults standardUserDefaults] setObject:_targetDefaultSelection forKey:@"targetDefaultSelection"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
@@ -187,6 +191,13 @@
     else {
         [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
         [self performGoogleRequest];
+        _defaultInputText = [[_inputText textStorage] string];
+        [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
+    }
+    if ([[_outputText textStorage] string]) {
+        _defaultOutputText = [[_outputText textStorage]string];
+        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }
     
 }
@@ -226,7 +237,7 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
-    //Update source language
+    //Update target language
     [self updateTargetLanguage];
 }
 
@@ -261,6 +272,7 @@
     runOnMainQueueWithoutDeadlocking(^{
         [_outputText setString:value];
    });
+   
 }
 
 void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will add a command on the main thread to execute instantly

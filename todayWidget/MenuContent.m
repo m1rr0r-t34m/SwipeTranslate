@@ -39,7 +39,7 @@
     //Get target action from parameter
     SEL selector = NSSelectorFromString(action);
     
-    //Create dictionary for submenus and languages devided alphabetically
+    //Create dictionary for submenus and languages divided alphabetically
     NSMutableDictionary *allTheSubmenus = [[NSMutableDictionary alloc] initWithCapacity:40];
     NSMutableDictionary *allTheLanguages = [[NSMutableDictionary alloc] initWithCapacity:40];
     
@@ -54,7 +54,7 @@
         NSMenuItem *outputMenuItem=[outputMenu addItemWithTitle:[alphaLang objectAtIndex:(NSUInteger)k ] action:nil keyEquivalent:@""];
         [outputMenuItem setEnabled:YES];
         
-        //Generate languages devided alphabetically
+        //Generate languages divided alphabetically
         [allTheLanguages setObject:[languages getArrayOfLanguagesWithLetter:[alphaLang objectAtIndex:k]] forKey:[alphaLang objectAtIndex:k]];
         
         //Create submenus

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75F8671F1BA649AE00392E74 /* MenuContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* MenuContent.m */; };
 		CD149F361B9DCE3B00CBF7F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */; };
 		CD149F391B9DCE6B00CBF7F5 /* 256_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CD149F371B9DCE6B00CBF7F5 /* 256_3.png */; };
 		CD149F3A1B9DCE6B00CBF7F5 /* 256_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD149F381B9DCE6B00CBF7F5 /* 256_3@2x.png */; };
@@ -56,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		75F8671D1BA6499E00392E74 /* MenuContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuContent.h; sourceTree = "<group>"; };
+		75F8671E1BA649AE00392E74 /* MenuContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuContent.m; sourceTree = "<group>"; };
 		CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD149F371B9DCE6B00CBF7F5 /* 256_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 256_3.png; sourceTree = "<group>"; };
 		CD149F381B9DCE6B00CBF7F5 /* 256_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "256_3@2x.png"; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
 				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
 				CD338B531B8F198500CDB0D8 /* GoogleRequest.m */,
+				75F8671D1BA6499E00392E74 /* MenuContent.h */,
+				75F8671E1BA649AE00392E74 /* MenuContent.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
 				CD149F371B9DCE6B00CBF7F5 /* 256_3.png */,
@@ -344,6 +349,7 @@
 				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
 				CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */,
 				CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */,
+				75F8671F1BA649AE00392E74 /* MenuContent.m in Sources */,
 				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -27,38 +27,9 @@
     //Initialize requestHandler
     _requestHandler=[[GoogleRequest alloc] init];
     
-    //Initialize languages array
-    _languages = [NSArray arrayWithObjects:@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",
-                  @"Basque", @"Belarusian", @"Bengali", @"Bosnian", @"Bulgarian",
-                  @"Catalan", @"Cebuano", @"Chichewa", @"Chinese Simplified", @"Chinese Traditional",
-                  @"Croatian", @"Czech", @"Danish", @"Dutch", @"English",
-                  @"Esperanto", @"Estonian", @"Filipino", @"Finnish", @"French", @"Galician",
-                  @"Georgian", @"German", @"Greek", @"Gujarati", @"Haitian Creole",
-                  @"Hausa", @"Hebrew", @"Hindi", @"Hmong", @"Hungarian",
-                  @"Icelandic", @"Igbo", @"Indonesian", @"Irish", @"Italian",
-                  @"Japanese", @"Javanese", @"Kannada", @"Kazakh", @"Khmer",
-                  @"Korean", @"Lao", @"Latin", @"Latvian", @"Lithuanian",
-                  @"Macedonian", @"Malagasy", @"Malay", @"Malayalam", @"Maltese",
-                  @"Maori", @"Marathi", @"Mongolian", @"Myanmar", @"Nepale",
-                  @"Norwegian", @"Persian", @"Polish", @"Portuguese", @"Punjabi", @"Romanian",
-                  @"Russian", @"Serbian", @"Sesotho", @"Sinhala", @"Slovak",
-                  @"Slovenian", @"Somali", @"Spanish", @"Sudanese", @"Swahili",
-                  @"Swedish", @"Tajik", @"Tamil", @"Telugu", @"Thai", @"Turkish",
-                  @"Ukrainian", @"Urdu", @"Uzbek", @"Vietnamese", @"Welsh",
-                  @"Yiddish", @"Yoruba", @"Zulu"	, nil];
-    
-    
-    //Generate menu elelements for source language button
-    [_sourceLanguageMenu setAutoenablesItems:NO];
-    
-    for(int a=0;a<[_languages count];a++) {
-        NSMenuItem *item=[ _sourceLanguageMenu addItemWithTitle:[_languages objectAtIndex:(NSUInteger)a ] action:@selector(sourceTabDropDownClick:) keyEquivalent:@""];
-        [item setTarget:self];
-        [item setEnabled:YES];
-    }
-    
-    
-    //Define labels for the buttons 
+  
+        
+    //Define labels for the buttons
     
     NSDictionary *sourceDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"sourceDefault"];
     NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
@@ -71,28 +42,30 @@
         }
         
     }
-        
-    else
-    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
-   
     
-    if (targetDefault != nil) {
+   if (targetDefault != nil) {
         
         for (int i = 0; i < 3; i++){
             [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
             }
         
     }
-    else
-    [_targetLanguageMenu setAutoenablesItems:NO];
+
+    //Initialize menu layouts
+    subMenuItem* sample = [[subMenuItem alloc]init];
     
-    for(int a=0;a<[_languages count];a++) {
-        NSMenuItem *item=[ _targetLanguageMenu addItemWithTitle:[_languages objectAtIndex:(NSUInteger)a ] action:@selector(targetTabDropDownClick:) keyEquivalent:@""];
-        [item setTarget:self];
-        [item setEnabled:YES];
-    }
+    //[_sourceLanguageMenu setAutoenablesItems:NO];
+   
+    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+    _sourceLanguageMenu = [sample createMenu:@"sourceTabDropDownClick:"];
     
+    //[_targetLanguageMenu setAutoenablesItems:NO];
+  
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    _targetLanguageMenu = [sample createMenu:@"targetTabDropDownClick:"];
+    
+     NSString *test = [[_targetLanguageMenu itemWithTitle:@"Armenian"] title];
+    SEL tests = [[_targetLanguageMenu itemWithTitle:@"Armenian"] action];
     
     //Set default selection for buttons if exists
     NSInteger defaultSourceSelecion, defaultTargetSelection;

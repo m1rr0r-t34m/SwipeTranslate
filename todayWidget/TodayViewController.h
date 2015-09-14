@@ -10,6 +10,7 @@
 @import AppKit;
 #import "SeparatedButton.h"
 #import "GoogleString.h"
+#import "MenuContent.h"
 
 //Ptotocol for getting response from asyncronous request
 @protocol asynchronousRequests <NSObject>
@@ -30,14 +31,15 @@
 @property (weak) IBOutlet SeparatedButton *sourceSegmentedButton;
 @property (weak) IBOutlet SeparatedButton *targetSegmentedButton;
 
-@property (strong) IBOutlet NSMenu *sourceLanguageMenu;
-@property (strong) IBOutlet NSMenu *targetLanguageMenu;
+@property  IBOutlet NSMenu *sourceLanguageMenu;
+@property  IBOutlet NSMenu *targetLanguageMenu;
 
 
 //Properties for storing data
 @property NSArray* languages;
 @property NSString * sLanguage;
 @property NSString * tLanguage;
+@property NSArray* alphaLang;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

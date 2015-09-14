@@ -96,29 +96,6 @@
     NSMutableDictionary *allTheSubmenus = [[NSMutableDictionary alloc] initWithCapacity:40];
     NSMutableDictionary *allTheLanguages = [[NSMutableDictionary alloc] initWithCapacity:40];
     
-    NSMenu *letterAmenu = [[NSMenu alloc]init];
-    NSMenu *letterBmenu = [[NSMenu alloc]init];
-    NSMenu *letterCmenu = [[NSMenu alloc]init];
-    NSMenu *letterDmenu = [[NSMenu alloc]init];
-    NSMenu *letterEmenu = [[NSMenu alloc]init];
-    NSMenu *letterFmenu = [[NSMenu alloc]init];
-    NSMenu *letterGmenu = [[NSMenu alloc]init];
-    NSMenu *letterHmenu = [[NSMenu alloc]init];
-    NSMenu *letterImenu = [[NSMenu alloc]init];
-    NSMenu *letterJmenu = [[NSMenu alloc]init];
-    NSMenu *letterKmenu = [[NSMenu alloc]init];
-    NSMenu *letterLmenu = [[NSMenu alloc]init];
-    NSMenu *letterMmenu = [[NSMenu alloc]init];
-    NSMenu *letterNmenu = [[NSMenu alloc]init];
-    NSMenu *letterPmenu = [[NSMenu alloc]init];
-    NSMenu *letterRmenu = [[NSMenu alloc]init];
-    NSMenu *letterSmenu = [[NSMenu alloc]init];
-    NSMenu *letterTmenu = [[NSMenu alloc]init];
-    NSMenu *letterUmenu = [[NSMenu alloc]init];
-    NSMenu *letterVmenu = [[NSMenu alloc]init];
-    NSMenu *letterWmenu = [[NSMenu alloc]init];
-    NSMenu *letterYmenu = [[NSMenu alloc]init];
-    NSMenu *letterZmenu = [[NSMenu alloc]init];
     
     NSMenu *outputMenu = [[NSMenu alloc]init];
     [outputMenu setAutoenablesItems:NO];
@@ -130,29 +107,29 @@
     }
     
     
-    [allTheSubmenus setObject:letterAmenu forKey:@"A"];
-    [allTheSubmenus setObject:letterBmenu forKey:@"B"];
-    [allTheSubmenus setObject:letterCmenu forKey:@"C"];
-    [allTheSubmenus setObject:letterDmenu forKey:@"D"];
-    [allTheSubmenus setObject:letterEmenu forKey:@"E"];
-    [allTheSubmenus setObject:letterFmenu forKey:@"F"];
-    [allTheSubmenus setObject:letterGmenu forKey:@"G"];
-    [allTheSubmenus setObject:letterHmenu forKey:@"H"];
-    [allTheSubmenus setObject:letterImenu forKey:@"I"];
-    [allTheSubmenus setObject:letterJmenu forKey:@"J"];
-    [allTheSubmenus setObject:letterKmenu forKey:@"K"];
-    [allTheSubmenus setObject:letterLmenu forKey:@"L"];
-    [allTheSubmenus setObject:letterMmenu forKey:@"M"];
-    [allTheSubmenus setObject:letterNmenu forKey:@"N"];
-    [allTheSubmenus setObject:letterPmenu forKey:@"P"];
-    [allTheSubmenus setObject:letterRmenu forKey:@"R"];
-    [allTheSubmenus setObject:letterSmenu forKey:@"S"];
-    [allTheSubmenus setObject:letterTmenu forKey:@"T"];
-    [allTheSubmenus setObject:letterUmenu forKey:@"U"];
-    [allTheSubmenus setObject:letterVmenu forKey:@"V"];
-    [allTheSubmenus setObject:letterWmenu forKey:@"W"];
-    [allTheSubmenus setObject:letterYmenu forKey:@"Y"];
-    [allTheSubmenus setObject:letterZmenu forKey:@"Z"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"A"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"B"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"C"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"D"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"E"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"F"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"G"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"H"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"I"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"J"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"K"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"L"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"M"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"N"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"P"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"R"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"S"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"T"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"U"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"V"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"W"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"Y"];
+    [allTheSubmenus setObject:[[NSMenu alloc]init] forKey:@"Z"];
     
     [allTheLanguages setObject:languagesForA forKey:@"A"];
     [allTheLanguages setObject:languagesForB forKey:@"B"];

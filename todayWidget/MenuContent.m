@@ -11,7 +11,7 @@
 
 @implementation subMenuItem
 
--(NSMenu*)createMenu:(NSString*)actionTarget{
+-(NSMenu*)createMenu:(NSString*)actionTarget andSender:(id)sender{
     
     //Initialize alphabet array and languages arrays, which are separated between letters
     
@@ -98,161 +98,161 @@
     [letterAmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForA count]; i++) {
         NSMenuItem *item = [letterAmenu addItemWithTitle:[languagesForA objectAtIndex:(NSUInteger)i] action:@selector(sourceTabDropDownClick:) keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterBmenu = [[NSMenu alloc]init];
     [letterBmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForB count]; i++) {
         NSMenuItem *item = [letterBmenu addItemWithTitle:[languagesForB objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterCmenu = [[NSMenu alloc]init];
     [letterCmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForC count]; i++) {
         NSMenuItem *item = [letterCmenu addItemWithTitle:[languagesForC objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterDmenu = [[NSMenu alloc]init];
     [letterDmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForD count]; i++) {
         NSMenuItem *item = [letterDmenu addItemWithTitle:[languagesForD objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterEmenu = [[NSMenu alloc]init];
     [letterEmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForE count]; i++) {
         NSMenuItem *item = [letterEmenu addItemWithTitle:[languagesForE objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterFmenu = [[NSMenu alloc]init];
     [letterFmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForF count]; i++) {
         NSMenuItem *item = [letterFmenu addItemWithTitle:[languagesForF objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterGmenu = [[NSMenu alloc]init];
     [letterGmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForG count]; i++) {
         NSMenuItem *item = [letterGmenu addItemWithTitle:[languagesForG objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterHmenu = [[NSMenu alloc]init];
     [letterHmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForH count]; i++) {
         NSMenuItem *item = [letterHmenu addItemWithTitle:[languagesForH objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterImenu = [[NSMenu alloc]init];
     [letterImenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForI count]; i++) {
         NSMenuItem *item = [letterImenu addItemWithTitle:[languagesForI objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterJmenu = [[NSMenu alloc]init];
     [letterJmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForJ count]; i++) {
         NSMenuItem *item = [letterJmenu addItemWithTitle:[languagesForJ objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterKmenu = [[NSMenu alloc]init];
     [letterKmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForK count]; i++) {
         NSMenuItem *item = [letterKmenu addItemWithTitle:[languagesForK objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterLmenu = [[NSMenu alloc]init];
     [letterLmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForL count]; i++) {
         NSMenuItem *item = [letterLmenu addItemWithTitle:[languagesForL objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterMmenu = [[NSMenu alloc]init];
     [letterMmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForM count]; i++) {
         NSMenuItem *item = [letterMmenu addItemWithTitle:[languagesForM objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterNmenu = [[NSMenu alloc]init];
     [letterNmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForN count]; i++) {
         NSMenuItem *item = [letterNmenu addItemWithTitle:[languagesForN objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterPmenu = [[NSMenu alloc]init];
     [letterPmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForP count]; i++) {
         NSMenuItem *item = [letterPmenu addItemWithTitle:[languagesForP objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterRmenu = [[NSMenu alloc]init];
     [letterRmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForR count]; i++) {
         NSMenuItem *item = [letterRmenu addItemWithTitle:[languagesForR objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterSmenu = [[NSMenu alloc]init];
     [letterSmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForS count]; i++) {
         NSMenuItem *item = [letterSmenu addItemWithTitle:[languagesForS objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterTmenu = [[NSMenu alloc]init];
     [letterTmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForT count]; i++) {
         NSMenuItem *item = [letterTmenu addItemWithTitle:[languagesForT objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterUmenu = [[NSMenu alloc]init];
     [letterUmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForU count]; i++) {
         NSMenuItem *item = [letterUmenu addItemWithTitle:[languagesForU objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterVmenu = [[NSMenu alloc]init];
     [letterVmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForV count]; i++) {
         NSMenuItem *item = [letterVmenu addItemWithTitle:[languagesForV objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterWmenu = [[NSMenu alloc]init];
     [letterWmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForW count]; i++) {
         NSMenuItem *item = [letterWmenu addItemWithTitle:[languagesForW objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterYmenu = [[NSMenu alloc]init];
     [letterYmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForY count]; i++) {
         NSMenuItem *item = [letterYmenu addItemWithTitle:[languagesForY objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     NSMenu *letterZmenu = [[NSMenu alloc]init];
     [letterZmenu setAutoenablesItems:NO];
     for(int i = 0; i < [languagesForZ count]; i++) {
         NSMenuItem *item = [letterZmenu addItemWithTitle:[languagesForZ objectAtIndex:(NSUInteger)i] action:selector keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     
@@ -261,7 +261,7 @@
     
     for(int a=0;a<[alphaLang count];a++) {
         NSMenuItem *item=[outputMenu addItemWithTitle:[alphaLang objectAtIndex:(NSUInteger)a ] action:nil keyEquivalent:@""];
-        [item setTarget:self];
+        [item setTarget:sender];
         [item setEnabled:YES];
     }
     [outputMenu setSubmenu:letterAmenu forItem:[outputMenu itemWithTitle:@"A"]];

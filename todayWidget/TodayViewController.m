@@ -32,11 +32,11 @@
     subMenuItem* menuLayoutWithSubmenus = [[subMenuItem alloc]init];
     
    
-    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
+    [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];
     _sourceLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
     
   
-    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
+    [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)0];
     _targetLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
 
@@ -46,23 +46,15 @@
     NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
     
     if (sourceDefault != nil){
-        
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
-            
+            }
         }
-        
-    }
-    
     if (targetDefault != nil) {
-        
-        for (int i = 0; i < 3; i++){
+        for (int i = 1; i < 4; i++){
             [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
         }
-        
     }
-    
-    
     //Set default selection for buttons if exists
     NSInteger defaultSourceSelecion, defaultTargetSelection;
     defaultSourceSelecion = [[NSUserDefaults standardUserDefaults] integerForKey:@"sourceDefaultSelection"];
@@ -131,7 +123,7 @@
 
 - (IBAction)sourceTabClick:(id)sender {
     //Pop up menu if clicked on last button
-    if([sender selectedSegment]==3){
+    if([sender selectedSegment]==0){
         [_sourceLanguageMenu popUpMenuPositioningItem:nil atLocation:[_sourceSegmentedButton calculateMenuOrigin] inView:_widgetMainView];
         
         //Update selected segment to sLanguage to avoid bug with clicking outside menu frame
@@ -139,7 +131,7 @@
         if([_sourceSegmentedButton indexForSegmentWithLabel:_sLanguage]!=-1)
             [_sourceSegmentedButton setSelectedSegment:[_sourceSegmentedButton indexForSegmentWithLabel:_sLanguage]];
         else
-            [_sourceSegmentedButton setSelectedSegment:0];
+            [_sourceSegmentedButton setSelectedSegment:1];
     }
     //Update languages
     [self updateTargetLanguage];
@@ -157,7 +149,7 @@
 
 - (IBAction)targetTabClick:(id)sender {
     //Pop up menu if clicked on last button
-    if([sender selectedSegment]==3){
+    if([sender selectedSegment]==0){
         [_targetLanguageMenu popUpMenuPositioningItem:nil atLocation:[_targetSegmentedButton calculateMenuOrigin] inView:_widgetMainView];
         
         //Update selected segment to tLanguage to avoid bug with clicking outside menu frame
@@ -165,7 +157,7 @@
         if([_targetSegmentedButton indexForSegmentWithLabel:_tLanguage]!=-1)
             [_targetSegmentedButton setSelectedSegment:[_targetSegmentedButton indexForSegmentWithLabel:_tLanguage]];
         else
-            [_targetSegmentedButton setSelectedSegment:0];
+            [_targetSegmentedButton setSelectedSegment:1];
         
     }
     //Update languages
@@ -208,7 +200,7 @@
     
     //Update default values for button
     
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 4; i++) {
         
         [_sourceButtonDefaultValues setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
         
@@ -227,7 +219,7 @@
     
     //Update default values for button
     
-    for (int i = 0; i < 3; i++) {
+    for (int i = 1; i < 4; i++) {
         
         [_targetButtonDefaultValues setValue:[_targetSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
        

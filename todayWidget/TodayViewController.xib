@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="inputText" destination="8Q8-jN-L1z" id="jAr-yK-kcm"/>
                 <outlet property="outputText" destination="8L9-5u-vwl" id="RJc-g7-sdH"/>
-                <outlet property="sourceLanguageMenu" destination="Qht-LF-uau" id="Fuz-Eh-FOL"/>
+                <outlet property="sourceLanguageMenu" destination="cXh-7N-iT2" id="ypX-A0-Xq5"/>
                 <outlet property="sourceSegmentedButton" destination="zqb-PA-hYv" id="vxy-Jz-8zV"/>
                 <outlet property="targetLanguageMenu" destination="Yt6-Cr-4dE" id="XAd-od-3sJ"/>
                 <outlet property="targetSegmentedButton" destination="xtp-nf-q79" id="r9w-fH-eSF"/>
@@ -19,24 +19,24 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="356" height="340"/>
+            <rect key="frame" x="0.0" y="0.0" width="356" height="339"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-PA-hYv" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="309" width="270" height="25"/>
+                    <rect key="frame" x="0.0" y="309" width="270" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="6pc-dd-vML"/>
+                        <constraint firstAttribute="height" constant="21" id="6pc-dd-vML"/>
                         <constraint firstAttribute="width" constant="266" id="meg-4j-WV0"/>
                     </constraints>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="RNt-q7-X9c">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="English" width="78" selected="YES"/>
-                            <segment label="Russian" width="78" tag="1"/>
-                            <segment label="Finnish" width="76"/>
-                            <segment label="&gt;">
-                                <menu key="menu" id="Qht-LF-uau"/>
+                            <segment label="⬇︎" width="29">
+                                <menu key="menu" id="cXh-7N-iT2"/>
                             </segment>
+                            <segment label="English" width="78" selected="YES" tag="1"/>
+                            <segment label="Russian" width="78"/>
+                            <segment label="Finnish" width="76"/>
                         </segments>
                     </segmentedCell>
                     <connections>
@@ -44,19 +44,19 @@
                     </connections>
                 </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="127" width="270" height="24"/>
+                    <rect key="frame" x="0.0" y="127" width="272" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9Dj-Pp-Miu"/>
-                        <constraint firstAttribute="width" constant="266" id="H10-7s-jrh"/>
+                        <constraint firstAttribute="width" constant="268" id="oPh-Uh-JLY"/>
                     </constraints>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
                         <font key="font" metaFont="system"/>
                         <segments>
-                            <segment label="English" width="78"/>
-                            <segment label="Russian" width="78" selected="YES" tag="1"/>
-                            <segment label="Finnish" width="76"/>
-                            <segment label="&gt;">
+                            <segment label="⬇︎" width="29"/>
+                            <segment label="English" width="78" selected="YES" tag="1"/>
+                            <segment label="Russian" width="78"/>
+                            <segment label="Finnish" width="78">
                                 <menu key="menu" id="Yt6-Cr-4dE"/>
                             </segment>
                         </segments>

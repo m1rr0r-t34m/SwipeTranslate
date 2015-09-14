@@ -11,12 +11,12 @@
 @implementation SeparatedButton
 -(void)pushNewChosenLanguage:(NSString *)language {
 
-    NSString* firstElement=[self labelForSegment:(NSInteger)0];
-    NSString* secondElement=[self labelForSegment:(NSInteger)1];
-    [self setLabel:language forSegment:0];
-    [self setLabel:firstElement forSegment:1];
-    [self setLabel:secondElement forSegment:2];
-    [self setSelectedSegment:(NSInteger)0];
+    NSString* firstElement=[self labelForSegment:(NSInteger)1];
+    NSString* secondElement=[self labelForSegment:(NSInteger)2];
+    [self setLabel:language forSegment:1];
+    [self setLabel:firstElement forSegment:2];
+    [self setLabel:secondElement forSegment:3];
+    [self setSelectedSegment:(NSInteger)1];
 }
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -44,7 +44,7 @@
 }
 -(NSPoint)calculateMenuOrigin {
     NSPoint menuOrigin = [self frame].origin;
-    menuOrigin.x = NSMaxX([self frame]) - [self widthForSegment:3];
+    menuOrigin.x = NSMaxX([self frame]) - NSMaxX([self frame]);
     return menuOrigin;
 }
 @end

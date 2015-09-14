@@ -8,10 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "TodayViewController.h"
+#import "LanguageArray.h"
 
 @interface subMenuItem : NSMenu
 
--(NSMenu*)createMenu:(NSString*)actionTarget andSender:(id)sender ;
+-(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
 
 
 @end

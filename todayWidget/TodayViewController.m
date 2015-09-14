@@ -57,15 +57,14 @@
     //[_sourceLanguageMenu setAutoenablesItems:NO];
    
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)3];
-    _sourceLanguageMenu = [sample createMenu:@"sourceTabDropDownClick:"andSender:self];
+    _sourceLanguageMenu = [sample createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
     
     //[_targetLanguageMenu setAutoenablesItems:NO];
   
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)3];
-    _targetLanguageMenu = [sample createMenu:@"targetTabDropDownClick:"andSender:self];
+    _targetLanguageMenu = [sample createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
-     NSString *test = [[_targetLanguageMenu itemWithTitle:@"Armenian"] title];
-    SEL tests = [[_targetLanguageMenu itemWithTitle:@"Armenian"] action];
+
     
     //Set default selection for buttons if exists
     NSInteger defaultSourceSelecion, defaultTargetSelection;

@@ -177,11 +177,21 @@
 }
 
 -(void)textDidChange:(NSNotification *)notification{
-    //Perform request
-    if([[[_inputText textStorage] string] isEqualToString:@""])
+  
+    //If whitespace string output nothing
+    if([[[_inputText textStorage]string]isEqualToString:@""])
+        [self setOutputValue:@""];
+    else if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0)
         [self setOutputValue:@""];
     else {
-        [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+        //If there is a quote, delete it and place cursor
+        NSRange searchRange = [[[_inputText textStorage] string] rangeOfString:@"\""];
+        if (searchRange.location != NSNotFound)
+        {
+            [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+            [_inputText setSelectedRange:NSMakeRange(searchRange.location,0) ];
+        }
+        //Then perform a request
         [self performGoogleRequest];
         _defaultInputText = [[_inputText textStorage] string];
         [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];

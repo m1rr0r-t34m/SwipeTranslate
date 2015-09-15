@@ -181,7 +181,7 @@
     //If whitespace string output nothing
     if([[[_inputText textStorage]string]isEqualToString:@""])
         [self setOutputValue:@""];
-    else if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0)
+    else if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0)
         [self setOutputValue:@""];
     else {
         //If there is a quote, delete it and place cursor

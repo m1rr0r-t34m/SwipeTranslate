@@ -33,11 +33,11 @@
     
    
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];
-    _sourceLanguageMenu = [menuLayoutWithSubmenus createSourceMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
+    _sourceLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
     
   
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)0];
-    _targetLanguageMenu = [menuLayoutWithSubmenus createTargetMenuWithAction:@"targetTabDropDownClick:"andSender:self];
+    _targetLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
 
     //Define labels for the buttons
@@ -90,9 +90,9 @@
     // with NoData if nothing has changed or NewData if there is new data since the last
     // time we called you
     completionHandler(NCUpdateResultNoData);
+
     
 }
-
 - (void)receivedResponseFromRequest:(NSData *)data {
     //Convert received data to NSString using NSUTF8StringEncoding
     NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
@@ -248,16 +248,20 @@
 }
 
 -(IBAction)swapButton: (id)sender {
-    //Swap source language and target language buttons values
-    [_sourceSegmentedButton tryToPushNewLanguage:_tLanguage];
-    [_targetSegmentedButton tryToPushNewLanguage:_sLanguage];
     
-    ////Update languages and perform request
-    [self updateTargetLanguage];
-    [self updateSourceLanguage];
-    
-    if(![[[_inputText textStorage] string] isEqualToString:@""])
-        [self performGoogleRequest];
+    //Swap languages if source language is not Auto
+    if(![_sLanguage isEqualToString:@"Auto"]) {
+        //Swap source language and target language buttons values
+        [_sourceSegmentedButton tryToPushNewLanguage:_tLanguage];
+        [_targetSegmentedButton tryToPushNewLanguage:_sLanguage];
+        
+        ////Update languages and perform request
+        [self updateTargetLanguage];
+        [self updateSourceLanguage];
+        
+        if(![[[_inputText textStorage] string] isEqualToString:@""])
+            [self performGoogleRequest];
+    }
     
 }
 

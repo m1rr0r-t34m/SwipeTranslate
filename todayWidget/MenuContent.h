@@ -12,7 +12,6 @@
 
 @interface subMenuItem : NSMenu
 
--(NSMenu*)createSourceMenuWithAction:(NSString*)action andSender:(id)sender;
--(NSMenu*)createTargetMenuWithAction:(NSString*)action andSender:(id)sender;
+-(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15A262e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
@@ -22,10 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="356" height="339"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-PA-hYv" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="309" width="270" height="24"/>
+                    <rect key="frame" x="-2" y="309" width="270" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="6pc-dd-vML"/>
-                        <constraint firstAttribute="width" constant="266" id="meg-4j-WV0"/>
+                        <constraint firstAttribute="width" constant="266" id="EKs-6W-t1D"/>
+                        <constraint firstAttribute="height" constant="21" id="bx4-Iq-jVm"/>
                     </constraints>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="RNt-q7-X9c">
@@ -43,36 +43,14 @@
                         <action selector="sourceTabClick:" target="-2" id="MkZ-Ai-GMJ"/>
                     </connections>
                 </segmentedControl>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
-                    <rect key="frame" x="0.0" y="127" width="272" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="9Dj-Pp-Miu"/>
-                        <constraint firstAttribute="width" constant="268" id="oPh-Uh-JLY"/>
-                    </constraints>
-                    <animations/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment label="⬇︎" width="29"/>
-                            <segment label="English" width="78" selected="YES" tag="1"/>
-                            <segment label="Russian" width="78"/>
-                            <segment label="Finnish" width="78">
-                                <menu key="menu" id="Yt6-Cr-4dE"/>
-                            </segment>
-                        </segments>
-                    </segmentedCell>
-                    <connections>
-                        <action selector="targetTabClick:" target="-2" id="WYE-hV-Qii"/>
-                    </connections>
-                </segmentedControl>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
                     <rect key="frame" x="105" y="158" width="60" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="31" id="c3I-id-EQs"/>
-                        <constraint firstAttribute="width" constant="60" id="ofD-dg-YMu"/>
+                        <constraint firstAttribute="width" constant="60" id="BgJ-2t-y6z"/>
+                        <constraint firstAttribute="height" constant="31" id="JWS-in-riW"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwitchArrows" imagePosition="below" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapArrows" imagePosition="below" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -102,8 +80,8 @@
                         <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="bJp-xo-M60"/>
-                        <constraint firstAttribute="width" constant="270" id="w0P-Ks-DsL"/>
+                        <constraint firstAttribute="height" constant="100" id="3R8-ua-7lK"/>
+                        <constraint firstAttribute="width" constant="270" id="lIC-Jp-BAL"/>
                     </constraints>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fVh-3B-4ch">
@@ -120,8 +98,7 @@
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
                     <rect key="frame" x="0.0" y="195" width="356" height="5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="6WJ-im-GM7"/>
-                        <constraint firstAttribute="width" constant="356" id="6w5-vd-bOW"/>
+                        <constraint firstAttribute="height" constant="1" id="6w7-Gc-WBe"/>
                     </constraints>
                     <animations/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -130,9 +107,6 @@
                 </box>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-hq-vCE">
                     <rect key="frame" x="0.0" y="13" width="356" height="5"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="1" id="4eK-M7-VIY"/>
-                    </constraints>
                     <animations/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -164,8 +138,8 @@
                         <color key="backgroundColor" red="0.020712003111839294" green="0.85464102029800415" blue="0.95223218202590942" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="RRh-W9-dRo"/>
-                        <constraint firstAttribute="width" constant="270" id="bcx-1Z-kCk"/>
+                        <constraint firstAttribute="height" constant="100" id="SRh-ms-SYk"/>
+                        <constraint firstAttribute="width" constant="270" id="ye7-fR-63a"/>
                     </constraints>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pKo-xL-9Xg">
@@ -179,31 +153,53 @@
                         <animations/>
                     </scroller>
                 </scrollView>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
+                    <rect key="frame" x="-2" y="127" width="272" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="268" id="qjt-96-APq"/>
+                        <constraint firstAttribute="height" constant="21" id="toa-hd-qA5"/>
+                    </constraints>
+                    <animations/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="⬇︎" width="29"/>
+                            <segment label="English" width="78" selected="YES" tag="1"/>
+                            <segment label="Russian" width="78"/>
+                            <segment label="Finnish" width="78">
+                                <menu key="menu" id="Yt6-Cr-4dE"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="targetTabClick:" target="-2" id="WYE-hV-Qii"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3fu-Tn-YVY"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="3zm-Eq-hpf"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="6qr-bW-vDX"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="9tq-oS-0Rn"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="BQ7-Oz-HZe"/>
-                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="HEQ-1v-Lqp"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="HSW-vN-GC4"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="IaV-C0-PBc"/>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="K2v-z7-QMf"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="PlF-1f-n8e"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="RRC-J6-Th0"/>
-                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="S75-O1-22N"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="dKh-6r-1du"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="hvK-T3-jaj"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="LZt-Mn-ZzT" secondAttribute="bottom" constant="8" id="nqG-yb-a2h"/>
-                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="rpb-4b-hqJ"/>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="xH0-hV-v2m"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3DG-7A-7PT"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="5GW-3q-HzL"/>
+                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="5cC-YD-Z1u"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="Ev2-Cv-Lx4"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="IvV-kJ-87n"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="J9r-Pc-BMY"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="L3r-S5-pQG"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Ma4-rK-aLh"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="NPc-2a-qJ6"/>
+                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="P8o-80-3CT"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="PuV-42-F5L"/>
+                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="RCw-j8-MUd"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Thh-oh-YQK"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eBw-nO-hTJ"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="f8d-HW-5eg"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="vJw-sl-Zkd"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="z2j-EA-JzD"/>
             </constraints>
             <animations/>
             <point key="canvasLocation" x="307" y="357"/>
         </customView>
     </objects>
     <resources>
-        <image name="SwitchArrows" width="171" height="77"/>
+        <image name="SwapArrows" width="119" height="33"/>
     </resources>
 </document>

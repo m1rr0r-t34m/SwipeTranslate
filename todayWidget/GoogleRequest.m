@@ -14,7 +14,7 @@
     
    
     
-    NSArray *keys = @[@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",
+    NSArray *keys = @[@"Auto",@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",
                       @"Basque", @"Belarusian", @"Bengali", @"Bosnian", @"Bulgarian",
                       @"Catalan", @"Cebuano", @"Chichewa", @"Chinese Simplified", @"Chinese Traditional",
                       @"Croatian", @"Czech", @"Danish", @"Dutch", @"English",
@@ -33,7 +33,7 @@
                       @"Ukrainian", @"Urdu", @"Uzbek", @"Vietnamese", @"Welsh",
                       @"Yiddish", @"Yoruba", @"Zulu"	];
     
-    NSArray *values = @[@"af", @"sq", @"ar", @"hy", @"az", @"eu", @"be", @"bn", @"bs", @"bg",
+    NSArray *values = @[@"auto",@"af", @"sq", @"ar", @"hy", @"az", @"eu", @"be", @"bn", @"bs", @"bg",
                         @"ca", @"ceb", @"ny", @"zh-CN", @"zh-TW", @"hr", @"cs",
                         @"da", @"nl", @"en", @"eo", @"et", @"tl", @"fi", @"fr",
                         @"gl", @"ka", @"de",@"el", @"gu",

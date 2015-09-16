@@ -14,6 +14,6 @@
 -(NSInteger)numberOfLines;
 -(NSString *)parseSecondDive;
 -(NSString *)parseThirdDive;
-
+-(NSString *)parseFirstDiveForAuto;
 
 @end

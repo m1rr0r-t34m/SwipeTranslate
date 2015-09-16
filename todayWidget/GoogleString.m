@@ -25,6 +25,19 @@
     }
     return [self substringWithRange:NSMakeRange(2, endIndex-2)];
 }
+-(NSString *)parseFirstDiveForAuto {
+    int indexOfBracket=0;
+    NSInteger endIndex=0;
+    for(int i=(int)[self length]-1;i>0;i--){
+        if([[self substringWithRange:NSMakeRange(i, 1)]isEqualToString:@"]"])
+            indexOfBracket++;
+        if(indexOfBracket==4){
+            endIndex=i;
+        }
+        
+    }
+    return [self substringWithRange:NSMakeRange(2, endIndex-2)];
+}
 -(NSString *)parseSecondDive {
     int quoteCount=0;
     NSInteger endIndex;

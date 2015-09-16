@@ -33,11 +33,11 @@
     
    
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];
-    _sourceLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
+    _sourceLanguageMenu = [menuLayoutWithSubmenus createSourceMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
     
   
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)0];
-    _targetLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
+    _targetLanguageMenu = [menuLayoutWithSubmenus createTargetMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
 
     //Define labels for the buttons
@@ -97,7 +97,11 @@
     //Convert received data to NSString using NSUTF8StringEncoding
     NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
-    strData=[strData parseFirstDive];
+
+    if([_sLanguage isEqualToString:@"Auto"])
+        strData=[strData parseFirstDiveForAuto];
+    else
+        strData=[strData parseFirstDive];
     NSInteger numberOfLines=[strData numberOfLines];
     NSString *outputString=[[NSString alloc] init];
     

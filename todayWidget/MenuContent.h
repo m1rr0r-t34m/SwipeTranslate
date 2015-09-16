@@ -12,7 +12,7 @@
 
 @interface subMenuItem : NSMenu
 
--(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
-
+-(NSMenu*)createSourceMenuWithAction:(NSString*)action andSender:(id)sender;
+-(NSMenu*)createTargetMenuWithAction:(NSString*)action andSender:(id)sender;
 
 @end

@@ -85,6 +85,30 @@
     
 }
 
+-(void)viewWillAppear {
+   //set this view controller delegate for selectors windowDidResignKey and windowDidMove
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
+}
+
+- (void)windowDidMove:(NSNotification *)notification {
+    //If window did move (scroll in a today center) close menus
+    if(_sourceLanguageMenu)
+        [ _sourceLanguageMenu cancelTracking];
+    if(_targetLanguageMenu)
+        [ _targetLanguageMenu cancelTracking];
+    
+}
+
+- (void)windowDidResignKey:(NSNotification *)notification {
+    //If window did resign key (close today center) close menus
+    if(_sourceLanguageMenu)
+        [ _sourceLanguageMenu cancelTracking];
+    if(_targetLanguageMenu)
+        [ _targetLanguageMenu cancelTracking];
+    
+}
+
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
     // with NoData if nothing has changed or NewData if there is new data since the last
@@ -93,6 +117,7 @@
 
     
 }
+
 - (void)receivedResponseFromRequest:(NSData *)data {
     //Convert received data to NSString using NSUTF8StringEncoding
     NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];

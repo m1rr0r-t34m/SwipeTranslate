@@ -11,8 +11,7 @@
 @implementation GoogleRequest
 
 
-- (instancetype)init
-{
+- (instancetype)init {
   self = [super init];
   if (self) {
     NSArray *keys = @[@"Auto",@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",

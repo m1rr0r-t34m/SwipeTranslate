@@ -10,10 +10,11 @@
 
 @implementation GoogleRequest
 
--(GoogleRequest *)init {
-    
-   
-    
+
+- (instancetype)init
+{
+  self = [super init];
+  if (self) {
     NSArray *keys = @[@"Auto",@"Afrikaans", @"Albanian", @"Arabic", @"Armenian", @"Azerbaijani",
                       @"Basque", @"Belarusian", @"Bengali", @"Bosnian", @"Bulgarian",
                       @"Catalan", @"Cebuano", @"Chichewa", @"Chinese Simplified", @"Chinese Traditional",
@@ -32,7 +33,7 @@
                       @"Swedish", @"Tajik", @"Tamil", @"Telugu", @"Thai", @"Turkish",
                       @"Ukrainian", @"Urdu", @"Uzbek", @"Vietnamese", @"Welsh",
                       @"Yiddish", @"Yoruba", @"Zulu"	];
-    
+
     NSArray *values = @[@"auto",@"af", @"sq", @"ar", @"hy", @"az", @"eu", @"be", @"bn", @"bs", @"bg",
                         @"ca", @"ceb", @"ny", @"zh-CN", @"zh-TW", @"hr", @"cs",
                         @"da", @"nl", @"en", @"eo", @"et", @"tl", @"fi", @"fr",
@@ -45,8 +46,10 @@
                         @"sv", @"tg", @"ta", @"te", @"th", @"tr", @"uk", @"ur", @"uz",
                         @"vi", @"cy", @"yi", @"yo", @"zu"];
     _languagesMap=[NSDictionary dictionaryWithObjects:values forKeys:keys];
-    return [super init];
+  }
+  return self;
 }
+
 -(void)sendRequestWithSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText Sender:(id)sender {
     [self getDataFromUrlWithSourceLanguage:[_languagesMap valueForKey:sLang] TargetLanguage:[_languagesMap valueForKey:tLang] Text:inputText WithDelegate:sender];
 }
@@ -56,7 +59,8 @@
     NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
     //prepare url
-    NSString *urlString=[NSString stringWithFormat:@"%@%@%@%@%@%@",@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=",SLanguage,@"&tl=",TLanguage,@"&dt=t&q=",escapedInput];
+    NSString *urlString=[NSString stringWithFormat:@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=%@&tl=%@&dt=t&q=%@", SLanguage, TLanguage, escapedInput];
+
     NSURL *url=[NSURL URLWithString:urlString];
     
     //prepare request

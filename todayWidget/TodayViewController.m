@@ -22,11 +22,11 @@
 - (void)awakeFromNib {
     [super viewDidLoad];
     
-    _targetButtonDefaultValues = [[NSMutableDictionary alloc]init];
-    _sourceButtonDefaultValues = [[NSMutableDictionary alloc]init];
+    _targetButtonDefaultValues = [NSMutableDictionary new];
+    _sourceButtonDefaultValues = [NSMutableDictionary new];
     //Initialize requestHandler
-    _requestHandler=[[GoogleRequest alloc] init];
-    
+  _requestHandler = [GoogleRequest new];
+
   
     //Initialize menu layouts
     subMenuItem* menuLayoutWithSubmenus = [[subMenuItem alloc]init];
@@ -89,6 +89,10 @@
    //set this view controller delegate for selectors windowDidResignKey and windowDidMove
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)windowDidMove:(NSNotification *)notification {

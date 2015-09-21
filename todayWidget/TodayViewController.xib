@@ -24,8 +24,8 @@
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
                     <rect key="frame" x="105" y="158" width="60" height="31"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="BgJ-2t-y6z"/>
-                        <constraint firstAttribute="height" constant="31" id="JWS-in-riW"/>
+                        <constraint firstAttribute="height" constant="31" id="3RJ-Sa-5Tt"/>
+                        <constraint firstAttribute="width" constant="60" id="A4q-Rh-zKv"/>
                     </constraints>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapArrows" imagePosition="below" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
@@ -47,10 +47,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="270" height="100"/>
+                                <size key="minSize" width="255" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="270" height="100"/>
+                                <size key="minSize" width="255" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
@@ -58,8 +58,8 @@
                         <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="3R8-ua-7lK"/>
-                        <constraint firstAttribute="width" constant="270" id="lIC-Jp-BAL"/>
+                        <constraint firstAttribute="height" constant="100" id="Leg-PX-PGC"/>
+                        <constraint firstAttribute="width" constant="270" id="VJc-nO-vSi"/>
                     </constraints>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="fVh-3B-4ch">
@@ -68,7 +68,7 @@
                         <animations/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="pDs-cv-KRe">
-                        <rect key="frame" x="254" y="0.0" width="16" height="100"/>
+                        <rect key="frame" x="255" y="0.0" width="15" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </scroller>
@@ -76,7 +76,7 @@
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
                     <rect key="frame" x="0.0" y="195" width="356" height="5"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="1" id="6w7-Gc-WBe"/>
+                        <constraint firstAttribute="height" constant="1" id="Yrh-Aa-0yr"/>
                     </constraints>
                     <animations/>
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -102,10 +102,10 @@
                                 <animations/>
                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="270" height="100"/>
+                                <size key="minSize" width="255" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="270" height="100"/>
+                                <size key="minSize" width="255" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <connections>
                                     <outlet property="delegate" destination="-2" id="tWL-hV-EzF"/>
@@ -116,8 +116,8 @@
                         <color key="backgroundColor" red="0.020712003111839294" green="0.85464102029800415" blue="0.95223218202590942" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </clipView>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="SRh-ms-SYk"/>
-                        <constraint firstAttribute="width" constant="270" id="ye7-fR-63a"/>
+                        <constraint firstAttribute="width" constant="270" id="Ekw-Kv-N4R"/>
+                        <constraint firstAttribute="height" constant="100" id="kHx-Rw-gXO"/>
                     </constraints>
                     <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pKo-xL-9Xg">
@@ -126,7 +126,7 @@
                         <animations/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="zIi-wI-aG1">
-                        <rect key="frame" x="254" y="0.0" width="16" height="100"/>
+                        <rect key="frame" x="255" y="0.0" width="15" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </scroller>
@@ -134,8 +134,8 @@
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-PA-hYv" customClass="SeparatedButton">
                     <rect key="frame" x="-2" y="309" width="270" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="266" id="EKs-6W-t1D"/>
-                        <constraint firstAttribute="height" constant="21" id="bx4-Iq-jVm"/>
+                        <constraint firstAttribute="width" constant="266" id="YLD-jV-bvN"/>
+                        <constraint firstAttribute="height" constant="21" id="bP3-IY-bYx"/>
                     </constraints>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="RNt-q7-X9c">
@@ -156,8 +156,8 @@
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
                     <rect key="frame" x="0.0" y="127" width="272" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="268" id="Jx9-AO-5AF"/>
-                        <constraint firstAttribute="height" constant="21" id="Nsd-Gs-GNP"/>
+                        <constraint firstAttribute="height" constant="21" id="dUB-3j-gOx"/>
+                        <constraint firstAttribute="width" constant="268" id="v29-a1-wHA"/>
                     </constraints>
                     <animations/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
@@ -177,22 +177,23 @@
                 </segmentedControl>
             </subviews>
             <constraints>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3DG-7A-7PT"/>
-                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="5cC-YD-Z1u"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="IvV-kJ-87n"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="J9r-Pc-BMY"/>
-                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="L3r-S5-pQG"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Ma4-rK-aLh"/>
-                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="P8o-80-3CT"/>
-                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="PuV-42-F5L"/>
-                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="RCw-j8-MUd"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="RHV-Wp-XDD"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Thh-oh-YQK"/>
-                <constraint firstAttribute="trailing" secondItem="xtp-nf-q79" secondAttribute="trailing" constant="86" id="Wya-Lf-eJS"/>
-                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eBw-nO-hTJ"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="g6t-nL-Rni"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="vJw-sl-Zkd"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="z2j-EA-JzD"/>
+                <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="8B6-0h-YCj"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8ic-fc-Q0q"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="GPX-ek-xRp"/>
+                <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="QMK-W7-Bxe"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="SB8-Wr-6NR"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Sd8-iy-YdG"/>
+                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="UBv-YJ-yrE"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="XjL-hB-re6"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="YjX-jC-hlZ"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="ahF-7Z-65A"/>
+                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="gRg-ZF-YDl"/>
+                <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="h9e-N3-PQw"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="hGA-6l-t4K"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="k17-Ph-ael"/>
+                <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ke5-1v-ZqK"/>
+                <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="uG1-yS-VQ9"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="yU1-DD-atC"/>
             </constraints>
             <animations/>
             <point key="canvasLocation" x="307" y="357"/>

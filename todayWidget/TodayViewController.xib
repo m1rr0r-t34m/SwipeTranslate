@@ -39,11 +39,11 @@
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5s-ki-bf7">
                     <rect key="frame" x="0.0" y="15" width="270" height="100"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="OAj-Ak-ris">
-                        <rect key="frame" x="1" y="1" width="223" height="133"/>
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8L9-5u-vwl">
-                                <rect key="frame" x="0.0" y="0.0" width="223" height="135"/>
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
@@ -93,11 +93,11 @@
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgP-2u-mcD">
                     <rect key="frame" x="0.0" y="197" width="270" height="100"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Njq-R8-DRO">
-                        <rect key="frame" x="1" y="1" width="223" height="133"/>
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8Q8-jN-L1z">
-                                <rect key="frame" x="0.0" y="0.0" width="223" height="135"/>
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="100"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -131,28 +131,6 @@
                         <animations/>
                     </scroller>
                 </scrollView>
-                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
-                    <rect key="frame" x="-2" y="127" width="272" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="268" id="qjt-96-APq"/>
-                        <constraint firstAttribute="height" constant="21" id="toa-hd-qA5"/>
-                    </constraints>
-                    <animations/>
-                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
-                        <font key="font" metaFont="system"/>
-                        <segments>
-                            <segment label="⬇︎" width="29"/>
-                            <segment label="English" width="78" selected="YES" tag="1"/>
-                            <segment label="Russian" width="78"/>
-                            <segment label="Finnish" width="78">
-                                <menu key="menu" id="Yt6-Cr-4dE"/>
-                            </segment>
-                        </segments>
-                    </segmentedCell>
-                    <connections>
-                        <action selector="targetTabClick:" target="-2" id="WYE-hV-Qii"/>
-                    </connections>
-                </segmentedControl>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zqb-PA-hYv" customClass="SeparatedButton">
                     <rect key="frame" x="-2" y="309" width="270" height="24"/>
                     <constraints>
@@ -175,23 +153,44 @@
                         <action selector="sourceTabClick:" target="-2" id="MkZ-Ai-GMJ"/>
                     </connections>
                 </segmentedControl>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xtp-nf-q79" customClass="SeparatedButton">
+                    <rect key="frame" x="0.0" y="127" width="272" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="268" id="Jx9-AO-5AF"/>
+                        <constraint firstAttribute="height" constant="21" id="Nsd-Gs-GNP"/>
+                    </constraints>
+                    <animations/>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pCn-0v-RPQ">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="⬇︎" width="17"/>
+                            <segment label="English" width="82" selected="YES" tag="1"/>
+                            <segment label="Russian" width="82"/>
+                            <segment label="Finnish" width="82">
+                                <menu key="menu" id="Yt6-Cr-4dE"/>
+                            </segment>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="targetTabClick:" target="-2" id="WYE-hV-Qii"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="3DG-7A-7PT"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="5GW-3q-HzL"/>
                 <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="5cC-YD-Z1u"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="Ev2-Cv-Lx4"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="IvV-kJ-87n"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="J9r-Pc-BMY"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="L3r-S5-pQG"/>
                 <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Ma4-rK-aLh"/>
-                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="NPc-2a-qJ6"/>
                 <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="P8o-80-3CT"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="PuV-42-F5L"/>
                 <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="RCw-j8-MUd"/>
+                <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="RHV-Wp-XDD"/>
                 <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Thh-oh-YQK"/>
+                <constraint firstAttribute="trailing" secondItem="xtp-nf-q79" secondAttribute="trailing" constant="86" id="Wya-Lf-eJS"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="eBw-nO-hTJ"/>
-                <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="f8d-HW-5eg"/>
+                <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="g6t-nL-Rni"/>
                 <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="113" id="vJw-sl-Zkd"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="z2j-EA-JzD"/>
             </constraints>

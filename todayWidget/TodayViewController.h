@@ -37,6 +37,7 @@
 @property NSArray* alphaLang;
 @property NSString* autoLanguageCode;
 @property NSString* autoLanguageTitle;
+@property BOOL textIsValidURL;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;
@@ -53,7 +54,7 @@
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
 - (void)receivedResponseFromRequest:(NSData *)data;
-
+-(void)prepareForExternalTranslate:(NSURLRequest *)request;
 
 //Preferences
 @property NSMutableDictionary* sourceButtonDefaultValues;

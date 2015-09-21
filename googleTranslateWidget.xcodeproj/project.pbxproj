@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		75F8671F1BA649AE00392E74 /* MenuContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* MenuContent.m */; };
+		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		CD149F361B9DCE3B00CBF7F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */; };
-		CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* GoogleRequest.m */; };
+		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* GoogleString.m */; };
-		CDCCC1821BA7282D003310B7 /* LanguageArray.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCCC1811BA7282D003310B7 /* LanguageArray.m */; };
+		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
+		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; settings = {ASSET_TAGS = (); }; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
@@ -58,11 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		75F8671D1BA6499E00392E74 /* MenuContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuContent.h; sourceTree = "<group>"; };
-		75F8671E1BA649AE00392E74 /* MenuContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuContent.m; sourceTree = "<group>"; };
+		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupMenu.h; sourceTree = "<group>"; };
+		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
 		CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CD338B531B8F198500CDB0D8 /* GoogleRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleRequest.m; sourceTree = "<group>"; };
-		CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoogleRequest.h; sourceTree = "<group>"; };
+		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
+		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,10 +71,10 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
-		CDBFD8321B9A257500C5414D /* GoogleString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleString.h; sourceTree = "<group>"; };
-		CDBFD8331B9A257500C5414D /* GoogleString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleString.m; sourceTree = "<group>"; };
-		CDCCC1801BA7282D003310B7 /* LanguageArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageArray.h; sourceTree = "<group>"; };
-		CDCCC1811BA7282D003310B7 /* LanguageArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageArray.m; sourceTree = "<group>"; };
+		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagesStorage.h; sourceTree = "<group>"; };
+		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagesStorage.m; sourceTree = "<group>"; };
 		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -128,21 +128,21 @@
 		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
 			isa = PBXGroup;
 			children = (
-				CDCCC1801BA7282D003310B7 /* LanguageArray.h */,
-				CDCCC1811BA7282D003310B7 /* LanguageArray.m */,
-				CDBFD8321B9A257500C5414D /* GoogleString.h */,
-				CDBFD8331B9A257500C5414D /* GoogleString.m */,
+				CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */,
+				CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */,
+				CD338B551B8F198A00CDB0D8 /* RequestHandler.h */,
+				CD338B531B8F198500CDB0D8 /* RequestHandler.m */,
+				CDBFD8321B9A257500C5414D /* Parser.h */,
+				CDBFD8331B9A257500C5414D /* Parser.m */,
 				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
 				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
-				CDE42A1A1BA983BA00A63BF2 /* SwapArrows.png */,
-				CDE42A161BA97F0F00A63BF2 /* icon256.png */,
-				CD338B551B8F198A00CDB0D8 /* GoogleRequest.h */,
-				CD338B531B8F198500CDB0D8 /* GoogleRequest.m */,
-				75F8671D1BA6499E00392E74 /* MenuContent.h */,
-				75F8671E1BA649AE00392E74 /* MenuContent.m */,
+				75F8671D1BA6499E00392E74 /* PopupMenu.h */,
+				75F8671E1BA649AE00392E74 /* PopupMenu.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
 				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
+				CDE42A1A1BA983BA00A63BF2 /* SwapArrows.png */,
+				CDE42A161BA97F0F00A63BF2 /* icon256.png */,
 				CD149F351B9DCE3B00CBF7F5 /* Images.xcassets */,
 				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
 			);
@@ -352,10 +352,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
-				CDCCC1821BA7282D003310B7 /* LanguageArray.m in Sources */,
-				CDBFD8341B9A257500C5414D /* GoogleString.m in Sources */,
-				CD338B541B8F198500CDB0D8 /* GoogleRequest.m in Sources */,
-				75F8671F1BA649AE00392E74 /* MenuContent.m in Sources */,
+				CDBFD8341B9A257500C5414D /* Parser.m in Sources */,
+				CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */,
+				CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */,
+				75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */,
 				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

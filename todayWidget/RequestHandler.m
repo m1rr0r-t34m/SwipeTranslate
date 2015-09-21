@@ -23,7 +23,26 @@
     NSURL *url=[NSURL URLWithString:urlString];
     return [NSURLRequest requestWithURL:url];
 }
-
++(NSArray *)getRequestsForExternalURL:(NSString *)urlString{
+    NSMutableArray *requests=[NSMutableArray new];
+    NSURL *firstCandidateURL = [NSURL URLWithString:urlString];
+    NSURL *secondCandidateUrl = [NSURL URLWithString:urlString];
+    
+    //If not valid URL retun NULL
+    if(!firstCandidateURL)
+        return NULL;
+    else {
+        //If doesn't have prefix, add both of them
+        if(!firstCandidateURL.scheme){
+            firstCandidateURL=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",urlString]];
+            secondCandidateUrl=[NSURL URLWithString:[NSString stringWithFormat:@"https://%@",urlString]];
+        }
+        //Add 2 candidates to array and return it
+        [requests addObject:[NSURLRequest requestWithURL:firstCandidateURL]];
+        [requests addObject:[NSURLRequest requestWithURL:secondCandidateUrl]];
+        return [[NSArray alloc] initWithArray:requests];
+    }
+}
 
 @end
 

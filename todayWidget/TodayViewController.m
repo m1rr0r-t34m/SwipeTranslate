@@ -207,11 +207,33 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
-
+-(void)prepareForExternalTranslate:(NSURLRequest *)request {
+    
+    runOnMainQueueWithoutDeadlocking(^{
+        _textIsValidURL=TRUE;
+    });
+}
 -(void)textDidChange:(NSNotification *)notification{
   
-    //If whitespace string output nothing
-   
+   //Check if user provided a link to the input
+    /*   _textIsValidURL=FALSE;
+    NSArray *requests=[RequestHandler getRequestsForExternalURL:[[_inputText textStorage] string]];
+    if(requests)
+    {
+        for(int i=0;i<requests.count;i++){
+            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+            [NSURLConnection sendAsynchronousRequest:[requests objectAtIndex:i] queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
+                if (!error)
+                    [self prepareForExternalTranslate:[requests objectAtIndex:i]];
+
+            }];
+            
+        }
+    }
+    
+    if(_textIsValidURL)
+        NSLog(@"This is valid URL");
+    */
     //Update detected language for Auto section
     if (_autoLanguageTitle == nil && [_sourceSegmentedButton selectedSegment] == 1)
         [_sourceSegmentedButton setLabel:@"ⒶDetect" forSegment:1];
@@ -219,6 +241,7 @@
     else if ([_sourceSegmentedButton selectedSegment] == 1)
         [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
     
+    //If whitespace string output nothing
     if([[[_inputText textStorage]string]isEqualToString:@""])
         [self setOutputValue:@""];
     else if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0)

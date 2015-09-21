@@ -11,6 +11,7 @@
 
 @interface RequestHandler : NSObject
 +(NSURLRequest *)getRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText;
++(NSArray *)getRequestsForExternalURL:(NSString *)urlString;
 @end
 
 

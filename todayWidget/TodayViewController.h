@@ -7,19 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@import AppKit;
 #import "SeparatedButton.h"
-#import "GoogleString.h"
-#import "MenuContent.h"
-
-//Ptotocol for getting response from asyncronous request
-@protocol asynchronousRequests <NSObject>
-- (void)receivedResponseFromRequest:(NSData *)data;
-@end
+#import "Parser.h"
+#import "LanguagesStorage.h"
+#import "PopupMenu.h"
+#import "RequestHandler.h"
 
 
 @interface TodayViewController : NSViewController
-
 
 //Outlets from view
 @property (strong) IBOutlet NSView *widgetMainView;
@@ -57,10 +52,10 @@
 -(void)updateTargetLanguage;
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
+- (void)receivedResponseFromRequest:(NSData *)data;
 
 
 //Preferences
-
 @property NSMutableDictionary* sourceButtonDefaultValues;
 @property NSMutableDictionary* targetButtonDefaultValues;
 @property NSNumber* sourceDefaultSelection;

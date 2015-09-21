@@ -7,10 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "TodayViewController.h"
-#import "LanguageArray.h"
+#import "LanguagesStorage.h"
 
-@interface subMenuItem : NSMenu
+@interface PopupMenu : NSMenu
 
 -(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
 

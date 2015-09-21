@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (GoogleString)
+@interface NSString (Parser)
 
 -(NSString *)parseFirstDive;
 -(NSInteger)numberOfLines;

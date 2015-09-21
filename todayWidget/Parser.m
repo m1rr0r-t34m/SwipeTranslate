@@ -6,9 +6,9 @@
 //
 //
 
-#import "GoogleString.h"
+#import "Parser.h"
 
-@implementation NSString (GoogleString)
+@implementation NSString (Parser)
 
 -(NSString *)parseFirstDive {
     bool isThatSecondBracket=NO;

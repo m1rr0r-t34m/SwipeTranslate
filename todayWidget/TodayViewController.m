@@ -7,14 +7,7 @@
 //
 
 #import "TodayViewController.h"
-#import "GoogleRequest.h"
 #import <NotificationCenter/NotificationCenter.h>
-
-@interface TodayViewController () <NCWidgetProviding>
-
-@property GoogleRequest* requestHandler;
-
-@end
 
 @implementation TodayViewController
 
@@ -25,12 +18,10 @@
     
     _targetButtonDefaultValues = [NSMutableDictionary new];
     _sourceButtonDefaultValues = [NSMutableDictionary new];
-    //Initialize requestHandler
-  _requestHandler = [GoogleRequest new];
 
   
     //Initialize menu layouts
-    subMenuItem* menuLayoutWithSubmenus = [[subMenuItem alloc]init];
+    PopupMenu* menuLayoutWithSubmenus = [[PopupMenu alloc]init];
     
    
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];
@@ -132,7 +123,8 @@
         _autoLanguageCode = [NSString new];
         _autoLanguageTitle = [NSString new];
         _autoLanguageCode = [strData parseAutoForLanguage];
-        _autoLanguageTitle = [[_requestHandler.languagesMap allKeysForObject:_autoLanguageCode]lastObject];
+           
+            _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];;
         strData=[strData parseFirstDiveForAuto];
     }
         else
@@ -332,7 +324,17 @@
 
 -(void)performGoogleRequest{
     
-    [_requestHandler sendRequestWithSourceLanguage: _sLanguage TargetLanguage: _tLanguage Text:[[_inputText textStorage] string] Sender:self];
+    
+    NSURLRequest *request=[RequestHandler getRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[[_inputText textStorage] string]];
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
+        if (!error)
+        {
+            [self receivedResponseFromRequest:receivedData];
+            
+        }
+    }];
+
 }
 -(void)setOutputValue:(NSString *)value{
     runOnMainQueueWithoutDeadlocking(^{

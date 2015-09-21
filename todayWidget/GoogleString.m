@@ -45,22 +45,23 @@
     int indexOfOpeningQuote = 0;
     NSInteger endIndex = 0;
     NSInteger startIndex = 0;
-    for (int i = (int)[self length]-1; i > 0; i--){
+    for (int i = (int)[self length]-1; i > 0; i--) {
         if ([self characterAtIndex:i]  == '"')
             indexOfOpeningQuote++;
-        if (indexOfOpeningQuote == 2){
+        if ([self characterAtIndex:i ] ==']')
+            indexOfClosingBracket++;
+        
+        if (indexOfClosingBracket == 4) {
+            if(!endIndex)
+                endIndex = i-2;
+        }
+        if (indexOfOpeningQuote == 2) {
             startIndex = i;
             break;
         }
+        
     }
-    for (int i = (int)[self length]-1; i > 0; i--) {
-        if ([[self substringWithRange:NSMakeRange(i, 1) ] isEqualToString:@"]"])
-            indexOfClosingBracket++;
-        if (indexOfClosingBracket == 4){
-            endIndex = i-2;
-            break;
-        }
-    }
+    
     return  [self substringWithRange:NSMakeRange(startIndex+1, endIndex-startIndex)];
 }
 

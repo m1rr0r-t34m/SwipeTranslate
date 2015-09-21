@@ -9,8 +9,10 @@
 #import <Cocoa/Cocoa.h>
 
 @interface SeparatedButton : NSSegmentedControl
--(void)pushNewChosenLanguage:(NSString *)language;
+-(void)pushNewChosenTargetLanguage:(NSString *)language;
+-(void)pushNewChosenSourceLanguage:(NSString *)language;
 -(int)indexForSegmentWithLabel:(NSString *)label;
--(void)tryToPushNewLanguage:(NSString *)language;
+-(void)tryToPushNewSourceLanguage:(NSString *)language;
+-(void)tryToPushNewTargetLanguage:(NSString *)language;
 -(NSPoint)calculateMenuOrigin;
 @end

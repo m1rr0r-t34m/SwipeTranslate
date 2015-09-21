@@ -38,6 +38,32 @@
     }
     return [self substringWithRange:NSMakeRange(2, endIndex-2)];
 }
+//Method for retrieving language after language recognition request
+-(NSString *)parseAutoForLanguage {
+    
+    int indexOfClosingBracket = 0;
+    int indexOfOpeningQuote = 0;
+    NSInteger endIndex = 0;
+    NSInteger startIndex = 0;
+    for (int i = (int)[self length]-1; i > 0; i--){
+        if ([self characterAtIndex:i]  == '"')
+            indexOfOpeningQuote++;
+        if (indexOfOpeningQuote == 2){
+            startIndex = i;
+            break;
+        }
+    }
+    for (int i = (int)[self length]-1; i > 0; i--) {
+        if ([[self substringWithRange:NSMakeRange(i, 1) ] isEqualToString:@"]"])
+            indexOfClosingBracket++;
+        if (indexOfClosingBracket == 4){
+            endIndex = i-2;
+            break;
+        }
+    }
+    return  [self substringWithRange:NSMakeRange(startIndex+1, endIndex-startIndex)];
+}
+
 -(NSString *)parseSecondDive {
     int quoteCount=0;
     NSInteger endIndex;

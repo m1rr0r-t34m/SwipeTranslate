@@ -9,7 +9,7 @@
 #import "SeparatedButton.h"
 
 @implementation SeparatedButton
--(void)pushNewChosenLanguage:(NSString *)language {
+-(void)pushNewChosenTargetLanguage:(NSString *)language {
 
     NSString* firstElement=[self labelForSegment:(NSInteger)1];
     NSString* secondElement=[self labelForSegment:(NSInteger)2];
@@ -17,6 +17,14 @@
     [self setLabel:firstElement forSegment:2];
     [self setLabel:secondElement forSegment:3];
     [self setSelectedSegment:(NSInteger)1];
+}
+
+-(void)pushNewChosenSourceLanguage:(NSString *)language  {
+        NSString* firstElement=[self labelForSegment:(NSInteger)2];
+        [self setLabel:language forSegment:2];
+        [self setLabel:firstElement forSegment:3];
+        [self setSelectedSegment:(NSInteger)2];
+    
 }
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
@@ -33,15 +41,24 @@
     }
     return -1;
 }
--(void)tryToPushNewLanguage:(NSString *)language {
+-(void)tryToPushNewSourceLanguage:(NSString *)language {
     //If clicked menu element language is already in segmented button, select this segment
     //If not, push this element to segmented button
+    
     int selectedIndex=[self indexForSegmentWithLabel:language];
     if(selectedIndex!=-1)
         [self setSelectedSegment:selectedIndex];
     else
-        [self pushNewChosenLanguage:language];
+        [self pushNewChosenSourceLanguage:language];
 }
+-(void)tryToPushNewTargetLanguage:(NSString *)language {
+    int selectedIndex=[self indexForSegmentWithLabel:language];
+    if(selectedIndex!=-1)
+        [self setSelectedSegment:selectedIndex];
+    else
+        [self pushNewChosenTargetLanguage:language];
+}
+
 -(NSPoint)calculateMenuOrigin {
     NSPoint menuOrigin = [self frame].origin;
     menuOrigin.x = NSMaxX([self frame]) - NSMaxX([self frame]);

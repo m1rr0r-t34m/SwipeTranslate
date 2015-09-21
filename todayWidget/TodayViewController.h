@@ -40,6 +40,8 @@
 @property NSString * sLanguage;
 @property NSString * tLanguage;
 @property NSArray* alphaLang;
+@property NSString* autoLanguageCode;
+@property NSString* autoLanguageTitle;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

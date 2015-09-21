@@ -46,12 +46,6 @@
     NSMenu *outputMenu = [[NSMenu alloc]init];
     [outputMenu setAutoenablesItems:NO];
     
-    //Generate Auto element if it is source language menu
-    if([action isEqualToString:@"sourceTabDropDownClick:"]) {
-        NSMenuItem *firstOutputMenuItem=[outputMenu addItemWithTitle:@"Auto" action:selector keyEquivalent:@""];
-        [firstOutputMenuItem setEnabled:YES];
-        [firstOutputMenuItem setTarget:sender];
-    }
     
     for(int k=0;k<[alphaLang count];k++) {
        

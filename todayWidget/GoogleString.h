@@ -15,5 +15,6 @@
 -(NSString *)parseSecondDive;
 -(NSString *)parseThirdDive;
 -(NSString *)parseFirstDiveForAuto;
+-(NSString *)parseAutoForLanguage;
 
 @end

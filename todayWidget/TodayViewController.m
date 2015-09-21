@@ -22,6 +22,7 @@
 - (void)awakeFromNib {
     [super viewDidLoad];
     
+    
     _targetButtonDefaultValues = [NSMutableDictionary new];
     _sourceButtonDefaultValues = [NSMutableDictionary new];
     //Initialize requestHandler
@@ -46,7 +47,7 @@
     NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
     
     if (sourceDefault != nil){
-        for (int i = 1; i < 4; i++) {
+        for (int i = 2; i < 4; i++) {
             [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
             }
         }
@@ -126,10 +127,15 @@
     //Convert received data to NSString using NSUTF8StringEncoding
     NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     
-
-    if([_sLanguage isEqualToString:@"Auto"])
+    //Retrieve language from Auto
+        if([_sLanguage isEqualToString:@"Auto"]){
+        _autoLanguageCode = [NSString new];
+        _autoLanguageTitle = [NSString new];
+        _autoLanguageCode = [strData parseAutoForLanguage];
+        _autoLanguageTitle = [[_requestHandler.languagesMap allKeysForObject:_autoLanguageCode]lastObject];
         strData=[strData parseFirstDiveForAuto];
-    else
+    }
+        else
         strData=[strData parseFirstDive];
     NSInteger numberOfLines=[strData numberOfLines];
     NSString *outputString=[[NSString alloc] init];
@@ -166,6 +172,7 @@
         else
             [_sourceSegmentedButton setSelectedSegment:1];
     }
+    
     //Update languages
     [self updateTargetLanguage];
     [self updateSourceLanguage];
@@ -212,6 +219,14 @@
 -(void)textDidChange:(NSNotification *)notification{
   
     //If whitespace string output nothing
+   
+    //Update detected language for Auto section
+    if (_autoLanguageTitle == nil && [_sourceSegmentedButton selectedSegment] == 1)
+        [_sourceSegmentedButton setLabel:@"ⒶDetect" forSegment:1];
+    
+    else if ([_sourceSegmentedButton selectedSegment] == 1)
+        [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
+    
     if([[[_inputText textStorage]string]isEqualToString:@""])
         [self setOutputValue:@""];
     else if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0)
@@ -239,11 +254,12 @@
 
 - (void)sourceTabDropDownClick:(id)sender {
     //Push clicked menu element language to the button
-    [_sourceSegmentedButton tryToPushNewLanguage:[sender title]];
+
+    [_sourceSegmentedButton tryToPushNewSourceLanguage:[sender title]];
     
     //Update default values for button
     
-    for (int i = 1; i < 4; i++) {
+    for (int i = 2; i < 4; i++) {
         
         [_sourceButtonDefaultValues setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
         
@@ -258,7 +274,7 @@
 
 - (void)targetTabDropDownClick:(id)sender {
     //Push clicked menu element language to the button
-    [_targetSegmentedButton tryToPushNewLanguage:[sender title]];
+    [_targetSegmentedButton tryToPushNewTargetLanguage:[sender title]];
     
     //Update default values for button
     
@@ -281,8 +297,8 @@
     //Swap languages if source language is not Auto
     if(![_sLanguage isEqualToString:@"Auto"]) {
         //Swap source language and target language buttons values
-        [_sourceSegmentedButton tryToPushNewLanguage:_tLanguage];
-        [_targetSegmentedButton tryToPushNewLanguage:_sLanguage];
+            [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
+            [_targetSegmentedButton tryToPushNewTargetLanguage:_sLanguage];
         
         ////Update languages and perform request
         [self updateTargetLanguage];
@@ -291,12 +307,23 @@
         if(![[[_inputText textStorage] string] isEqualToString:@""])
             [self performGoogleRequest];
     }
-    
+    //Swap if Auto
+    else
+    {
+        [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
+        [_targetSegmentedButton tryToPushNewTargetLanguage:_autoLanguageTitle];
+     
+        [self updateTargetLanguage];
+        [self updateSourceLanguage];
+    }
 }
 
 
 -(void)updateSourceLanguage{
-    _sLanguage = [_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]];
+    if ([_sourceSegmentedButton selectedSegment] == 1)
+        _sLanguage = @"Auto";
+    else
+        _sLanguage = [_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]];
 }
 
 -(void)updateTargetLanguage{

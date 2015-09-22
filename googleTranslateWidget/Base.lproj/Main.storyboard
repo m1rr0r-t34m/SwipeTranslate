@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,17 +641,17 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider=""/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="tTranslator" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -667,15 +667,63 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" appearanceType="aqua" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="570"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="74j-7Y-fNW">
+                                <rect key="frame" x="64" y="292" width="252" height="252"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="252" id="29t-Jd-50C"/>
+                                    <constraint firstAttribute="height" constant="252" id="byo-8I-zEJ"/>
+                                </constraints>
+                                <animations/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="IconLogo" id="FHD-Pd-ydI"/>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isr-qG-Dt4">
+                                <rect key="frame" x="-2" y="0.0" width="384" height="194"/>
+                                <animations/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="directionsLabel" placeholderString="" id="xLI-cg-ybg">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" red="0.32941176470588235" green="0.52941176470588236" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Kb-yH-Ddw">
+                                <rect key="frame" x="68" y="236" width="245" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="241" id="G3y-QU-7Jr"/>
+                                    <constraint firstAttribute="height" constant="42" id="lL9-pJ-Ryl"/>
+                                </constraints>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="tTranslator" id="q6H-D2-sma">
+                                    <font key="font" metaFont="system" size="37"/>
+                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="74j-7Y-fNW" secondAttribute="bottom" constant="292" id="3iX-IW-b4O"/>
+                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="70" id="Q8k-eZ-i8K"/>
+                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="top" secondItem="74j-7Y-fNW" secondAttribute="bottom" constant="14" id="Ubs-IX-hGs"/>
+                            <constraint firstAttribute="trailing" secondItem="74j-7Y-fNW" secondAttribute="trailing" constant="64" id="Udi-DU-ASQ"/>
+                            <constraint firstItem="74j-7Y-fNW" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="26" id="nAj-mR-LZ3"/>
+                            <constraint firstItem="74j-7Y-fNW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="64" id="qnI-Kk-dPS"/>
+                        </constraints>
+                        <animations/>
                     </view>
+                    <connections>
+                        <outlet property="directionsLabel" destination="isr-qG-Dt4" id="cYQ-l2-LXk"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="IconLogo" width="147.45599365234375" height="147.45599365234375"/>
+    </resources>
 </document>

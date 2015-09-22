@@ -34,8 +34,8 @@
     else {
         //If doesn't have prefix, add both of them
         if(!firstCandidateURL.scheme){
-            firstCandidateURL=[NSURL URLWithString:[NSString stringWithFormat:@"https://%@",urlString]];
-            secondCandidateUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",urlString]];
+            firstCandidateURL=[NSURL URLWithString:[NSString stringWithFormat:@"https://www.%@",urlString]];
+            secondCandidateUrl=[NSURL URLWithString:[NSString stringWithFormat:@"http://www.%@",urlString]];
         }
         //Add 2 candidates to array and return it
         [requests addObject:[NSURLRequest requestWithURL:firstCandidateURL]];

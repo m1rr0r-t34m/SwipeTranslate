@@ -269,7 +269,7 @@
 
     
    //Check if user provided a link to the input
-    NSArray *requests=[RequestHandler getRequestsForExternalURL:[[_inputText textStorage] string]];
+    NSArray *requests=[RequestHandler getRequestsForExternalURL:[[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     if(requests)
     {
         for(int i=0;i<requests.count;i++){

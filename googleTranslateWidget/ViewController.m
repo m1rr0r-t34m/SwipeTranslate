@@ -12,8 +12,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    // Do any additional setup after loading the view.
+    NSString *textForDirections = [NSString new];
+    textForDirections = [NSString stringWithFormat:@"To use \r\r Open the notification center \r Click the Edit button at the bottom\r Find the tTranslator from the right menu \r Press the green + button near it \r\r Now you can translate fast"];
+    
+    [_directionsLabel setStringValue:textForDirections];
+    
+    
 }
 
 - (void)setRepresentedObject:(id)representedObject {

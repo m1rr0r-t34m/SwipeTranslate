@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
+                <outlet property="clearTextButton" destination="WKd-Zr-EjF" id="zBz-kQ-0Je"/>
                 <outlet property="inputText" destination="8Q8-jN-L1z" id="jAr-yK-kcm"/>
                 <outlet property="openExternalLinkButton" destination="Rc4-l7-KE1" id="WNn-Y0-xKN"/>
                 <outlet property="outPutTextHideBox" destination="78W-pb-cZp" id="v15-eH-euL"/>
@@ -50,10 +51,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="255" height="100"/>
+                                <size key="minSize" width="270" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="255" height="100"/>
+                                <size key="minSize" width="270" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                             </textView>
                         </subviews>
@@ -71,7 +72,7 @@
                         <animations/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="pDs-cv-KRe">
-                        <rect key="frame" x="255" y="0.0" width="15" height="100"/>
+                        <rect key="frame" x="254" y="0.0" width="16" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </scroller>
@@ -105,10 +106,10 @@
                                 <animations/>
                                 <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" red="0.14888422109999999" green="0.14854765619999999" blue="0.14958278799999999" alpha="0.61305961880000004" colorSpace="calibratedRGB"/>
-                                <size key="minSize" width="255" height="100"/>
+                                <size key="minSize" width="270" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <color key="insertionPointColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="255" height="100"/>
+                                <size key="minSize" width="270" height="100"/>
                                 <size key="maxSize" width="463" height="10000000"/>
                                 <connections>
                                     <outlet property="delegate" destination="-2" id="tWL-hV-EzF"/>
@@ -123,13 +124,14 @@
                         <constraint firstAttribute="height" constant="100" id="kHx-Rw-gXO"/>
                     </constraints>
                     <animations/>
+                    <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="pKo-xL-9Xg">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="zIi-wI-aG1">
-                        <rect key="frame" x="255" y="0.0" width="15" height="100"/>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.5" horizontal="NO" id="zIi-wI-aG1">
+                        <rect key="frame" x="254" y="0.0" width="16" height="100"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </scroller>
@@ -214,12 +216,29 @@
                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                     <color key="fillColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="0.60233836206896563" colorSpace="custom" customColorSpace="sRGB"/>
                 </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Zr-EjF">
+                    <rect key="frame" x="249" y="280" width="17" height="17"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="17" id="pds-Wu-Vfy"/>
+                        <constraint firstAttribute="height" constant="17" id="piy-mi-N61"/>
+                    </constraints>
+                    <animations/>
+                    <buttonCell key="cell" type="bevel" title="╳" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="rwD-ws-fBR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clearText:" target="-2" id="L0v-Fx-YMB"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="WKd-Zr-EjF" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="42" id="28O-eV-CQT"/>
                 <constraint firstItem="78W-pb-cZp" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="89I-eA-G3J"/>
                 <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="8B6-0h-YCj"/>
                 <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8ic-fc-Q0q"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="GPX-ek-xRp"/>
+                <constraint firstItem="WKd-Zr-EjF" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="249" id="M4u-hG-fz1"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="QMK-W7-Bxe"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="SB8-Wr-6NR"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Sd8-iy-YdG"/>

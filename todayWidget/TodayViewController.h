@@ -31,6 +31,7 @@
 
 @property (strong) IBOutlet NSButton *openExternalLinkButton;
 @property (strong) IBOutlet NSBox *outPutTextHideBox;
+@property (strong) IBOutlet NSButton *clearTextButton;
 
 //Properties for storing data
 @property NSArray* languages;
@@ -50,6 +51,7 @@
 - (void)textDidChange:(NSNotification *)notification;
 - (void)displayLinkToExternalResource;
 - (IBAction)openExternalLink:(id)sender;
+- (IBAction)clearText:(id)sender;
 
 
 //Methods for managing data

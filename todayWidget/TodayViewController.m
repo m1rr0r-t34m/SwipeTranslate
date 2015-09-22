@@ -23,11 +23,12 @@
     //Set main element visible
     _outputText.hidden=NO;
     
-    
-    
     _targetButtonDefaultValues = [NSMutableDictionary new];
     _sourceButtonDefaultValues = [NSMutableDictionary new];
-
+    
+    //Set input text view margins
+    [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
+    
   
     //Initialize menu layouts
     PopupMenu* menuLayoutWithSubmenus = [[PopupMenu alloc]init];
@@ -76,6 +77,10 @@
         
         });
     }
+    //Show or hide clear text button, depending on the input text
+    if ([[_inputText string]  isEqual: @""])
+        _clearTextButton.hidden = YES;
+    
     //Assign initial source and target language values
     [self updateTargetLanguage];
     [self updateSourceLanguage];
@@ -250,6 +255,7 @@
     //Open defaut browser
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:_externalURL]];
 }
+
 -(void)sendTestRequest:(NSURLRequest *)request{
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
@@ -266,9 +272,14 @@
     
     //Set main element visible
     _outputText.hidden=NO;
-
     
-   //Check if user provided a link to the input
+    //Show the clear text button
+    if (![[_inputText string]  isEqual: @""])
+        _clearTextButton.hidden = NO;
+    else
+        _clearTextButton.hidden = YES;
+
+    //Check if user provided a link to the input
     NSArray *requests=[RequestHandler getRequestsForExternalURL:[[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     if(requests)
     {
@@ -375,6 +386,10 @@
     }
 }
 
+- (IBAction)clearText:(id)sender {
+    [_inputText setString:@""];
+    _clearTextButton.hidden = YES;
+}
 
 -(void)updateSourceLanguage{
     if ([_sourceSegmentedButton selectedSegment] == 1)

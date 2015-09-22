@@ -11,9 +11,18 @@
 
 @implementation TodayViewController
 
-
 - (void)awakeFromNib {
     [super viewDidLoad];
+    
+    
+    _externalURL =[NSMutableString new];
+    //Set helper elements invisible
+    [_openExternalLinkButton setAlphaValue:0.0];
+    [_outPutTextHideBox setAlphaValue:0.0];
+    
+    //Set main element visible
+    _outputText.hidden=NO;
+    
     
     
     _targetButtonDefaultValues = [NSMutableDictionary new];
@@ -208,32 +217,66 @@
     
 }
 -(void)prepareForExternalTranslate:(NSURLRequest *)request {
+   
+    //Prepare URL string and arrange view
+    NSString *translatedURL=[NSString stringWithFormat:@"https://translate.googleusercontent.com/translate_c?act=url&depth=1&hl=en&ie=UTF8&prev=_t&rurl=translate.google.com&sl=%@&tl=%@&u=%@",[[NSArray getKeysArray] objectAtIndex: [[NSArray getValuesArray:YES] indexOfObject:_sLanguage]],[[NSArray getKeysArray] objectAtIndex: [[NSArray getValuesArray:YES] indexOfObject:_tLanguage]],[request.URL absoluteString]];
     
     runOnMainQueueWithoutDeadlocking(^{
-        _textIsValidURL=TRUE;
+        [self displayLinkToExternalResource];
+        [_externalURL setString:translatedURL];
     });
+   
+    
+}
+-(void)displayLinkToExternalResource {
+    
+    //Hide main element
+    _outputText.hidden=YES;
+    
+    //Fade in helper elements
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = 1;
+        _outPutTextHideBox.animator.alphaValue = 1;
+        _openExternalLinkButton.animator.alphaValue=1;
+    }
+                        completionHandler:^{
+                            //_outPutTextHideBox.alphaValue = 1;
+                        }];
+
+
+}
+
+- (IBAction)openExternalLink:(id)sender {
+    //Open defaut browser
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:_externalURL]];
+}
+-(void)sendTestRequest:(NSURLRequest *)request{
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
+        if (!error)
+            [self prepareForExternalTranslate: request];
+    }];
+
 }
 -(void)textDidChange:(NSNotification *)notification{
   
+    //Set helper element invisible
+    [_openExternalLinkButton setAlphaValue:0.0];
+    [_outPutTextHideBox setAlphaValue:0.0];
+    
+    //Set main element visible
+    _outputText.hidden=NO;
+
+    
    //Check if user provided a link to the input
-    /*   _textIsValidURL=FALSE;
     NSArray *requests=[RequestHandler getRequestsForExternalURL:[[_inputText textStorage] string]];
     if(requests)
     {
         for(int i=0;i<requests.count;i++){
-            NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-            [NSURLConnection sendAsynchronousRequest:[requests objectAtIndex:i] queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
-                if (!error)
-                    [self prepareForExternalTranslate:[requests objectAtIndex:i]];
-
-            }];
-            
+            [self sendTestRequest:[requests objectAtIndex:i]];
         }
     }
     
-    if(_textIsValidURL)
-        NSLog(@"This is valid URL");
-    */
     //Update detected language for Auto section
     if (_autoLanguageTitle == nil && [_sourceSegmentedButton selectedSegment] == 1)
         [_sourceSegmentedButton setLabel:@"ⒶDetect" forSegment:1];
@@ -264,7 +307,6 @@
         [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
         [[NSUserDefaults standardUserDefaults]synchronize];
     }
-    
 }
 
 - (void)sourceTabDropDownClick:(id)sender {

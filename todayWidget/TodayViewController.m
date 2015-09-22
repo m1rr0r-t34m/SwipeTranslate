@@ -28,6 +28,7 @@
     
     //Set input text view margins
     [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
+    [_outputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
     
   
     //Initialize menu layouts

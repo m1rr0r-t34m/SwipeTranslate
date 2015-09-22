@@ -218,6 +218,14 @@
 
 -(void)textDidChange:(NSNotification *)notification{
   
+    //Set main element visible
+    _outputText.hidden=NO;
+    
+    //Show the clear text button
+    if (![[_inputText string]  isEqual: @""])
+        _clearTextButton.hidden = NO;
+    else
+        _clearTextButton.hidden = YES;
     //Update detected language for Auto section
     if (_autoLanguageTitle == nil && [_sourceSegmentedButton selectedSegment] == 1)
         [_sourceSegmentedButton setLabel:@"ⒶDetect" forSegment:1];

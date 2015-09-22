@@ -2,15 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
             <connections>
                 <outlet property="clearTextButton" destination="WKd-Zr-EjF" id="zBz-kQ-0Je"/>
                 <outlet property="inputText" destination="8Q8-jN-L1z" id="jAr-yK-kcm"/>
-                <outlet property="openExternalLinkButton" destination="Rc4-l7-KE1" id="WNn-Y0-xKN"/>
-                <outlet property="outPutTextHideBox" destination="78W-pb-cZp" id="v15-eH-euL"/>
                 <outlet property="outputText" destination="8L9-5u-vwl" id="RJc-g7-sdH"/>
                 <outlet property="sourceLanguageMenu" destination="cXh-7N-iT2" id="ypX-A0-Xq5"/>
                 <outlet property="sourceSegmentedButton" destination="zqb-PA-hYv" id="vxy-Jz-8zV"/>
@@ -180,42 +177,6 @@
                         <action selector="targetTabClick:" target="-2" id="WYE-hV-Qii"/>
                     </connections>
                 </segmentedControl>
-                <box borderWidth="0.0" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="78W-pb-cZp">
-                    <rect key="frame" x="2" y="15" width="268" height="100"/>
-                    <view key="contentView" id="bvM-Sl-REg">
-                        <rect key="frame" x="0.0" y="0.0" width="268" height="100"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rc4-l7-KE1">
-                                <rect key="frame" x="49" y="37" width="171" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="5VR-YT-8s3"/>
-                                    <constraint firstAttribute="height" constant="22" id="c5x-B5-zt8"/>
-                                </constraints>
-                                <animations/>
-                                <buttonCell key="cell" type="squareTextured" title="Open External Site" bezelStyle="texturedSquare" alignment="center" borderStyle="border" inset="2" id="tTr-hw-MtA">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="openExternalLink:" target="-2" id="EAw-Hf-XhB"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Rc4-l7-KE1" firstAttribute="top" secondItem="bvM-Sl-REg" secondAttribute="top" constant="39" id="irG-ZU-zAN"/>
-                            <constraint firstItem="Rc4-l7-KE1" firstAttribute="leading" secondItem="bvM-Sl-REg" secondAttribute="leading" constant="49" id="ssD-XU-xL6"/>
-                        </constraints>
-                        <animations/>
-                    </view>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="268" id="Obd-mf-MeI"/>
-                        <constraint firstAttribute="height" constant="100" id="qLP-n4-zav"/>
-                    </constraints>
-                    <animations/>
-                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                    <color key="fillColor" red="0.99607473611831665" green="0.99220293760299683" blue="0.99199241399765015" alpha="0.60233836206896563" colorSpace="custom" customColorSpace="sRGB"/>
-                </box>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Zr-EjF">
                     <rect key="frame" x="249" y="280" width="17" height="17"/>
                     <constraints>
@@ -234,7 +195,6 @@
             </subviews>
             <constraints>
                 <constraint firstItem="WKd-Zr-EjF" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="42" id="28O-eV-CQT"/>
-                <constraint firstItem="78W-pb-cZp" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="89I-eA-G3J"/>
                 <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="8B6-0h-YCj"/>
                 <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8ic-fc-Q0q"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="GPX-ek-xRp"/>
@@ -251,7 +211,6 @@
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="105" id="hGA-6l-t4K"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="k17-Ph-ael"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ke5-1v-ZqK"/>
-                <constraint firstItem="78W-pb-cZp" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="qbJ-Ne-jdn"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="uG1-yS-VQ9"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="yU1-DD-atC"/>
             </constraints>

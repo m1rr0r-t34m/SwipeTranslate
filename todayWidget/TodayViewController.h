@@ -29,8 +29,6 @@
 @property  IBOutlet NSMenu *sourceLanguageMenu;
 @property  IBOutlet NSMenu *targetLanguageMenu;
 
-@property (strong) IBOutlet NSButton *openExternalLinkButton;
-@property (strong) IBOutlet NSBox *outPutTextHideBox;
 @property (strong) IBOutlet NSButton *clearTextButton;
 
 //Properties for storing data
@@ -40,7 +38,6 @@
 @property NSArray* alphaLang;
 @property NSString* autoLanguageCode;
 @property NSString* autoLanguageTitle;
-@property NSMutableString *externalURL;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;
@@ -49,8 +46,6 @@
 - (void)sourceTabDropDownClick:(id)sender;
 - (void)targetTabDropDownClick:(id)sender;
 - (void)textDidChange:(NSNotification *)notification;
-- (void)displayLinkToExternalResource;
-- (IBAction)openExternalLink:(id)sender;
 - (IBAction)clearText:(id)sender;
 
 
@@ -60,8 +55,6 @@
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
 - (void)receivedResponseFromRequest:(NSData *)data;
--(void)prepareForExternalTranslate:(NSURLRequest *)request;
--(void)sendTestRequest:(NSURLRequest *)request;
 
 //Preferences
 @property NSMutableDictionary* sourceButtonDefaultValues;

@@ -11,7 +11,7 @@
 
 @implementation PopupMenu
 
--(NSMenu*)createMenuWithAction:(NSString *)action andSender:(id)sender {
++(NSMenu*)createMenuWithAction:(NSString *)action andSender:(id)sender {
 
     //Get target action from parameter
     SEL selector = NSSelectorFromString(action);

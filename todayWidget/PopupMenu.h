@@ -11,6 +11,6 @@
 
 @interface PopupMenu : NSMenu
 
--(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
++(NSMenu*)createMenuWithAction:(NSString*)action andSender:(id)sender;
 
 @end

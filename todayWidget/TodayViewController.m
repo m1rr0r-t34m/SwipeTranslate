@@ -12,44 +12,40 @@
 @implementation TodayViewController
 
 - (void)awakeFromNib {
+    
     [super viewDidLoad];
     
-    _targetButtonDefaultValues = [NSMutableDictionary new];
-    _sourceButtonDefaultValues = [NSMutableDictionary new];
-    
-    //Set input text view margins
+    //Set input and output text view margins
     [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
     [_outputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
     
-  
-    //Initialize menu layouts
-    PopupMenu* menuLayoutWithSubmenus = [[PopupMenu alloc]init];
+    //Set input and output text color settings
+    [_inputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    [_outputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    [_inputText setInsertionPointColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
     
-   
+    //Create pop up menus
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];
-    _sourceLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
+    _sourceLanguageMenu = [PopupMenu createMenuWithAction:@"sourceTabDropDownClick:"andSender:self];
     
-  
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)0];
-    _targetLanguageMenu = [menuLayoutWithSubmenus createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
+    _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
-
-    //Define labels for the buttons
-    
+    //Update labels for segmented buttons
     NSDictionary *sourceDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"sourceDefault"];
     NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
     
-    if (sourceDefault != nil){
+    if (sourceDefault)
         for (int i = 2; i < 4; i++) {
             [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
-            }
         }
-    if (targetDefault != nil) {
+    
+    if (targetDefault)
         for (int i = 1; i < 4; i++){
             [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
         }
-    }
-    //Set default selection for buttons if exists
+    
+    //Update selection of segmented buttons
     NSInteger defaultSourceSelecion, defaultTargetSelection;
     defaultSourceSelecion = [[NSUserDefaults standardUserDefaults] integerForKey:@"sourceDefaultSelection"];
     defaultTargetSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"targetDefaultSelection"];
@@ -58,22 +54,23 @@
         [_sourceSegmentedButton setSelectedSegment:defaultSourceSelecion];
     if (defaultTargetSelection)
         [_targetSegmentedButton setSelectedSegment:defaultTargetSelection];
+
     
-    //Set default text field values
+    //Update input and output text values
     NSString *defaultInput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultInput"];
     NSString *defaultOutput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultOutput"];
-    if (defaultInput){
+    if (defaultInput)
         [_inputText setString:defaultInput];
-        runOnMainQueueWithoutDeadlocking(^{
-            [_outputText setString:defaultOutput];
-        
-        });
-    }
-    //Show or hide clear text button, depending on the input text
+    if (defaultOutput)
+        [_outputText setString:defaultOutput];
+    
+    //Update clear button dislaying
     if ([[_inputText string]  isEqual: @""])
         _clearTextButton.hidden = YES;
     
-    //Update auto language
+    
+    
+    //Update Auto language
     _autoLanguageTitle=[[NSUserDefaults standardUserDefaults] objectForKey:@"autoLanguage"];
     if([_sourceSegmentedButton selectedSegment]==1) {
         if(_autoLanguageTitle)
@@ -83,17 +80,13 @@
     }
     
     
-    //Assign initial source and target language values
+    //Update source and target language values
     [self updateTargetLanguage];
     [self updateSourceLanguage];
     
-    [_inputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
-    [_outputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
-    [_inputText setInsertionPointColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
-    
 }
 
--(void)viewWillAppear {
+- (void)viewWillAppear {
    //set this view controller delegate for selectors windowDidResignKey and windowDidMove
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
@@ -121,70 +114,39 @@
     
 }
 
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
-    // Update your data and prepare for a snapshot. Call completion handler when you are done
-    // with NoData if nothing has changed or NewData if there is new data since the last
-    // time we called you
-    completionHandler(NCUpdateResultNoData);
 
+- (void)textDidChange:(NSNotification *)notification{
     
-}
-
-- (void)receivedResponseFromRequest:(NSData *)data {
-    //Convert received data to NSString using NSUTF8StringEncoding
-    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-    //Retrieve language from Auto
-    if([_sLanguage isEqualToString:@"Auto"]){
-        _autoLanguageCode = [NSString new];
-        _autoLanguageTitle = [NSString new];
-        _autoLanguageCode = [strData parseAutoForLanguage];
-        _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];;
+    //If empty input string output nothing, set detected language to nil and hide clear button
+    if([[[_inputText textStorage]string]isEqualToString:@""]) {
+        [self setOutputValue:@""];
+        _autoLanguageTitle=nil;
+        _clearTextButton.hidden = YES;
+    }
+    else {
+        //If non empty string show clear button
+        _clearTextButton.hidden = NO;
         
-        //Update detected language for Auto section
-        if([_sourceSegmentedButton selectedSegment]==1) {
-            if(_autoLanguageTitle) {
-                runOnMainQueueWithoutDeadlocking(^{
-                    [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
-                });
-                [[NSUserDefaults standardUserDefaults] setObject:_autoLanguageTitle forKey:@"autoLanguage"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
+        //If whitespace input string output nothing
+        if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0)
+            [self setOutputValue:@""];
+        
+        //If non whitespace input string
+        else {
+            //If there is a quote, delete it and place cursor
+            NSRange searchRange = [[[_inputText textStorage] string] rangeOfString:@"\""];
+            if (searchRange.location != NSNotFound)
+            {
+                [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+                [_inputText setSelectedRange:NSMakeRange(searchRange.location,0) ];
             }
-            
+            //Perform request
+            [self performGoogleRequest];
+            //Save input text to defaults
+            _defaultInputText = [[_inputText textStorage] string];
+            [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
         }
-
         
-        strData=[strData parseFirstDiveForAuto];
-    }
-    else
-        strData=[strData parseFirstDive];
-    NSInteger numberOfLines=[strData numberOfLines];
-    NSString *outputString=[[NSString alloc] init];
-    
-    
-    while(numberOfLines){
-        NSString *strLine=[[NSString alloc]init];
-        strLine=[strData parseSecondDive];
-        if([strLine length]!=[strData length])
-            strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
-        strLine=[strLine parseThirdDive];
-        
-        outputString =[outputString stringByAppendingString:strLine];
-        numberOfLines--;
-    }
-    
-    //Make end of line siymbols visible by NSTextView
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
-    
-    //Write translated text to the output
-    [self setOutputValue:outputString];
-    
-    //Update default outputText value
-    if ([[_outputText textStorage] string]) {
-        _defaultOutputText = [[_outputText textStorage]string];
-        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
     }
 }
 
@@ -200,6 +162,7 @@
         else
             [_sourceSegmentedButton setSelectedSegment:1];
     }
+    //Clear Auto element title if clicked on different button
     if([sender selectedSegment]!=1)
         [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
     
@@ -247,54 +210,18 @@
     
 }
 
-
-
--(void)textDidChange:(NSNotification *)notification{
-    
-    //If empty input string output nothing, set detected language to nil and hide clear button
-    if([[[_inputText textStorage]string]isEqualToString:@""]) {
-        [self setOutputValue:@""];
-        _autoLanguageTitle=nil;
-        _clearTextButton.hidden = YES;
-    }
-    else {
-        //If non empty string show clear button
-        _clearTextButton.hidden = NO;
-        
-        //If whitespace input string output nothing
-        if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0)
-            [self setOutputValue:@""];
-        
-        //If non whitespace input string
-        else {
-            //If there is a quote, delete it and place cursor
-            NSRange searchRange = [[[_inputText textStorage] string] rangeOfString:@"\""];
-            if (searchRange.location != NSNotFound)
-            {
-                [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
-                [_inputText setSelectedRange:NSMakeRange(searchRange.location,0) ];
-            }
-            //Perform request
-            [self performGoogleRequest];
-            //Save input text to defaults
-            _defaultInputText = [[_inputText textStorage] string];
-            [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
-        }
-        
-    }
-}
-
 - (void)sourceTabDropDownClick:(id)sender {
 
     //Push clicked menu element language to the button
     [_sourceSegmentedButton tryToPushNewSourceLanguage:[sender title]];
     
+    NSMutableDictionary *defaultSourceButton=[NSMutableDictionary new];
     //Update default values for button
     for (int i = 2; i < 4; i++) {
-        [_sourceButtonDefaultValues setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
+        [defaultSourceButton setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
     }
     
-    [[NSUserDefaults standardUserDefaults] setObject:_sourceButtonDefaultValues forKey:@"sourceDefault"];
+    [[NSUserDefaults standardUserDefaults] setObject:defaultSourceButton forKey:@"sourceDefault"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     //Update source language
@@ -306,12 +233,13 @@
     //Push clicked menu element language to the button
     [_targetSegmentedButton tryToPushNewTargetLanguage:[sender title]];
     
+    NSMutableDictionary *defaulTargetButton=[NSMutableDictionary new];
     //Update default values for button
     for (int i = 1; i < 4; i++) {
-        [_targetButtonDefaultValues setValue:[_targetSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
+        [defaulTargetButton setValue:[_targetSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
     }
 
-    [[NSUserDefaults standardUserDefaults] setObject:_targetButtonDefaultValues forKey:@"targetDefault"];
+    [[NSUserDefaults standardUserDefaults] setObject:defaulTargetButton forKey:@"targetDefault"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     
@@ -319,7 +247,7 @@
     [self updateTargetLanguage];
 }
 
--(IBAction)swapButton: (id)sender {
+- (IBAction)swapButton: (id)sender {
     
     //Swap languages if source language is not Auto
     if(![_sLanguage isEqualToString:@"Auto"]) {
@@ -356,7 +284,8 @@
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
 }
 
--(void)updateSourceLanguage{
+
+- (void)updateSourceLanguage{
     if ([_sourceSegmentedButton selectedSegment] == 1)
         _sLanguage = @"Auto";
     
@@ -365,11 +294,11 @@
     
 }
 
--(void)updateTargetLanguage{
+- (void)updateTargetLanguage{
     _tLanguage = [_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]];
 }
 
--(void)performGoogleRequest{
+- (void)performGoogleRequest{
     
     
     NSURLRequest *request=[RequestHandler getRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[[_inputText textStorage] string]];
@@ -383,13 +312,80 @@
     }];
 
 }
--(void)setOutputValue:(NSString *)value{
+
+- (void)setOutputValue:(NSString *)value{
     runOnMainQueueWithoutDeadlocking(^{
         [_outputText setString:value];
    });
    
 }
 
+- (void)receivedResponseFromRequest:(NSData *)data {
+    //Convert received data to NSString using NSUTF8StringEncoding
+    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    
+    //Retrieve language from Auto
+    if([_sLanguage isEqualToString:@"Auto"]){
+        _autoLanguageCode = [NSString new];
+        _autoLanguageTitle = [NSString new];
+        _autoLanguageCode = [strData parseAutoForLanguage];
+        _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];;
+        
+        //Update detected language for Auto section
+        if([_sourceSegmentedButton selectedSegment]==1) {
+            if(_autoLanguageTitle) {
+                runOnMainQueueWithoutDeadlocking(^{
+                    [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
+                });
+                [[NSUserDefaults standardUserDefaults] setObject:_autoLanguageTitle forKey:@"autoLanguage"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+            }
+            
+        }
+        
+        
+        strData=[strData parseFirstDiveForAuto];
+    }
+    else
+        strData=[strData parseFirstDive];
+    NSInteger numberOfLines=[strData numberOfLines];
+    NSString *outputString=[[NSString alloc] init];
+    
+    
+    while(numberOfLines){
+        NSString *strLine=[[NSString alloc]init];
+        strLine=[strData parseSecondDive];
+        if([strLine length]!=[strData length])
+            strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
+        strLine=[strLine parseThirdDive];
+        
+        outputString =[outputString stringByAppendingString:strLine];
+        numberOfLines--;
+    }
+    
+    //Make end of line siymbols visible by NSTextView
+    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
+    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
+    
+    //Write translated text to the output
+    [self setOutputValue:outputString];
+    
+    //Update default outputText value
+    if ([[_outputText textStorage] string]) {
+        _defaultOutputText = [[_outputText textStorage]string];
+        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+}
+
+- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
+    // Update your data and prepare for a snapshot. Call completion handler when you are done
+    // with NoData if nothing has changed or NewData if there is new data since the last
+    // time we called you
+    completionHandler(NCUpdateResultNoData);
+    
+    
+}
 void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will add a command on the main thread to execute instantly
 {
     if ([NSThread isMainThread])

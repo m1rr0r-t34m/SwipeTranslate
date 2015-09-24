@@ -37,6 +37,7 @@
     }
     return -1;
 }
+
 -(void)tryToPushNewSourceLanguage:(NSString *)language {
     //If clicked menu element language is already in segmented button, select this segment
     //If not, push this element to segmented button

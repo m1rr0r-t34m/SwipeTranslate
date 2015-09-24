@@ -26,11 +26,7 @@
         [self setSelectedSegment:(NSInteger)2];
     
 }
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+
 -(int)indexForSegmentWithLabel:(NSString *)label {
     for (int i = 0; i < [self segmentCount]; i++)
     {

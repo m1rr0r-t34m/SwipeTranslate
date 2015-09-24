@@ -26,11 +26,7 @@
         [self setSelectedSegment:(NSInteger)2];
     
 }
-- (void)drawRect:(NSRect)dirtyRect {
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
-}
+
 -(int)indexForSegmentWithLabel:(NSString *)label {
     for (int i = 0; i < [self segmentCount]; i++)
     {
@@ -41,6 +37,7 @@
     }
     return -1;
 }
+
 -(void)tryToPushNewSourceLanguage:(NSString *)language {
     //If clicked menu element language is already in segmented button, select this segment
     //If not, push this element to segmented button

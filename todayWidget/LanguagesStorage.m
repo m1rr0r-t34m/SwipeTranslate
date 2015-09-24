@@ -47,14 +47,14 @@
     if(full)
         [array insertObject:@"Auto" atIndex:0];
 
-     return[[NSArray alloc]initWithArray:array];
+    return [array copy];
 }
 -(NSArray *)getArrayOfLanguagesWithLetter:(NSString *)letter {
-    NSMutableArray *newArray=[[NSMutableArray alloc] init];
+    NSMutableArray *array=[[NSMutableArray alloc] init];
     for(int i=0;i<[self count];i++){
         if([[[self objectAtIndex:i] substringWithRange:NSMakeRange(0, 1)] isEqualToString: letter])
-            [newArray addObject:[self objectAtIndex:i]];
+            [array addObject:[self objectAtIndex:i]];
     }
-    return [[NSArray alloc] initWithArray:newArray];
+    return [array copy];
 }
 @end

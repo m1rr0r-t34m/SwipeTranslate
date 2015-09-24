@@ -280,6 +280,7 @@
 
 - (IBAction)clearText:(id)sender {
     [_inputText setString:@""];
+    [_outputText setString:@""];
     _clearTextButton.hidden = YES;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
 }

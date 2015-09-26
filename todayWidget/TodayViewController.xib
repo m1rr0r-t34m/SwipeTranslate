@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9046" systemVersion="15A282b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="15A278b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9046"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
@@ -177,14 +177,14 @@
                         <action selector="clearText:" target="-2" id="L0v-Fx-YMB"/>
                     </connections>
                 </button>
-                <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
-                    <rect key="frame" x="103" y="158" width="60" height="21"/>
+                <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cZ1-fA-h2i">
+                    <rect key="frame" x="103" y="154" width="60" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="A4q-Rh-zKv"/>
                         <constraint firstAttribute="height" constant="21" id="B0U-fl-Lyr"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapArrows" imagePosition="below" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
+                    <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="SwapArrows" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -219,6 +219,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="SwapArrows" width="76" height="26"/>
+        <image name="SwapArrows" width="50" height="16"/>
     </resources>
 </document>

@@ -17,13 +17,8 @@
     [_directionsLabel setStringValue:textForDirections];
     
     NSWindow *mainWindow=[[[NSApplication sharedApplication] windows] objectAtIndex:0];
-    [mainWindow setBackgroundColor:[NSColor clearColor]];
+    [mainWindow setBackgroundColor:[NSColor colorWithCalibratedRed:0.18 green:0.18 blue:0.18 alpha:0.98]];
     [mainWindow setOpaque:NO];
-    
-    [[self view] setWantsLayer:YES];
-    
-    [[self view].layer setBackgroundColor:[[NSColor colorWithCalibratedRed:0.79 green:0.79 blue:0.79 alpha:0.8] CGColor]];
-
     
 }
 

@@ -187,7 +187,7 @@
                         <constraint firstAttribute="width" constant="33" id="k1U-9k-d0o"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapArrows" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="QU2-fI-R09">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -222,6 +222,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="SwapArrows" width="458" height="516"/>
+        <image name="SwapButtonIcon" width="256" height="256"/>
     </resources>
 </document>

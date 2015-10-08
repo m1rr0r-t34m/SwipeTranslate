@@ -679,7 +679,7 @@
                                     <constraint firstAttribute="height" constant="252" id="byo-8I-zEJ"/>
                                 </constraints>
                                 <animations/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="IconLogo" id="FHD-Pd-ydI"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="LogoIcon" id="FHD-Pd-ydI"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isr-qG-Dt4">
                                 <rect key="frame" x="-2" y="0.0" width="384" height="194"/>
@@ -724,6 +724,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IconLogo" width="147.45599365234375" height="147.45599365234375"/>
+        <image name="LogoIcon" width="512" height="512"/>
     </resources>
 </document>

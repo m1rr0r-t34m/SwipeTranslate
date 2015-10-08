@@ -14,6 +14,7 @@
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
@@ -70,6 +71,7 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagesStorage.h; sourceTree = "<group>"; };
@@ -179,8 +181,9 @@
 			isa = PBXGroup;
 			children = (
 				75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */,
-				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
+				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
+				CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
@@ -365,6 +368,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
 			);

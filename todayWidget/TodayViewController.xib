@@ -44,21 +44,6 @@
                         <action selector="sourceTabClick:" target="-2" id="MkZ-Ai-GMJ"/>
                     </connections>
                 </segmentedControl>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Zr-EjF">
-                    <rect key="frame" x="249" y="285" width="17" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="17" id="pds-Wu-Vfy"/>
-                        <constraint firstAttribute="height" constant="17" id="piy-mi-N61"/>
-                    </constraints>
-                    <animations/>
-                    <buttonCell key="cell" type="bevel" title="╳" bezelStyle="regularSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="rwD-ws-fBR">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="clearText:" target="-2" id="L0v-Fx-YMB"/>
-                    </connections>
-                </button>
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
                     <rect key="frame" x="0.0" y="200" width="356" height="5"/>
                     <constraints>
@@ -197,20 +182,35 @@
                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <font key="titleFont" metaFont="system"/>
                 </box>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Zr-EjF">
+                    <rect key="frame" x="247" y="289" width="19" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="19" id="dBO-vF-7Iz"/>
+                        <constraint firstAttribute="height" constant="19" id="fju-fY-3EK"/>
+                    </constraints>
+                    <animations/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ClearButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="rwD-ws-fBR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clearText:" target="-2" id="L0v-Fx-YMB"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="top" secondItem="CgP-2u-mcD" secondAttribute="bottom" constant="8" id="0Sp-6M-b6N"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="14" id="0gb-gR-6at"/>
                 <constraint firstItem="5SE-hq-vCE" firstAttribute="top" secondItem="xtp-nf-q79" secondAttribute="bottom" constant="113" id="237-Tt-fh2"/>
                 <constraint firstItem="LZt-Mn-ZzT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="7G9-LI-V3j"/>
-                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="WKd-Zr-EjF" secondAttribute="bottom" constant="82" id="8yy-T5-RLt"/>
-                <constraint firstItem="WKd-Zr-EjF" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="249" id="9TR-Nf-UQl"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="A9T-op-DP9"/>
-                <constraint firstItem="WKd-Zr-EjF" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="CK4-sh-7BO"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="top" secondItem="cZ1-fA-h2i" secondAttribute="bottom" constant="8" id="Kpc-St-Jzx"/>
+                <constraint firstItem="LZt-Mn-ZzT" firstAttribute="top" secondItem="WKd-Zr-EjF" secondAttribute="bottom" constant="86" id="LNS-ig-7MX"/>
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="QYk-cV-9cl"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Y5V-24-LnM"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="YZj-eq-WYD"/>
+                <constraint firstItem="WKd-Zr-EjF" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="8" id="amp-ZP-Ygn"/>
+                <constraint firstItem="WKd-Zr-EjF" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="247" id="fyv-CI-Zdx"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="gBp-Jh-bzh"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="sfD-tU-m39"/>
                 <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="syd-da-TND"/>
@@ -218,10 +218,11 @@
                 <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="z4K-f0-mrm"/>
             </constraints>
             <animations/>
-            <point key="canvasLocation" x="428" y="435.5"/>
+            <point key="canvasLocation" x="428" y="435"/>
         </customView>
     </objects>
     <resources>
+        <image name="ClearButtonIcon" width="16" height="16"/>
         <image name="SwapButtonIcon" width="256" height="256"/>
     </resources>
 </document>

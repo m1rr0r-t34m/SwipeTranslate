@@ -672,6 +672,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="380" height="570"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isr-qG-Dt4">
+                                <rect key="frame" x="-2" y="0.0" width="384" height="194"/>
+                                <animations/>
+                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="directionsLabel" placeholderString="" id="xLI-cg-ybg">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Kb-yH-Ddw">
+                                <rect key="frame" x="15" y="233" width="351" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="347" id="Lga-JA-dAR"/>
+                                    <constraint firstAttribute="height" constant="45" id="ThL-sn-VJh"/>
+                                </constraints>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Swipe.Translate.Easy" id="q6H-D2-sma">
+                                    <font key="font" metaFont="system" size="37"/>
+                                    <color key="textColor" red="0.87450980389999999" green="0.20392156859999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="74j-7Y-fNW">
                                 <rect key="frame" x="64" y="292" width="252" height="252"/>
                                 <constraints>
@@ -681,33 +703,11 @@
                                 <animations/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="LogoIcon" id="FHD-Pd-ydI"/>
                             </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="isr-qG-Dt4">
-                                <rect key="frame" x="-2" y="0.0" width="384" height="194"/>
-                                <animations/>
-                                <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="center" title="directionsLabel" placeholderString="" id="xLI-cg-ybg">
-                                    <font key="font" metaFont="system" size="16"/>
-                                    <color key="textColor" red="0.32941176470588235" green="0.52941176470588236" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1Kb-yH-Ddw">
-                                <rect key="frame" x="68" y="236" width="245" height="42"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="241" id="G3y-QU-7Jr"/>
-                                    <constraint firstAttribute="height" constant="42" id="lL9-pJ-Ryl"/>
-                                </constraints>
-                                <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="tTranslator" id="q6H-D2-sma">
-                                    <font key="font" metaFont="system" size="37"/>
-                                    <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="74j-7Y-fNW" secondAttribute="bottom" constant="292" id="3iX-IW-b4O"/>
-                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="70" id="Q8k-eZ-i8K"/>
-                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="top" secondItem="74j-7Y-fNW" secondAttribute="bottom" constant="14" id="Ubs-IX-hGs"/>
+                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="17" id="GU2-O3-EO1"/>
+                            <constraint firstItem="1Kb-yH-Ddw" firstAttribute="top" secondItem="74j-7Y-fNW" secondAttribute="bottom" constant="14" id="Sq3-LT-D4v"/>
                             <constraint firstAttribute="trailing" secondItem="74j-7Y-fNW" secondAttribute="trailing" constant="64" id="Udi-DU-ASQ"/>
                             <constraint firstItem="74j-7Y-fNW" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="26" id="nAj-mR-LZ3"/>
                             <constraint firstItem="74j-7Y-fNW" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="64" id="qnI-Kk-dPS"/>

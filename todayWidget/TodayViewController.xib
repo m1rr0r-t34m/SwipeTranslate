@@ -62,6 +62,7 @@
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LZt-Mn-ZzT">
                     <rect key="frame" x="0.0" y="200" width="356" height="5"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="356" id="GCr-h5-GFF"/>
                         <constraint firstAttribute="height" constant="1" id="Yrh-Aa-0yr"/>
                     </constraints>
                     <animations/>
@@ -72,6 +73,7 @@
                 <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="5SE-hq-vCE">
                     <rect key="frame" x="0.0" y="13" width="356" height="5"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="356" id="4ZJ-Du-P8u"/>
                         <constraint firstAttribute="height" constant="1" id="thb-xa-iEH"/>
                     </constraints>
                     <animations/>
@@ -209,11 +211,9 @@
                 <constraint firstItem="cZ1-fA-h2i" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="120" id="QYk-cV-9cl"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Y5V-24-LnM"/>
                 <constraint firstItem="zqb-PA-hYv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="7" id="YZj-eq-WYD"/>
-                <constraint firstAttribute="trailing" secondItem="LZt-Mn-ZzT" secondAttribute="trailing" id="bHi-qi-BVf"/>
                 <constraint firstItem="xtp-nf-q79" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="gBp-Jh-bzh"/>
                 <constraint firstItem="K5s-ki-bf7" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="sfD-tU-m39"/>
                 <constraint firstAttribute="trailing" secondItem="5SE-hq-vCE" secondAttribute="trailing" id="syd-da-TND"/>
-                <constraint firstItem="5SE-hq-vCE" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="toH-Ib-8Gu"/>
                 <constraint firstItem="CgP-2u-mcD" firstAttribute="top" secondItem="zqb-PA-hYv" secondAttribute="bottom" constant="14" id="vCl-Y7-hYJ"/>
                 <constraint firstAttribute="bottom" secondItem="5SE-hq-vCE" secondAttribute="bottom" constant="15" id="z4K-f0-mrm"/>
             </constraints>

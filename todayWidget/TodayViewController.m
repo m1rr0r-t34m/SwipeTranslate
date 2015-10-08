@@ -121,6 +121,7 @@
     if([[[_inputText textStorage]string]isEqualToString:@""]) {
         [self setOutputValue:@""];
         _autoLanguageTitle=nil;
+        [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
         _clearTextButton.hidden = YES;
     }
     else {
@@ -128,8 +129,12 @@
         _clearTextButton.hidden = NO;
         
         //If whitespace input string output nothing
-        if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0)
+        if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+            _autoLanguageTitle=nil;
             [self setOutputValue:@""];
+            [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+        }
+        
         
         //If non whitespace input string
         else {

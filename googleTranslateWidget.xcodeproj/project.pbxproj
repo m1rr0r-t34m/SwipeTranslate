@@ -13,7 +13,7 @@
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
-		CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
@@ -50,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				CD8EEB961B8E69AA00E2991B /* todayWidget.appex in Embed App Extensions */,
+				CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +63,7 @@
 		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
-		CD8EEB841B8E69AA00E2991B /* todayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = todayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Swipe Translate Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD8EEB8B1B8E69AA00E2991B /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = todayWidget.entitlements; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
 		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagesStorage.h; sourceTree = "<group>"; };
 		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagesStorage.m; sourceTree = "<group>"; };
-		CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = googleTranslateWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCFCCD71B8E690300547F5C /* Swipe Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Translate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CDCFCCDF1B8E690300547F5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -170,9 +170,9 @@
 		CDCFCCD81B8E690300547F5C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */,
+				CDCFCCD71B8E690300547F5C /* Swipe Translate.app */,
 				CDCFCCED1B8E690300547F5C /* googleTranslateWidgetTests.xctest */,
-				CD8EEB841B8E69AA00E2991B /* todayWidget.appex */,
+				CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,9 +221,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD8EEB831B8E69AA00E2991B /* todayWidget */ = {
+		CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "todayWidget" */;
+			buildConfigurationList = CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "Swipe Translate Widget" */;
 			buildPhases = (
 				CD8EEB801B8E69AA00E2991B /* Sources */,
 				CD8EEB811B8E69AA00E2991B /* Frameworks */,
@@ -233,14 +233,14 @@
 			);
 			dependencies = (
 			);
-			name = todayWidget;
+			name = "Swipe Translate Widget";
 			productName = todayWidget;
-			productReference = CD8EEB841B8E69AA00E2991B /* todayWidget.appex */;
+			productReference = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		CDCFCCD61B8E690300547F5C /* googleTranslateWidget */ = {
+		CDCFCCD61B8E690300547F5C /* Swipe Translate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidget" */;
+			buildConfigurationList = CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "Swipe Translate" */;
 			buildPhases = (
 				CDCFCCD31B8E690300547F5C /* Sources */,
 				CDCFCCD41B8E690300547F5C /* Frameworks */,
@@ -252,9 +252,9 @@
 			dependencies = (
 				CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */,
 			);
-			name = googleTranslateWidget;
+			name = "Swipe Translate";
 			productName = googleTranslateWidget;
-			productReference = CDCFCCD71B8E690300547F5C /* googleTranslateWidget.app */;
+			productReference = CDCFCCD71B8E690300547F5C /* Swipe Translate.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CDCFCCEC1B8E690300547F5C /* googleTranslateWidgetTests */ = {
@@ -314,9 +314,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CDCFCCD61B8E690300547F5C /* googleTranslateWidget */,
+				CDCFCCD61B8E690300547F5C /* Swipe Translate */,
 				CDCFCCEC1B8E690300547F5C /* googleTranslateWidgetTests */,
-				CD8EEB831B8E69AA00E2991B /* todayWidget */,
+				CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -387,12 +387,12 @@
 /* Begin PBXTargetDependency section */
 		CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD8EEB831B8E69AA00E2991B /* todayWidget */;
+			target = CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */;
 			targetProxy = CD8EEB941B8E69AA00E2991B /* PBXContainerItemProxy */;
 		};
 		CDCFCCEF1B8E690300547F5C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CDCFCCD61B8E690300547F5C /* googleTranslateWidget */;
+			target = CDCFCCD61B8E690300547F5C /* Swipe Translate */;
 			targetProxy = CDCFCCEE1B8E690300547F5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -431,6 +431,7 @@
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "markvasiv.Swipe-Translate.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -446,6 +447,7 @@
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "markvasiv.Swipe-Translate.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -595,7 +597,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "todayWidget" */ = {
+		CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "Swipe Translate Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD8EEB971B8E69AA00E2991B /* Debug */,
@@ -613,7 +615,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "googleTranslateWidget" */ = {
+		CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "Swipe Translate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CDCFCCF81B8E690300547F5C /* Debug */,

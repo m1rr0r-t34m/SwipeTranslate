@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CD8EEB831B8E69AA00E2991B"
-               BuildableName = "todayWidget.appex"
-               BlueprintName = "todayWidget"
+               BuildableName = "Swipe Translate Widget.appex"
+               BlueprintName = "Swipe Translate Widget"
                ReferencedContainer = "container:googleTranslateWidget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -30,8 +30,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CDCFCCD61B8E690300547F5C"
-               BuildableName = "googleTranslateWidget.app"
-               BlueprintName = "googleTranslateWidget"
+               BuildableName = "Swipe Translate.app"
+               BlueprintName = "Swipe Translate"
                ReferencedContainer = "container:googleTranslateWidget.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CD8EEB831B8E69AA00E2991B"
-            BuildableName = "todayWidget.appex"
-            BlueprintName = "todayWidget"
+            BuildableName = "Swipe Translate Widget.appex"
+            BlueprintName = "Swipe Translate Widget"
             ReferencedContainer = "container:googleTranslateWidget.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -72,8 +72,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CDCFCCD61B8E690300547F5C"
-            BuildableName = "googleTranslateWidget.app"
-            BlueprintName = "googleTranslateWidget"
+            BuildableName = "Swipe Translate.app"
+            BlueprintName = "Swipe Translate"
             ReferencedContainer = "container:googleTranslateWidget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CDCFCCD61B8E690300547F5C"
-            BuildableName = "googleTranslateWidget.app"
-            BlueprintName = "googleTranslateWidget"
+            BuildableName = "Swipe Translate.app"
+            BlueprintName = "Swipe Translate"
             ReferencedContainer = "container:googleTranslateWidget.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

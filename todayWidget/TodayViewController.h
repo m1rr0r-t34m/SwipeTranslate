@@ -12,6 +12,7 @@
 #import "LanguagesStorage.h"
 #import "PopupMenu.h"
 #import "RequestHandler.h"
+#import "WidgetView.h"
 
 
 @interface TodayViewController : NSViewController

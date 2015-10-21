@@ -149,7 +149,7 @@
                                     <constraint firstAttribute="height" constant="17" id="wMB-aO-rL7"/>
                                 </constraints>
                                 <animations/>
-                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ClearButtonIcon" imagePosition="above" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ClearButtonMain" imagePosition="above" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -287,7 +287,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ClearButtonIcon" width="16" height="16"/>
+        <image name="ClearButtonMain" width="16" height="16"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>
 </document>

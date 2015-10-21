@@ -8,6 +8,7 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
+
 @interface delegateAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate> {
     NSWindow *window;
 }
@@ -25,9 +26,12 @@
     [_outputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
     
     //Set input and output text color settings
-    [_inputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
-    [_outputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
-    [_inputText setInsertionPointColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    if([[self view]isKindOfClass:[WidgetView class]]){
+        [_inputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+        [_outputText setTextColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+        [_inputText setInsertionPointColor:[NSColor colorWithCalibratedWhite:1.0 alpha:1.0]];
+    }
+    
     
     //Create pop up menus
     [_sourceSegmentedButton setMenu:_sourceLanguageMenu forSegment:(NSInteger)0];

@@ -8,12 +8,17 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
+@interface delegateAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate> {
+    NSWindow *window;
+}
+@end
 
 @implementation TodayViewController
 
 - (void)awakeFromNib {
     
-    [super viewDidLoad];
+    [super awakeFromNib];
+    
     
     //Set input and output text view margins
     [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
@@ -91,6 +96,16 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
 }
+-(void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //Color main app view
+    CALayer *viewLayer = [CALayer layer];
+    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.2, 0.2, 0.2, 0.98)];
+    
+    [[self view] setWantsLayer:YES];
+    [[self view] setLayer:viewLayer];
+}
 
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -113,7 +128,6 @@
         [ _targetLanguageMenu cancelTracking];
     
 }
-
 
 - (void)textDidChange:(NSNotification *)notification{
     

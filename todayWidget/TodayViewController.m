@@ -136,6 +136,8 @@
         _autoLanguageTitle=nil;
         [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
         _clearTextButton.hidden = YES;
+         [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
+        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
     }
     else {
         //If non empty string show clear button
@@ -146,6 +148,8 @@
             _autoLanguageTitle=nil;
             [self setOutputValue:@""];
             [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+             [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
+            [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
         }
         
         
@@ -301,6 +305,8 @@
     [_outputText setString:@""];
     _clearTextButton.hidden = YES;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+    [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
+    [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
 }
 
 

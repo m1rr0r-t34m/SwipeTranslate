@@ -142,8 +142,12 @@
                                     <animations/>
                                 </scroller>
                             </scrollView>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
-                                <rect key="frame" x="281" y="427" width="20" height="20"/>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
+                                <rect key="frame" x="284" y="430" width="17" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="17" id="vGY-fF-5pY"/>
+                                    <constraint firstAttribute="height" constant="17" id="wMB-aO-rL7"/>
+                                </constraints>
                                 <animations/>
                                 <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ClearButtonIcon" imagePosition="above" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -247,6 +251,7 @@
                             </segmentedControl>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="2dr-Xe-duZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="284" id="BF5-P2-dQG"/>
                             <constraint firstItem="I1K-y0-ISH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="Ge5-Tv-b7V"/>
                             <constraint firstItem="csf-jN-tGZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="143" id="JxT-6c-Pyi"/>
                             <constraint firstItem="DZf-MJ-uJ3" firstAttribute="top" secondItem="Sda-85-kUg" secondAttribute="bottom" constant="12" id="LaG-1H-beW"/>
@@ -258,6 +263,7 @@
                             <constraint firstItem="Sda-85-kUg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="XEw-BM-KpP"/>
                             <constraint firstItem="RjJ-ix-sDr" firstAttribute="top" secondItem="0NE-Nv-hS7" secondAttribute="bottom" constant="8" id="XTk-FL-n0a"/>
                             <constraint firstItem="0NE-Nv-hS7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="gaq-hU-kqv"/>
+                            <constraint firstItem="2dr-Xe-duZ" firstAttribute="top" secondItem="pqW-la-yHh" secondAttribute="bottom" constant="8" id="jOO-AU-bCg"/>
                             <constraint firstItem="I1K-y0-ISH" firstAttribute="top" secondItem="csf-jN-tGZ" secondAttribute="bottom" constant="8" id="kdn-QO-ATI"/>
                             <constraint firstItem="RjJ-ix-sDr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="oi3-Xn-Cih"/>
                             <constraint firstItem="pqW-la-yHh" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="xVv-hp-ztv"/>

@@ -73,95 +73,25 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="TodayViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="570"/>
+                        <rect key="frame" x="0.0" y="0.0" width="330" height="496"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="RjJ-ix-sDr">
-                                <rect key="frame" x="15" y="297" width="365" height="5"/>
+                                <rect key="frame" x="10" y="278" width="320" height="5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="0OI-cQ-Kt2"/>
-                                    <constraint firstAttribute="width" constant="365" id="noY-8Y-R7W"/>
+                                    <constraint firstAttribute="width" constant="320" id="9ro-Bm-1PP"/>
+                                    <constraint firstAttribute="height" constant="1" id="cug-pc-CGE"/>
                                 </constraints>
                                 <animations/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
-                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Jt6-rG-U8x">
-                                <rect key="frame" x="15" y="18" width="365" height="5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="365" id="PEc-jZ-WnX"/>
-                                    <constraint firstAttribute="height" constant="1" id="zzO-hE-CcN"/>
-                                </constraints>
-                                <animations/>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <font key="titleFont" metaFont="system"/>
-                            </box>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sda-85-kUg">
-                                <rect key="frame" x="15" y="29" width="345" height="180"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zbM-Zk-SR6">
-                                    <rect key="frame" x="0.0" y="0.0" width="345" height="180"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="nWD-sP-g1K">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="180"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <animations/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="345" height="180"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
-                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="345" height="180"/>
-                                            <size key="maxSize" width="463" height="10000000"/>
-                                        </textView>
-                                    </subviews>
-                                    <animations/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="IHX-tU-V2D"/>
-                                    <constraint firstAttribute="width" constant="345" id="KKB-yo-lGI"/>
-                                </constraints>
-                                <animations/>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Qeo-BE-pFL">
-                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kaB-Vg-BGF">
-                                    <rect key="frame" x="329" y="0.0" width="16" height="180"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <animations/>
-                                </scroller>
-                            </scrollView>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-y0-ISH" customClass="SeparatedButton">
-                                <rect key="frame" x="18" y="215" width="344" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="340" id="FBu-uc-6Wv"/>
-                                    <constraint firstAttribute="height" constant="21" id="tZX-Ta-yJ9"/>
-                                </constraints>
-                                <animations/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="oPA-OJ-ecS">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="⇩" width="20">
-                                            <menu key="menu" id="b9s-LG-T2S"/>
-                                        </segment>
-                                        <segment label="Russian" width="105" selected="YES" tag="1"/>
-                                        <segment label="Finnish" width="107"/>
-                                        <segment label="English" width="103"/>
-                                    </segments>
-                                </segmentedCell>
-                                <connections>
-                                    <action selector="targetTabClick:" target="XfG-lQ-9wD" id="3yI-kH-pTJ"/>
-                                </connections>
-                            </segmentedControl>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="csf-jN-tGZ">
-                                <rect key="frame" x="168" y="246" width="45" height="45"/>
+                                <rect key="frame" x="143" y="227" width="45" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="9rf-sg-mm4"/>
-                                    <constraint firstAttribute="height" constant="45" id="Ujb-lm-U6f"/>
+                                    <constraint firstAttribute="width" constant="45" id="x0t-N2-7gP"/>
+                                    <constraint firstAttribute="height" constant="45" id="yzw-Pt-ZW3"/>
                                 </constraints>
                                 <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="Lm9-Pe-hHX">
@@ -172,12 +102,8 @@
                                     <action selector="swapButton:" target="XfG-lQ-9wD" id="mkY-Ux-GE6"/>
                                 </connections>
                             </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
-                                <rect key="frame" x="330" y="465" width="23" height="23"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="23" id="LmN-LY-Gr5"/>
-                                    <constraint firstAttribute="height" constant="23" id="dbW-l8-FlJ"/>
-                                </constraints>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
+                                <rect key="frame" x="330" y="391" width="23" height="23"/>
                                 <animations/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -188,20 +114,20 @@
                                 </connections>
                             </button>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-Nv-hS7">
-                                <rect key="frame" x="15" y="308" width="345" height="180"/>
+                                <rect key="frame" x="10" y="289" width="310" height="158"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="WJa-Ww-0Jw">
-                                    <rect key="frame" x="0.0" y="0.0" width="345" height="180"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="158"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="Krm-dc-d3y">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="158"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="345" height="180"/>
+                                            <size key="minSize" width="310" height="158"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="345" height="180"/>
+                                            <size key="minSize" width="310" height="158"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <connections>
                                                 <outlet property="delegate" destination="XfG-lQ-9wD" id="gkA-29-neD"/>
@@ -212,8 +138,8 @@
                                     <color key="backgroundColor" red="0.96378026832460728" green="0.27716564474729971" blue="0.14291217133263687" alpha="0.80621121453900713" colorSpace="calibratedRGB"/>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="345" id="2J1-se-bjc"/>
-                                    <constraint firstAttribute="height" constant="180" id="Gjk-be-EVL"/>
+                                    <constraint firstAttribute="height" constant="158" id="gco-0q-lqO"/>
+                                    <constraint firstAttribute="width" constant="310" id="sfw-gj-e10"/>
                                 </constraints>
                                 <animations/>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="9Fr-jJ-b00">
@@ -222,16 +148,16 @@
                                     <animations/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dQd-7T-nqK">
-                                    <rect key="frame" x="329" y="0.0" width="16" height="180"/>
+                                    <rect key="frame" x="294" y="0.0" width="16" height="158"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </scroller>
                             </scrollView>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-la-yHh" customClass="SeparatedButton">
-                                <rect key="frame" x="18" y="494" width="344" height="24"/>
+                                <rect key="frame" x="8" y="453" width="314" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Y9d-X2-q58"/>
-                                    <constraint firstAttribute="width" constant="340" id="azi-lg-2tg"/>
+                                    <constraint firstAttribute="height" constant="21" id="V6U-MG-9y4"/>
+                                    <constraint firstAttribute="width" constant="310" id="pCh-sI-BBG"/>
                                 </constraints>
                                 <animations/>
                                 <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="pg8-YA-YtJ">
@@ -240,34 +166,101 @@
                                         <segment label="⇩" width="20">
                                             <menu key="menu" id="FWr-XR-yCv"/>
                                         </segment>
-                                        <segment label="Ⓐ &gt; (Finnish)" width="108" selected="YES" tag="1"/>
-                                        <segment label="English" width="103"/>
-                                        <segment label="Finnish" width="104"/>
+                                        <segment label="Ⓐ &gt; (Finnish)" width="100" selected="YES" tag="1"/>
+                                        <segment label="English" width="92"/>
+                                        <segment label="Finnish" width="93"/>
                                     </segments>
                                 </segmentedCell>
                                 <connections>
                                     <action selector="sourceTabClick:" target="XfG-lQ-9wD" id="hP4-3I-EIU"/>
                                 </connections>
                             </segmentedControl>
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sda-85-kUg">
+                                <rect key="frame" x="10" y="33" width="310" height="157"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zbM-Zk-SR6">
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="157"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="nWD-sP-g1K">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="157"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="310" height="157"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="310" height="157"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <animations/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="310" id="8qF-IF-fJM"/>
+                                    <constraint firstAttribute="height" constant="157" id="UlY-jw-NxL"/>
+                                </constraints>
+                                <animations/>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Qeo-BE-pFL">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="kaB-Vg-BGF">
+                                    <rect key="frame" x="294" y="0.0" width="16" height="157"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </scroller>
+                            </scrollView>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="DZf-MJ-uJ3">
+                                <rect key="frame" x="10" y="18" width="320" height="5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="6Ty-BW-uCo"/>
+                                    <constraint firstAttribute="height" constant="1" id="JvR-kE-0n5"/>
+                                </constraints>
+                                <animations/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-y0-ISH" customClass="SeparatedButton">
+                                <rect key="frame" x="8" y="196" width="314" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="F5b-AB-huJ"/>
+                                    <constraint firstAttribute="width" constant="310" id="itQ-7X-miv"/>
+                                </constraints>
+                                <animations/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="oPA-OJ-ecS">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="⇩" width="20">
+                                            <menu key="menu" id="b9s-LG-T2S"/>
+                                        </segment>
+                                        <segment label="Russian" width="95" selected="YES" tag="1"/>
+                                        <segment label="Finnish" width="95"/>
+                                        <segment label="English" width="95"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="targetTabClick:" target="XfG-lQ-9wD" id="3yI-kH-pTJ"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="2dr-Xe-duZ" firstAttribute="top" secondItem="pqW-la-yHh" secondAttribute="bottom" constant="8" id="0pA-aD-84P"/>
-                            <constraint firstItem="RjJ-ix-sDr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="G8O-iw-LGa"/>
-                            <constraint firstItem="Jt6-rG-U8x" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="GPk-30-8zq"/>
-                            <constraint firstItem="I1K-y0-ISH" firstAttribute="top" secondItem="csf-jN-tGZ" secondAttribute="bottom" constant="8" id="GoY-Ld-UMB"/>
-                            <constraint firstItem="RjJ-ix-sDr" firstAttribute="top" secondItem="0NE-Nv-hS7" secondAttribute="bottom" constant="8" id="JG4-HZ-kQa"/>
-                            <constraint firstItem="I1K-y0-ISH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="MkL-Fg-Al4"/>
-                            <constraint firstItem="csf-jN-tGZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="168" id="YBz-eb-Pbg"/>
-                            <constraint firstItem="I1K-y0-ISH" firstAttribute="top" secondItem="csf-jN-tGZ" secondAttribute="bottom" constant="8" id="a8Y-Vv-NoK"/>
-                            <constraint firstItem="pqW-la-yHh" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="53" id="aQo-oD-Zel"/>
-                            <constraint firstItem="0NE-Nv-hS7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="eVN-r1-7I5"/>
-                            <constraint firstItem="0NE-Nv-hS7" firstAttribute="top" secondItem="pqW-la-yHh" secondAttribute="bottom" constant="8" id="icV-2G-dQg"/>
-                            <constraint firstItem="Jt6-rG-U8x" firstAttribute="top" secondItem="Sda-85-kUg" secondAttribute="bottom" constant="8" id="kOb-U9-ePW"/>
-                            <constraint firstItem="2dr-Xe-duZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="330" id="kPX-8h-Q1U"/>
-                            <constraint firstItem="csf-jN-tGZ" firstAttribute="top" secondItem="RjJ-ix-sDr" secondAttribute="bottom" constant="8" id="u6c-Be-GC6"/>
-                            <constraint firstItem="Sda-85-kUg" firstAttribute="top" secondItem="I1K-y0-ISH" secondAttribute="bottom" constant="8" id="u9g-SJ-qdg"/>
-                            <constraint firstItem="Sda-85-kUg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="uUq-rT-aiV"/>
-                            <constraint firstItem="pqW-la-yHh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="w3Y-6Z-HOn"/>
+                            <constraint firstItem="I1K-y0-ISH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="Ge5-Tv-b7V"/>
+                            <constraint firstItem="csf-jN-tGZ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="143" id="JxT-6c-Pyi"/>
+                            <constraint firstItem="DZf-MJ-uJ3" firstAttribute="top" secondItem="Sda-85-kUg" secondAttribute="bottom" constant="12" id="LaG-1H-beW"/>
+                            <constraint firstItem="Sda-85-kUg" firstAttribute="top" secondItem="I1K-y0-ISH" secondAttribute="bottom" constant="8" id="PIo-Qn-Ep1"/>
+                            <constraint firstItem="csf-jN-tGZ" firstAttribute="top" secondItem="RjJ-ix-sDr" secondAttribute="bottom" constant="8" id="QvT-KO-yyQ"/>
+                            <constraint firstItem="DZf-MJ-uJ3" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="UEL-Kv-i8Z"/>
+                            <constraint firstItem="0NE-Nv-hS7" firstAttribute="top" secondItem="pqW-la-yHh" secondAttribute="bottom" constant="8" id="UNC-Oc-Zo3"/>
+                            <constraint firstItem="pqW-la-yHh" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="WQ0-fO-kDu"/>
+                            <constraint firstItem="Sda-85-kUg" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="XEw-BM-KpP"/>
+                            <constraint firstItem="RjJ-ix-sDr" firstAttribute="top" secondItem="0NE-Nv-hS7" secondAttribute="bottom" constant="8" id="XTk-FL-n0a"/>
+                            <constraint firstItem="0NE-Nv-hS7" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="gaq-hU-kqv"/>
+                            <constraint firstItem="I1K-y0-ISH" firstAttribute="top" secondItem="csf-jN-tGZ" secondAttribute="bottom" constant="8" id="kdn-QO-ATI"/>
+                            <constraint firstItem="RjJ-ix-sDr" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="oi3-Xn-Cih"/>
+                            <constraint firstItem="pqW-la-yHh" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="xVv-hp-ztv"/>
                         </constraints>
                         <animations/>
                     </view>
@@ -284,7 +277,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-9" y="792"/>
+            <point key="canvasLocation" x="-34" y="755"/>
         </scene>
     </scenes>
     <resources>

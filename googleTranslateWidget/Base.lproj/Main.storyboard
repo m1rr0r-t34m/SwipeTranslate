@@ -54,7 +54,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Swipe Translate" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES" unifiedTitleAndToolbar="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -94,23 +94,12 @@
                                     <constraint firstAttribute="height" constant="45" id="yzw-Pt-ZW3"/>
                                 </constraints>
                                 <animations/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="Lm9-Pe-hHX">
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonMainIcon" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="Lm9-Pe-hHX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="swapButton:" target="XfG-lQ-9wD" id="mkY-Ux-GE6"/>
-                                </connections>
-                            </button>
-                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
-                                <rect key="frame" x="330" y="391" width="23" height="23"/>
-                                <animations/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearText:" target="XfG-lQ-9wD" id="3Me-Hx-kS2"/>
                                 </connections>
                             </button>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-Nv-hS7">
@@ -153,6 +142,17 @@
                                     <animations/>
                                 </scroller>
                             </scrollView>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
+                                <rect key="frame" x="281" y="427" width="20" height="20"/>
+                                <animations/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="ClearButtonIcon" imagePosition="above" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearText:" target="XfG-lQ-9wD" id="3Me-Hx-kS2"/>
+                                </connections>
+                            </button>
                             <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-la-yHh" customClass="SeparatedButton">
                                 <rect key="frame" x="8" y="453" width="314" height="24"/>
                                 <constraints>
@@ -282,6 +282,6 @@
     </scenes>
     <resources>
         <image name="ClearButtonIcon" width="16" height="16"/>
-        <image name="SwapButtonIcon" width="256" height="256"/>
+        <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>
 </document>

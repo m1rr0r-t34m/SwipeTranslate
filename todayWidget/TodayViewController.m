@@ -99,12 +99,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    //Color main app view
-    CALayer *viewLayer = [CALayer layer];
-    [viewLayer setBackgroundColor:CGColorCreateGenericRGB(0.2, 0.2, 0.2, 0.98)];
-    
-    [[self view] setWantsLayer:YES];
-    [[self view] setLayer:viewLayer];
+ 
 }
 
 - (void)dealloc {

@@ -68,18 +68,18 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Today View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="TodayViewController" sceneMemberID="viewController">
                     <view key="view" appearanceType="aqua" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="380" height="570"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-la-yHh">
-                                <rect key="frame" x="13" y="494" width="349" height="24"/>
+                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pqW-la-yHh" customClass="SeparatedButton">
+                                <rect key="frame" x="5" y="494" width="371" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="345" id="jc1-HQ-kjT"/>
+                                    <constraint firstAttribute="width" constant="367" id="jc1-HQ-kjT"/>
                                     <constraint firstAttribute="height" constant="21" id="wH3-Vr-s47"/>
                                 </constraints>
                                 <animations/>
@@ -92,14 +92,13 @@
                                         <segment width="114" selected="YES" tag="1">
                                             <nil key="label"/>
                                         </segment>
-                                        <segment width="103">
-                                            <nil key="label"/>
-                                        </segment>
-                                        <segment width="103">
-                                            <nil key="label"/>
-                                        </segment>
+                                        <segment label="English" width="114"/>
+                                        <segment label="Finnish" width="114"/>
                                     </segments>
                                 </segmentedCell>
+                                <connections>
+                                    <action selector="sourceTabClick:" target="XfG-lQ-9wD" id="hP4-3I-EIU"/>
+                                </connections>
                             </segmentedControl>
                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="RjJ-ix-sDr">
                                 <rect key="frame" x="15" y="297" width="365" height="5"/>
@@ -160,6 +159,58 @@
                                     <animations/>
                                 </scroller>
                             </scrollView>
+                            <segmentedControl verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-y0-ISH" customClass="SeparatedButton">
+                                <rect key="frame" x="77" y="215" width="223" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3Vf-6x-b9U"/>
+                                    <constraint firstAttribute="width" constant="345" id="ZBl-Vr-cHc"/>
+                                </constraints>
+                                <animations/>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="oPA-OJ-ecS">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment label="⇩" width="20">
+                                            <menu key="menu" id="b9s-LG-T2S"/>
+                                        </segment>
+                                        <segment label="Russian" selected="YES" tag="1"/>
+                                        <segment label="Finnish"/>
+                                        <segment label="English"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="targetTabClick:" target="XfG-lQ-9wD" id="3yI-kH-pTJ"/>
+                                </connections>
+                            </segmentedControl>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="csf-jN-tGZ">
+                                <rect key="frame" x="168" y="246" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="9rf-sg-mm4"/>
+                                    <constraint firstAttribute="height" constant="45" id="Ujb-lm-U6f"/>
+                                </constraints>
+                                <animations/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="Lm9-Pe-hHX">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="swapButton:" target="XfG-lQ-9wD" id="mkY-Ux-GE6"/>
+                                </connections>
+                            </button>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
+                                <rect key="frame" x="330" y="458" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="LmN-LY-Gr5"/>
+                                    <constraint firstAttribute="height" constant="30" id="dbW-l8-FlJ"/>
+                                </constraints>
+                                <animations/>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearText:" target="XfG-lQ-9wD" id="3Me-Hx-kS2"/>
+                                </connections>
+                            </button>
                             <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sda-85-kUg">
                                 <rect key="frame" x="15" y="29" width="345" height="180"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zbM-Zk-SR6">
@@ -197,64 +248,6 @@
                                     <animations/>
                                 </scroller>
                             </scrollView>
-                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I1K-y0-ISH">
-                                <rect key="frame" x="13" y="215" width="349" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="3Vf-6x-b9U"/>
-                                    <constraint firstAttribute="width" constant="345" id="ZBl-Vr-cHc"/>
-                                </constraints>
-                                <animations/>
-                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="oPA-OJ-ecS">
-                                    <font key="font" metaFont="system"/>
-                                    <segments>
-                                        <segment label="⇩" width="20">
-                                            <menu key="menu" id="b9s-LG-T2S"/>
-                                        </segment>
-                                        <segment width="106" selected="YES" tag="1">
-                                            <nil key="label"/>
-                                        </segment>
-                                        <segment width="107">
-                                            <nil key="label"/>
-                                        </segment>
-                                        <segment width="107">
-                                            <nil key="label"/>
-                                        </segment>
-                                    </segments>
-                                </segmentedCell>
-                                <connections>
-                                    <action selector="targetTabClick:" target="XfG-lQ-9wD" id="3yI-kH-pTJ"/>
-                                </connections>
-                            </segmentedControl>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="csf-jN-tGZ">
-                                <rect key="frame" x="168" y="246" width="45" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="45" id="9rf-sg-mm4"/>
-                                    <constraint firstAttribute="height" constant="45" id="Ujb-lm-U6f"/>
-                                </constraints>
-                                <animations/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="axesIndependently" inset="2" id="Lm9-Pe-hHX">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="swapButton:" target="XfG-lQ-9wD" id="mkY-Ux-GE6"/>
-                                </connections>
-                            </button>
-                            <button translatesAutoresizingMaskIntoConstraints="NO" id="2dr-Xe-duZ">
-                                <rect key="frame" x="330" y="458" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="LmN-LY-Gr5"/>
-                                    <constraint firstAttribute="height" constant="30" id="dbW-l8-FlJ"/>
-                                </constraints>
-                                <animations/>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Ke9-oh-dtx">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearText:" target="XfG-lQ-9wD" id="3Me-Hx-kS2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="2dr-Xe-duZ" firstAttribute="top" secondItem="pqW-la-yHh" secondAttribute="bottom" constant="8" id="0pA-aD-84P"/>
@@ -278,13 +271,13 @@
                     </view>
                     <connections>
                         <outlet property="clearTextButton" destination="2dr-Xe-duZ" id="oZu-m2-egP"/>
-                        <outlet property="inputField" destination="0NE-Nv-hS7" id="mpa-iB-ilg"/>
                         <outlet property="inputText" destination="Krm-dc-d3y" id="xFJ-rw-zHf"/>
-                        <outlet property="outputField" destination="Sda-85-kUg" id="gpr-AP-Hha"/>
                         <outlet property="outputText" destination="nWD-sP-g1K" id="M3I-52-gYR"/>
                         <outlet property="sourceLanguageMenu" destination="FWr-XR-yCv" id="85H-yH-m05"/>
+                        <outlet property="sourceSegmentedButton" destination="pqW-la-yHh" id="Rox-6b-eMX"/>
                         <outlet property="targetLanguageMenu" destination="b9s-LG-T2S" id="KoU-C1-hvR"/>
-                        <outlet property="targetSegmentedControl" destination="I1K-y0-ISH" id="PiD-z7-K5Z"/>
+                        <outlet property="targetSegmentedButton" destination="I1K-y0-ISH" id="Ld6-Nw-wO3"/>
+                        <outlet property="widgetMainView" destination="m2S-Jp-Qdl" id="He9-Z9-D7G"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

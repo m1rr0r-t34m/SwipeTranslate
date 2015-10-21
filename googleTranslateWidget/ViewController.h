@@ -7,6 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SeparatedButton.h"
+#import "Parser.h"
+#import "LanguagesStorage.h"
+#import "PopupMenu.h"
+#import "RequestHandler.h"
 
 @interface ViewController : NSViewController
 

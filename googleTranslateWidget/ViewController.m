@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -17,7 +18,7 @@
     [_directionsLabel setStringValue:textForDirections];
     
     NSWindow *mainWindow=[[[NSApplication sharedApplication] windows] objectAtIndex:0];
-    [mainWindow setBackgroundColor:[NSColor colorWithCalibratedRed:0.18 green:0.18 blue:0.18 alpha:0.98]];
+    [mainWindow setBackgroundColor:[NSColor colorWithCalibratedRed:0.8 green:0.8 blue:0.8 alpha:0.98]];
     [mainWindow setOpaque:NO];
     
 }

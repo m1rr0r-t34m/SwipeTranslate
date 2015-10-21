@@ -15,7 +15,8 @@
 
 @interface ViewController : NSViewController
 
-@property IBOutlet NSTextField *directionsLabel;
+
+
 
 @end
 

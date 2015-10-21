@@ -13,15 +13,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *textForDirections = @"To use \r\r Open the notification center \r Click the Edit button at the bottom\r Find the Swipe Translate from the right menu \r Press the green + button near it \r\r Now you can translate fast";
-    
-    [_directionsLabel setStringValue:textForDirections];
-    
+    //Setting up the window appearance 
     NSWindow *mainWindow=[[[NSApplication sharedApplication] windows] objectAtIndex:0];
     [mainWindow setBackgroundColor:[NSColor colorWithCalibratedRed:0.8 green:0.8 blue:0.8 alpha:0.98]];
     [mainWindow setOpaque:NO];
     
 }
-
 
 @end

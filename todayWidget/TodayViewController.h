@@ -14,9 +14,12 @@
 #import "RequestHandler.h"
 #import "WidgetView.h"
 #import "ValidateTextView.h"
+#import "SavedInfo.h"
 
 
-@interface TodayViewController : NSViewController
+@interface TodayViewController : NSViewController {
+    //NSString* autoLanguage;
+}
 
 //Outlets from view
 @property (strong) IBOutlet NSView *widgetMainView;
@@ -52,20 +55,10 @@
 
 
 //Methods for managing data
--(void)updateSourceLanguage;
--(void)updateTargetLanguage;
+-(void)updateLanguageModel;
 -(void)performGoogleRequest;
 -(void)setOutputValue:(NSString *)value;
 - (void)receivedResponseFromRequest:(NSData *)data;
-
-//Preferences
-@property NSMutableDictionary* sourceButtonDefaultValues;
-@property NSMutableDictionary* targetButtonDefaultValues;
-@property NSNumber* sourceDefaultSelection;
-@property NSNumber* targetDefaultSelection;
-@property NSString* defaultInputText;
-@property NSString* defaultOutputText;
-
 
 @end
 

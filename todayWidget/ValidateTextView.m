@@ -24,6 +24,15 @@
     return NO;
 
 }
+-(void)deleteQuotes {
+    NSRange searchRange = [[[self textStorage] string] rangeOfString:@"\""];
+    if (searchRange.location != NSNotFound)
+    {
+        [self setString:[[[self textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
+        [self setSelectedRange:NSMakeRange(searchRange.location,0) ];
+    }
+    
+}
 
 
 @end

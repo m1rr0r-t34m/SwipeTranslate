@@ -9,6 +9,7 @@
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
 
+
 @interface delegateAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate> {
     NSWindow *window;
 }
@@ -16,10 +17,78 @@
 
 @implementation TodayViewController
 
+
+-(void)clearOutput {
+
+    [self setOutputValue:@""];
+    _autoLanguageTitle=nil;
+    [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+    _clearTextButton.hidden = YES;
+}
+-(void)saveDefaultText {
+    [SavedInfo setInputText:[_inputText string]];
+    [SavedInfo setOutputText:[_inputText string]];
+}
+-(void)saveLanguages {
+    NSMutableArray *sArray=[[NSMutableArray alloc] initWithCapacity:2];
+    NSMutableArray *tArray=[[NSMutableArray alloc] initWithCapacity:3];
+    
+    for (int i = 2; i < 4; i++) {
+        [sArray addObject:[_sourceSegmentedButton labelForSegment:i]];
+    }
+    for (int i = 1; i < 4; i++) {
+        [tArray addObject:[_targetSegmentedButton labelForSegment:i]];
+        
+    }
+    
+    [SavedInfo setSourceLanguages:sArray];
+    [SavedInfo setTargetLanguages:tArray];
+}
+-(void)saveChosenLanguages {
+    [SavedInfo setSourceSelection:[_sourceSegmentedButton selectedSegment]];
+    [SavedInfo setTargetSelection:[_targetSegmentedButton selectedSegment]];
+}
+-(void)saveAutoLanguage {
+    [SavedInfo setAutoLanguage:_autoLanguageTitle];
+}
+
+
 - (void)awakeFromNib {
     
     [super awakeFromNib];
     
+    if(![SavedInfo isEmpty]){
+        
+        //Update labels for segmented buttons
+        for (int i = 2; i < 4; i++) {
+            [_sourceSegmentedButton setLabel:[[SavedInfo sourceLanguages] objectAtIndex:i-2] forSegment:i];
+        }
+        
+        for (int i = 1; i < 4; i++) {
+            [_targetSegmentedButton setLabel:[[SavedInfo targetLanguages] objectAtIndex:i-1] forSegment:i];
+        }
+        
+        //Update selection of segmented buttons
+            [_sourceSegmentedButton setSelectedSegment:[SavedInfo sourceSelection]];
+            [_targetSegmentedButton setSelectedSegment:[SavedInfo targetSelection]];
+        
+        
+        //Update input and output text values
+            [_inputText setString:[SavedInfo inputText]];
+            [_outputText setString:[SavedInfo outputText]];
+        
+        //Update Auto language
+        if([_sourceSegmentedButton selectedSegment]==1&&[SavedInfo autoLanguage]) {
+            [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)",[SavedInfo autoLanguage]] forSegment:1];
+        }
+        else
+            [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+        
+            
+        
+
+
+    }
     
     //Set input and output text view margins
     [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];
@@ -40,58 +109,16 @@
     [_targetSegmentedButton setMenu:_targetLanguageMenu forSegment:(NSInteger)0];
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
-    //Update labels for segmented buttons
-    NSDictionary *sourceDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"sourceDefault"];
-    NSDictionary *targetDefault = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"targetDefault"];
     
-    if (sourceDefault)
-        for (int i = 2; i < 4; i++) {
-            [_sourceSegmentedButton setLabel:[sourceDefault valueForKey:[NSString stringWithFormat:@"%d",i]]  forSegment:i];
-        }
-    
-    if (targetDefault)
-        for (int i = 1; i < 4; i++){
-            [_targetSegmentedButton setLabel:[targetDefault valueForKey:[NSString stringWithFormat:@"%d",i]] forSegment:i];
-        }
-    
-    //Update selection of segmented buttons
-    NSInteger defaultSourceSelecion, defaultTargetSelection;
-    defaultSourceSelecion = [[NSUserDefaults standardUserDefaults] integerForKey:@"sourceDefaultSelection"];
-    defaultTargetSelection = [[NSUserDefaults standardUserDefaults] integerForKey:@"targetDefaultSelection"];
-    
-    if (defaultSourceSelecion)
-        [_sourceSegmentedButton setSelectedSegment:defaultSourceSelecion];
-    if (defaultTargetSelection)
-        [_targetSegmentedButton setSelectedSegment:defaultTargetSelection];
-
-    
-    //Update input and output text values
-    NSString *defaultInput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultInput"];
-    NSString *defaultOutput = [[NSUserDefaults standardUserDefaults] stringForKey:@"defaultOutput"];
-    if (defaultInput)
-        [_inputText setString:defaultInput];
-    if (defaultOutput)
-        [_outputText setString:defaultOutput];
-    
+   
     //Update clear button dislaying
     if ([[_inputText string]  isEqual: @""])
         _clearTextButton.hidden = YES;
     
     
     
-    //Update Auto language
-    _autoLanguageTitle=[[NSUserDefaults standardUserDefaults] objectForKey:@"autoLanguage"];
-    if([_sourceSegmentedButton selectedSegment]==1) {
-        if(_autoLanguageTitle)
-            [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
-        else
-            [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-    }
-    
-    
     //Update source and target language values
-    [self updateTargetLanguage];
-    [self updateSourceLanguage];
+    [self updateLanguageModel];
     
 }
 
@@ -99,11 +126,6 @@
    //set this view controller delegate for selectors windowDidResignKey and windowDidMove
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
-}
--(void)viewDidLoad {
-    [super viewDidLoad];
-    
- 
 }
 
 - (void)dealloc {
@@ -129,47 +151,22 @@
 }
 
 - (void)textDidChange:(NSNotification *)notification{
+
+    if(!(_inputText.isWhiteSpace||_inputText.isEmpty)) {
+        _clearTextButton.hidden=NO;
+        [_inputText deleteQuotes];
+        [self performGoogleRequest];
+    }
+    else if(_inputText.isEmpty) {
+        [self clearOutput];
+    }
+    else if(_inputText.isWhiteSpace) {
+        [self clearOutput];
+        _clearTextButton.hidden=NO;
+    }
     
-    //If empty input string output nothing, set detected language to nil and hide clear button
-    if([_inputText isEmpty]) {
-        [self setOutputValue:@""];
-        _autoLanguageTitle=nil;
-        [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-        _clearTextButton.hidden = YES;
-         [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
-        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
-    }
-    else {
-        //If non empty string show clear button
-        _clearTextButton.hidden = NO;
-        
-        //If whitespace input string output nothing
-        if([_inputText isWhiteSpace]){
-            _autoLanguageTitle=nil;
-            [self setOutputValue:@""];
-            [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-             [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
-            [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
-        }
-        
-        
-        //If non whitespace input string
-        else {
-            //If there is a quote, delete it and place cursor
-            NSRange searchRange = [[[_inputText textStorage] string] rangeOfString:@"\""];
-            if (searchRange.location != NSNotFound)
-            {
-                [_inputText setString:[[[_inputText textStorage] string] stringByReplacingOccurrencesOfString:@"\"" withString:@""]];
-                [_inputText setSelectedRange:NSMakeRange(searchRange.location,0) ];
-            }
-            //Perform request
-            [self performGoogleRequest];
-            //Save input text to defaults
-            _defaultInputText = [[_inputText textStorage] string];
-            [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
-        }
-        
-    }
+    [self saveDefaultText];
+    [self saveAutoLanguage];
 }
 
 - (IBAction)sourceTabClick:(id)sender {
@@ -189,8 +186,7 @@
         [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
     
     //Update languages
-    [self updateTargetLanguage];
-    [self updateSourceLanguage];
+    [self updateLanguageModel];
     
     
     //Perform request
@@ -198,9 +194,8 @@
         [self performGoogleRequest];
     
     //Save new selection to defaults
-    _sourceDefaultSelection = [NSNumber numberWithInteger:[_sourceSegmentedButton selectedSegment]];
-    [[NSUserDefaults standardUserDefaults] setObject:_sourceDefaultSelection forKey:@"sourceDefaultSelection"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+     [self saveChosenLanguages];
+
 }
 
 - (IBAction)targetTabClick:(id)sender {
@@ -217,18 +212,14 @@
         
     }
     //Update languages
-    [self updateSourceLanguage];
-    [self updateTargetLanguage];
+    [self updateLanguageModel];
     
     //Perform request
-    if(![[[_inputText textStorage] string] isEqualToString:@""])
+    if(![_inputText isEmpty])
         [self performGoogleRequest];
     
-    
     //Save new selection to defaults
-    _targetDefaultSelection = [NSNumber numberWithInteger:[_targetSegmentedButton selectedSegment]];
-    [[NSUserDefaults standardUserDefaults] setObject:_targetDefaultSelection forKey:@"targetDefaultSelection"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self saveChosenLanguages];
     
 }
 
@@ -237,36 +228,23 @@
     //Push clicked menu element language to the button
     [_sourceSegmentedButton tryToPushNewSourceLanguage:[sender title]];
     
-    NSMutableDictionary *defaultSourceButton=[NSMutableDictionary new];
-    //Update default values for button
-    for (int i = 2; i < 4; i++) {
-        [defaultSourceButton setObject:[_sourceSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
-    }
     
-    [[NSUserDefaults standardUserDefaults] setObject:defaultSourceButton forKey:@"sourceDefault"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self saveLanguages];
     
     //Update source language
-    [self updateSourceLanguage];
+    [self updateLanguageModel];
 }
 
 - (void)targetTabDropDownClick:(id)sender {
     
     //Push clicked menu element language to the button
     [_targetSegmentedButton tryToPushNewTargetLanguage:[sender title]];
-    
-    NSMutableDictionary *defaulTargetButton=[NSMutableDictionary new];
-    //Update default values for button
-    for (int i = 1; i < 4; i++) {
-        [defaulTargetButton setValue:[_targetSegmentedButton labelForSegment:i] forKey:[NSString stringWithFormat:@"%d",i]];
-    }
 
-    [[NSUserDefaults standardUserDefaults] setObject:defaulTargetButton forKey:@"targetDefault"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self saveLanguages];
     
     
     //Update target language
-    [self updateTargetLanguage];
+    [self updateLanguageModel];
 }
 
 - (IBAction)swapButton: (id)sender {
@@ -278,8 +256,8 @@
             [_targetSegmentedButton tryToPushNewTargetLanguage:_sLanguage];
         
         ////Update languages and perform request
-        [self updateTargetLanguage];
-        [self updateSourceLanguage];
+        [self updateLanguageModel];
+
         
         if(![[[_inputText textStorage] string] isEqualToString:@""])
             [self performGoogleRequest];
@@ -290,8 +268,7 @@
             if(_autoLanguageTitle) {
                 [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
                 [_targetSegmentedButton tryToPushNewTargetLanguage:_autoLanguageTitle];
-                [self updateTargetLanguage];
-                [self updateSourceLanguage];
+                [self updateLanguageModel];
                 [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
             }
         
@@ -305,23 +282,22 @@
     [_outputText setString:@""];
     _clearTextButton.hidden = YES;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-    [[NSUserDefaults standardUserDefaults] setObject:_defaultInputText forKey:@"defaultInput"];
-    [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
+
+    [self saveDefaultText];
 }
 
 
-- (void)updateSourceLanguage{
+- (void)updateLanguageModel {
     if ([_sourceSegmentedButton selectedSegment] == 1)
         _sLanguage = @"Auto";
     
     else
         _sLanguage = [_sourceSegmentedButton labelForSegment: [_sourceSegmentedButton selectedSegment]];
     
+    _tLanguage = [_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]];
+    
 }
 
-- (void)updateTargetLanguage{
-    _tLanguage = [_targetSegmentedButton labelForSegment: [_targetSegmentedButton selectedSegment]];
-}
 
 - (void)performGoogleRequest{
     
@@ -362,8 +338,7 @@
                 runOnMainQueueWithoutDeadlocking(^{
                     [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
                 });
-                [[NSUserDefaults standardUserDefaults] setObject:_autoLanguageTitle forKey:@"autoLanguage"];
-                [[NSUserDefaults standardUserDefaults]synchronize];
+                [self saveAutoLanguage];
             }
             
         }
@@ -397,9 +372,7 @@
     
     //Update default outputText value
     if ([[_outputText textStorage] string]) {
-        _defaultOutputText = [[_outputText textStorage]string];
-        [[NSUserDefaults standardUserDefaults] setObject:_defaultOutputText forKey:@"defaultOutput"];
-        [[NSUserDefaults standardUserDefaults]synchronize];
+        [self saveDefaultText];
     }
 }
 

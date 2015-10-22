@@ -156,7 +156,6 @@
 
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty)) {
         _clearTextButton.hidden=NO;
-        [_inputText deleteQuotes];
         [self performGoogleRequest];
     }
     else if(_inputText.isEmpty) {
@@ -300,6 +299,7 @@
     
     
     NSURLRequest *request=[RequestHandler getRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[[_inputText textStorage] string]];
+    
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
         if (!error)
@@ -319,11 +319,12 @@
 
     NSString *output;
     
+    
     if([_sLanguage isEqualToString:@"Auto"]) {
         _autoLanguageCode = [NSString new];
         _autoLanguageTitle = [NSString new];
         
-        _autoLanguageCode = [Parser ParseAutoCode:data];
+        _autoLanguageCode = [Parser AutoLanguage:data];
         _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];
         if(_autoLanguageTitle) {
             runOnMainQueueWithoutDeadlocking(^{
@@ -331,11 +332,9 @@
             });
             
         }
-        
-        output=[Parser ParseAuto:data];
     }
-    else
-        output=[Parser ParseGeneral:data];
+
+        output=[Parser Text:data];
     
     
     [self setOutputValue:output];

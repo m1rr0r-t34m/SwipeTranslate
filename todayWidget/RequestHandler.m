@@ -18,8 +18,15 @@
     //encode input
     NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
+    NSString *translateKey=@"trnsl.1.1.20151022T101327Z.947a48f231e6aa6e.7e71b163761e2e6791c492f9448b63e1c1f27a2e";
     //prepare url
-    NSString *urlString=[NSString stringWithFormat:@"https://translate.googleapis.com/translate_a/single?client=gtx&ie=UTF-8&oe=UTF-8&sl=%@&tl=%@&dt=t&q=%@", sourceLanguage, targetLanguage, escapedInput];
+    NSString *urlString;
+    if(![sourceLanguage isEqualToString:@"auto"])
+        urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@-%@&options=1",translateKey, escapedInput,sourceLanguage, targetLanguage ];
+    else
+        urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@&options=1",translateKey, escapedInput, targetLanguage ];
+    
+
     NSURL *url=[NSURL URLWithString:urlString];
     return [NSURLRequest requestWithURL:url];
 }

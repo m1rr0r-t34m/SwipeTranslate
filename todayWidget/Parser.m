@@ -9,48 +9,70 @@
 #import "Parser.h"
 
 @implementation Parser
-+(NSString *)ParseGeneral:(NSData *)data {
-    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    strData=[strData parseFirstDive];
++(NSString *)Text:(NSData *)data {
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSNumber *code=[dict valueForKey:@"code"];
+    NSString *text=[[dict valueForKey:@"text"]objectAtIndex:0];
     
-    return  [Parser ParseBody:strData];
-}
-+(NSString *)ParseBody:(NSString *)strData {
-    
-    NSInteger numberOfLines=[strData numberOfLines];
-    NSString *outputString=[[NSString alloc] init];
-    
-    while(numberOfLines){
-        NSString *strLine=[[NSString alloc]init];
-        strLine=[strData parseSecondDive];
-        if([strLine length]!=[strData length])
-            strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
-        strLine=[strLine parseThirdDive];
-        
-        outputString =[outputString stringByAppendingString:strLine];
-        numberOfLines--;
+    switch ([code intValue]) {
+        case 200:
+            NSLog(@"Operation completed successfully.");
+            return text;
+            break;
+        case 401:
+            NSLog(@"Invalid API key.");
+            return nil;
+            break;
+        case 402:
+            NSLog(@"This API key has been blocked.");
+            return nil;
+            break;
+        case 403:
+            NSLog(@"You have reached the daily limit for requests (including calls of the translate method).");
+            return nil;
+            break;
+        case 404:
+            NSLog(@"You have reached the daily limit for the volume of translated text (including calls of the translate method).");
+            return nil;
+            break;
+        default:
+            return nil;
+            break;
     }
     
-    //Make end of line symbols visible by NSTextView
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
-    
-    return outputString;
+    return @"cool";
+}
++(NSString *)AutoLanguage:(NSData *)data{
 
-}
-+(NSString *)ParseAuto:(NSData *)data {
+    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSNumber *code=[dict valueForKey:@"code"];
+    NSString *detected=[[dict valueForKey:@"detected"] valueForKey:@"lang"];
     
-    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    strData=[strData parseFirstDiveForAuto];
-    
-    return  [Parser ParseBody:strData];
-   
-}
-+(NSString *)ParseAutoCode:(NSData *)data {
-    //Convert received data to NSString using NSUTF8StringEncoding
-    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-    
-    return [strData parseAutoForLanguage];
+    switch ([code intValue]) {
+        case 200:
+            NSLog(@"Operation completed successfully.");
+            return detected;
+            break;
+        case 401:
+            NSLog(@"Invalid API key.");
+            return nil;
+            break;
+        case 402:
+            NSLog(@"This API key has been blocked.");
+            return nil;
+            break;
+        case 403:
+            NSLog(@"You have reached the daily limit for requests (including calls of the translate method).");
+            return nil;
+            break;
+        case 404:
+            NSLog(@"You have reached the daily limit for the volume of translated text (including calls of the translate method).");
+            return nil;
+            break;
+        default:
+            return nil;
+            break;
+    }
     
 }
 @end

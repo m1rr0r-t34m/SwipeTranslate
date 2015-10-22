@@ -11,6 +11,5 @@
 @interface NSTextView (ValidateTextView)
 -(BOOL)isEmpty;
 -(BOOL)isWhiteSpace;
--(void)deleteQuotes;
 
 @end

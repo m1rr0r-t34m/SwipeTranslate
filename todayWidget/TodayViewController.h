@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SeparatedButton.h"
-#import "NSString+Parser.h"
 #import "Parser.h"
 #import "LanguagesStorage.h"
 #import "PopupMenu.h"

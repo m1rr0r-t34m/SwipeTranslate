@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NSString+Parser.h"
 #import "TodayViewController.h"
 
 @interface Parser : NSObject
-+(NSString *)ParseAutoCode:(NSData *)data;
-+(NSString *)ParseAuto:(NSData *)data;
-+(NSString *)ParseGeneral:(NSData *)data;
-+(NSString *)ParseBody:(NSString *)strData;
-
++(NSString *)Text:(NSData *)data;
++(NSString *)AutoLanguage:(NSData *)data;
 @end

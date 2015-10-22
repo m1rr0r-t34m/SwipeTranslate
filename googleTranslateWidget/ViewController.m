@@ -14,10 +14,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //Setting up the window appearance 
-    NSWindow *mainWindow=[[[NSApplication sharedApplication] windows] objectAtIndex:0];
-    [mainWindow setBackgroundColor:[NSColor colorWithCalibratedRed:0.18 green:0.18 blue:0.18 alpha:0.98]];
-    [mainWindow setOpaque:NO];
     
 }
+
+-(void)viewWillAppear{
+    
+    self.view.window.titleVisibility = NSWindowTitleHidden;
+    self.view.window.titlebarAppearsTransparent = YES;
+    self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
+    
+}
+
+
+- (void)setRepresentedObject:(id)representedObject {
+    [super setRepresentedObject:representedObject];
+    
+    // Update the view, if already loaded.
+}
+
 
 @end

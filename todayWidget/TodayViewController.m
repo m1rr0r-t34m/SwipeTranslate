@@ -17,17 +17,20 @@
 
 @implementation TodayViewController
 
-
+-(void)clearAutoLanguage {
+    _autoLanguageTitle=nil;
+    [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+    [self saveAutoLanguage];
+}
 -(void)clearOutput {
 
     [self setOutputValue:@""];
-    _autoLanguageTitle=nil;
-    [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+    [self clearAutoLanguage];
     _clearTextButton.hidden = YES;
 }
 -(void)saveDefaultText {
     [SavedInfo setInputText:[_inputText string]];
-    [SavedInfo setOutputText:[_inputText string]];
+    [SavedInfo setOutputText:[_outputText string]];
 }
 -(void)saveLanguages {
     NSMutableArray *sArray=[[NSMutableArray alloc] initWithCapacity:2];
@@ -51,7 +54,6 @@
 -(void)saveAutoLanguage {
     [SavedInfo setAutoLanguage:_autoLanguageTitle];
 }
-
 
 - (void)awakeFromNib {
     
@@ -82,7 +84,7 @@
             [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)",[SavedInfo autoLanguage]] forSegment:1];
         }
         else
-            [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+            [self clearAutoLanguage];
         
             
         
@@ -183,14 +185,14 @@
     }
     //Clear Auto element title if clicked on different button
     if([sender selectedSegment]!=1)
-        [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+        [self clearAutoLanguage];
     
     //Update languages
     [self updateLanguageModel];
     
     
     //Perform request
-    if(![[[_inputText textStorage] string] isEqualToString:@""])
+    if(![_inputText isEmpty])
         [self performGoogleRequest];
     
     //Save new selection to defaults
@@ -249,43 +251,38 @@
 
 - (IBAction)swapButton: (id)sender {
     
-    //Swap languages if source language is not Auto
     if(![_sLanguage isEqualToString:@"Auto"]) {
-        //Swap source language and target language buttons values
-            [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
-            [_targetSegmentedButton tryToPushNewTargetLanguage:_sLanguage];
+
+        [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
+        [_targetSegmentedButton tryToPushNewTargetLanguage:_sLanguage];
         
-        ////Update languages and perform request
         [self updateLanguageModel];
 
-        
-        if(![[[_inputText textStorage] string] isEqualToString:@""])
+        if(![_inputText isEmpty])
             [self performGoogleRequest];
     }
-    //Swap if Auto
-    else
-    {   if(![[_sourceSegmentedButton labelForSegment:1] isEqualToString:@"Ⓐ Detect"]) {
-            if(_autoLanguageTitle) {
-                [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
-                [_targetSegmentedButton tryToPushNewTargetLanguage:_autoLanguageTitle];
-                [self updateLanguageModel];
-                [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-            }
+    else if(_autoLanguageTitle)
+    {
+        [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
+        [_targetSegmentedButton tryToPushNewTargetLanguage:_autoLanguageTitle];
         
-        }
+        [self updateLanguageModel];
+        [self clearAutoLanguage];
+        
+        if(![_inputText isEmpty])
+            [self performGoogleRequest];
         
     }
+    
+    [self saveLanguages];
+    [self saveChosenLanguages];
 }
 
 - (IBAction)clearText:(id)sender {
     [_inputText setString:@""];
-    [_outputText setString:@""];
-    _clearTextButton.hidden = YES;
-    [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
-
+    [self clearOutput];
     [self saveDefaultText];
 }
-
 
 - (void)updateLanguageModel {
     if ([_sourceSegmentedButton selectedSegment] == 1)
@@ -306,10 +303,7 @@
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
         if (!error)
-        {
             [self receivedResponseFromRequest:receivedData];
-            
-        }
     }];
 
 }
@@ -322,58 +316,36 @@
 }
 
 - (void)receivedResponseFromRequest:(NSData *)data {
-    //Convert received data to NSString using NSUTF8StringEncoding
-    NSString *strData = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+
+    NSString *output;
     
-    //Retrieve language from Auto
-    if([_sLanguage isEqualToString:@"Auto"]){
+    if([_sLanguage isEqualToString:@"Auto"]) {
         _autoLanguageCode = [NSString new];
         _autoLanguageTitle = [NSString new];
-        _autoLanguageCode = [strData parseAutoForLanguage];
-        _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];;
         
-        //Update detected language for Auto section
-        if([_sourceSegmentedButton selectedSegment]==1) {
-            if(_autoLanguageTitle) {
-                runOnMainQueueWithoutDeadlocking(^{
-                    [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
-                });
-                [self saveAutoLanguage];
-            }
+        _autoLanguageCode = [Parser ParseAutoCode:data];
+        _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];
+        if(_autoLanguageTitle) {
+            runOnMainQueueWithoutDeadlocking(^{
+                [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
+            });
             
         }
         
-        
-        strData=[strData parseFirstDiveForAuto];
+        output=[Parser ParseAuto:data];
     }
     else
-        strData=[strData parseFirstDive];
-    NSInteger numberOfLines=[strData numberOfLines];
-    NSString *outputString=[[NSString alloc] init];
+        output=[Parser ParseGeneral:data];
     
     
-    while(numberOfLines){
-        NSString *strLine=[[NSString alloc]init];
-        strLine=[strData parseSecondDive];
-        if([strLine length]!=[strData length])
-            strData=[strData substringWithRange:NSMakeRange([strLine length]+1, [strData length]-[strLine length]-1)];
-        strLine=[strLine parseThirdDive];
-        
-        outputString =[outputString stringByAppendingString:strLine];
-        numberOfLines--;
-    }
-    
-    //Make end of line siymbols visible by NSTextView
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\n" withString:@"\n"];
-    outputString=[outputString stringByReplacingOccurrencesOfString:@"\\r" withString:@"\r"];
-    
-    //Write translated text to the output
-    [self setOutputValue:outputString];
-    
-    //Update default outputText value
-    if ([[_outputText textStorage] string]) {
+    [self setOutputValue:output];
+    runOnMainQueueWithoutDeadlocking(^{
         [self saveDefaultText];
-    }
+        [self saveAutoLanguage];
+    });
+
+    
+  
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {

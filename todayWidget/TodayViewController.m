@@ -59,8 +59,7 @@
     
     [super awakeFromNib];
     
-    if(![SavedInfo isEmpty]){
-        
+    if([SavedInfo hasLanguages]) {
         //Update labels for segmented buttons
         for (int i = 2; i < 4; i++) {
             [_sourceSegmentedButton setLabel:[[SavedInfo sourceLanguages] objectAtIndex:i-2] forSegment:i];
@@ -69,28 +68,30 @@
         for (int i = 1; i < 4; i++) {
             [_targetSegmentedButton setLabel:[[SavedInfo targetLanguages] objectAtIndex:i-1] forSegment:i];
         }
-        
+    }
+    if([SavedInfo hasChosenLanguages]) {
         //Update selection of segmented buttons
         [_sourceSegmentedButton setSelectedSegment:[SavedInfo sourceSelection]];
         [_targetSegmentedButton setSelectedSegment:[SavedInfo targetSelection]];
+    }
         
-        
+    if([SavedInfo hasDefaultText]) {
         //Update input and output text values
         [_inputText setString:[SavedInfo inputText]];
         [_outputText setString:[SavedInfo outputText]];
-        
+    }
+    if([SavedInfo hasAutoLanguage]) {
         //Update Auto language
         if([_sourceSegmentedButton selectedSegment]==1&&[SavedInfo autoLanguage]) {
             [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)",[SavedInfo autoLanguage]] forSegment:1];
         }
         else
             [self clearAutoLanguage];
-        
-        
-        
-        
-        
     }
+    else
+        [self clearAutoLanguage];
+    
+    
     
     //Set input and output text view margins
     [_inputText setTextContainerInset:NSMakeSize(10.0, 0.0)];

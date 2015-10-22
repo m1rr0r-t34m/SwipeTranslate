@@ -9,10 +9,26 @@
 #import "SavedInfo.h"
 
 @implementation SavedInfo
-+(BOOL)isEmpty {
-    if([[self standardUserDefaults]objectForKey:@"sourceDefault"])
-        return NO;
-    return YES;
++(BOOL)hasLanguages {
+    if([[self standardUserDefaults]objectForKey:@"sourceDefault"]&&[[self standardUserDefaults]objectForKey:@"targetDefault"])
+        return YES;
+    return NO;
+}
+
++(BOOL)hasChosenLanguages {
+    if([[self standardUserDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self standardUserDefaults] objectForKey:@"targetDefaultSelection"])
+        return YES;
+    return NO;
+}
++(BOOL)hasDefaultText {
+    if([[self standardUserDefaults]objectForKey:@"defaultInput"]&&[[self standardUserDefaults]objectForKey:@"defaultOutput"])
+        return YES;
+    return NO;
+}
++(BOOL)hasAutoLanguage {
+    if([[self standardUserDefaults]objectForKey:@"autoLanguage"])
+        return YES;
+    return NO;
 }
 
 +(NSString *)inputText {

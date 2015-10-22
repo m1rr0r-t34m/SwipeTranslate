@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface SavedInfo : NSUserDefaults
-+(BOOL)isEmpty;
++(BOOL)hasLanguages;
++(BOOL)hasChosenLanguages;
++(BOOL)hasDefaultText;
++(BOOL)hasAutoLanguage;
+
+
 +(NSString *)inputText;
 +(NSString *)outputText;
 +(NSArray *)sourceLanguages;

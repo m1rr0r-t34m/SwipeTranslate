@@ -1,6 +1,6 @@
 //
 //  GoogleRequest.m
-//  
+//
 //
 //  Created by Mark Vasiv on 27/08/15.
 //
@@ -10,7 +10,10 @@
 
 @implementation RequestHandler
 
-+(NSURLRequest *)getRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText {
+-(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText sender:(id)sender {
+    
+    returnView=sender;
+    
     //Get keys for source language and target language
     NSString *sourceLanguage=[[NSArray getKeysArray] objectAtIndex:[[NSArray getValuesArray:YES] indexOfObject:sLang]];
     NSString *targetLanguage=[[NSArray getKeysArray] objectAtIndex:[[NSArray getValuesArray:YES] indexOfObject:tLang]];
@@ -26,10 +29,45 @@
     else
         urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@&options=1",translateKey, escapedInput, targetLanguage ];
     
-
+    
     NSURL *url=[NSURL URLWithString:urlString];
-    return [NSURLRequest requestWithURL:url];
+    [self performRequestWithURL:url];
 }
+-(void)performRequestWithURL:(NSURL *)url {
+    NSURLSessionConfiguration *config=[NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session=[NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url];
+    
+    
+    [dataTask resume];
+}
+
+
+
+
+-(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+   didReceiveData:(NSData *)data {
+    
+    NSString *lang=[Parser AutoLanguage:data];
+    NSString *text=[Parser Text:data];
+    
+    NSMutableArray *array=[NSMutableArray new];
+    [array addObject:lang];
+    [array addObject:text];
+    
+    [returnView performSelectorOnMainThread:@selector(processReceivedData:) withObject:array waitUntilDone:NO];
+    
+}
+
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+didCompleteWithError:(NSError *)error {
+    if (error) {
+        NSLog(@"%@",error);
+    }
+}
+
+
 @end
-
-

@@ -23,8 +23,8 @@
     [self saveAutoLanguage];
 }
 -(void)clearOutput {
-
-    [self setOutputValue:@""];
+    
+    [_outputText setString:@""];
     [self clearAutoLanguage];
     _clearTextButton.hidden = YES;
 }
@@ -71,13 +71,13 @@
         }
         
         //Update selection of segmented buttons
-            [_sourceSegmentedButton setSelectedSegment:[SavedInfo sourceSelection]];
-            [_targetSegmentedButton setSelectedSegment:[SavedInfo targetSelection]];
+        [_sourceSegmentedButton setSelectedSegment:[SavedInfo sourceSelection]];
+        [_targetSegmentedButton setSelectedSegment:[SavedInfo targetSelection]];
         
         
         //Update input and output text values
-            [_inputText setString:[SavedInfo inputText]];
-            [_outputText setString:[SavedInfo outputText]];
+        [_inputText setString:[SavedInfo inputText]];
+        [_outputText setString:[SavedInfo outputText]];
         
         //Update Auto language
         if([_sourceSegmentedButton selectedSegment]==1&&[SavedInfo autoLanguage]) {
@@ -86,10 +86,10 @@
         else
             [self clearAutoLanguage];
         
-            
         
-
-
+        
+        
+        
     }
     
     //Set input and output text view margins
@@ -112,7 +112,7 @@
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetTabDropDownClick:"andSender:self];
     
     
-   
+    
     //Update clear button dislaying
     if ([[_inputText string]  isEqual: @""])
         _clearTextButton.hidden = YES;
@@ -125,13 +125,13 @@
 }
 
 - (void)viewWillAppear {
-   //set this view controller delegate for selectors windowDidResignKey and windowDidMove
+    //set this view controller delegate for selectors windowDidResignKey and windowDidMove
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidResignKey:) name:NSWindowDidResignKeyNotification object:self.view.window];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowDidMove:) name:NSWindowDidMoveNotification object:self.view.window];
 }
 
 - (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)windowDidMove:(NSNotification *)notification {
@@ -153,7 +153,7 @@
 }
 
 - (void)textDidChange:(NSNotification *)notification{
-
+    
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty)) {
         _clearTextButton.hidden=NO;
         [self performGoogleRequest];
@@ -195,8 +195,8 @@
         [self performGoogleRequest];
     
     //Save new selection to defaults
-     [self saveChosenLanguages];
-
+    [self saveChosenLanguages];
+    
 }
 
 - (IBAction)targetTabClick:(id)sender {
@@ -225,7 +225,7 @@
 }
 
 - (void)sourceTabDropDownClick:(id)sender {
-
+    
     //Push clicked menu element language to the button
     [_sourceSegmentedButton tryToPushNewSourceLanguage:[sender title]];
     
@@ -240,7 +240,7 @@
     
     //Push clicked menu element language to the button
     [_targetSegmentedButton tryToPushNewTargetLanguage:[sender title]];
-
+    
     [self saveLanguages];
     
     
@@ -251,12 +251,12 @@
 - (IBAction)swapButton: (id)sender {
     
     if(![_sLanguage isEqualToString:@"Auto"]) {
-
+        
         [_sourceSegmentedButton tryToPushNewSourceLanguage:_tLanguage];
         [_targetSegmentedButton tryToPushNewTargetLanguage:_sLanguage];
         
         [self updateLanguageModel];
-
+        
         if(![_inputText isEmpty])
             [self performGoogleRequest];
     }
@@ -295,57 +295,31 @@
 }
 
 
+
 - (void)performGoogleRequest{
-    
-    
-    NSURLRequest *request=[RequestHandler getRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[[_inputText textStorage] string]];
-    
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *receivedData, NSError *error) {
-        if (!error)
-            [self receivedResponseFromRequest:receivedData];
-    }];
-
+    RequestHandler *handler = [RequestHandler new];
+    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]sender:self];
 }
 
-- (void)setOutputValue:(NSString *)value{
-    runOnMainQueueWithoutDeadlocking(^{
-        [_outputText setString:value];
-   });
-   
-}
-
-- (void)receivedResponseFromRequest:(NSData *)data {
-
-    NSString *output;
-    
+-(void)processReceivedData:(NSArray *)array {
     
     if([_sLanguage isEqualToString:@"Auto"]) {
         _autoLanguageCode = [NSString new];
         _autoLanguageTitle = [NSString new];
         
-        _autoLanguageCode = [Parser AutoLanguage:data];
+        _autoLanguageCode = [array objectAtIndex:0];
         _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];
         if(_autoLanguageTitle) {
-            runOnMainQueueWithoutDeadlocking(^{
-                [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
-            });
-            
+            [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
         }
     }
-
-        output=[Parser Text:data];
     
+    [_outputText setString:[array objectAtIndex:1]];
+    [self saveDefaultText];
+    [self saveAutoLanguage];
     
-    [self setOutputValue:output];
-    runOnMainQueueWithoutDeadlocking(^{
-        [self saveDefaultText];
-        [self saveAutoLanguage];
-    });
-
-    
-  
 }
+
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
     // Update your data and prepare for a snapshot. Call completion handler when you are done
@@ -355,23 +329,5 @@
     
     
 }
-void runOnMainQueueWithoutDeadlocking(void (^block)(void))  //This function will add a command on the main thread to execute instantly
-{
-    if ([NSThread isMainThread])
-    {
-        block();
-    }
-    else
-    {
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
-}
 
 @end
-
-
-
-
-
-
-

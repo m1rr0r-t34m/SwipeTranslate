@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SeparatedButton.h"
-#import "Parser.h"
 #import "LanguagesStorage.h"
 #import "PopupMenu.h"
 #import "RequestHandler.h"
@@ -17,9 +16,7 @@
 #import "SavedInfo.h"
 
 
-@interface TodayViewController : NSViewController {
-}
-
+@interface TodayViewController : NSViewController
 //Outlets from view
 @property (strong) IBOutlet NSView *widgetMainView;
 
@@ -56,12 +53,6 @@
 //Methods for managing data
 -(void)updateLanguageModel;
 -(void)performGoogleRequest;
--(void)setOutputValue:(NSString *)value;
-- (void)receivedResponseFromRequest:(NSData *)data;
+-(void)processReceivedData:(NSArray *)array;
 
 @end
-
-
-
-
-

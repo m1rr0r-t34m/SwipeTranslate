@@ -131,7 +131,7 @@
 - (void)textDidChange:(NSNotification *)notification{
     
     //If empty input string output nothing, set detected language to nil and hide clear button
-    if([[[_inputText textStorage]string]isEqualToString:@""]) {
+    if([_inputText isEmpty]) {
         [self setOutputValue:@""];
         _autoLanguageTitle=nil;
         [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
@@ -144,7 +144,7 @@
         _clearTextButton.hidden = NO;
         
         //If whitespace input string output nothing
-        if([[[_inputText textStorage] string] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length == 0){
+        if([_inputText isWhiteSpace]){
             _autoLanguageTitle=nil;
             [self setOutputValue:@""];
             [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];

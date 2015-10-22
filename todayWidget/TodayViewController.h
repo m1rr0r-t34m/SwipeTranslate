@@ -13,6 +13,7 @@
 #import "PopupMenu.h"
 #import "RequestHandler.h"
 #import "WidgetView.h"
+#import "ValidateTextView.h"
 
 
 @interface TodayViewController : NSViewController

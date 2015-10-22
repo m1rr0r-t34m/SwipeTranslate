@@ -100,20 +100,71 @@
                                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     <font key="titleFont" metaFont="system"/>
                                                                 </box>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7n-26-io6">
+                                                                    <rect key="frame" x="3" y="43" width="37" height="22"/>
+                                                                    <animations/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="From:" id="8Xy-hL-mwb">
+                                                                        <font key="font" metaFont="systemThin" size="13"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2k8-TB-stZ">
+                                                                    <rect key="frame" x="3" y="9" width="37" height="17"/>
+                                                                    <animations/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="To:" id="d7v-8D-QmT">
+                                                                        <font key="font" metaFont="systemThin" size="13"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lEK-Zl-gCu">
+                                                                    <rect key="frame" x="217" y="20" width="31" height="29"/>
+                                                                    <animations/>
+                                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonMainIcon" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="FMr-OU-OPI">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="swapButton:" target="FUU-Jd-GNr" id="57b-KZ-538"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="avk-8t-sB3" userLabel="SourceLanguage">
+                                                                    <rect key="frame" x="44" y="43" width="162" height="22"/>
+                                                                    <animations/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="English" id="qeh-lH-SCQ">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QpV-fF-thB" userLabel="TargetLanguage">
+                                                                    <rect key="frame" x="50" y="0.0" width="150" height="26"/>
+                                                                    <animations/>
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Russian" id="yy9-9L-Da3">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
                                                             </subviews>
                                                             <animations/>
                                                         </view>
                                                         <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <font key="titleFont" metaFont="smallSystem"/>
                                                     </box>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ja-YT-XyO">
                                                         <rect key="frame" x="138" y="411" width="137" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Auto" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wcY-jK-zda">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="enableAutoLanguage:" target="FUU-Jd-GNr" id="fMK-cs-jVQ"/>
+                                                        </connections>
                                                     </button>
                                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYc-lK-O1m">
                                                         <rect key="frame" x="24" y="20" width="240" height="382"/>
@@ -121,7 +172,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="382"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="LSR-PO-r5M">
+                                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" id="LSR-PO-r5M">
                                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="382"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <animations/>
@@ -164,9 +215,12 @@
                                                         <rect key="frame" x="14" y="411" width="137" height="32"/>
                                                         <animations/>
                                                         <buttonCell key="cell" type="push" title="Live Translate" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="j6o-yc-jvO">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="enableLiveTranslate:" target="FUU-Jd-GNr" id="EeR-Gp-gm7"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <animations/>
@@ -190,12 +244,21 @@
                         <animations/>
                     </customView>
                     <connections>
+                        <outlet property="arrayController" destination="HVa-vT-N7V" id="Cma-6Y-SeO"/>
+                        <outlet property="autoLanguageButton" destination="1Ja-YT-XyO" id="zDM-20-6QE"/>
+                        <outlet property="languageTable" destination="LSR-PO-r5M" id="BhE-fw-Xk4"/>
                         <outlet property="sideBar" destination="5A4-CU-IRT" id="Pqk-CE-3Si"/>
+                        <outlet property="sourceLanguage" destination="avk-8t-sB3" id="Gy2-Tl-NH7"/>
+                        <outlet property="targetLanguage" destination="QpV-fF-thB" id="Uxd-eB-Boz"/>
                     </connections>
                 </viewController>
                 <customObject id="BMx-uY-Hdg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController id="HVa-vT-N7V"/>
             </objects>
-            <point key="canvasLocation" x="75" y="1065.5"/>
+            <point key="canvasLocation" x="65" y="921.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="SwapButtonMainIcon" width="256" height="256"/>
+    </resources>
 </document>

@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //Setting up the window appearance 
+    [_arrayController addObject:@[@"English", @"Russian", @"Finnish", @"French", @"Latin"]];
     
 }
 
@@ -33,4 +33,25 @@
 }
 
 
+
+
+- (IBAction)enableLiveTranslate:(id)sender {
+}
+
+- (IBAction)enableAutoLanguage:(id)sender {
+    
+    if ([_autoLanguageButton state]) {
+        _sLanguage = @"auto";
+    }
+        
+    
+}
+
+//Swap button implementation
+- (IBAction)swapButton:(id)sender {
+    NSString *swapPlace = [NSString new];
+    swapPlace = [_sourceLanguage stringValue];
+    [_sourceLanguage setStringValue:[_targetLanguage stringValue]];
+    [_targetLanguage setStringValue: swapPlace];
+}
 @end

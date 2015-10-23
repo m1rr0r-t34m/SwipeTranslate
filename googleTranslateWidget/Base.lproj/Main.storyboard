@@ -205,7 +205,7 @@
                                                         </clipView>
                                                         <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="wjp-Ao-aj6">
-                                                            <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
+                                                            <rect key="frame" x="0.0" y="-15" width="0.0" height="15"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                         </scroller>
@@ -250,7 +250,6 @@
                     <connections>
                         <outlet property="autoLanguageButton" destination="qKR-c4-ijN" id="K5w-ZH-oF9"/>
                         <outlet property="languageTable" destination="lvs-PT-Tt8" id="L62-oD-Xdb"/>
-                        <outlet property="sideBar" destination="Iu9-mH-NgR" id="Ijh-Rh-JU3"/>
                         <outlet property="sourceLanguage" destination="rcs-7b-EX1" id="G0D-mP-2YC"/>
                         <outlet property="targetLanguage" destination="le2-Vz-NQE" id="laX-6C-AHo"/>
                     </connections>

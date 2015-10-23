@@ -30,12 +30,21 @@
 - (NSCell *)tableView:(NSTableView *)tableView
 dataCellForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row{
-
+    
     NSCell *sourceLanguageHeaderCell = [NSCell new];
+    if (row == 1){
     sourceLanguageHeaderCell.selectable = FALSE;
     sourceLanguageHeaderCell.alignment = NSRightTextAlignment;
     sourceLanguageHeaderCell.stringValue = @"test";
-    return sourceLanguageHeaderCell;
+    }
+    else
+    {
+        sourceLanguageHeaderCell.alignment = NSLeftTextAlignment;
+        sourceLanguageHeaderCell.stringValue = @"test";
+    }
+        
+        return sourceLanguageHeaderCell;
+    
     
 }
 

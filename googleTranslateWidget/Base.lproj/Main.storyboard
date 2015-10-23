@@ -153,19 +153,7 @@
                                                         <animations/>
                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="smallSystem"/>
                                                     </box>
-                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ja-YT-XyO">
-                                                        <rect key="frame" x="138" y="411" width="137" height="32"/>
-                                                        <animations/>
-                                                        <buttonCell key="cell" type="push" title="Auto" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wcY-jK-zda">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="enableAutoLanguage:" target="FUU-Jd-GNr" id="fMK-cs-jVQ"/>
-                                                        </connections>
-                                                    </button>
                                                     <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYc-lK-O1m">
                                                         <rect key="frame" x="24" y="20" width="240" height="382"/>
                                                         <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="NB9-XN-Nys">
@@ -201,25 +189,36 @@
                                                         </clipView>
                                                         <animations/>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="oHY-bF-Bdh">
-                                                            <rect key="frame" x="0.0" y="366" width="240" height="16"/>
+                                                            <rect key="frame" x="0.0" y="-16" width="0.0" height="16"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                         </scroller>
                                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="oPQ-bs-1iD">
-                                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                            <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <animations/>
                                                         </scroller>
                                                     </scrollView>
                                                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kkr-j0-92A">
-                                                        <rect key="frame" x="14" y="411" width="137" height="32"/>
+                                                        <rect key="frame" x="20" y="418" width="124" height="25"/>
                                                         <animations/>
-                                                        <buttonCell key="cell" type="push" title="Live Translate" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="j6o-yc-jvO">
-                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                        <buttonCell key="cell" type="roundTextured" title="Live Translate" bezelStyle="texturedRounded" alignment="center" borderStyle="border" inset="2" id="j6o-yc-jvO">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="enableLiveTranslate:" target="FUU-Jd-GNr" id="EeR-Gp-gm7"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ja-YT-XyO">
+                                                        <rect key="frame" x="145" y="418" width="124" height="25"/>
+                                                        <animations/>
+                                                        <buttonCell key="cell" type="roundTextured" title="Auto" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wcY-jK-zda">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="enableAutoLanguage:" target="FUU-Jd-GNr" id="fMK-cs-jVQ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

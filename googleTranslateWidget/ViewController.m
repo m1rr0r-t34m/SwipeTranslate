@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_arrayController addObject:@[@"English", @"Russian", @"Finnish", @"French", @"Latin"]];
+    [_languageTable setFocusRingType:NSFocusRingTypeNone];
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7520445E1BDAB6DA004DF60F /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7520445D1BDAB6DA004DF60F /* DataSource.m */; settings = {ASSET_TAGS = (); }; };
 		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
@@ -62,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7520445C1BDAB6DA004DF60F /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSource.h; path = ../../../../Desktop/DataSource.h; sourceTree = "<group>"; };
+		7520445D1BDAB6DA004DF60F /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSource.m; path = ../../../../Desktop/DataSource.m; sourceTree = "<group>"; };
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
 		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupMenu.h; sourceTree = "<group>"; };
 		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */,
+				7520445C1BDAB6DA004DF60F /* DataSource.h */,
+				7520445D1BDAB6DA004DF60F /* DataSource.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
 				CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */,
@@ -351,6 +356,7 @@
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
+				7520445E1BDAB6DA004DF60F /* DataSource.m in Sources */,
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
 				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,
 				754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */,

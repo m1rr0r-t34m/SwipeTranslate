@@ -19,7 +19,6 @@
 @property (strong) IBOutlet NSTextField *sourceLanguage;
 @property (strong) IBOutlet NSTextField *targetLanguage;
 @property (strong) IBOutlet NSButton *autoLanguageButton;
-@property (strong) IBOutlet NSArrayController *arrayController;
 @property (strong) IBOutlet NSTableView *languageTable;
 
 //Actions from View

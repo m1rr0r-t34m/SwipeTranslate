@@ -12,4 +12,5 @@
 @interface Parser : NSObject
 +(NSString *)Text:(NSData *)data;
 +(NSString *)AutoLanguage:(NSData *)data;
++(NSDictionary *)dictionary:(NSData *)data;
 @end

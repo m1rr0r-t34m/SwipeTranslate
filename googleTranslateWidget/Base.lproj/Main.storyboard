@@ -129,19 +129,19 @@
                                                                         <action selector="swapButton:" target="hJv-Ja-bsx" id="Dvr-nI-xzG"/>
                                                                     </connections>
                                                                 </button>
-                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DK5-1h-cl2">
-                                                                    <rect key="frame" x="74" y="45" width="137" height="22"/>
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-cN-zNy">
+                                                                    <rect key="frame" x="74" y="8" width="137" height="22"/>
                                                                     <animations/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Hfh-5A-bPT">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Pal-NJ-d6U">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-cN-zNy">
-                                                                    <rect key="frame" x="74" y="8" width="137" height="22"/>
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DK5-1h-cl2">
+                                                                    <rect key="frame" x="74" y="45" width="137" height="22"/>
                                                                     <animations/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Pal-NJ-d6U">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Hfh-5A-bPT">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -174,7 +174,7 @@
                                                                 <view ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x7i-31-vW3">
                                                                     <rect key="frame" x="0.0" y="278" width="248" height="370"/>
                                                                     <subviews>
-                                                                        <scrollView ambiguous="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="P6e-Cg-kxT">
+                                                                        <scrollView ambiguous="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="P6e-Cg-kxT" customClass="InnerScroll">
                                                                             <rect key="frame" x="0.0" y="0.0" width="248" height="157"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="6mv-QM-cED">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="157"/>
@@ -229,7 +229,7 @@
                                                                                 <animations/>
                                                                             </scroller>
                                                                         </scrollView>
-                                                                        <scrollView ambiguous="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-BX-4ew">
+                                                                        <scrollView ambiguous="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-BX-4ew" customClass="InnerScroll">
                                                                             <rect key="frame" x="0.0" y="186" width="248" height="157"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R8x-dy-5vk">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="157"/>
@@ -305,7 +305,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-qO-Wa8">
                                                                             <rect key="frame" x="223" y="161" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="6EE09150-BA8B-4BD0-BD51-65C8B544C137" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="76504CAC-7374-4FA3-B208-AAC9F67E4185" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -316,7 +316,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
                                                                             <rect key="frame" x="223" y="346" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="AE78D2EC-E177-4E90-999F-99B2FCDDAEB8" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="9AD03124-B80C-4ACF-B52C-93C1A8E323ED" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -404,7 +404,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="6EE09150-BA8B-4BD0-BD51-65C8B544C137" width="1" height="1">
+        <image name="76504CAC-7374-4FA3-B208-AAC9F67E4185" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -455,7 +455,7 @@ ALAAswC1ALcAuQC7AMAA1wDZANsJiwmQCZsJpAm3CbsJxgnPCdQJ3AnfCeQJ8wn3Cf4KBgoTChgKGgoc
 CiEKKQosCjEKOQo8Ck4KUQpWAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAClg
 </mutableData>
         </image>
-        <image name="AE78D2EC-E177-4E90-999F-99B2FCDDAEB8" width="1" height="1">
+        <image name="9AD03124-B80C-4ACF-B52C-93C1A8E323ED" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

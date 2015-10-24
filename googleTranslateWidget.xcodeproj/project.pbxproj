@@ -20,6 +20,7 @@
 		CD12BB721BD84AF8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; settings = {ASSET_TAGS = (); }; };
 		CD253CDE1BDABDF000662162 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD253CDD1BDABDF000662162 /* DataSource.m */; settings = {ASSET_TAGS = (); }; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
+		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; settings = {ASSET_TAGS = (); }; };
@@ -79,6 +80,8 @@
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
+		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerScroll.h; sourceTree = "<group>"; };
+		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerScroll.m; sourceTree = "<group>"; };
 		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedInfo.h; sourceTree = "<group>"; };
 		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedInfo.m; sourceTree = "<group>"; };
 		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateTextView.h; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
+				CD6F9F581BDC418F00E4B850 /* InnerScroll.h */,
+				CD6F9F591BDC418F00E4B850 /* InnerScroll.m */,
 				758DDE2D1BDC041800210924 /* LanguageCell.h */,
 				758DDE2E1BDC041800210924 /* LanguageCell.m */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
@@ -368,6 +373,7 @@
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
+				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
 				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
 				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,

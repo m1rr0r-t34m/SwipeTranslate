@@ -7,18 +7,21 @@
 //
 #import <Cocoa/Cocoa.h>
 
-@interface DataSource : NSArrayController{
-    IBOutlet NSTableView* tableView;
+@interface DataSource : NSObject{
+    IBOutlet NSTableView* targetTableView;
+    IBOutlet NSTableView* sourceTableView; 
     NSMutableArray* dataObject;
 }
 
-@property  NSMutableArray* dataObject;
-@property  NSTableView* tableView;
+@property  NSMutableArray* sourceLanguageList;
+@property NSMutableArray* targetLanguageList; 
+//@property  NSTableView* tableView;
 
 -(int)numberOfRowsInTableView:(NSTableView*) tableView;
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex;
-- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
-
+//- (NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
+-(void)pushNewTargetLanguage:(NSString *)language;
+-(void)pushNewSourceLanguage:(NSString *)language;
 
 
 @end

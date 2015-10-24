@@ -11,23 +11,66 @@
 
 @implementation DataSource
 
-@synthesize  dataObject;
-@synthesize tableView;
+@synthesize  sourceLanguageList;
+@synthesize targetLanguageList;
+//@synthesize tableView;
 
+//Data handling methods
 -(void)awakeFromNib{
-    dataObject = [NSMutableArray arrayWithArray:@[@"Finnish", @"English", @"Russian", @"Latin", @"French"]];
-    [tableView reloadData];
+    sourceLanguageList = [NSMutableArray arrayWithArray:@[@"Finnish", @"English", @"Russian", @"French", @"Latin"]];
+    targetLanguageList = [NSMutableArray arrayWithArray:@[@"Finnish", @"English", @"Russian", @"French", @"Latin"]];
+    [sourceTableView reloadData];
+    [targetTableView reloadData];
+}
+-(void)pushNewSourceLanguage:(NSString *)language {
+    BOOL isHighlighted = FALSE;
+    for (int i = 0; i < [sourceLanguageList count]; i++){
+        if ([language isEqualToString:[sourceLanguageList objectAtIndex:i]]){
+            [sourceTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:FALSE];
+            [sourceTableView reloadData];
+            isHighlighted = TRUE;
+        }
+    }
+    if (isHighlighted == FALSE){
+    [sourceLanguageList insertObject:language atIndex:0];
+    [sourceLanguageList removeObjectAtIndex:5];
+    [sourceTableView reloadData];
+    }
+}
+-(void)pushNewTargetLanguage:(NSString *)language {
+    BOOL isHighlighted = FALSE;
+    for (int i = 0; i < [targetLanguageList count]; i++){
+        if ([language isEqualToString:[targetLanguageList objectAtIndex:i]]){
+            [targetTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:i] byExtendingSelection:FALSE];
+            [targetTableView reloadData];
+            isHighlighted = TRUE;
+        }
+    }
+    if (isHighlighted == FALSE){
+    [targetLanguageList insertObject:language atIndex:0];
+    [targetLanguageList removeObjectAtIndex:5];
+    [targetTableView reloadData];
+    }
 }
 
+
+//Table delegate methods
 -(int)numberOfRowsInTableView:(NSTableView *)tableView {
-    return (int)[self.dataObject count];
+    return (int)[self.sourceLanguageList count];
 }
 
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex {
-    return [dataObject objectAtIndex:rowIndex];
+    if (tableView == sourceTableView)
+        return [sourceLanguageList objectAtIndex:rowIndex];
+    else if (tableView == targetTableView)
+        return [targetLanguageList objectAtIndex:rowIndex];
+    else
+        return nil;
 }
 
-- (NSCell *)tableView:(NSTableView *)tableView
+
+
+/*- (NSCell *)tableView:(NSTableView *)tableView
 dataCellForTableColumn:(NSTableColumn *)tableColumn
                   row:(NSInteger)row{
     
@@ -46,7 +89,7 @@ dataCellForTableColumn:(NSTableColumn *)tableColumn
         return sourceLanguageHeaderCell;
     
     
-}
+}*/
 
 
 @end

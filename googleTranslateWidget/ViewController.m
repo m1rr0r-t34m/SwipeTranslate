@@ -24,6 +24,8 @@
     [_targetLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_sourceLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_dataHandler setDelegate:self];
+    [_sourceLanguage setDelegate:self];
+    [_targetLanguage setDelegate:self];
   
 }
 
@@ -91,4 +93,53 @@
 - (IBAction)showTargetMenu:(id)sender {
     [NSMenu popUpContextMenu:_targetLanguageMenu withEvent:[NSApp currentEvent] forView:sender];
 }
+
+-(void)controlTextDidChange:(NSNotification *)obj{
+    //This should be an array of all available languages
+    NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
+    NSMutableArray *arrayOfPossibleOutputs=[NSMutableArray new];
+    
+    NSString *inputString=[NSString new];
+    if([obj object]==_sourceLanguage)
+        inputString=[_sourceLanguage stringValue];
+    
+    else if([obj object]==_sourceLanguage)
+        inputString=[_targetLanguage stringValue];
+    
+
+    if(inputString) {
+        
+        NSString *pattern=[NSString stringWithFormat:@"^%@.*",inputString];
+        NSError *error;
+        NSRegularExpression *regex = [NSRegularExpression
+                                      regularExpressionWithPattern:pattern
+                                      options:NSRegularExpressionCaseInsensitive
+                                      error:&error];
+        
+        
+        for(int i=0;i<arrayOfLanguages.count;i++){
+            
+            NSString *string=[arrayOfLanguages objectAtIndex:i];
+                
+            NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
+            
+            if (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+                NSString *substringForFirstMatch = [string substringWithRange:rangeOfFirstMatch];
+                [arrayOfPossibleOutputs addObject:string];
+            }
+
+            
+        }
+    
+    }
+    
+    if([arrayOfPossibleOutputs count]==0)
+        NSLog(@"Not found");
+    else
+        NSLog(@"%@",arrayOfPossibleOutputs);
+    
+    
+    
+}
+
 @end

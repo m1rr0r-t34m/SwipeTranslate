@@ -15,7 +15,7 @@
 #import "DataSource.h"
 #import "DataSourceDelegate.h"
 
-@interface ViewController : NSViewController<DataSourceDelegate>
+@interface ViewController : NSViewController<DataSourceDelegate, NSTextFieldDelegate>
 
 //Outlets from View
 @property (strong) IBOutlet NSTextField *sourceLanguage;

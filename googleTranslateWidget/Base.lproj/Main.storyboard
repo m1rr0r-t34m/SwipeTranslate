@@ -129,22 +129,22 @@
                                                                         <action selector="swapButton:" target="hJv-Ja-bsx" id="Dvr-nI-xzG"/>
                                                                     </connections>
                                                                 </button>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rcs-7b-EX1" userLabel="SourceLanguage">
-                                                                    <rect key="frame" x="68" y="44" width="162" height="22"/>
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DK5-1h-cl2">
+                                                                    <rect key="frame" x="74" y="45" width="137" height="22"/>
                                                                     <animations/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="English" id="aJO-63-FRe">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Hfh-5A-bPT">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="le2-Vz-NQE" userLabel="TargetLanguage">
-                                                                    <rect key="frame" x="74" y="1" width="150" height="26"/>
+                                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcx-cN-zNy">
+                                                                    <rect key="frame" x="74" y="8" width="137" height="22"/>
                                                                     <animations/>
-                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Russian" id="U9J-yz-rwO">
+                                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" id="Pal-NJ-d6U">
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
@@ -305,7 +305,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-qO-Wa8">
                                                                             <rect key="frame" x="223" y="161" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="C12F8A9B-CA01-490C-AB70-B6CD93385DDF" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="6EE09150-BA8B-4BD0-BD51-65C8B544C137" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -316,7 +316,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
                                                                             <rect key="frame" x="223" y="346" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="FF0BBC45-8FB9-47C4-90F8-C1B2C98DCA9A" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="AE78D2EC-E177-4E90-999F-99B2FCDDAEB8" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -386,9 +386,9 @@
                     <connections>
                         <outlet property="autoLanguageButton" destination="qKR-c4-ijN" id="K5w-ZH-oF9"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
-                        <outlet property="sourceLanguage" destination="rcs-7b-EX1" id="G0D-mP-2YC"/>
+                        <outlet property="sourceLanguage" destination="DK5-1h-cl2" id="d4J-FY-Dc3"/>
                         <outlet property="sourceLanguageTable" destination="upD-JQ-YEe" id="uEc-ij-Lf2"/>
-                        <outlet property="targetLanguage" destination="le2-Vz-NQE" id="laX-6C-AHo"/>
+                        <outlet property="targetLanguage" destination="bcx-cN-zNy" id="Q3h-zV-6IA"/>
                         <outlet property="targetLanguageTable" destination="rdF-mn-PCf" id="26R-x0-Mm4"/>
                     </connections>
                 </viewController>
@@ -404,7 +404,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C12F8A9B-CA01-490C-AB70-B6CD93385DDF" width="1" height="1">
+        <image name="6EE09150-BA8B-4BD0-BD51-65C8B544C137" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -455,7 +455,7 @@ ALAAswC1ALcAuQC7AMAA1wDZANsJiwmQCZsJpAm3CbsJxgnPCdQJ3AnfCeQJ8wn3Cf4KBgoTChgKGgoc
 CiEKKQosCjEKOQo8Ck4KUQpWAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAClg
 </mutableData>
         </image>
-        <image name="FF0BBC45-8FB9-47C4-90F8-C1B2C98DCA9A" width="1" height="1">
+        <image name="AE78D2EC-E177-4E90-999F-99B2FCDDAEB8" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

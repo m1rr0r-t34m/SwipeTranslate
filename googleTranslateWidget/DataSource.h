@@ -6,6 +6,7 @@
 //  Copyright © 2015 Mark Vasiv. All rights reserved.
 //
 #import <Cocoa/Cocoa.h>
+#import "DataSourceDelegate.h"
 
 @interface DataSource : NSObject{
     IBOutlet NSTableView* targetTableView;
@@ -13,6 +14,7 @@
     NSMutableArray* dataObject;
 }
 
+@property(readwrite, assign) id<DataSourceDelegate>delegate;
 @property  NSMutableArray* sourceLanguageList;
 @property NSMutableArray* targetLanguageList; 
 //@property  NSTableView* tableView;

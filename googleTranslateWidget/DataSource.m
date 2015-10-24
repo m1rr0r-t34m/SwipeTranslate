@@ -22,6 +22,7 @@
     [sourceTableView reloadData];
     [targetTableView reloadData];
 }
+//Pushing new languages
 -(void)pushNewSourceLanguage:(NSString *)language {
     BOOL isHighlighted = FALSE;
     for (int i = 0; i < [sourceLanguageList count]; i++){
@@ -70,7 +71,14 @@
         return nil;
 }
 
-
+- (void)tableViewSelectionDidChange:(NSNotification *)aNotification {
+    int index=(int)[[aNotification object] selectedRow];
+    
+    if([aNotification object]==sourceTableView)
+        [_delegate sourceLanguageTableSelectionDidChange:[sourceLanguageList objectAtIndex:index]];
+    else if([aNotification object]==targetTableView)
+        [_delegate targetLanguageTableSelectionDidChange:[targetLanguageList objectAtIndex:index]];
+}
 
 /*- (NSCell *)tableView:(NSTableView *)tableView
 dataCellForTableColumn:(NSTableColumn *)tableColumn

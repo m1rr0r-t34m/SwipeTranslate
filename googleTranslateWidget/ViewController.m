@@ -14,19 +14,21 @@
 
 -(void)awakeFromNib{
     [super awakeFromNib];
+    //Create language menus
     _sourceLanguageMenu = [PopupMenu createMenuWithAction:@"sourceMenuClick:" andSender:self];
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetMenuClick:" andSender:self];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Remove focus rings from table views
     [_targetLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_sourceLanguageTable setFocusRingType:NSFocusRingTypeNone];
-   
+    [_dataHandler setDelegate:self];
   
 }
 
 -(void)viewWillAppear{
-    
+    //Make window view without a toolbar and with controls inside
     self.view.window.titleVisibility = NSWindowTitleHidden;
     self.view.window.titlebarAppearsTransparent = YES;
     self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
@@ -57,10 +59,11 @@
 
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
-    NSString *swapPlace = [NSString new];
-    swapPlace = [_sourceLanguage stringValue];
-    [_sourceLanguage setStringValue:[_targetLanguage stringValue]];
-    [_targetLanguage setStringValue: swapPlace];
+   //Swap selected table cells
+    NSInteger selectedSourceRow = [_sourceLanguageTable selectedRow];
+    NSInteger selectedTargetRow = [_targetLanguageTable selectedRow];
+    [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedTargetRow] byExtendingSelection:FALSE];
+    [_targetLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedSourceRow] byExtendingSelection:FALSE];
 }
 
 //Updating tables with new entries
@@ -69,6 +72,15 @@
 }
 -(void)targetMenuClick:(id)sender{
     [_dataHandler pushNewTargetLanguage:[sender title]];
+}
+
+//Responding to a language table selection
+-(void)sourceLanguageTableSelectionDidChange:(NSString *)index {
+    [_sourceLanguage setStringValue:index];
+    
+}
+-(void)targetLanguageTableSelectionDidChange:(NSString *)index {
+    [_targetLanguage setStringValue:index];
 }
 
 //Creating menu at button

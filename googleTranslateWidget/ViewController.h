@@ -13,8 +13,9 @@
 #import "PopupMenu.h"
 #import "RequestHandler.h"
 #import "DataSource.h"
+#import "DataSourceDelegate.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController<DataSourceDelegate>
 
 //Outlets from View
 @property (strong) IBOutlet NSTextField *sourceLanguage;

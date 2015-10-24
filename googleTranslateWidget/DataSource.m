@@ -34,6 +34,7 @@
     if (isHighlighted == FALSE){
     [sourceLanguageList insertObject:language atIndex:0];
     [sourceLanguageList removeObjectAtIndex:5];
+    [sourceTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
     [sourceTableView reloadData];
     }
 }
@@ -49,6 +50,7 @@
     if (isHighlighted == FALSE){
     [targetLanguageList insertObject:language atIndex:0];
     [targetLanguageList removeObjectAtIndex:5];
+    [targetTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
     [targetTableView reloadData];
     }
 }

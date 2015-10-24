@@ -103,7 +103,7 @@
     if([obj object]==_sourceLanguage)
         inputString=[_sourceLanguage stringValue];
     
-    else if([obj object]==_sourceLanguage)
+    else if([obj object]==_targetLanguage)
         inputString=[_targetLanguage stringValue];
     
 

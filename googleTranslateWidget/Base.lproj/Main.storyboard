@@ -180,7 +180,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="157"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
-                                                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" id="rdF-mn-PCf">
+                                                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" id="rdF-mn-PCf" customClass="LanguageTable">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="246" height="30"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <animations/>
@@ -195,7 +195,7 @@
                                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                                 </tableHeaderCell>
-                                                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="Text Cell" id="989-xe-B7D" customClass="LanguageCell">
+                                                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="Text Cell" id="989-xe-B7D">
                                                                                                     <font key="font" metaFont="system"/>
                                                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -235,7 +235,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="157"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
-                                                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" id="upD-JQ-YEe">
+                                                                                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" id="upD-JQ-YEe" customClass="LanguageTable">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="248" height="30"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <animations/>
@@ -250,7 +250,7 @@
                                                                                                     <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                                 </tableHeaderCell>
-                                                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="Text Cell" id="zH8-e2-dGF" customClass="LanguageCell">
+                                                                                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" truncatesLastVisibleLine="YES" title="Text Cell" id="zH8-e2-dGF">
                                                                                                     <font key="font" metaFont="system"/>
                                                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -305,7 +305,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-qO-Wa8">
                                                                             <rect key="frame" x="223" y="161" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="76504CAC-7374-4FA3-B208-AAC9F67E4185" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="0FFE2E34-497E-42DD-97BD-289E62D127B4" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="i7O-cy-xe7">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -316,7 +316,7 @@
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
                                                                             <rect key="frame" x="223" y="346" width="29" height="26"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="9AD03124-B80C-4ACF-B52C-93C1A8E323ED" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
+                                                                            <buttonCell key="cell" type="disclosure" bezelStyle="roundedDisclosure" image="CA40700F-B050-4935-899D-1D3BF754D9CF" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7f-fE-swx">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
@@ -404,7 +404,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="76504CAC-7374-4FA3-B208-AAC9F67E4185" width="1" height="1">
+        <image name="0FFE2E34-497E-42DD-97BD-289E62D127B4" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -455,7 +455,7 @@ ALAAswC1ALcAuQC7AMAA1wDZANsJiwmQCZsJpAm3CbsJxgnPCdQJ3AnfCeQJ8wn3Cf4KBgoTChgKGgoc
 CiEKKQosCjEKOQo8Ck4KUQpWAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAClg
 </mutableData>
         </image>
-        <image name="9AD03124-B80C-4ACF-B52C-93C1A8E323ED" width="1" height="1">
+        <image name="CA40700F-B050-4935-899D-1D3BF754D9CF" width="1" height="1">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

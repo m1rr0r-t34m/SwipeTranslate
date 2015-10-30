@@ -26,6 +26,10 @@
     [_dataHandler setDelegate:self];
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
+    
+    [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
+    [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
+    
   
 }
 

@@ -21,6 +21,8 @@
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; settings = {ASSET_TAGS = (); }; };
 		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; settings = {ASSET_TAGS = (); }; };
+		CD6F9F631BE519E400E4B850 /* ValidateString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F621BE519E400E4B850 /* ValidateString.m */; settings = {ASSET_TAGS = (); }; };
+		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; settings = {ASSET_TAGS = (); }; };
 		CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; settings = {ASSET_TAGS = (); }; };
@@ -30,6 +32,7 @@
 		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */; settings = {ASSET_TAGS = (); }; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
@@ -82,6 +85,10 @@
 		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerScroll.m; sourceTree = "<group>"; };
 		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageTable.h; path = ../LanguageTable.h; sourceTree = "<group>"; };
 		CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageTable.m; path = ../LanguageTable.m; sourceTree = "<group>"; };
+		CD6F9F611BE519E400E4B850 /* ValidateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateString.h; sourceTree = "<group>"; };
+		CD6F9F621BE519E400E4B850 /* ValidateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateString.m; sourceTree = "<group>"; };
+		CD6F9F641BE5294900E4B850 /* InputScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputScroll.h; sourceTree = "<group>"; };
+		CD6F9F651BE5294900E4B850 /* InputScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputScroll.m; sourceTree = "<group>"; };
 		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedInfo.h; sourceTree = "<group>"; };
 		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedInfo.m; sourceTree = "<group>"; };
 		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateTextView.h; sourceTree = "<group>"; };
@@ -94,6 +101,8 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
+		CD9DA1491BE564CC00B1D0CA /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextView.h; sourceTree = "<group>"; };
+		CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
 		CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
@@ -208,8 +217,14 @@
 				CD253CDD1BDABDF000662162 /* DataSource.m */,
 				758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */,
 				758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */,
+				CD6F9F611BE519E400E4B850 /* ValidateString.h */,
+				CD6F9F621BE519E400E4B850 /* ValidateString.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
+				CD9DA1491BE564CC00B1D0CA /* InputTextView.h */,
+				CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */,
+				CD6F9F641BE5294900E4B850 /* InputScroll.h */,
+				CD6F9F651BE5294900E4B850 /* InputScroll.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CD6F9F581BDC418F00E4B850 /* InnerScroll.h */,
 				CD6F9F591BDC418F00E4B850 /* InnerScroll.m */,
@@ -372,18 +387,21 @@
 			files = (
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
+				CD6F9F631BE519E400E4B850 /* ValidateString.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
 				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
 				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
 				CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */,
 				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,
+				CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */,
 				754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
 				758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
+				CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */,
 				CD12BB721BD84AF8003ED768 /* WidgetView.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
 			);

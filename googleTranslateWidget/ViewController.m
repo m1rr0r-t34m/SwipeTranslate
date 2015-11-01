@@ -30,7 +30,8 @@
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
-  
+    [_inputText setDelegate:self];
+    [_inputText setVerticallyResizable:NO];
 }
 
 -(void)viewWillAppear{
@@ -100,7 +101,7 @@
 
 -(void)controlTextDidChange:(NSNotification *)obj{
     //This should be an array of all available languages
-    NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
+   /* NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
     NSMutableArray *arrayOfPossibleOutputs=[NSMutableArray new];
     
     NSString *inputString=[NSString new];
@@ -140,10 +141,33 @@
     if([arrayOfPossibleOutputs count]==0)
         NSLog(@"Not found");
     else
-        NSLog(@"%@",arrayOfPossibleOutputs);
+        NSLog(@"%@",arrayOfPossibleOutputs);*/
+    
+   
     
     
     
+}
+
+-(void)textDidChange:(NSNotification *)notification {
+    //Check if theres more than 1 line in inputText
+    NSLayoutManager *layoutManager = [_inputText layoutManager];
+    unsigned long numberOfLines, index, numberOfGlyphs = [layoutManager numberOfGlyphs];
+    NSRange lineRange;
+    for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
+        (void) [layoutManager lineFragmentRectForGlyphAtIndex:index
+                                               effectiveRange:&lineRange];
+        index = NSMaxRange(lineRange);
+    }
+
+
+    
+    if(numberOfLines>1&&!_inputText.open)
+        [_inputText unfold];
+    else if(numberOfLines<2&&_inputText.open)
+        [_inputText fold];
+
+
 }
 
 @end

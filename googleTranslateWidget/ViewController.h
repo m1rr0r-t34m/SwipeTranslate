@@ -14,8 +14,10 @@
 #import "RequestHandler.h"
 #import "DataSource.h"
 #import "DataSourceDelegate.h"
+#import "ValidateString.h"
+#import "InputTextView.h"
 
-@interface ViewController : NSViewController<DataSourceDelegate, NSTextFieldDelegate>
+@interface ViewController : NSViewController<DataSourceDelegate, NSTextFieldDelegate,NSTextViewDelegate>
 
 //Outlets from View
 @property (strong) IBOutlet NSTextField *sourceLanguage;
@@ -24,6 +26,8 @@
 @property (strong) IBOutlet NSTableView *sourceLanguageTable;
 @property (strong) IBOutlet NSTableView *targetLanguageTable;
 @property (strong) IBOutlet DataSource *dataHandler;
+@property (strong) IBOutlet InputTextView *inputText;
+
 
 
 //Actions from View

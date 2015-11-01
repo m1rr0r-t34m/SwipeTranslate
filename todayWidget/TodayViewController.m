@@ -299,7 +299,7 @@
 
 - (void)performGoogleRequest{
     RequestHandler *handler = [RequestHandler new];
-    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]sender:self];
+    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }
 
 -(void)processReceivedData:(NSArray *)array {

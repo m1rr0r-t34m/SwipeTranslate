@@ -77,7 +77,7 @@
 }
 
 
-+(NSDictionary *)dictionary:(NSData *)data {
++(NSDictionary *)Dictionary:(NSData *)data {
     NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     NSArray *values=[dict objectForKey:@"def"];

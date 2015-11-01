@@ -9,10 +9,21 @@
 #import "RequestHandler.h"
 
 @implementation RequestHandler
-
--(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText sender:(id)sender {
++(RequestHandler *)NewDictionaryRequest{
     
-    returnView=sender;
+    RequestHandler *request=[[super alloc] init];
+    [request setRequestType:@"dictionary"];
+    return request;
+}
++(RequestHandler *)NewTranslateRequest{
+    
+    RequestHandler *request=[[super alloc] init];
+    [request setRequestType:@"translate"];
+    return request;
+}
+
+
+-(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText {
     
     //Get keys for source language and target language
     NSString *sourceLanguage=[[NSArray getKeysArray] objectAtIndex:[[NSArray getValuesArray:YES] indexOfObject:sLang]];
@@ -22,12 +33,19 @@
     NSString *escapedInput = [inputText stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];
     
     NSString *translateKey=@"trnsl.1.1.20151022T101327Z.947a48f231e6aa6e.7e71b163761e2e6791c492f9448b63e1c1f27a2e";
+    NSString *dictionaryKey=@"dict.1.1.20151022T180334Z.52a72548fccdbcf3.fe30ded92dd2687f0229f3ebc9709f4e27891329";
     //prepare url
     NSString *urlString;
-    if(![sourceLanguage isEqualToString:@"auto"])
-        urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@-%@&options=1",translateKey, escapedInput,sourceLanguage, targetLanguage ];
-    else
-        urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@&options=1",translateKey, escapedInput, targetLanguage ];
+    
+    if([[self requestType]isEqualToString:@"translate"]) {
+        if(![sourceLanguage isEqualToString:@"auto"])
+            urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@-%@&options=1",translateKey, escapedInput,sourceLanguage, targetLanguage ];
+        else
+            urlString=[NSString stringWithFormat:@"https://translate.yandex.net/api/v1.5/tr.json/translate?key=%@&text=%@&lang=%@&options=1",translateKey, escapedInput, targetLanguage ];
+    }
+    else {
+        urlString=[NSString stringWithFormat:@"https://dictionary.yandex.net/api/v1/dicservice.json/lookup?key=%@&lang=%@-%@&text=%@",dictionaryKey,sourceLanguage, targetLanguage,escapedInput ];
+    }
     
     
     NSURL *url=[NSURL URLWithString:urlString];
@@ -53,11 +71,19 @@
     NSString *lang=[Parser AutoLanguage:data];
     NSString *text=[Parser Text:data];
     
+    
     NSMutableArray *array=[NSMutableArray new];
     [array addObject:lang];
     [array addObject:text];
-    
-    [returnView performSelectorOnMainThread:@selector(processReceivedData:) withObject:array waitUntilDone:NO];
+    if([[self requestType] isEqualToString:@"dictionary"]) {
+        NSDictionary *dictionary=[Parser Dictionary:data];
+        [array addObject:dictionary];
+    }
+
+    dispatch_async(dispatch_get_main_queue(),^ {
+         [_delegate receiveTranslateResponse:array];
+    });
+   
     
 }
 

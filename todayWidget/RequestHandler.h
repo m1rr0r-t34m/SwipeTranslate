@@ -9,12 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 #import "Parser.h"
+#import "../googleTranslateWidget/RequestReceiver.h"
 
 @interface RequestHandler : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegate> {
     NSViewController *returnView;
 }
-
--(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText sender:(id)sender;
+@property NSString *requestType;
+@property(readwrite, assign) id<ResponseReceiver>delegate;
++(RequestHandler *)NewDictionaryRequest;
++(RequestHandler *)NewTranslateRequest;
+-(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText;
 @end
 
 

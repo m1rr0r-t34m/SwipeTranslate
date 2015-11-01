@@ -16,8 +16,9 @@
 #import "DataSourceDelegate.h"
 #import "ValidateString.h"
 #import "InputTextView.h"
+#import "RequestReceiver.h"
 
-@interface ViewController : NSViewController<DataSourceDelegate, NSTextFieldDelegate,NSTextViewDelegate>
+@interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate>
 
 //Outlets from View
 @property (strong) IBOutlet NSTextField *sourceLanguage;
@@ -28,6 +29,7 @@
 @property (strong) IBOutlet DataSource *dataHandler;
 
 @property (strong) IBOutlet InputTextView *inputText;
+@property (strong) IBOutlet NSTextField *outputText;
 
 
 

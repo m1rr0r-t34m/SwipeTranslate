@@ -34,6 +34,7 @@
     
     [_inputText setDelegate:self];
 
+
     
 }
 
@@ -87,10 +88,12 @@
 //Responding to a language table selection
 -(void)sourceLanguageTableSelectionDidChange:(NSString *)index {
     [_sourceLanguage setStringValue:index];
+    _sLanguage=index;
     
 }
 -(void)targetLanguageTableSelectionDidChange:(NSString *)index {
     [_targetLanguage setStringValue:index];
+    _tLanguage=index;
 }
 
 //Creating menu at button
@@ -179,8 +182,27 @@
         [_inputText unfold];
     else if(numberOfLines<2&&_inputText.open&&!returnInInputPressed)
         [_inputText fold];
+    
+    
+    
+    if(!(_inputText.isWhiteSpace||_inputText.isEmpty))
+        [self performRequest];
+    
+    else if(_inputText.isEmpty)
+        [_outputText setStringValue:@""];
+
+    else if(_inputText.isWhiteSpace)
+        [_outputText setStringValue:[_inputText string]];
 
 
+}
+-(void)performRequest {
+    RequestHandler *handler = [RequestHandler NewTranslateRequest];
+    [handler setDelegate:self];
+    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+}
+-(void)receiveTranslateResponse:(NSArray *)data {
+    [_outputText setStringValue:(NSString *)data[1]];
 }
 
 @end

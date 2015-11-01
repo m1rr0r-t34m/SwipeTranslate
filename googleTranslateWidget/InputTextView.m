@@ -17,6 +17,7 @@
     
     scrollFrame.size.height=62;
     scrollFrame.origin.y-=40;
+    [scrollView setHasVerticalScroller:NO];
     
     self.superview.superview.frame = scrollFrame;
 

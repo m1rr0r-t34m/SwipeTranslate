@@ -9,7 +9,9 @@
 #import "ViewController.h"
 
 
-@implementation ViewController
+@implementation ViewController {
+    BOOL returnInInputPressed;
+}
 
 
 -(void)awakeFromNib{
@@ -160,12 +162,22 @@
                                                effectiveRange:&lineRange];
         index = NSMaxRange(lineRange);
     }
-
-
     
+
+    if(![[_inputText string] isEmpty]) {
+        if([[_inputText string] characterAtIndex:[[_inputText string] length]-1]=='\n')
+            returnInInputPressed=YES;
+        else
+            returnInInputPressed=NO;
+    }
+    else
+        returnInInputPressed=NO;
+    
+    if(returnInInputPressed&&!_inputText.open)
+        [_inputText unfold];
     if(numberOfLines>1&&!_inputText.open)
         [_inputText unfold];
-    else if(numberOfLines<2&&_inputText.open)
+    else if(numberOfLines<2&&_inputText.open&&!returnInInputPressed)
         [_inputText fold];
 
 

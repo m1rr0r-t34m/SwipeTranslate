@@ -26,7 +26,9 @@
 @property (strong) IBOutlet NSTableView *sourceLanguageTable;
 @property (strong) IBOutlet NSTableView *targetLanguageTable;
 @property (strong) IBOutlet DataSource *dataHandler;
+
 @property (strong) IBOutlet InputTextView *inputText;
+
 
 
 

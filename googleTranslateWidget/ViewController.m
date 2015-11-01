@@ -31,7 +31,8 @@
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     [_inputText setDelegate:self];
-    [_inputText setVerticallyResizable:NO];
+
+    
 }
 
 -(void)viewWillAppear{

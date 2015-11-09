@@ -66,6 +66,9 @@
     if ([_autoLanguageButton state]) {
         _sLanguage = @"auto";
     }
+    NSImage *tmp = [sender image];
+    [sender setImage:[sender alternateImage]];
+    [sender setAlternateImage:tmp];
         
     
 }

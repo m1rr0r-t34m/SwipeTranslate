@@ -218,7 +218,7 @@
                                                                             </scroller>
                                                                         </scrollView>
                                                                         <scrollView ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-BX-4ew" customClass="InnerScroll">
-                                                                            <rect key="frame" x="0.0" y="186" width="230" height="157"/>
+                                                                            <rect key="frame" x="0.0" y="185" width="230" height="157"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R8x-dy-5vk">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="230" height="157"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,12 +312,15 @@
                                                                             </connections>
                                                                         </button>
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-LM-f9F">
-                                                                            <rect key="frame" x="115" y="343" width="81" height="32"/>
+                                                                            <rect key="frame" x="169" y="350" width="20" height="20"/>
                                                                             <animations/>
-                                                                            <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AutoButtonIcon" imagePosition="only" alignment="center" alternateImage="AutoButtonPushed" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
+                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="enableAutoLanguage:" target="hJv-Ja-bsx" id="lUF-3C-RG9"/>
+                                                                            </connections>
                                                                         </button>
                                                                     </subviews>
                                                                     <constraints>
@@ -456,6 +459,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AutoButtonIcon" width="256" height="256"/>
+        <image name="AutoButtonPushed" width="256" height="256"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

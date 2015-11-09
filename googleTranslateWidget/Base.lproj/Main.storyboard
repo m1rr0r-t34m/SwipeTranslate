@@ -217,6 +217,57 @@
                                                                                 <animations/>
                                                                             </scroller>
                                                                         </scrollView>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-eo-3jC">
+                                                                            <rect key="frame" x="18" y="349" width="97" height="21"/>
+                                                                            <animations/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Source Language" id="jgU-VN-9IN">
+                                                                                <font key="font" metaFont="systemThin" size="11"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-qO-Wa8">
+                                                                            <rect key="frame" x="194" y="166" width="20" height="20"/>
+                                                                            <animations/>
+                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="i7O-cy-xe7">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="showTargetMenu:" target="hJv-Ja-bsx" id="rvM-7W-jlx"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqB-nM-KrJ">
+                                                                            <rect key="frame" x="18" y="165" width="105" height="21"/>
+                                                                            <animations/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Target Language" id="Uan-ga-5f9">
+                                                                                <font key="font" metaFont="systemThin" size="11"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
+                                                                            <rect key="frame" x="193" y="350" width="20" height="20"/>
+                                                                            <animations/>
+                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="d7f-fE-swx">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="showSourceMenu:" target="hJv-Ja-bsx" id="6zj-dz-iDM"/>
+                                                                            </connections>
+                                                                        </button>
+                                                                        <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-LM-f9F">
+                                                                            <rect key="frame" x="169" y="350" width="20" height="20"/>
+                                                                            <animations/>
+                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AutoButtonIcon" imagePosition="only" alignment="center" alternateImage="AutoButtonPushed" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <connections>
+                                                                                <action selector="enableAutoLanguage:" target="hJv-Ja-bsx" id="lUF-3C-RG9"/>
+                                                                            </connections>
+                                                                        </button>
                                                                         <scrollView ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="30" horizontalPageScroll="0.0" verticalLineScroll="30" verticalPageScroll="0.0" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="j0U-BX-4ew" customClass="InnerScroll">
                                                                             <rect key="frame" x="0.0" y="185" width="230" height="157"/>
                                                                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="R8x-dy-5vk">
@@ -271,57 +322,6 @@
                                                                                 <animations/>
                                                                             </scroller>
                                                                         </scrollView>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3K9-eo-3jC">
-                                                                            <rect key="frame" x="18" y="349" width="97" height="21"/>
-                                                                            <animations/>
-                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Source Language" id="jgU-VN-9IN">
-                                                                                <font key="font" metaFont="systemThin" size="11"/>
-                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2S-qO-Wa8">
-                                                                            <rect key="frame" x="194" y="166" width="20" height="20"/>
-                                                                            <animations/>
-                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="i7O-cy-xe7">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <connections>
-                                                                                <action selector="showTargetMenu:" target="hJv-Ja-bsx" id="rvM-7W-jlx"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zqB-nM-KrJ">
-                                                                            <rect key="frame" x="18" y="165" width="105" height="21"/>
-                                                                            <animations/>
-                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Target Language" id="Uan-ga-5f9">
-                                                                                <font key="font" metaFont="systemThin" size="11"/>
-                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                            </textFieldCell>
-                                                                        </textField>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
-                                                                            <rect key="frame" x="193" y="350" width="20" height="20"/>
-                                                                            <animations/>
-                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="d7f-fE-swx">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <connections>
-                                                                                <action selector="showSourceMenu:" target="hJv-Ja-bsx" id="6zj-dz-iDM"/>
-                                                                            </connections>
-                                                                        </button>
-                                                                        <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-LM-f9F">
-                                                                            <rect key="frame" x="169" y="350" width="20" height="20"/>
-                                                                            <animations/>
-                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AutoButtonIcon" imagePosition="only" alignment="center" alternateImage="AutoButtonPushed" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
-                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                                                <font key="font" metaFont="system"/>
-                                                                            </buttonCell>
-                                                                            <connections>
-                                                                                <action selector="enableAutoLanguage:" target="hJv-Ja-bsx" id="lUF-3C-RG9"/>
-                                                                            </connections>
-                                                                        </button>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="j0U-BX-4ew" firstAttribute="leading" secondItem="x7i-31-vW3" secondAttribute="leading" id="DAI-qJ-a2E"/>
@@ -436,6 +436,7 @@
                         <animations/>
                     </customView>
                     <connections>
+                        <outlet property="autoLanguageButton" destination="9Vw-LM-f9F" id="IME-Bp-Czj"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
                         <outlet property="outputText" destination="jR6-2t-gR2" id="7xX-Ih-bZk"/>

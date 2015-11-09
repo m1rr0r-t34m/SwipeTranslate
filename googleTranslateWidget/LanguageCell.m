@@ -13,6 +13,8 @@
     NSRect newRect=theRect;
     newRect.origin.x+=20;
     self.editable=NO;
+    [self setTextColor:[NSColor blackColor]];
     return newRect;
+    
 }
 @end

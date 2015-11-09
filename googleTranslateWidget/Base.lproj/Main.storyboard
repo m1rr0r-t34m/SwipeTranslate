@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -78,17 +78,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <splitView fixedFrame="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xlZ-yT-fLh">
-                                <rect key="frame" x="-4" y="-10" width="813" height="475"/>
+                                <rect key="frame" x="-4" y="0.0" width="813" height="465"/>
                                 <subviews>
                                     <customView fixedFrame="YES" id="Iu9-mH-NgR">
-                                        <rect key="frame" x="0.0" y="0.0" width="226" height="475"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="226" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Uz4-xa-rIH">
-                                                <rect key="frame" x="0.0" y="-97" width="805" height="600"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="805" height="493"/>
                                                 <subviews>
                                                     <box fixedFrame="YES" borderType="bezel" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="we9-oR-rwx">
-                                                        <rect key="frame" x="18" y="483" width="201" height="56"/>
+                                                        <rect key="frame" x="18" y="376" width="201" height="56"/>
                                                         <view key="contentView" ambiguous="YES" id="rKd-em-2R8">
                                                             <rect key="frame" x="3" y="3" width="195" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -155,7 +155,7 @@
                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </box>
                                                     <scrollView ambiguous="YES" misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cSB-hb-f1u">
-                                                        <rect key="frame" x="0.0" y="100" width="228" height="372"/>
+                                                        <rect key="frame" x="0.0" y="-7" width="228" height="372"/>
                                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HZN-4u-1hd">
                                                             <rect key="frame" x="0.0" y="0.0" width="228" height="372"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -352,11 +352,11 @@
                                         <animations/>
                                     </customView>
                                     <customView fixedFrame="YES" id="gGN-sP-6rJ">
-                                        <rect key="frame" x="227" y="0.0" width="586" height="475"/>
+                                        <rect key="frame" x="227" y="0.0" width="586" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jR6-2t-gR2">
-                                                <rect key="frame" x="63" y="-13" width="492" height="359"/>
+                                                <rect key="frame" x="63" y="10" width="492" height="326"/>
                                                 <animations/>
                                                 <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="WE2-59-hw6">
                                                     <font key="font" metaFont="system"/>
@@ -365,14 +365,14 @@
                                                 </textFieldCell>
                                             </textField>
                                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-gf-XFr">
-                                                <rect key="frame" x="65" y="364" width="521" height="4"/>
+                                                <rect key="frame" x="65" y="354" width="521" height="4"/>
                                                 <animations/>
                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <font key="titleFont" metaFont="system"/>
                                             </box>
                                             <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouR-Cn-kYh" customClass="InputScroll">
-                                                <rect key="frame" x="65" y="366" width="488" height="74"/>
+                                                <rect key="frame" x="65" y="356" width="488" height="74"/>
                                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="5bz-De-Gsk">
                                                     <rect key="frame" x="0.0" y="0.0" width="488" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

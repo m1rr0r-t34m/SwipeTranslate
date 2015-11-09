@@ -300,7 +300,7 @@
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <button verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
+                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HI8-ac-H5u">
                                                                             <rect key="frame" x="193" y="350" width="20" height="20"/>
                                                                             <animations/>
                                                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="d7f-fE-swx">
@@ -311,7 +311,7 @@
                                                                                 <action selector="showSourceMenu:" target="hJv-Ja-bsx" id="6zj-dz-iDM"/>
                                                                             </connections>
                                                                         </button>
-                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-LM-f9F">
+                                                                        <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Vw-LM-f9F">
                                                                             <rect key="frame" x="169" y="350" width="20" height="20"/>
                                                                             <animations/>
                                                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AutoButtonIcon" imagePosition="only" alignment="center" alternateImage="AutoButtonPushed" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
@@ -327,7 +327,6 @@
                                                                         <constraint firstItem="j0U-BX-4ew" firstAttribute="leading" secondItem="x7i-31-vW3" secondAttribute="leading" id="DAI-qJ-a2E"/>
                                                                         <constraint firstItem="P6e-Cg-kxT" firstAttribute="leading" secondItem="x7i-31-vW3" secondAttribute="leading" id="VFj-1D-cJW"/>
                                                                         <constraint firstAttribute="width" constant="230" id="Vx4-We-L2P"/>
-                                                                        <constraint firstItem="j0U-BX-4ew" firstAttribute="top" secondItem="HI8-ac-H5u" secondAttribute="bottom" constant="6" id="YcG-Ad-llu"/>
                                                                         <constraint firstItem="P6e-Cg-kxT" firstAttribute="top" secondItem="zqB-nM-KrJ" secondAttribute="bottom" constant="8" id="oFV-fS-B7k"/>
                                                                         <constraint firstAttribute="height" constant="370" id="tAN-dZ-TeD"/>
                                                                     </constraints>

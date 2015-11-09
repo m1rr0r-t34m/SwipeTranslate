@@ -46,6 +46,7 @@
     self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
     [_sourceLanguageTable reloadData];
     [_targetLanguageTable reloadData];
+    [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
     
 }
 
@@ -158,7 +159,7 @@
 
 -(void)textDidChange:(NSNotification *)notification {
     //Check if theres more than 1 line in inputText
-    NSLayoutManager *layoutManager = [_inputText layoutManager];
+   /* NSLayoutManager *layoutManager = [_inputText layoutManager];
     unsigned long numberOfLines, index, numberOfGlyphs = [layoutManager numberOfGlyphs];
     NSRange lineRange;
     for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
@@ -182,7 +183,7 @@
     if(numberOfLines>1&&!_inputText.open)
         [_inputText unfold];
     else if(numberOfLines<2&&_inputText.open&&!returnInInputPressed)
-        [_inputText fold];
+        [_inputText fold]; */
     
     
     

@@ -57,7 +57,6 @@
     
     _sharedDefaults =[SavedInfo sharedDefaults];
     if([_sharedDefaults autoPushed]) {
-        [_autoLanguageButton setState:1];
         [self enableAutoLanguage:self];
         if([_sharedDefaults hasAutoLanguage])
             [_sourceLanguage setStringValue:[_sharedDefaults autoLanguage]];

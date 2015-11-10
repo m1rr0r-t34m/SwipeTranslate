@@ -46,6 +46,7 @@
     [sourceLanguageList removeObjectAtIndex:5];
     [sourceTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
    
+    [_delegate sourceLanguageTableSelectionDidChange:[sourceLanguageList objectAtIndex:0]];
     [_localDefaults setSourceLanguages:sourceLanguageList];
     [sourceTableView reloadData];
     }
@@ -65,7 +66,8 @@
     [targetLanguageList removeObjectAtIndex:5];
     [targetTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
     [_localDefaults setTargetLanguages:targetLanguageList];
-   
+        
+    [_delegate targetLanguageTableSelectionDidChange:[targetLanguageList objectAtIndex:0]];
     [targetTableView reloadData];
     }
      [_sharedDefaults setTargetSelection:language];

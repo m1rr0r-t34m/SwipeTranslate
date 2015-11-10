@@ -116,8 +116,18 @@
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
    //Swap selected table cells
-    NSString * selectedSource = _sLanguage;
-    NSString * selectedTarget = _tLanguage;
+    NSString * selectedSource;
+    NSString * selectedTarget;
+    if([_autoLanguageButton state]) {
+        selectedSource = [_sourceLanguage stringValue];
+        selectedTarget = _tLanguage;
+    }
+    else {
+        selectedSource = _sLanguage;
+        selectedTarget = _tLanguage;
+
+    }
+   
     [_dataHandler pushNewSourceLanguage:selectedTarget];
     [_dataHandler pushNewTargetLanguage:selectedSource];
     

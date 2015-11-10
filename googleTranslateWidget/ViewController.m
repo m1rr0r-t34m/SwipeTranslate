@@ -20,10 +20,10 @@
     //Create language menus
     _sourceLanguageMenu = [PopupMenu createMenuWithAction:@"sourceMenuClick:" andSender:self];
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetMenuClick:" andSender:self];
-    if ([SavedInfo hasDefaultText]){
+    /*if ([SavedInfo hasDefaultText]){
         _inputText.string = [SavedInfo inputText];
         _outputText.stringValue = [SavedInfo outputText];
-    }
+    }*/
     
 }
 - (void)viewDidLoad {
@@ -42,7 +42,8 @@
     [_inputText setDelegate:self];
 
     readyInputLength=14;
-
+    
+    _sharedDefaults = [[SavedInfo alloc] init];
     
 }
 
@@ -204,8 +205,8 @@
     
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)) {
         [self performRequest];
-        [SavedInfo setInputText:_inputText.string];
-        [SavedInfo setOutputText:_outputText.stringValue];
+  //      [SavedInfo setInputText:_inputText.string];
+   //     [SavedInfo setOutputText:_outputText.stringValue];
     }
     else if(_inputText.ready) {
         if(_inputText.string.length>readyInputLength) {

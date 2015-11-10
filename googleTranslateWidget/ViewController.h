@@ -49,6 +49,7 @@
 //Storing data properties
 @property NSString* sLanguage;
 @property NSString* tLanguage;
+@property SavedInfo *sharedDefaults;
 
 //Menu properties
 @property NSMenu *sourceLanguageMenu;

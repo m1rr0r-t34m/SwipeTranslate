@@ -319,10 +319,18 @@
 				TargetAttributes = {
 					CD8EEB831B8E69AA00E2991B = {
 						CreatedOnToolsVersion = 6.4;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
 					};
 					CDCFCCD61B8E690300547F5C = {
 						CreatedOnToolsVersion = 6.4;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};

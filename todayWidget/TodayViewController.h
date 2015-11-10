@@ -14,9 +14,10 @@
 #import "WidgetView.h"
 #import "ValidateTextView.h"
 #import "SavedInfo.h"
+#import "../googleTranslateWidget/RequestReceiver.h"
 
 
-@interface TodayViewController : NSViewController
+@interface TodayViewController : NSViewController <ResponseReceiver>
 //Outlets from view
 @property (strong) IBOutlet NSView *widgetMainView;
 
@@ -39,6 +40,7 @@
 @property NSArray* alphaLang;
 @property NSString* autoLanguageCode;
 @property NSString* autoLanguageTitle;
+@property SavedInfo *userDefautls;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

@@ -9,25 +9,27 @@
 #import <Foundation/Foundation.h>
 
 @interface SavedInfo : NSUserDefaults
-+(BOOL)hasLanguages;
-+(BOOL)hasChosenLanguages;
-+(BOOL)hasDefaultText;
-+(BOOL)hasAutoLanguage;
+-(BOOL)hasLanguages;
+-(BOOL)hasChosenLanguages;
+-(BOOL)hasDefaultText;
+-(BOOL)hasAutoLanguage;
 
 
-+(NSString *)inputText;
-+(NSString *)outputText;
-+(NSArray *)sourceLanguages;
-+(NSArray *)targetLanguages;
-+(NSInteger)sourceSelection;
-+(NSInteger)targetSelection;
-+(NSString *)autoLanguage;
+-(NSString *)inputText;
+-(NSString *)outputText;
+-(NSArray *)sourceLanguages;
+-(NSArray *)targetLanguages;
+-(NSInteger)sourceSelection;
+-(NSInteger)targetSelection;
+-(NSString *)autoLanguage;
 
-+(void)setInputText:(NSString *)input;
-+(void)setOutputText:(NSString *)output;
-+(void)setSourceLanguages:(NSArray *)array;
-+(void)setTargetLanguages:(NSArray *)array;
-+(void)setSourceSelection:(NSInteger)index;
-+(void)setTargetSelection:(NSInteger)index;
-+(void)setAutoLanguage:(NSString *)lang;
+-(void)setInputText:(NSString *)input;
+-(void)setOutputText:(NSString *)output;
+-(void)setSourceLanguages:(NSArray *)array;
+-(void)setTargetLanguages:(NSArray *)array;
+-(void)setSourceSelection:(NSInteger)index;
+-(void)setTargetSelection:(NSInteger)index;
+-(void)setAutoLanguage:(NSString *)lang;
+
+@property NSUserDefaults *sharedUserDefaults;
 @end

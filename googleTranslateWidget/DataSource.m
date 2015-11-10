@@ -17,14 +17,15 @@
 
 //Data handling methods
 -(void)awakeFromNib{
-  /*  if (![SavedInfo hasLanguages]){
+    _sharedDefaults = [[SavedInfo alloc]init];
+   if (![_sharedDefaults hasLanguages]){
     sourceLanguageList = [NSMutableArray arrayWithArray:@[@"Finnish", @"English", @"Russian", @"French", @"Latin"]];
     targetLanguageList = [NSMutableArray arrayWithArray:@[@"Finnish", @"English", @"Russian", @"French", @"Latin"]];
     }
     else {
-        sourceLanguageList = [[SavedInfo sourceLanguages] mutableCopy];
-        targetLanguageList = [[SavedInfo targetLanguages] mutableCopy];
-        }*/
+        sourceLanguageList = [[_sharedDefaults sourceLanguages] mutableCopy];
+        targetLanguageList = [[_sharedDefaults targetLanguages] mutableCopy];
+        }
     [sourceTableView reloadData];
     [targetTableView reloadData];
 }
@@ -42,7 +43,7 @@
     [sourceLanguageList insertObject:language atIndex:0];
     [sourceLanguageList removeObjectAtIndex:5];
     [sourceTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
-//    [SavedInfo setSourceLanguages:sourceLanguageList];
+    [_sharedDefaults setSourceLanguages:sourceLanguageList];
     [sourceTableView reloadData];
     }
 }
@@ -59,7 +60,7 @@
     [targetLanguageList insertObject:language atIndex:0];
     [targetLanguageList removeObjectAtIndex:5];
     [targetTableView selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:FALSE];
-  //  [SavedInfo setTargetLanguages:targetLanguageList];
+    [_sharedDefaults setTargetLanguages:targetLanguageList];
     [targetTableView reloadData];
     }
 }

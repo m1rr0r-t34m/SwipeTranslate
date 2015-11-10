@@ -55,6 +55,5 @@
 //Methods for managing data
 -(void)updateLanguageModel;
 -(void)performGoogleRequest;
--(void)processReceivedData:(NSArray *)array;
 
 @end

@@ -9,8 +9,9 @@
 #import "InputTextView.h"
 
 @implementation InputTextView
+@synthesize ready = _ready;
 
--(void)unfold {
+/*-(void)unfold {
     InputScroll *scrollView = (InputScroll *) self.superview.superview;
 
     NSRect scrollFrame = scrollView.frame;
@@ -36,6 +37,25 @@
     
     [scrollView setScrolling:NO];
     self.open=NO;
+}*/
+-(void)setReady:(BOOL)ready {
+    _ready = ready;
+    if(ready) {
+        [self setString:@"Type some text"];
+        [self setTextColor:[NSColor grayColor]];
+        [self setSelectedRange:NSMakeRange(0, 0)];
+    }
+    else {
+        [self setTextColor:[NSColor blackColor]];
+    }
+        
+}
+-(BOOL)ready{
+    return _ready;
+}
+-(void)setSelectedRange:(NSRange)selectedRange {
+    [super setSelectedRange:selectedRange];
+    
 }
 
 @end

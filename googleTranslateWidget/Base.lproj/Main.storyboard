@@ -261,7 +261,7 @@
                                                                             <rect key="frame" x="169" y="350" width="20" height="20"/>
                                                                             <animations/>
                                                                             <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="AutoButtonIcon" imagePosition="only" alignment="center" alternateImage="AutoButtonPushed" imageScaling="proportionallyDown" inset="2" id="gqw-9H-9Hk">
-                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                                                                 <font key="font" metaFont="system"/>
                                                                             </buttonCell>
                                                                             <connections>
@@ -387,7 +387,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="488" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textView ambiguous="YES" drawsBackground="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="mHu-K6-7V8" customClass="InputTextView">
+                                                        <textView ambiguous="YES" drawsBackground="NO" importsGraphics="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="mHu-K6-7V8" customClass="InputTextView">
                                                             <rect key="frame" x="0.0" y="0.0" width="458" height="74"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <animations/>
@@ -395,7 +395,7 @@
                                                             <size key="minSize" width="488" height="74"/>
                                                             <size key="maxSize" width="524" height="10000000"/>
                                                             <attributedString key="textStorage">
-                                                                <fragment content="Sample text">
+                                                                <fragment content="Type some text">
                                                                     <attributes>
                                                                         <font key="NSFont" metaFont="systemUltraLight" size="18"/>
                                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -436,7 +436,6 @@
                         <animations/>
                     </customView>
                     <connections>
-                        <outlet property="autoLanguageButton" destination="9Vw-LM-f9F" id="IME-Bp-Czj"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
                         <outlet property="outputText" destination="jR6-2t-gR2" id="7xX-Ih-bZk"/>

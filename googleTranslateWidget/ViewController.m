@@ -11,6 +11,7 @@
 
 @implementation ViewController {
     BOOL returnInInputPressed;
+    int readyInputLength;
 }
 
 
@@ -35,6 +36,7 @@
     
     [_inputText setDelegate:self];
 
+    readyInputLength=14;
 
     
 }
@@ -47,6 +49,8 @@
     [_sourceLanguageTable reloadData];
     [_targetLanguageTable reloadData];
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
+    
+    [_inputText setReady:YES];
     
 }
 
@@ -190,16 +194,32 @@
     
     
     
-    if(!(_inputText.isWhiteSpace||_inputText.isEmpty))
+    if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)) {
         [self performRequest];
-    
-    else if(_inputText.isEmpty)
+    }
+    else if(_inputText.ready) {
+        if(_inputText.string.length>readyInputLength) {
+            [_inputText setReady:NO];
+            NSString *userString=[[_inputText string] stringByReplacingCharactersInRange:NSMakeRange(_inputText.string.length-readyInputLength, readyInputLength) withString:@""];
+            [_inputText setString:userString];
+        }
+        
+    }
+    else if(_inputText.isEmpty) {
         [_outputText setStringValue:@""];
+        [_inputText setReady:YES];
+    }
 
     else if(_inputText.isWhiteSpace)
         [_outputText setStringValue:[_inputText string]];
 
+}
 
+- (NSRange)textView:(NSTextView *)aTextView willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange toCharacterRange:(NSRange) newSelectedCharRange {
+    if(_inputText.ready)
+        return NSMakeRange(0, 0);
+    else
+        return newSelectedCharRange;
 }
 -(void)performRequest {
     RequestHandler *handler = [RequestHandler NewTranslateRequest];

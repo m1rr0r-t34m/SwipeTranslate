@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "InputScroll.h"
 
-@interface InputTextView : NSTextView 
+@interface InputTextView : NSTextView
 @property (readwrite) BOOL open;
+@property (readwrite) BOOL ready;
 -(void)fold;
 -(void)unfold;
 @end

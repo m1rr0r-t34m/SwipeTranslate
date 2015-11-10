@@ -63,6 +63,9 @@
 
 
 - (IBAction)enableLiveTranslate:(id)sender {
+    NSImage *tmp = [sender image];
+    [sender setImage:[sender alternateImage]];
+    [sender setAlternateImage:tmp];
 }
 
 - (IBAction)enableAutoLanguage:(id)sender {

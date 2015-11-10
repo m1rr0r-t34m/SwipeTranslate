@@ -30,7 +30,7 @@
 @property (strong) IBOutlet NSView *rightSplittedView;
 @property (strong) IBOutlet InputTextView *inputText;
 @property (strong) IBOutlet NSTextField *outputText;
-
+@property (strong) IBOutlet NSButton *liveTranslateButton;
 
 
 

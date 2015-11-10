@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -375,7 +375,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-gf-XFr">
-                                                <rect key="frame" x="65" y="354" width="521" height="5"/>
+                                                <rect key="frame" x="65" y="350" width="521" height="4"/>
                                                 <animations/>
                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -392,7 +392,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <animations/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <size key="minSize" width="488" height="74"/>
+                                                            <size key="minSize" width="458" height="74"/>
                                                             <size key="maxSize" width="524" height="10000000"/>
                                                             <attributedString key="textStorage">
                                                                 <fragment content="Type some text">
@@ -403,7 +403,7 @@
                                                                 </fragment>
                                                             </attributedString>
                                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <size key="minSize" width="488" height="74"/>
+                                                            <size key="minSize" width="458" height="74"/>
                                                             <size key="maxSize" width="524" height="10000000"/>
                                                         </textView>
                                                     </subviews>
@@ -422,6 +422,17 @@
                                                     <animations/>
                                                 </scroller>
                                             </scrollView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6m-Na-aNB">
+                                                <rect key="frame" x="37" y="342" width="20" height="20"/>
+                                                <animations/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="LiveTranslateButton" imagePosition="overlaps" alignment="center" alternateImage="LiveTranslateButtonPushed" imageScaling="proportionallyUpOrDown" inset="2" id="1Ng-5P-wJK">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="enableLiveTranslate:" target="hJv-Ja-bsx" id="zCH-lZ-B48"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -436,8 +447,10 @@
                         <animations/>
                     </customView>
                     <connections>
+                        <outlet property="autoLanguageButton" destination="9Vw-LM-f9F" id="VuS-cx-u4G"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
+                        <outlet property="liveTranslateButton" destination="T6m-Na-aNB" id="rYh-Hy-rC1"/>
                         <outlet property="outputText" destination="jR6-2t-gR2" id="7xX-Ih-bZk"/>
                         <outlet property="rightSplittedView" destination="gGN-sP-6rJ" id="hiv-Bn-t7t"/>
                         <outlet property="sourceLanguage" destination="2nt-J6-1mR" id="u2P-Z8-s6p"/>
@@ -460,6 +473,8 @@
     <resources>
         <image name="AutoButtonIcon" width="256" height="256"/>
         <image name="AutoButtonPushed" width="256" height="256"/>
+        <image name="LiveTranslateButton" width="256" height="256"/>
+        <image name="LiveTranslateButtonPushed" width="256" height="256"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

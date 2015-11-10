@@ -20,11 +20,8 @@
     //Create language menus
     _sourceLanguageMenu = [PopupMenu createMenuWithAction:@"sourceMenuClick:" andSender:self];
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetMenuClick:" andSender:self];
-    _sharedDefaults = [[SavedInfo alloc] init];
-    if ([_sharedDefaults hasDefaultText]){
-        _inputText.string = [_sharedDefaults inputText];
-        _outputText.stringValue = [_sharedDefaults outputText];
-    }
+    
+    
     
 }
 - (void)viewDidLoad {
@@ -44,8 +41,6 @@
 
     readyInputLength=14;
     
-    
-    
 }
 
 -(void)viewWillAppear{
@@ -58,6 +53,15 @@
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
     
     [_inputText setReady:YES];
+    
+    _sharedDefaults =[SavedInfo sharedDefaults];
+    if([_sharedDefaults autoPushed]) {
+        [_autoLanguageButton setState:1];
+        [self enableAutoLanguage:_autoLanguageButton];
+        if([_sharedDefaults hasAutoLanguage])
+            [_sourceLanguage setStringValue:[_sharedDefaults autoLanguage]];
+    }
+    
     
 }
 
@@ -77,12 +81,21 @@
 
 - (IBAction)enableAutoLanguage:(id)sender {
     
-    if ([_autoLanguageButton state]) {
-        _sLanguage = @"auto";
-    }
     NSImage *tmp = [sender image];
     [sender setImage:[sender alternateImage]];
     [sender setAlternateImage:tmp];
+    
+    if ([_autoLanguageButton state]) {
+        _sLanguage = @"Auto";
+        [_sharedDefaults setAutoPushed:YES];
+        [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
+    }
+    else {
+        [_sharedDefaults setAutoPushed:NO];
+        [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+    }
+    
+   
         
     
 }
@@ -206,8 +219,8 @@
     
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)) {
         [self performRequest];
-        [_sharedDefaults setInputText:_inputText.string];
-        [_sharedDefaults setOutputText:_outputText.stringValue];
+       // [_sharedDefaults setInputText:_inputText.string];
+       // [_sharedDefaults setOutputText:_outputText.stringValue];
     }
     else if(_inputText.ready) {
         if(_inputText.string.length>readyInputLength) {
@@ -239,6 +252,12 @@
     [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }
 -(void)receiveTranslateResponse:(NSArray *)data {
+    if([_sLanguage isEqualToString:@"Auto" ]) {
+        [_sharedDefaults setAutoLanguage:(NSString *)data[0]];
+        [_sourceLanguage setStringValue:(NSString *)data[0]];
+    }
+    
+    
     [_outputText setStringValue:(NSString *)data[1]];
 }
 

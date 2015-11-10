@@ -19,6 +19,7 @@
 @property  NSMutableArray* sourceLanguageList;
 @property NSMutableArray* targetLanguageList;
 @property SavedInfo* sharedDefaults;
+@property SavedInfo* localDefaults;
 //@property  NSTableView* tableView;
 
 -(int)numberOfRowsInTableView:(NSTableView*) tableView;

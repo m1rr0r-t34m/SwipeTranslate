@@ -50,6 +50,7 @@
 @property NSString* sLanguage;
 @property NSString* tLanguage;
 @property SavedInfo *sharedDefaults;
+@property SavedInfo *localDefaults;
 
 //Menu properties
 @property NSMenu *sourceLanguageMenu;

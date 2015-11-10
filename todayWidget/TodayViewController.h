@@ -40,7 +40,8 @@
 @property NSArray* alphaLang;
 @property NSString* autoLanguageCode;
 @property NSString* autoLanguageTitle;
-@property SavedInfo *userDefautls;
+@property SavedInfo *sharedDefaults;
+@property SavedInfo *localDefaults;
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

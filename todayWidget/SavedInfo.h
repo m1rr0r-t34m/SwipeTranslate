@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface SavedInfo : NSUserDefaults
+
++(SavedInfo *)localDefaults;
++(SavedInfo *)sharedDefaults;
+
+
 -(BOOL)hasLanguages;
 -(BOOL)hasChosenLanguages;
 -(BOOL)hasDefaultText;
@@ -19,17 +24,22 @@
 -(NSString *)outputText;
 -(NSArray *)sourceLanguages;
 -(NSArray *)targetLanguages;
--(NSInteger)sourceSelection;
--(NSInteger)targetSelection;
+-(NSString *)sourceSelection;
+-(NSString *)targetSelection;
 -(NSString *)autoLanguage;
+-(BOOL)autoPushed;
 
 -(void)setInputText:(NSString *)input;
 -(void)setOutputText:(NSString *)output;
 -(void)setSourceLanguages:(NSArray *)array;
 -(void)setTargetLanguages:(NSArray *)array;
--(void)setSourceSelection:(NSInteger)index;
--(void)setTargetSelection:(NSInteger)index;
+-(void)setSourceSelection:(NSString *)lang;
+-(void)setTargetSelection:(NSString *)lang;
 -(void)setAutoLanguage:(NSString *)lang;
+-(void)setAutoPushed:(BOOL)value;
 
-@property NSUserDefaults *sharedUserDefaults;
+-(BOOL)isEmpty;
+
+@property NSUserDefaults *userDefaults;
+@property NSString *type;
 @end

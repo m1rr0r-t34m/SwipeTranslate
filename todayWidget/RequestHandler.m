@@ -70,7 +70,8 @@
     
     NSString *lang=[Parser AutoLanguage:data];
     NSString *text=[Parser Text:data];
-    
+    if(lang)
+        lang=[[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:lang]];
     
     NSMutableArray *array=[NSMutableArray new];
     [array addObject:lang];

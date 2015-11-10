@@ -9,84 +9,130 @@
 #import "SavedInfo.h"
 
 @implementation SavedInfo
--(SavedInfo *)init {
-    [self setSharedUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"com.SwipeTranslateDesktop"]];
-    return [super init];
++(SavedInfo *)localDefaults {
+    SavedInfo *instance=[super new];
+    [instance setUserDefaults:[NSUserDefaults standardUserDefaults]];
+    [instance setType:@"local"];
+    if([instance isEmpty])
+        [instance createInitialDefaults];
+    return instance;
+}
++(SavedInfo *)sharedDefaults {
+    SavedInfo *instance=[super new];
+    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"com.SwipeTranslateDesktop"]];
+    [instance setType:@"local"];
+    if([instance isEmpty])
+        [instance createInitialDefaults];
+    return instance;
+    
+}
+-(void)createInitialDefaults {
+    if([[self type]isEqualToString:@"local"]) {
+        [self setInputText:@""];
+        [self setOutputText:@""];
+        [self setSourceLanguages:@[@"English",@"French",@"Spainish",@"Russian",@"Finnish"]];
+        [self setTargetLanguages:@[@"French",@"Russian",@"English",@"Finnish",@"Spanish"]];
+    }
+    else {
+        [self setSourceSelection:@"English"];
+        [self setTargetSelection:@"French"];
+        [self setAutoLanguage:nil];
+    }
+    
+}
+-(BOOL)isEmpty {
+    if([[self type]isEqualToString:@"local"]){
+        if(![self hasLanguages])
+            return YES;
+        else
+            return NO;
+    }
+    else {
+        if(![self hasChosenLanguages])
+            return YES;
+        else
+            return NO;
+    }
+    
 }
 -(BOOL)hasLanguages {
-    if([ self.sharedUserDefaults objectForKey:@"sourceDefault"]&&[[self sharedUserDefaults]objectForKey:@"targetDefault"])
+    if([ self.userDefaults objectForKey:@"sourceDefault"]&&[[self userDefaults]objectForKey:@"targetDefault"])
         return YES;
     return NO;
 }
 
 -(BOOL)hasChosenLanguages {
-    if([[self sharedUserDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self sharedUserDefaults] objectForKey:@"targetDefaultSelection"])
+    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"])
         return YES;
     return NO;
 }
 -(BOOL)hasDefaultText {
-    if([[self sharedUserDefaults]objectForKey:@"defaultInput"]&&[[self sharedUserDefaults]objectForKey:@"defaultOutput"])
+    if([[self userDefaults]objectForKey:@"defaultInput"]&&[[self userDefaults]objectForKey:@"defaultOutput"])
         return YES;
     return NO;
 }
 -(BOOL)hasAutoLanguage {
-    if([[self sharedUserDefaults]objectForKey:@"autoLanguage"])
+    if([[self userDefaults]objectForKey:@"autoLanguage"])
         return YES;
     return NO;
 }
 
 -(NSString *)inputText {
-    return [[self sharedUserDefaults]stringForKey:@"defaultInput"];
+    return [[self userDefaults]stringForKey:@"defaultInput"];
 }
 -(NSString *)outputText {
-     return [[self sharedUserDefaults]stringForKey:@"defaultOutput"];
+     return [[self userDefaults]stringForKey:@"defaultOutput"];
 }
 -(NSArray *)sourceLanguages {
-    return [[self sharedUserDefaults]arrayForKey:@"sourceDefault"];
+    return [[self userDefaults]arrayForKey:@"sourceDefault"];
 }
 -(NSArray *)targetLanguages {
-    return [[self sharedUserDefaults]arrayForKey:@"targetDefault"];
+    return [[self userDefaults]arrayForKey:@"targetDefault"];
 }
--(NSInteger)sourceSelection {
-    return [[self sharedUserDefaults] integerForKey:@"sourceDefaultSelection"];
+-(NSString *)sourceSelection {
+    return [[self userDefaults] objectForKey:@"sourceDefaultSelection"];
 }
--(NSInteger)targetSelection {
-    return [[self sharedUserDefaults] integerForKey:@"targetDefaultSelection"];
+-(NSString *)targetSelection {
+    return [[self userDefaults] objectForKey:@"targetDefaultSelection"];
 }
 -(NSString *)autoLanguage {
-    return [[self sharedUserDefaults] stringForKey:@"autoLanguage"];
+    return [[self userDefaults] stringForKey:@"autoLanguage"];
 }
-
+-(BOOL)autoPushed {
+    return [[self userDefaults] boolForKey:@"autoPushed"];
+}
 
 
 -(void)setInputText:(NSString *)input {
-    [[self sharedUserDefaults]setObject:input forKey:@"defaultInput"];
-    [[self sharedUserDefaults] synchronize];
+    [[self userDefaults]setObject:input forKey:@"defaultInput"];
+    [[self userDefaults] synchronize];
 }
 -(void)setOutputText:(NSString *)output {
-    [[self sharedUserDefaults]setObject:output forKey:@"defaultOutput"];
-    [[self sharedUserDefaults] synchronize];
+    [[self userDefaults]setObject:output forKey:@"defaultOutput"];
+    [[self userDefaults] synchronize];
 }
 -(void)setSourceLanguages:(NSArray *)array {
-    [[self sharedUserDefaults]setObject:array forKey:@"sourceDefault"];
-    [[self sharedUserDefaults] synchronize];
+    [[self userDefaults]setObject:array forKey:@"sourceDefault"];
+    [[self userDefaults] synchronize];
 }
 -(void)setTargetLanguages:(NSArray *)array {
-    [[self sharedUserDefaults]setObject:array forKey:@"targetDefault"];
-    [[self sharedUserDefaults] synchronize];
+    [[self userDefaults]setObject:array forKey:@"targetDefault"];
+    [[self userDefaults] synchronize];
 }
--(void)setSourceSelection:(NSInteger)index {
-    [[self sharedUserDefaults] setObject:[NSNumber numberWithInteger:index] forKey:@"sourceDefaultSelection"];
-    [[self sharedUserDefaults] synchronize];
+-(void)setSourceSelection:(NSString *)lang {
+    [[self userDefaults] setObject:lang forKey:@"sourceDefaultSelection"];
+    [[self userDefaults] synchronize];
 }
--(void)setTargetSelection:(NSInteger)index {
-    [[self sharedUserDefaults] setObject:[NSNumber numberWithInteger:index] forKey:@"targetDefaultSelection"];
-    [[self sharedUserDefaults] synchronize];
+-(void)setTargetSelection:(NSString *)lang {
+    [[self userDefaults] setObject:lang forKey:@"targetDefaultSelection"];
+    [[self userDefaults] synchronize];
 }
 -(void)setAutoLanguage:(NSString *)lang {
-    [[self sharedUserDefaults] setObject:lang forKey:@"autoLanguage"];
+    [[self userDefaults] setObject:lang forKey:@"autoLanguage"];
 }
-
+-(void)setAutoPushed:(BOOL)value {
+    [[self userDefaults] setBool:value forKey:@"autoPushed"];
+}
 
 
 @end

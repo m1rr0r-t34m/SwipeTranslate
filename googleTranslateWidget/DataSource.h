@@ -7,6 +7,7 @@
 //
 #import <Cocoa/Cocoa.h>
 #import "DataSourceDelegate.h"
+#import "SavedInfo.h"
 
 @interface DataSource : NSObject{
     IBOutlet NSTableView* targetTableView;

@@ -33,14 +33,20 @@
     [SavedInfo setOutputText:[_outputText string]];
 }
 -(void)saveLanguages {
-    NSMutableArray *sArray=[[NSMutableArray alloc] initWithCapacity:2];
-    NSMutableArray *tArray=[[NSMutableArray alloc] initWithCapacity:3];
+    NSMutableArray *sArray=[[NSMutableArray alloc] initWithCapacity:5];
+    NSMutableArray *tArray=[[NSMutableArray alloc] initWithCapacity:5];
     
     for (int i = 2; i < 4; i++) {
-        [sArray addObject:[_sourceSegmentedButton labelForSegment:i]];
+        if ([SavedInfo hasLanguages])
+            [sArray replaceObjectAtIndex:i-2 withObject:[_sourceSegmentedButton labelForSegment:i]];
+        else
+            [sArray addObject:[_sourceSegmentedButton labelForSegment:i]];
     }
     for (int i = 1; i < 4; i++) {
-        [tArray addObject:[_targetSegmentedButton labelForSegment:i]];
+        if ([SavedInfo hasLanguages])
+            [tArray replaceObjectAtIndex:i-1 withObject:[_targetSegmentedButton labelForSegment:i]];
+        else
+            [tArray addObject:[_targetSegmentedButton labelForSegment:i]];
         
     }
     

@@ -189,7 +189,7 @@
 
 -(void)textDidChange:(NSNotification *)notification {
     //Check if theres more than 1 line in inputText
-   /* NSLayoutManager *layoutManager = [_inputText layoutManager];
+    NSLayoutManager *layoutManager = [_inputText layoutManager];
     unsigned long numberOfLines, index, numberOfGlyphs = [layoutManager numberOfGlyphs];
     NSRange lineRange;
     for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
@@ -208,19 +208,20 @@
     else
         returnInInputPressed=NO;
     
-    if(returnInInputPressed&&!_inputText.open)
-        [_inputText unfold];
-    if(numberOfLines>1&&!_inputText.open)
-        [_inputText unfold];
-    else if(numberOfLines<2&&_inputText.open&&!returnInInputPressed)
-        [_inputText fold]; */
+   InputScroll *inputScroll =(InputScroll *)[[_inputText superview] superview];
+    
+    if(returnInInputPressed&&!inputScroll.scrolling)
+        [inputScroll setScrolling:YES];
+    
+    if(numberOfLines>1&&!inputScroll.scrolling)
+        [inputScroll setScrolling:YES];
+    else if(numberOfLines<2&&inputScroll.scrolling&&!returnInInputPressed)
+        [inputScroll setScrolling:NO];
     
     
     
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)) {
         [self performRequest];
-       // [_sharedDefaults setInputText:_inputText.string];
-       // [_sharedDefaults setOutputText:_outputText.stringValue];
     }
     else if(_inputText.ready) {
         if(_inputText.string.length>readyInputLength) {

@@ -58,7 +58,7 @@
     _sharedDefaults =[SavedInfo sharedDefaults];
     if([_sharedDefaults autoPushed]) {
         [_autoLanguageButton setState:1];
-        [self enableAutoLanguage:_autoLanguageButton];
+        [self enableAutoLanguage:self];
         if([_sharedDefaults hasAutoLanguage])
             [_sourceLanguage setStringValue:[_sharedDefaults autoLanguage]];
     }
@@ -82,9 +82,23 @@
 
 - (IBAction)enableAutoLanguage:(id)sender {
     
-    NSImage *tmp = [sender image];
-    [sender setImage:[sender alternateImage]];
-    [sender setAlternateImage:tmp];
+    NSImage *tmp = [_autoLanguageButton image];
+    [_autoLanguageButton setImage:[_autoLanguageButton alternateImage]];
+    [_autoLanguageButton setAlternateImage:tmp];
+    if(sender==self) {
+        NSInteger state=[_autoLanguageButton state];
+        switch (state) {
+            case 0:
+                [_autoLanguageButton setState:1];
+                break;
+            case 1:
+                [_autoLanguageButton setState:0];
+                break;
+            default:
+                break;
+        }
+        
+    }
     
     if ([_autoLanguageButton state]) {
         _sLanguage = @"Auto";
@@ -93,11 +107,10 @@
     }
     else {
         [_sharedDefaults setAutoPushed:NO];
-        [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+        if([_sourceLanguageTable selectedRow]<0||[_sourceLanguageTable selectedRow]>4)
+            [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     }
     
-   
-        
     
 }
 
@@ -123,6 +136,8 @@
 -(void)sourceLanguageTableSelectionDidChange:(NSString *)index {
     [_sourceLanguage setStringValue:index];
     _sLanguage=index;
+   if( [_autoLanguageButton state])
+       [self enableAutoLanguage:self];
     if(!_inputText.ready&&_sLanguage&&_tLanguage)
         [self performRequest];
     

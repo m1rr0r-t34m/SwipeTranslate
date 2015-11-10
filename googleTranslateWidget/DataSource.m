@@ -90,7 +90,7 @@
     int index=(int)[[aNotification object] selectedRow];
     
     if([aNotification object]==sourceTableView) {
-        if(index>0&&index<5) {
+        if(index>=0&&index<5) {
             [_sharedDefaults setSourceSelection:[sourceLanguageList objectAtIndex:index]];
             [_delegate sourceLanguageTableSelectionDidChange:[sourceLanguageList objectAtIndex:index]];
         }

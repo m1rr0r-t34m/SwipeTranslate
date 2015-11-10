@@ -38,6 +38,7 @@
     
     
     [_inputText setDelegate:self];
+    [_inputText setReady:YES];
 
     readyInputLength=14;
     
@@ -52,7 +53,7 @@
     [_targetLanguageTable reloadData];
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
     
-    [_inputText setReady:YES];
+    
     
     _sharedDefaults =[SavedInfo sharedDefaults];
     if([_sharedDefaults autoPushed]) {
@@ -103,10 +104,11 @@
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
    //Swap selected table cells
-    NSInteger selectedSourceRow = [_sourceLanguageTable selectedRow];
-    NSInteger selectedTargetRow = [_targetLanguageTable selectedRow];
-    [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedTargetRow] byExtendingSelection:FALSE];
-    [_targetLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedSourceRow] byExtendingSelection:FALSE];
+    NSString * selectedSource = _sLanguage;
+    NSString * selectedTarget = _tLanguage;
+    [_dataHandler pushNewSourceLanguage:selectedTarget];
+    [_dataHandler pushNewTargetLanguage:selectedSource];
+    
 }
 
 //Updating tables with new entries
@@ -121,11 +123,15 @@
 -(void)sourceLanguageTableSelectionDidChange:(NSString *)index {
     [_sourceLanguage setStringValue:index];
     _sLanguage=index;
+    if(!_inputText.ready&&_sLanguage&&_tLanguage)
+        [self performRequest];
     
 }
 -(void)targetLanguageTableSelectionDidChange:(NSString *)index {
     [_targetLanguage setStringValue:index];
     _tLanguage=index;
+    if(!_inputText.ready&&_sLanguage&&_tLanguage)
+        [self performRequest];
 }
 
 //Creating menu at button

@@ -103,6 +103,8 @@
         _sLanguage = @"Auto";
         [_sharedDefaults setAutoPushed:YES];
         [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
+        if(!_inputText.ready)
+            [self performRequest];
     }
     else {
         [_sharedDefaults setAutoPushed:NO];

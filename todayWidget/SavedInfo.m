@@ -62,7 +62,7 @@
 }
 
 -(BOOL)hasChosenLanguages {
-    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&[[NSScanner scannerWithString:(NSString *)[[self userDefaults]objectForKey:@"sourceDefaultSelection"]]scanInt:nil]&&[[NSScanner scannerWithString:(NSString *)[[self userDefaults]objectForKey:@"targetDefaultSelection"]]scanInt:nil])
+    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"sourceDefaultSelection"]]scanInt:nil]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"targetDefaultSelection"]]scanInt:nil])
         return YES;
     return NO;
 }

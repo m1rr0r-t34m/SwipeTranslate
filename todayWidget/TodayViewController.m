@@ -60,7 +60,8 @@
     
     _sharedDefaults = [SavedInfo sharedDefaults];
     _localDefaults=[SavedInfo localDefaults];
-    
+    [_localDefaults setTargetLanguages:@[@"English",@"Russian",@"Finnish"]];
+    [_localDefaults setSourceLanguages:@[@"English",@"Russian",@"Finnish"]];
 
     for (int i = 2; i < 4; i++) {
         [_sourceSegmentedButton setLabel:[[_localDefaults sourceLanguages] objectAtIndex:i-2] forSegment:i];
@@ -305,11 +306,11 @@
 }
 -(void)receiveTranslateResponse:(NSArray *)data {
     if([_sLanguage isEqualToString:@"Auto"]) {
-        _autoLanguageCode = [NSString new];
+        
         _autoLanguageTitle = [NSString new];
         
-        _autoLanguageCode = [data objectAtIndex:0];
-        _autoLanguageTitle =  [[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:_autoLanguageCode]];
+        _autoLanguageTitle = [data objectAtIndex:0];
+       
         if(_autoLanguageTitle) {
             [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguageTitle] forSegment:1];
         }

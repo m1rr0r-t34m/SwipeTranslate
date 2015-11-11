@@ -62,7 +62,7 @@
 }
 
 -(BOOL)hasChosenLanguages {
-    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"])
+    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&[[NSScanner scannerWithString:(NSString *)[[self userDefaults]objectForKey:@"sourceDefaultSelection"]]scanInt:nil]&&[[NSScanner scannerWithString:(NSString *)[[self userDefaults]objectForKey:@"targetDefaultSelection"]]scanInt:nil])
         return YES;
     return NO;
 }

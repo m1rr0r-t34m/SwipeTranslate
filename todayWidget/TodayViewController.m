@@ -21,6 +21,7 @@
     _autoLanguageTitle=nil;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
     [self saveAutoLanguage];
+    [_sharedDefaults setAutoPushed:NO];
 }
 -(void)clearOutput {
     
@@ -48,7 +49,7 @@
 }
 -(void)saveChosenLanguages {
       [_sharedDefaults setSourceSelection:[_sourceSegmentedButton labelForSegment:[_sourceSegmentedButton selectedSegment]]];
-    [_sharedDefaults setTargetSelection:[_targetSegmentedButton labelForSegment:[_targetSegmentedButton selectedSegment]]];
+      [_sharedDefaults setTargetSelection:[_targetSegmentedButton labelForSegment:[_targetSegmentedButton selectedSegment]]];
 }
 -(void)saveAutoLanguage {
     [_sharedDefaults setAutoLanguage:_autoLanguageTitle];
@@ -60,8 +61,7 @@
     
     _sharedDefaults = [SavedInfo sharedDefaults];
     _localDefaults=[SavedInfo localDefaults];
-    [_localDefaults setTargetLanguages:@[@"English",@"Russian",@"Finnish"]];
-    [_localDefaults setSourceLanguages:@[@"English",@"Russian",@"Finnish"]];
+
 
     for (int i = 2; i < 4; i++) {
         [_sourceSegmentedButton setLabel:[[_localDefaults sourceLanguages] objectAtIndex:i-2] forSegment:i];
@@ -184,8 +184,11 @@
             [_sourceSegmentedButton setSelectedSegment:1];
     }
     //Clear Auto element title if clicked on different button
-    if([sender selectedSegment]!=1)
+    if([sender selectedSegment]!=1) {
         [self clearAutoLanguage];
+        [self saveChosenLanguages];
+    }\
+    
     else
         [_sharedDefaults setAutoPushed:YES];
     
@@ -198,7 +201,7 @@
         [self performGoogleRequest];
     
     //Save new selection to defaults
-    [self saveChosenLanguages];
+    
     
 }
 
@@ -231,7 +234,6 @@
     
     //Push clicked menu element language to the button
     [_sourceSegmentedButton tryToPushNewSourceLanguage:[sender title]];
-    
     
     [self saveLanguages];
     

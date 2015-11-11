@@ -20,7 +20,7 @@
 +(SavedInfo *)sharedDefaults {
     SavedInfo *instance=[super new];
     [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"com.SwipeTranslateDesktop"]];
-    [instance setType:@"local"];
+    [instance setType:@"shared"];
     if([instance isEmpty])
         [instance createInitialDefaults];
     return instance;

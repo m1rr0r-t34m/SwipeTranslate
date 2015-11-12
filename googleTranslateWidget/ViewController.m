@@ -53,7 +53,6 @@
   
     readyInputLength=14;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performRequest) name:@"sendTranslationRequestForTheEnterKey" object:nil];
     if ([[_inputText string]  isEqual: @""] || [[_inputText string] isEqual: @"Type some text"])
         _clearTextButton.hidden = YES;
         _requestProgressIndicator.hidden = YES;
@@ -257,6 +256,39 @@
     
 }
 
+- (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
+    
+    BOOL stat=NO;
+    NSUInteger flags = [[NSApp currentEvent] modifierFlags]&NSDeviceIndependentModifierFlagsMask;
+    NSUInteger key=[[NSApp currentEvent] keyCode];
+    
+    if([_liveTranslate state] == 1){
+        if(key == 0x24 || key == 0x4C) {
+            stat=YES;
+            [aTextView insertNewlineIgnoringFieldEditor:self];
+        }
+    }
+    else {
+        if(key == 0x24 || key == 0x4C) {
+            if(!flags) {
+                [self performSelectorOnMainThread:@selector(performRequest) withObject:nil waitUntilDone:NO];
+                stat=YES;
+            }
+            
+            else
+                if(flags&NSCommandKeyMask) {
+                    stat=YES;
+                    [aTextView insertNewlineIgnoringFieldEditor:self];
+                }
+            
+        }
+        
+    }
+    
+    
+    return stat;
+}
+
 -(void)textDidChange:(NSNotification *)notification {
     //Check if theres more than 1 line in inputText
     NSLayoutManager *layoutManager = [_inputText layoutManager];
@@ -290,7 +322,6 @@
         [inputScroll setScrolling:YES];
     else if(numberOfLines<2&&inputScroll.scrolling&&!returnInInputPressed)
         [inputScroll setScrolling:NO];
-    
     
     
     if(!(_inputText.ready)&&[_liveTranslate state] == 1) {

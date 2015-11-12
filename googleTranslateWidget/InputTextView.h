@@ -12,6 +12,7 @@
 @interface InputTextView : NSTextView
 @property (readwrite) BOOL open;
 @property (readwrite) BOOL ready;
+@property BOOL commandKeyPressed;
 -(void)fold;
 -(void)unfold;
 @end

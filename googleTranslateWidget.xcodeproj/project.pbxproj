@@ -19,6 +19,7 @@
 		CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
 		CD12BB721BD84AF8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
 		CD1A16CE1BF5525A00EA90D3 /* HiddenScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */; };
+		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
 		CD253CDE1BDABDF000662162 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD253CDD1BDABDF000662162 /* DataSource.m */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
@@ -84,6 +85,7 @@
 		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetView.m; sourceTree = "<group>"; };
 		CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiddenScroll.h; sourceTree = "<group>"; };
 		CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiddenScroll.m; sourceTree = "<group>"; };
+		CD1A16D91BF557AB00EA90D3 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CD253CDC1BDABDF000662162 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			children = (
 				CDCFCCDB1B8E690300547F5C /* Info.plist */,
 				CDCFCCDF1B8E690300547F5C /* main.m */,
+				CD1A16D91BF557AB00EA90D3 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */,
+				CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */,
 				CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

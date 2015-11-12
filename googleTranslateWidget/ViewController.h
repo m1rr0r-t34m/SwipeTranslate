@@ -33,10 +33,10 @@
 @property (strong) IBOutlet NSTextField *outputText;
 @property (strong) IBOutlet NSButton *liveTranslateButton;
 
+@property (strong) IBOutlet InputScroll *inputScrollView;
 
 
 //Actions from View
-- (IBAction)enableLiveTranslate:(id)sender;
 - (IBAction)enableAutoLanguage:(id)sender;
 - (IBAction)swapButton:(id)sender;
 - (IBAction)showSourceMenu:(id)sender;
@@ -51,10 +51,13 @@
 @property NSString* tLanguage;
 @property SavedInfo *sharedDefaults;
 @property SavedInfo *localDefaults;
+@property BOOL *liveTranslation;
 
 //Menu properties
 @property NSMenu *sourceLanguageMenu;
 @property NSMenu *targetLanguageMenu;
+@property NSMenuItem *liveTranslate;
+
 
 @end
 

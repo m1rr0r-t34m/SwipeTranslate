@@ -10,7 +10,7 @@
 
 @implementation NSArray (LanguagesStorage)
 +(NSArray *)getAlphabetArray {
-    return[[self alloc] initWithArray:@[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"P", @"R", @"S", @"T", @"U", @"V", @"W", @"Y", @"Z"]];
+    return[[self alloc] initWithArray:@[@"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", @"N", @"P", @"R", @"S", @"T", @"U", @"V", @"W", @"Y"]];
 }
 +(NSArray *)getKeysArray {
     return[[self alloc] initWithArray:@[@"auto",@"sq",@"en",@"ar",@"hy",@"az",@"af",@"eu",@"be",@"bg",@"bs",@"cy",@"vi",@"hu",@"ht",@"gl",@"nl",@"el",@"ka",@"da",@"he",@"id",@"ga",@"it",@"is",@"es",@"kk",@"ca",@"ky",@"zh",@"ko",@"la",@"lv",@"lt",@"mg",@"ms",@"mt",@"mk",@"mn",@"de",@"no",@"fa",@"pl",@"pt",@"ro",@"ru",@"sr",@"sk",@"sl",@"sw",@"tg",@"th",@"tl",@"tt",@"tr",@"uz",@"uk",@"fi",@"fr",@"hr",@"cs",@"sv",@"et",@"ja"]];

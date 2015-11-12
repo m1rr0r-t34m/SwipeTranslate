@@ -9,11 +9,12 @@
 #import "ViewController.h"
 
 
+
 @implementation ViewController {
     BOOL returnInInputPressed;
     int readyInputLength;
 }
-
+@synthesize liveTranslation = liveTranslationIsEnabled;
 
 -(void)awakeFromNib{
     [super awakeFromNib];
@@ -33,13 +34,23 @@
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
     
+    NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
+    _liveTranslate = [[NSMenuItem alloc] initWithTitle:@"Live Translate" action:@selector(enableLiveTranslate:) keyEquivalent:@"l"];
+    [_liveTranslate setState:1];
+    [fileMenu addItem: _liveTranslate];
+    
+    NSMenuItem *fileMenuItem = [[NSMenuItem alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
+    [fileMenuItem setSubmenu: fileMenu];
+    
+    [[NSApp mainMenu] addItem: fileMenuItem];
+    
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     
     [_inputText setDelegate:self];
     [_inputText setReady:YES];
-
+  
     readyInputLength=14;
     
 }
@@ -72,15 +83,24 @@
     // Update the view, if already loaded.
 }
 
-
-- (IBAction)enableLiveTranslate:(id)sender {
-    NSImage *tmp = [sender image];
-    [sender setImage:[sender alternateImage]];
-    [sender setAlternateImage:tmp];
+-(void)enableLiveTranslate:(id)sender{
+   
+        NSInteger state = [_liveTranslate state];
+        switch (state) {
+            case 0:
+                [_liveTranslate setState:1];
+                break;
+            case 1:
+                [_liveTranslate setState:0];
+            default:
+                break;
+        }
+    
 }
 
 - (IBAction)enableAutoLanguage:(id)sender {
     
+ 
     NSImage *tmp = [_autoLanguageButton image];
     [_autoLanguageButton setImage:[_autoLanguageButton alternateImage]];
     [_autoLanguageButton setAlternateImage:tmp];
@@ -89,6 +109,7 @@
         switch (state) {
             case 0:
                 [_autoLanguageButton setState:1];
+                
                 break;
             case 1:
                 [_autoLanguageButton setState:0];
@@ -114,6 +135,8 @@
     
     
 }
+
+
 
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
@@ -252,7 +275,7 @@
     
     
     
-    if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)) {
+    if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)&&[_liveTranslate state] == 1) {
         [self performRequest];
     }
     else if(_inputText.ready) {

@@ -54,6 +54,9 @@
     readyInputLength=14;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performRequest) name:@"sendTranslationRequestForTheEnterKey" object:nil];
+    if ([[_inputText string]  isEqual: @""] || [[_inputText string] isEqual: @"Type some text"])
+        _clearTextButton.hidden = YES;
+
     
 }
 
@@ -194,6 +197,17 @@
     [NSMenu popUpContextMenu:_targetLanguageMenu withEvent:[NSApp currentEvent] forView:sender];
 }
 
+- (IBAction)clearTextButtonAction:(id)sender {
+    [_inputText setString:@""];
+    [self clearOutput];
+}
+
+-(void)clearOutput {
+    
+    [_outputText setStringValue:@""];
+    _clearTextButton.hidden = YES;
+}
+
 -(void)controlTextDidChange:(NSNotification *)obj{
     //This should be an array of all available languages
    /* NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
@@ -257,13 +271,16 @@
     
 
     if(![[_inputText string] isEmpty]) {
+        _clearTextButton.hidden = NO;
         if([[_inputText string] characterAtIndex:[[_inputText string] length]-1]=='\n')
             returnInInputPressed=YES;
         else
             returnInInputPressed=NO;
     }
     else
+        _clearTextButton.hidden = YES;
         returnInInputPressed=NO;
+    
     
    InputScroll *inputScroll =(InputScroll *)[[_inputText superview] superview];
     

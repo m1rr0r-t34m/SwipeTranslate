@@ -31,7 +31,7 @@
 @property (strong) IBOutlet NSView *rightSplittedView;
 @property (strong) IBOutlet InputTextView *inputText;
 @property (strong) IBOutlet NSTextField *outputText;
-
+@property (strong) IBOutlet NSButton *clearTextButton;
 @property (strong) IBOutlet InputScroll *inputScrollView;
 
 
@@ -40,6 +40,7 @@
 - (IBAction)swapButton:(id)sender;
 - (IBAction)showSourceMenu:(id)sender;
 - (IBAction)showTargetMenu:(id)sender;
+- (IBAction)clearTextButtonAction:(id)sender;
 
 //Methods
 -(void)sourceMenuClick:(id)sender;

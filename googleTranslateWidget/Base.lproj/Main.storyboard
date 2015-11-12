@@ -418,6 +418,17 @@
                                                     <animations/>
                                                 </scroller>
                                             </scrollView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nfS-zw-JRZ">
+                                                <rect key="frame" x="549" y="428" width="17" height="17"/>
+                                                <animations/>
+                                                <buttonCell key="cell" type="square" title="╳" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="R0q-gL-P01">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="clearTextButtonAction:" target="hJv-Ja-bsx" id="7Bt-nq-vP1"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -433,6 +444,7 @@
                     </customView>
                     <connections>
                         <outlet property="autoLanguageButton" destination="9Vw-LM-f9F" id="VuS-cx-u4G"/>
+                        <outlet property="clearTextButton" destination="nfS-zw-JRZ" id="hLc-9F-4qp"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>

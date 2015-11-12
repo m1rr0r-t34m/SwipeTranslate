@@ -293,7 +293,7 @@
     
     
     
-    if(!(_inputText.isWhiteSpace||_inputText.isEmpty||_inputText.ready)&&[_liveTranslate state] == 1) {
+    if(!(_inputText.ready)&&[_liveTranslate state] == 1) {
         [self performRequest];
     }
     else if(_inputText.ready) {
@@ -310,7 +310,7 @@
     }
 
     else if(_inputText.isWhiteSpace)
-        [_outputText setStringValue:[_inputText string]];
+        [_outputText setStringValue:@""];
 
 }
 
@@ -321,11 +321,13 @@
         return newSelectedCharRange;
 }
 -(void)performRequest {
-    _requestProgressIndicator.hidden = NO;
-    [_requestProgressIndicator startAnimation:self];
-    RequestHandler *handler = [RequestHandler NewTranslateRequest];
-    [handler setDelegate:self];
-    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
+        _requestProgressIndicator.hidden = NO;
+        [_requestProgressIndicator startAnimation:self];
+        RequestHandler *handler = [RequestHandler NewTranslateRequest];
+        [handler setDelegate:self];
+        [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    }
 }
 -(void)receiveTranslateResponse:(NSArray *)data {
     if([_sLanguage isEqualToString:@"Auto" ]) {

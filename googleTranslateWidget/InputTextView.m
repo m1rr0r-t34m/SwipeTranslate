@@ -57,5 +57,10 @@
     [super setSelectedRange:selectedRange];
     
 }
+-(void)keyUp:(NSEvent *)theEvent{
+    if (theEvent.keyCode == 0x24 || theEvent.keyCode == 0x4C){
+        [[NSNotificationCenter defaultCenter ]postNotificationName:@"sendTranslationRequestForTheEnterKey" object:nil];
+    }
+}
 
 @end

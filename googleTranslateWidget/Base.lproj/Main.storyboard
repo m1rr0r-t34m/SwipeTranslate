@@ -418,17 +418,6 @@
                                                     <animations/>
                                                 </scroller>
                                             </scrollView>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6m-Na-aNB">
-                                                <rect key="frame" x="37" y="342" width="20" height="20"/>
-                                                <animations/>
-                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="LiveTranslateButton" imagePosition="overlaps" alignment="center" alternateImage="LiveTranslateButtonPushed" imageScaling="proportionallyUpOrDown" inset="2" id="1Ng-5P-wJK">
-                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="enableLiveTranslate:" target="hJv-Ja-bsx" id="zCH-lZ-B48"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -447,7 +436,6 @@
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
-                        <outlet property="liveTranslateButton" destination="T6m-Na-aNB" id="rYh-Hy-rC1"/>
                         <outlet property="outputText" destination="jR6-2t-gR2" id="7xX-Ih-bZk"/>
                         <outlet property="rightSplittedView" destination="gGN-sP-6rJ" id="hiv-Bn-t7t"/>
                         <outlet property="sourceLanguage" destination="2nt-J6-1mR" id="u2P-Z8-s6p"/>
@@ -470,8 +458,6 @@
     <resources>
         <image name="AutoButtonIcon" width="256" height="256"/>
         <image name="AutoButtonPushed" width="256" height="256"/>
-        <image name="LiveTranslateButton" width="256" height="256"/>
-        <image name="LiveTranslateButtonPushed" width="256" height="256"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

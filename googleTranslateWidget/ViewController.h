@@ -31,7 +31,6 @@
 @property (strong) IBOutlet NSView *rightSplittedView;
 @property (strong) IBOutlet InputTextView *inputText;
 @property (strong) IBOutlet NSTextField *outputText;
-@property (strong) IBOutlet NSButton *liveTranslateButton;
 
 @property (strong) IBOutlet InputScroll *inputScrollView;
 
@@ -51,7 +50,6 @@
 @property NSString* tLanguage;
 @property SavedInfo *sharedDefaults;
 @property SavedInfo *localDefaults;
-@property BOOL *liveTranslation;
 
 //Menu properties
 @property NSMenu *sourceLanguageMenu;

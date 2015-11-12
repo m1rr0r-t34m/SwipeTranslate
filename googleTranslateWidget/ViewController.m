@@ -14,7 +14,7 @@
     BOOL returnInInputPressed;
     int readyInputLength;
 }
-@synthesize liveTranslation = liveTranslationIsEnabled;
+
 
 -(void)awakeFromNib{
     [super awakeFromNib];
@@ -52,6 +52,8 @@
     [_inputText setReady:YES];
   
     readyInputLength=14;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performRequest) name:@"sendTranslationRequestForTheEnterKey" object:nil];
     
 }
 

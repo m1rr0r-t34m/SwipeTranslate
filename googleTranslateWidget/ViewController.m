@@ -84,20 +84,6 @@
     // Update the view, if already loaded.
 }
 
--(void)enableLiveTranslate:(id)sender{
-   
-        NSInteger state = [_liveTranslate state];
-        switch (state) {
-            case 0:
-                [_liveTranslate setState:1];
-                break;
-            case 1:
-                [_liveTranslate setState:0];
-            default:
-                break;
-        }
-    
-}
 
 - (IBAction)enableAutoLanguage:(id)sender {
     
@@ -256,7 +242,7 @@
     NSUInteger flags = [[NSApp currentEvent] modifierFlags]&NSDeviceIndependentModifierFlagsMask;
     NSUInteger key=[[NSApp currentEvent] keyCode];
     
-    if([_liveTranslate state] == 1){
+    if([_liveTranslate state]){
         if(key == 0x24 || key == 0x4C) {
             stat=YES;
             [aTextView insertNewlineIgnoringFieldEditor:self];
@@ -265,7 +251,7 @@
     else {
         if(key == 0x24 || key == 0x4C) {
             if(!flags) {
-                [self performSelectorOnMainThread:@selector(performRequest) withObject:nil waitUntilDone:NO];
+                [self performRequest];
                 stat=YES;
             }
             
@@ -320,8 +306,10 @@
             [inputScroll setScrolling:NO];
         
         _clearTextButton.hidden = NO;
-        if(![[_inputText string] isWhiteSpace])
-            [self performRequest];
+        if(![[_inputText string] isWhiteSpace]){
+            if ([_liveTranslate state])
+                [self performRequest];
+        }
         else
             [_outputText setStringValue:@""];
         

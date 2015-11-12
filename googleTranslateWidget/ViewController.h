@@ -33,6 +33,7 @@
 @property (strong) IBOutlet NSTextField *outputText;
 @property (strong) IBOutlet NSButton *clearTextButton;
 @property (strong) IBOutlet InputScroll *inputScrollView;
+@property (strong) IBOutlet NSProgressIndicator *requestProgressIndicator;
 
 
 //Actions from View

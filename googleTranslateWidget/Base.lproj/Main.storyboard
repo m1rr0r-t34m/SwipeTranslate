@@ -429,6 +429,10 @@
                                                     <action selector="clearTextButtonAction:" target="hJv-Ja-bsx" id="7Bt-nq-vP1"/>
                                                 </connections>
                                             </button>
+                                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="CF8-jx-hO3">
+                                                <rect key="frame" x="20" y="344" width="16" height="16"/>
+                                                <animations/>
+                                            </progressIndicator>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -449,6 +453,7 @@
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
                         <outlet property="outputText" destination="jR6-2t-gR2" id="7xX-Ih-bZk"/>
+                        <outlet property="requestProgressIndicator" destination="CF8-jx-hO3" id="chc-Xg-42I"/>
                         <outlet property="rightSplittedView" destination="gGN-sP-6rJ" id="hiv-Bn-t7t"/>
                         <outlet property="sourceLanguage" destination="2nt-J6-1mR" id="u2P-Z8-s6p"/>
                         <outlet property="sourceLanguageTable" destination="upD-JQ-YEe" id="uEc-ij-Lf2"/>

@@ -56,8 +56,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(performRequest) name:@"sendTranslationRequestForTheEnterKey" object:nil];
     if ([[_inputText string]  isEqual: @""] || [[_inputText string] isEqual: @"Type some text"])
         _clearTextButton.hidden = YES;
-
-    
+        _requestProgressIndicator.hidden = YES;
 }
 
 -(void)viewWillAppear{
@@ -322,6 +321,8 @@
         return newSelectedCharRange;
 }
 -(void)performRequest {
+    _requestProgressIndicator.hidden = NO;
+    [_requestProgressIndicator startAnimation:self];
     RequestHandler *handler = [RequestHandler NewTranslateRequest];
     [handler setDelegate:self];
     [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
@@ -331,9 +332,9 @@
         [_sharedDefaults setAutoLanguage:(NSString *)data[0]];
         [_sourceLanguage setStringValue:(NSString *)data[0]];
     }
-    
-    
     [_outputText setStringValue:(NSString *)data[1]];
+    [_requestProgressIndicator stopAnimation:self];
+    _requestProgressIndicator.hidden = YES;
 }
 
 @end

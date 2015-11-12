@@ -35,14 +35,27 @@
     [_targetLanguage setDelegate:self];
     
     NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
+    NSMenu *editMenu = [[NSMenu alloc] initWithTitle:@"Edit"];
+    
     _liveTranslate = [[NSMenuItem alloc] initWithTitle:@"Live Translate" action:@selector(enableLiveTranslate:) keyEquivalent:@"l"];
     [_liveTranslate setState:1];
     [fileMenu addItem: _liveTranslate];
+    NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
+    NSMenuItem *pasteItem = [[NSMenuItem alloc] initWithTitle:@"Paste" action:@selector(pasteAsPlainText:) keyEquivalent:@"v"];
+    NSMenuItem *cutItem = [[NSMenuItem alloc] initWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
+ 
+    [editMenu addItem:copyItem];
+    [editMenu addItem:pasteItem];
+    [editMenu addItem:cutItem];
+    
     
     NSMenuItem *fileMenuItem = [[NSMenuItem alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
     [fileMenuItem setSubmenu: fileMenu];
+    NSMenuItem *editMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit" action:NULL keyEquivalent:@""];
+    [editMenuItem setSubmenu:editMenu];
     
     [[NSApp mainMenu] addItem: fileMenuItem];
+    [[NSApp mainMenu] addItem: editMenuItem];
     
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];

@@ -42,8 +42,18 @@
 }
 -(BOOL)isEmpty {
     if([[self type]isEqualToString:@"local"]){
-        if(![self hasLanguages])
+        if(![self hasLanguages]) {
+            for(int i=0;i<[[self sourceLanguages] count];i++){
+                if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
+                    return NO;
+            }
+            for(int i=0;i<[[self targetLanguages] count];i++){
+                if(![[NSArray getValuesArray:NO] containsObject:[self targetLanguages][i]])
+                    return NO;
+            }
             return YES;
+        }
+        
         else
             return NO;
     }
@@ -57,7 +67,13 @@
 }
 -(BOOL)hasLanguages {
     if([ self.userDefaults objectForKey:@"sourceDefault"]&&[[self userDefaults]objectForKey:@"targetDefault"])
-        return YES;
+    {
+        if([[self.userDefaults objectForKey:@"sourceDefault"] count]==5&&[[self.userDefaults objectForKey:@"targetDefault"] count]==5)
+            return YES;
+        else
+            return NO;
+    }
+    
     return NO;
 }
 

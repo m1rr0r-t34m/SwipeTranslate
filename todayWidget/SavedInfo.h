@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LanguagesStorage.h"
 
 @interface SavedInfo : NSUserDefaults
 

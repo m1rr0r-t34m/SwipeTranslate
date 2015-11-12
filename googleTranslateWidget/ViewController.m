@@ -66,9 +66,13 @@
   
     readyInputLength=14;
     
-    if ([[_inputText string]  isEqual: @""] || [[_inputText string] isEqual: @"Type some text"])
-        _clearTextButton.hidden = YES;
-        _requestProgressIndicator.hidden = YES;
+    _translateHandler = [RequestHandler NewTranslateRequest];
+    [_translateHandler setDelegate:self];
+    
+
+    _clearTextButton.hidden = YES;
+    _requestProgressIndicator.hidden = YES;
+
 }
 
 -(void)viewWillAppear{
@@ -209,15 +213,11 @@
 }
 
 - (IBAction)clearTextButtonAction:(id)sender {
-    [_inputText setString:@""];
-    [self clearOutput];
-}
-
--(void)clearOutput {
-    
+    [_inputText setReady:YES];
     [_outputText setStringValue:@""];
     _clearTextButton.hidden = YES;
 }
+
 
 -(void)controlTextDidChange:(NSNotification *)obj{
     //This should be an array of all available languages
@@ -303,7 +303,7 @@
 }
 
 -(void)textDidChange:(NSNotification *)notification {
-    //Check if theres more than 1 line in inputText
+    //Counting number of lines
     NSLayoutManager *layoutManager = [_inputText layoutManager];
     unsigned long numberOfLines, index, numberOfGlyphs = [layoutManager numberOfGlyphs];
     NSRange lineRange;
@@ -313,48 +313,45 @@
         index = NSMaxRange(lineRange);
     }
     
-
-    if(![[_inputText string] isEmpty]) {
-        _clearTextButton.hidden = NO;
-        if([[_inputText string] characterAtIndex:[[_inputText string] length]-1]=='\n')
-            returnInInputPressed=YES;
-        else
-            returnInInputPressed=NO;
-    }
-    else
-        _clearTextButton.hidden = YES;
-        returnInInputPressed=NO;
     
     
-   InputScroll *inputScroll =(InputScroll *)[[_inputText superview] superview];
     
-    if(returnInInputPressed&&!inputScroll.scrolling)
-        [inputScroll setScrolling:YES];
-    
-    if(numberOfLines>1&&!inputScroll.scrolling)
-        [inputScroll setScrolling:YES];
-    else if(numberOfLines<2&&inputScroll.scrolling&&!returnInInputPressed)
-        [inputScroll setScrolling:NO];
-    
-    
-    if(!(_inputText.ready)&&[_liveTranslate state] == 1) {
-        [self performRequest];
-    }
-    else if(_inputText.ready) {
+    //Ready validation
+    if(_inputText.ready) {
         if(_inputText.string.length>readyInputLength) {
             [_inputText setReady:NO];
             NSString *userString=[[_inputText string] stringByReplacingCharactersInRange:NSMakeRange(_inputText.string.length-readyInputLength, readyInputLength) withString:@""];
             [_inputText setString:userString];
         }
+    }
+    else if([_inputText.string isEmpty])
+            [_inputText setReady:YES];
+    
+    
+    
+    //Input text validation (clear button, requests and scrolling)
+    if(!_inputText.ready) {
+        //Scrolling validation
+        InputScroll *inputScroll =(InputScroll *)[[_inputText superview] superview];
+        if([[_inputText string] characterAtIndex:[[_inputText string] length]-1]=='\n'||numberOfLines>1)
+            [inputScroll setScrolling:YES];
+        else
+            [inputScroll setScrolling:NO];
+        
+        _clearTextButton.hidden = NO;
+        if(![[_inputText string] isWhiteSpace])
+            [self performRequest];
+        else
+            [_outputText setStringValue:@""];
         
     }
-    else if(_inputText.isEmpty) {
+    else {
+        _clearTextButton.hidden = YES;
         [_outputText setStringValue:@""];
-        [_inputText setReady:YES];
     }
+    
 
-    else if(_inputText.isWhiteSpace)
-        [_outputText setStringValue:@""];
+
 
 }
 
@@ -368,17 +365,18 @@
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
         _requestProgressIndicator.hidden = NO;
         [_requestProgressIndicator startAnimation:self];
-        RequestHandler *handler = [RequestHandler NewTranslateRequest];
-        [handler setDelegate:self];
-        [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+        
+        [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     }
 }
+
 -(void)receiveTranslateResponse:(NSArray *)data {
     if([_sLanguage isEqualToString:@"Auto" ]) {
         [_sharedDefaults setAutoLanguage:(NSString *)data[0]];
         [_sourceLanguage setStringValue:(NSString *)data[0]];
     }
-    [_outputText setStringValue:(NSString *)data[1]];
+    if(!_inputText.ready)
+        [_outputText setStringValue:(NSString *)data[1]];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }

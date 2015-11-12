@@ -22,7 +22,6 @@
     return request;
 }
 
-
 -(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText {
     
     //Get keys for source language and target language

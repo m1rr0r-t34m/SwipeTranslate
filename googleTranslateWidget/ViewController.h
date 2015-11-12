@@ -58,6 +58,7 @@
 @property NSMenu *targetLanguageMenu;
 @property NSMenuItem *liveTranslate;
 
+@property RequestHandler *translateHandler;
 
 @end
 

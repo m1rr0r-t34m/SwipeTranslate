@@ -34,32 +34,12 @@
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
     
-    NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
-    NSMenu *editMenu = [[NSMenu alloc] initWithTitle:@"Edit"];
+    [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenuWithLiveTranslateAction:@"enableLiveTranslate:" andSender:self]];
+    [[NSApp mainMenu] addItem: [MainApplicationMenu createEditMenu]];
     
-    _liveTranslate = [[NSMenuItem alloc] initWithTitle:@"Live Translate" action:@selector(enableLiveTranslate:) keyEquivalent:@"l"];
-    [_liveTranslate setState:1];
-    [fileMenu addItem: _liveTranslate];
-    NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
-    NSMenuItem *pasteItem = [[NSMenuItem alloc] initWithTitle:@"Paste" action:@selector(pasteAsPlainText:) keyEquivalent:@"v"];
-    NSMenuItem *cutItem = [[NSMenuItem alloc] initWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
- 
-    [editMenu addItem:copyItem];
-    [editMenu addItem:pasteItem];
-    [editMenu addItem:cutItem];
-    
-    
-    NSMenuItem *fileMenuItem = [[NSMenuItem alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
-    [fileMenuItem setSubmenu: fileMenu];
-    NSMenuItem *editMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit" action:NULL keyEquivalent:@""];
-    [editMenuItem setSubmenu:editMenu];
-    
-    [[NSApp mainMenu] addItem: fileMenuItem];
-    [[NSApp mainMenu] addItem: editMenuItem];
-    
+    _liveTranslate = [[NSApp mainMenu] itemWithTitle:@"Live Translate"];
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
-    
     
     [_inputText setDelegate:self];
     [_inputText setReady:YES];
@@ -68,7 +48,6 @@
     
     _translateHandler = [RequestHandler NewTranslateRequest];
     [_translateHandler setDelegate:self];
-    
 
     _clearTextButton.hidden = YES;
     _requestProgressIndicator.hidden = YES;

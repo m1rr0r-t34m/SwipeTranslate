@@ -18,6 +18,7 @@
 #import "InputTextView.h"
 #import "RequestReceiver.h"
 #import "SavedInfo.h"
+#import "MainApplicationMenu.h"
 
 @interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate>
 

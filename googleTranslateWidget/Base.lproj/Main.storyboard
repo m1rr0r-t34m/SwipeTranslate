@@ -377,7 +377,7 @@
                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <font key="titleFont" metaFont="system"/>
                                             </box>
-                                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouR-Cn-kYh" customClass="InputScroll">
+                                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ouR-Cn-kYh" customClass="InputScroll">
                                                 <rect key="frame" x="65" y="356" width="488" height="74"/>
                                                 <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="5bz-De-Gsk">
                                                     <rect key="frame" x="0.0" y="0.0" width="488" height="74"/>
@@ -412,7 +412,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Pmz-ng-32l">
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Pmz-ng-32l" customClass="HiddenScroll">
                                                     <rect key="frame" x="-100" y="-100" width="16" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <animations/>

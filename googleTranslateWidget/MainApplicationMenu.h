@@ -12,6 +12,7 @@
 @interface MainApplicationMenu : NSMenuItem
 
 +(NSMenuItem*)createEditMenu;
-+(NSMenuItem*)createFileMenuWithLiveTranslateAction: (NSString*)action andSender:(id)sender;
++(NSMenuItem*)createFileMenu;
+
 
 @end

@@ -33,11 +33,13 @@
     [_dataHandler setDelegate:self];
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
-    
-    [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenuWithLiveTranslateAction:@"enableLiveTranslate:" andSender:self]];
+   
+
+    [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenu]];
     [[NSApp mainMenu] addItem: [MainApplicationMenu createEditMenu]];
     
-    _liveTranslate = [[NSApp mainMenu] itemWithTitle:@"Live Translate"];
+    _liveTranslate = [[[[NSApp mainMenu] itemAtIndex:1] submenu] itemAtIndex:0];
+
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     

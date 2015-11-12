@@ -11,12 +11,12 @@
 @implementation MainApplicationMenu
 
 +(NSMenuItem*)createEditMenu{
-    NSMenuItem *editMenuItem = [[NSMenuItem alloc] initWithTitle:@"Edit" action:NULL keyEquivalent:@""];
+    MainApplicationMenu *editMenuItem = [[super alloc] initWithTitle:@"Edit" action:NULL keyEquivalent:@""];
     NSMenu *editMenu = [[NSMenu alloc] initWithTitle:@"Edit"];
-    
-    NSMenuItem *copyItem = [[NSMenuItem alloc] initWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
-    NSMenuItem *pasteItem = [[NSMenuItem alloc] initWithTitle:@"Paste" action:@selector(pasteAsPlainText:) keyEquivalent:@"v"];
-    NSMenuItem *cutItem = [[NSMenuItem alloc] initWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
+   
+    MainApplicationMenu *copyItem = [[super alloc] initWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
+    MainApplicationMenu *pasteItem = [[super alloc] initWithTitle:@"Paste" action:@selector(pasteAsPlainText:) keyEquivalent:@"v"];
+    MainApplicationMenu *cutItem = [[super alloc] initWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
     
     [editMenu addItem:copyItem];
     [editMenu addItem:pasteItem];
@@ -26,19 +26,27 @@
     return editMenuItem;
 }
 
-+(NSMenuItem*)createFileMenuWithLiveTranslateAction:(NSString *)action andSender:(id)sender{
-    SEL selector = NSSelectorFromString(action);
-    
++(NSMenuItem*)createFileMenu{
+
+    MainApplicationMenu *fileMenuItem = [[super alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
     NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
-    NSMenuItem *fileMenuItem = [[NSMenuItem alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
-    [fileMenuItem setSubmenu: fileMenu];
-    NSMenuItem* liveTranslate = [[NSMenuItem alloc] initWithTitle:@"Live Translate" action:selector keyEquivalent:@"l"];
-    [liveTranslate setTarget:sender];
+    MainApplicationMenu *liveTranslate = [[super alloc] initWithTitle:@"Live Translate" action:@selector(swapState) keyEquivalent:@"l"];
+    [liveTranslate setTarget:liveTranslate];
     [liveTranslate setState:1];
     [liveTranslate setEnabled:YES];
+    
     [fileMenu addItem: liveTranslate];
+    [fileMenuItem setSubmenu: fileMenu];
     
     return fileMenuItem;
+}
+-(void)swapState {
+
+    NSInteger s=[self state];
+    if (s)
+        [self setState:0];
+    else
+        [self setState:1];
 }
 
 @end

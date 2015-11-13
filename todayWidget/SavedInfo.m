@@ -30,7 +30,7 @@
     if([[self type]isEqualToString:@"local"]) {
         [self setInputText:@""];
         [self setOutputText:@""];
-        [self setSourceLanguages:@[@"English",@"French",@"Spainish",@"Russian",@"Finnish"]];
+        [self setSourceLanguages:@[@"English",@"French",@"Spanish",@"Russian",@"Finnish"]];
         [self setTargetLanguages:@[@"French",@"Russian",@"English",@"Finnish",@"Spanish"]];
     }
     else {
@@ -42,26 +42,41 @@
 }
 -(BOOL)isEmpty {
     if([[self type]isEqualToString:@"local"]){
-        if(![self hasLanguages]) {
-            for(int i=0;i<[[self sourceLanguages] count];i++){
-                if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
-                    return NO;
-            }
+        if(![self hasLanguages])
+            return YES;
+        
+        
+        else {
             for(int i=0;i<[[self targetLanguages] count];i++){
                 if(![[NSArray getValuesArray:NO] containsObject:[self targetLanguages][i]])
-                    return NO;
+                    return YES;
             }
-            return YES;
+            NSArray *a=[self sourceLanguages];
+            for(int i=0;i<[[self sourceLanguages] count];i++){
+                if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
+                    return YES;
+            }
+            
+            return NO;
         }
         
-        else
-            return NO;
     }
     else {
         if(![self hasChosenLanguages])
             return YES;
-        else
+        
+        else {
+            for(int i=0;i<[[self sourceLanguages] count];i++){
+                if(![[NSArray getValuesArray:NO] containsObject:[self sourceSelection]])
+                    return YES;
+            }
+            for(int i=0;i<[[self targetLanguages] count];i++){
+                if(![[NSArray getValuesArray:NO] containsObject:[self targetSelection]])
+                    return YES;
+            }
             return NO;
+        }
+        
     }
     
 }
@@ -76,6 +91,7 @@
     
     return NO;
 }
+
 
 -(BOOL)hasChosenLanguages {
     if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"sourceDefaultSelection"]]scanInt:nil]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"targetDefaultSelection"]]scanInt:nil])

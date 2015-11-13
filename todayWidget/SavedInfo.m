@@ -19,7 +19,7 @@
 }
 +(SavedInfo *)sharedDefaults {
     SavedInfo *instance=[super new];
-    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"LX39229ZDY.SwipeTranslateDesktop"];
+    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"LX39229ZDY.SwipeTranslateDesktop"]];
     [instance setType:@"shared"];
     if([instance isEmpty])
         [instance createInitialDefaults];

@@ -19,7 +19,7 @@
 }
 +(SavedInfo *)sharedDefaults {
     SavedInfo *instance=[super new];
-    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"com.SwipeTranslateDesktop"]];
+    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"LX39229ZDY.SwipeTranslateDesktop"];
     [instance setType:@"shared"];
     if([instance isEmpty])
         [instance createInitialDefaults];
@@ -51,7 +51,6 @@
                 if(![[NSArray getValuesArray:NO] containsObject:[self targetLanguages][i]])
                     return YES;
             }
-            NSArray *a=[self sourceLanguages];
             for(int i=0;i<[[self sourceLanguages] count];i++){
                 if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
                     return YES;

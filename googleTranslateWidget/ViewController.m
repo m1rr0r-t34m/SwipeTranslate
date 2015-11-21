@@ -50,6 +50,8 @@
     
     _translateHandler = [RequestHandler NewTranslateRequest];
     [_translateHandler setDelegate:self];
+    _dictionaryHandler=[RequestHandler NewDictionaryRequest];
+    [_dictionaryHandler setDelegate:self];
 
     _clearTextButton.hidden = YES;
     _requestProgressIndicator.hidden = YES;
@@ -111,8 +113,13 @@
         _sLanguage = @"Auto";
         [_sharedDefaults setAutoPushed:YES];
         [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
-        if(!_inputText.ready)
-            [self performRequest];
+        if(!_inputText.ready) {
+            if ([_inputText.string countWords] == 1)
+                [self performDictionaryRequest];
+            else
+                [self performTranslateRequest];
+        }
+
     }
     else {
         [_sharedDefaults setAutoPushed:NO];
@@ -159,15 +166,25 @@
     _sLanguage=index;
    if( [_autoLanguageButton state])
        [self enableAutoLanguage:self];
-    if(!_inputText.ready&&_sLanguage&&_tLanguage)
-        [self performRequest];
+    if(!_inputText.ready&&_sLanguage&&_tLanguage) {
+        if ([_inputText.string countWords] == 1)
+            [self performDictionaryRequest];
+        else
+            [self performTranslateRequest];
+    }
+
     
 }
 -(void)targetLanguageTableSelectionDidChange:(NSString *)index {
     [_targetLanguage setStringValue:index];
     _tLanguage=index;
-    if(!_inputText.ready&&_sLanguage&&_tLanguage)
-        [self performRequest];
+    if(!_inputText.ready&&_sLanguage&&_tLanguage) {
+        if ([_inputText.string countWords] == 1)
+            [self performDictionaryRequest];
+        else
+            [self performTranslateRequest];
+    }
+
 }
 
 //Creating menu at button
@@ -251,7 +268,11 @@
     else {
         if(key == 0x24 || key == 0x4C) {
             if(!flags) {
-                [self performRequest];
+                if ([_inputText.string countWords] == 1)
+                    [self performDictionaryRequest];
+                else
+                    [self performTranslateRequest];
+                
                 stat=YES;
             }
             
@@ -307,8 +328,12 @@
         
         _clearTextButton.hidden = NO;
         if(![[_inputText string] isWhiteSpace]){
-            if ([_liveTranslate state])
-                [self performRequest];
+            if ([_liveTranslate state]){
+                if ([_inputText.string countWords] == 1)
+                    [self performDictionaryRequest];
+                else
+                    [self performTranslateRequest];
+            }
         }
         else
             [_outputText setStringValue:@""];
@@ -318,9 +343,6 @@
         _clearTextButton.hidden = YES;
         [_outputText setStringValue:@""];
     }
-    
-
-
 
 }
 
@@ -330,12 +352,20 @@
     else
         return newSelectedCharRange;
 }
--(void)performRequest {
+-(void)performTranslateRequest {
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
         _requestProgressIndicator.hidden = NO;
         [_requestProgressIndicator startAnimation:self];
         
         [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    }
+}
+-(void)performDictionaryRequest {
+    if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
+        _requestProgressIndicator.hidden = NO;
+        [_requestProgressIndicator startAnimation:self];
+        
+        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     }
 }
 
@@ -346,6 +376,73 @@
     }
     if(!_inputText.ready)
         [_outputText setStringValue:(NSString *)data[1]];
+    [_requestProgressIndicator stopAnimation:self];
+    _requestProgressIndicator.hidden = YES;
+}
+-(void)receiveDictionaryResponse:(NSArray *)data {
+    NSDictionary *receivedData=(NSDictionary *)data[0];
+    NSString *inputWord=[receivedData objectForKey:@"text"];
+    NSString *outputText=[NSString new];
+    
+    if([inputWord length]>0) {
+        NSString *transcription=[receivedData objectForKey:@"transcription"];
+        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"Transcription: %@\n",transcription]];
+        
+        NSArray *posArray=[receivedData objectForKey:@"posArr"];
+        for(int i=0;i<[posArray count];i++) {
+            outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"For %@:",posArray[i]]];
+            outputText=[outputText stringByAppendingString:@"\n"];
+            
+            NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[i]];
+            for(int j=0;j<[allMeanings count];j++) {
+                NSString *translation=[allMeanings[j] objectForKey:@"tText"];
+                outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"Translation: %@\n",translation]];
+                
+                NSArray *meanings = [allMeanings[j] objectForKey:@"meanings"];
+                if([meanings count]) {
+                    outputText=[outputText stringByAppendingString:@"Meanings: "];
+                    for(int k=0;k<[meanings count];k++) {
+                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",meanings[k]]];
+                    }
+                    outputText=[outputText stringByAppendingString:@"\n"];
+                }
+                
+                
+                NSArray *synonims = [allMeanings[j] objectForKey:@"tSynonims"];
+                if([synonims count]) {
+                    outputText=[outputText stringByAppendingString:@"Synonims: "];
+                    for(int k=0;k<[synonims count];k++) {
+                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",synonims[k]]];
+                    }
+                    outputText=[outputText stringByAppendingString:@"\n"];
+                }
+
+                NSArray *examples = [allMeanings[j] objectForKey:@"examples"];
+                if([examples count]) {
+                    outputText=[outputText stringByAppendingString:@"Examples: "];
+                    for(int k=0;k<[examples count];k++) {
+                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",examples[k]]];
+                    }
+                    outputText=[outputText stringByAppendingString:@"\n"];
+                }
+                
+                
+                NSArray *translatedExamples = [allMeanings[j] objectForKey:@"tExamples"];
+                if([translatedExamples count]) {
+                    outputText=[outputText stringByAppendingString:@"Translated Examples: "];
+                    for(int k=0;k<[translatedExamples count];k++) {
+                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",translatedExamples[k]]];
+                    }
+                    outputText=[outputText stringByAppendingString:@"\n"];
+                }
+            outputText=[outputText stringByAppendingString:@"\n"];
+            }
+        }
+    }
+    else {
+        outputText=[outputText stringByAppendingString:[_inputText string]];
+    }
+    [_outputText setStringValue:outputText];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }

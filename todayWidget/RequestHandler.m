@@ -67,22 +67,32 @@
 -(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
    didReceiveData:(NSData *)data {
     
-    NSString *lang=[Parser AutoLanguage:data];
-    NSString *text=[Parser Text:data];
-    if(lang)
-        lang=[[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:lang]];
-    
     NSMutableArray *array=[NSMutableArray new];
-    [array addObject:lang];
-    [array addObject:text];
-    if([[self requestType] isEqualToString:@"dictionary"]) {
+
+    if([[self requestType]isEqualToString:@"translate"]) {
+        NSString *lang=[Parser AutoLanguage:data];
+        NSString *text=[Parser Text:data];
+        if(lang)
+            lang=[[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:lang]];
+        
+                [array addObject:lang];
+        [array addObject:text];
+        
+        dispatch_async(dispatch_get_main_queue(),^ {
+            [_delegate receiveTranslateResponse:array];
+        });
+    }
+    
+    else {
         NSDictionary *dictionary=[Parser Dictionary:data];
         [array addObject:dictionary];
+        
+        dispatch_async(dispatch_get_main_queue(),^ {
+            [_delegate receiveDictionaryResponse:array];
+        });
     }
 
-    dispatch_async(dispatch_get_main_queue(),^ {
-         [_delegate receiveTranslateResponse:array];
-    });
+    
    
     
 }

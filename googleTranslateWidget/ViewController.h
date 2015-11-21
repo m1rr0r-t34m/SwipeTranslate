@@ -60,6 +60,7 @@
 @property NSMenuItem *liveTranslate;
 
 @property RequestHandler *translateHandler;
+@property RequestHandler *dictionaryHandler;
 
 @end
 

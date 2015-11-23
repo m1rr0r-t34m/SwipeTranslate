@@ -33,7 +33,6 @@
     [_dataHandler setDelegate:self];
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
-   
 
     [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenu]];
     [[NSApp mainMenu] addItem: [MainApplicationMenu createEditMenu]];
@@ -198,7 +197,7 @@
 
 - (IBAction)clearTextButtonAction:(id)sender {
     [_inputText setReady:YES];
-    [_outputText setStringValue:@""];
+    [_outputText setString:@""];
     _clearTextButton.hidden = YES;
 }
 
@@ -336,12 +335,12 @@
             }
         }
         else
-            [_outputText setStringValue:@""];
+            [_outputText setString:@""];
         
     }
     else {
         _clearTextButton.hidden = YES;
-        [_outputText setStringValue:@""];
+        [_outputText setString:@""];
     }
 
 }
@@ -375,74 +374,84 @@
         [_sourceLanguage setStringValue:(NSString *)data[0]];
     }
     if(!_inputText.ready)
-        [_outputText setStringValue:(NSString *)data[1]];
+        [_outputText setString:(NSString *)data[1]];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }
 -(void)receiveDictionaryResponse:(NSArray *)data {
     NSDictionary *receivedData=(NSDictionary *)data[0];
     NSString *inputWord=[receivedData objectForKey:@"text"];
-    NSString *outputText=[NSString new];
+    NSMutableAttributedString *outputText=[NSMutableAttributedString new];
+    NSMutableAttributedString *newLineString = [[NSMutableAttributedString alloc] initWithString:@"\n"];
     
     if([inputWord length]>0) {
         NSString *transcription=[receivedData objectForKey:@"transcription"];
-        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"Transcription: %@\n",transcription]];
+        
+         [outputText appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"Transcription: %@\n",transcription]]];
+        
         
         NSArray *posArray=[receivedData objectForKey:@"posArr"];
         for(int i=0;i<[posArray count];i++) {
-            outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"For %@:",posArray[i]]];
-            outputText=[outputText stringByAppendingString:@"\n"];
+            
+            NSMutableAttributedString *posString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"For %@:", posArray [i]]];
+            [posString applyFontTraits:NSBoldFontMask range:NSMakeRange(0,[posString length])];
+            
+            [outputText appendAttributedString:posString];
+            [outputText appendAttributedString:newLineString];
             
             NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[i]];
             for(int j=0;j<[allMeanings count];j++) {
-                NSString *translation=[allMeanings[j] objectForKey:@"tText"];
-                outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"Translation: %@\n",translation]];
+                NSMutableAttributedString *translation = [[NSMutableAttributedString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
+                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString: [NSString stringWithFormat:@"Translation: %@\n",translation]] ];
                 
                 NSArray *meanings = [allMeanings[j] objectForKey:@"meanings"];
                 if([meanings count]) {
-                    outputText=[outputText stringByAppendingString:@"Meanings: "];
+                    [outputText appendAttributedString:[[NSMutableAttributedString alloc]initWithString: @"Meanings: "] ];
                     for(int k=0;k<[meanings count];k++) {
-                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",meanings[k]]];
+                        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, ",meanings[k]]]];
                     }
-                    outputText=[outputText stringByAppendingString:@"\n"];
+                    [outputText appendAttributedString:newLineString];
                 }
                 
                 
                 NSArray *synonims = [allMeanings[j] objectForKey:@"tSynonims"];
                 if([synonims count]) {
-                    outputText=[outputText stringByAppendingString:@"Synonims: "];
+                    [outputText appendAttributedString: [[NSMutableAttributedString alloc] initWithString :@"Synonims: "]];
                     for(int k=0;k<[synonims count];k++) {
-                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",synonims[k]]];
+                        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, ",synonims[k]]]];
                     }
-                    outputText=[outputText stringByAppendingString:@"\n"];
+                    [outputText appendAttributedString:newLineString];
                 }
+                
 
                 NSArray *examples = [allMeanings[j] objectForKey:@"examples"];
                 if([examples count]) {
-                    outputText=[outputText stringByAppendingString:@"Examples: "];
+                    
+                    [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"Examples: "]];
                     for(int k=0;k<[examples count];k++) {
-                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",examples[k]]];
+                        NSMutableAttributedString *examplesString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, ",examples[k]]];
+                        [examplesString applyFontTraits:NSItalicFontMask range:NSMakeRange(0, [examplesString length] )];
+                        [outputText appendAttributedString: examplesString];
                     }
-                    outputText=[outputText stringByAppendingString:@"\n"];
+                    [outputText appendAttributedString:newLineString];
                 }
-                
                 
                 NSArray *translatedExamples = [allMeanings[j] objectForKey:@"tExamples"];
                 if([translatedExamples count]) {
-                    outputText=[outputText stringByAppendingString:@"Translated Examples: "];
+                    [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@"Translated Examples: "]];
                     for(int k=0;k<[translatedExamples count];k++) {
-                        outputText=[outputText stringByAppendingString:[NSString stringWithFormat:@"%@, ",translatedExamples[k]]];
+                        [outputText appendAttributedString:[[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@, ",translatedExamples[k]]]];
                     }
-                    outputText=[outputText stringByAppendingString:@"\n"];
+                    [outputText appendAttributedString:newLineString];
                 }
-            outputText=[outputText stringByAppendingString:@"\n"];
+            [outputText appendAttributedString:newLineString];
             }
         }
     }
     else {
-        outputText=[outputText stringByAppendingString:[_inputText string]];
+        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[_inputText string] ]];
     }
-    [_outputText setStringValue:outputText];
+    [[_outputText textStorage] appendAttributedString:outputText];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }

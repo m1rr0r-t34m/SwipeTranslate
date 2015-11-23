@@ -31,7 +31,7 @@
 @property (strong) IBOutlet DataSource *dataHandler;
 @property (strong) IBOutlet NSView *rightSplittedView;
 @property (strong) IBOutlet InputTextView *inputText;
-@property (strong) IBOutlet NSTextField *outputText;
+@property (strong) IBOutlet NSTextView *outputText;
 @property (strong) IBOutlet NSButton *clearTextButton;
 @property (strong) IBOutlet InputScroll *inputScrollView;
 @property (strong) IBOutlet NSProgressIndicator *requestProgressIndicator;

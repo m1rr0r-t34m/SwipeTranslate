@@ -409,9 +409,10 @@
     //Creating layout for a dictionary response
     if([inputWord length]>0) {
         NSString *transcription=[receivedData objectForKey:@"transcription"];
-        
-         [outputText appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"[%@]\n",transcription] attributes:transcriptionAttributes]];
+        if ([transcription length]){
+        [outputText appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"[%@]\n",transcription] attributes:transcriptionAttributes]];
         [outputText appendAttributedString:newLineString];
+        }
         
         NSArray *posArray=[receivedData objectForKey:@"posArr"];
         for(int i=0;i<[posArray count];i++) {

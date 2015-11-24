@@ -401,8 +401,8 @@
             
             NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[i]];
             for(int j=0;j<[allMeanings count];j++) {
-                NSMutableAttributedString *translation = [[NSMutableAttributedString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
-                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString: [NSString stringWithFormat:@"Translation: %@\n",translation]] ];
+                NSString *translation = [[NSString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
+                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Translation: %@",translation]]];
                 
                 NSArray *meanings = [allMeanings[j] objectForKey:@"meanings"];
                 if([meanings count]) {

@@ -363,7 +363,6 @@
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
         _requestProgressIndicator.hidden = NO;
         [_requestProgressIndicator startAnimation:self];
-        
         [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     }
 }
@@ -403,6 +402,7 @@
             for(int j=0;j<[allMeanings count];j++) {
                 NSString *translation = [[NSString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
                 [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Translation: %@",translation]]];
+                [outputText appendAttributedString:newLineString];
                 
                 NSArray *meanings = [allMeanings[j] objectForKey:@"meanings"];
                 if([meanings count]) {
@@ -447,11 +447,12 @@
             [outputText appendAttributedString:newLineString];
             }
         }
+        
     }
     else {
-        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[_inputText string] ]];
+        [outputText setAttributedString:[[NSMutableAttributedString alloc] initWithString:[_inputText string] ]];
     }
-    [[_outputText textStorage] appendAttributedString:outputText];
+    [[_outputText textStorage] setAttributedString:outputText];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }

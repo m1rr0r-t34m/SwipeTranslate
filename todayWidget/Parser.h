@@ -13,4 +13,7 @@
 +(NSString *)Text:(NSData *)data;
 +(NSString *)AutoLanguage:(NSData *)data;
 +(NSDictionary *)Dictionary:(NSData *)data;
+
++(NSAttributedString *)outputStringForMainAppDictionary:(NSDictionary *)receivedData;
++(NSAttributedString *)outputStringForWidgetAppDictionary:(NSDictionary *)receivedData;
 @end

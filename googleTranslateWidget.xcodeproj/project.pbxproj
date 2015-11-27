@@ -24,7 +24,6 @@
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
 		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; };
-		CD6F9F631BE519E400E4B850 /* ValidateString.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F621BE519E400E4B850 /* ValidateString.m */; };
 		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
@@ -75,33 +74,31 @@
 /* Begin PBXFileReference section */
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
 		758DDE301BDC1DBD00210924 /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
-		758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageSuggestionMenu.h; sourceTree = "<group>"; };
-		758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageSuggestionMenu.m; sourceTree = "<group>"; };
-		75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainApplicationMenu.h; sourceTree = "<group>"; };
-		75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainApplicationMenu.m; sourceTree = "<group>"; };
-		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupMenu.h; sourceTree = "<group>"; };
-		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupMenu.m; sourceTree = "<group>"; };
-		CD12BB6F1BD849D8003ED768 /* WidgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetView.h; sourceTree = "<group>"; };
-		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetView.m; sourceTree = "<group>"; };
-		CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HiddenScroll.h; sourceTree = "<group>"; };
-		CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HiddenScroll.m; sourceTree = "<group>"; };
+		758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageSuggestionMenu.h; path = googleTranslateWidget/LanguageSuggestionMenu.h; sourceTree = "<group>"; };
+		758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageSuggestionMenu.m; path = googleTranslateWidget/LanguageSuggestionMenu.m; sourceTree = "<group>"; };
+		75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainApplicationMenu.h; path = googleTranslateWidget/MainApplicationMenu.h; sourceTree = "<group>"; };
+		75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainApplicationMenu.m; path = googleTranslateWidget/MainApplicationMenu.m; sourceTree = "<group>"; };
+		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupMenu.h; path = todayWidget/PopupMenu.h; sourceTree = "<group>"; };
+		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupMenu.m; path = todayWidget/PopupMenu.m; sourceTree = "<group>"; };
+		CD12BB6F1BD849D8003ED768 /* WidgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WidgetView.h; path = todayWidget/WidgetView.h; sourceTree = "<group>"; };
+		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WidgetView.m; path = todayWidget/WidgetView.m; sourceTree = "<group>"; };
+		CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiddenScroll.h; path = googleTranslateWidget/HiddenScroll.h; sourceTree = "<group>"; };
+		CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HiddenScroll.m; path = googleTranslateWidget/HiddenScroll.m; sourceTree = "<group>"; };
 		CD1A16D91BF557AB00EA90D3 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CD253CDC1BDABDF000662162 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
-		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHandler.m; sourceTree = "<group>"; };
-		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestHandler.h; sourceTree = "<group>"; };
-		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InnerScroll.h; sourceTree = "<group>"; };
-		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InnerScroll.m; sourceTree = "<group>"; };
-		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageTable.h; path = ../LanguageTable.h; sourceTree = "<group>"; };
-		CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageTable.m; path = ../LanguageTable.m; sourceTree = "<group>"; };
-		CD6F9F611BE519E400E4B850 /* ValidateString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateString.h; sourceTree = "<group>"; };
-		CD6F9F621BE519E400E4B850 /* ValidateString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateString.m; sourceTree = "<group>"; };
-		CD6F9F641BE5294900E4B850 /* InputScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputScroll.h; sourceTree = "<group>"; };
-		CD6F9F651BE5294900E4B850 /* InputScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputScroll.m; sourceTree = "<group>"; };
-		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedInfo.h; sourceTree = "<group>"; };
-		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedInfo.m; sourceTree = "<group>"; };
-		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateTextView.h; sourceTree = "<group>"; };
-		CD7CED7C1BD9772600789E8E /* ValidateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateTextView.m; sourceTree = "<group>"; };
+		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestHandler.m; path = todayWidget/RequestHandler.m; sourceTree = "<group>"; };
+		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestHandler.h; path = todayWidget/RequestHandler.h; sourceTree = "<group>"; };
+		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InnerScroll.h; path = googleTranslateWidget/InnerScroll.h; sourceTree = "<group>"; };
+		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InnerScroll.m; path = googleTranslateWidget/InnerScroll.m; sourceTree = "<group>"; };
+		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTable.h; sourceTree = "<group>"; };
+		CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTable.m; sourceTree = "<group>"; };
+		CD6F9F641BE5294900E4B850 /* InputScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputScroll.h; path = googleTranslateWidget/InputScroll.h; sourceTree = "<group>"; };
+		CD6F9F651BE5294900E4B850 /* InputScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputScroll.m; path = googleTranslateWidget/InputScroll.m; sourceTree = "<group>"; };
+		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedInfo.h; path = todayWidget/SavedInfo.h; sourceTree = "<group>"; };
+		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedInfo.m; path = todayWidget/SavedInfo.m; sourceTree = "<group>"; };
+		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateTextView.h; path = todayWidget/ValidateTextView.h; sourceTree = "<group>"; };
+		CD7CED7C1BD9772600789E8E /* ValidateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidateTextView.m; path = todayWidget/ValidateTextView.m; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Swipe Translate Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,14 +107,14 @@
 		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
-		CD9DA1491BE564CC00B1D0CA /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputTextView.h; sourceTree = "<group>"; };
-		CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputTextView.m; sourceTree = "<group>"; };
-		CD9DA14C1BE6B45900B1D0CA /* RequestReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestReceiver.h; sourceTree = "<group>"; };
+		CD9DA1491BE564CC00B1D0CA /* InputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputTextView.h; path = googleTranslateWidget/InputTextView.h; sourceTree = "<group>"; };
+		CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputTextView.m; path = googleTranslateWidget/InputTextView.m; sourceTree = "<group>"; };
+		CD9DA14C1BE6B45900B1D0CA /* RequestReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RequestReceiver.h; path = googleTranslateWidget/RequestReceiver.h; sourceTree = "<group>"; };
 		CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
-		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
-		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagesStorage.h; sourceTree = "<group>"; };
-		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagesStorage.m; sourceTree = "<group>"; };
+		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = todayWidget/Parser.h; sourceTree = "<group>"; };
+		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = todayWidget/Parser.m; sourceTree = "<group>"; };
+		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguagesStorage.h; path = todayWidget/LanguagesStorage.h; sourceTree = "<group>"; };
+		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguagesStorage.m; path = todayWidget/LanguagesStorage.m; sourceTree = "<group>"; };
 		CDCFCCD71B8E690300547F5C /* Swipe Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Translate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,10 +124,10 @@
 		CDCFCCE71B8E690300547F5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDCFCCF21B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCF31B8E690300547F5C /* googleTranslateWidgetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = googleTranslateWidgetTests.m; sourceTree = "<group>"; };
-		CDD783311BF1265E00F32CD2 /* LanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageCell.h; sourceTree = "<group>"; };
-		CDD783321BF1265E00F32CD2 /* LanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageCell.m; sourceTree = "<group>"; };
-		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeparatedButton.h; sourceTree = "<group>"; };
-		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeparatedButton.m; sourceTree = "<group>"; };
+		CDD783311BF1265E00F32CD2 /* LanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageCell.h; path = googleTranslateWidget/LanguageCell.h; sourceTree = "<group>"; };
+		CDD783321BF1265E00F32CD2 /* LanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageCell.m; path = googleTranslateWidget/LanguageCell.m; sourceTree = "<group>"; };
+		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
+		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeparatedButton.m; path = todayWidget/SeparatedButton.m; sourceTree = "<group>"; };
 		CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainIcon.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,30 +158,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CD8EEB881B8E69AA00E2991B /* todayWidget */ = {
+		CD8EEB881B8E69AA00E2991B /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */,
-				CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */,
-				CD338B551B8F198A00CDB0D8 /* RequestHandler.h */,
-				CD338B531B8F198500CDB0D8 /* RequestHandler.m */,
-				CDBFD8321B9A257500C5414D /* Parser.h */,
-				CDBFD8331B9A257500C5414D /* Parser.m */,
-				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
-				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
-				75F8671D1BA6499E00392E74 /* PopupMenu.h */,
-				75F8671E1BA649AE00392E74 /* PopupMenu.m */,
-				CD7CED791BD9772600789E8E /* SavedInfo.h */,
-				CD7CED7A1BD9772600789E8E /* SavedInfo.m */,
-				CD7CED7B1BD9772600789E8E /* ValidateTextView.h */,
-				CD7CED7C1BD9772600789E8E /* ValidateTextView.m */,
 				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
 				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
 				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
-				CD12BB6F1BD849D8003ED768 /* WidgetView.h */,
-				CD12BB701BD849D8003ED768 /* WidgetView.m */,
 				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
 			);
+			name = Widget;
 			path = todayWidget;
 			sourceTree = "<group>";
 		};
@@ -198,14 +180,79 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CD8F79961C08CED60094742F /* CustomMainClasses */ = {
+			isa = PBXGroup;
+			children = (
+				758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */,
+				758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */,
+				75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */,
+				75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */,
+				CD9DA1491BE564CC00B1D0CA /* InputTextView.h */,
+				CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */,
+				CD6F9F641BE5294900E4B850 /* InputScroll.h */,
+				CD6F9F651BE5294900E4B850 /* InputScroll.m */,
+				CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */,
+				CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */,
+				CD6F9F581BDC418F00E4B850 /* InnerScroll.h */,
+				CD6F9F591BDC418F00E4B850 /* InnerScroll.m */,
+				CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */,
+				CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */,
+				CDD783311BF1265E00F32CD2 /* LanguageCell.h */,
+				CDD783321BF1265E00F32CD2 /* LanguageCell.m */,
+			);
+			name = CustomMainClasses;
+			sourceTree = "<group>";
+		};
+		CD8F79971C08CF980094742F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CD9DA14C1BE6B45900B1D0CA /* RequestReceiver.h */,
+				CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */,
+				CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */,
+				CD7CED7B1BD9772600789E8E /* ValidateTextView.h */,
+				CD7CED7C1BD9772600789E8E /* ValidateTextView.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		CD8F79981C08CFBD0094742F /* CustomWidgetClasses */ = {
+			isa = PBXGroup;
+			children = (
+				75F8671D1BA6499E00392E74 /* PopupMenu.h */,
+				75F8671E1BA649AE00392E74 /* PopupMenu.m */,
+				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
+				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
+				CD12BB6F1BD849D8003ED768 /* WidgetView.h */,
+				CD12BB701BD849D8003ED768 /* WidgetView.m */,
+			);
+			name = CustomWidgetClasses;
+			sourceTree = "<group>";
+		};
+		CD8F79991C08D0160094742F /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				CD338B551B8F198A00CDB0D8 /* RequestHandler.h */,
+				CD338B531B8F198500CDB0D8 /* RequestHandler.m */,
+				CDBFD8321B9A257500C5414D /* Parser.h */,
+				CDBFD8331B9A257500C5414D /* Parser.m */,
+				CD7CED791BD9772600789E8E /* SavedInfo.h */,
+				CD7CED7A1BD9772600789E8E /* SavedInfo.m */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
 		CDCFCCCE1B8E690200547F5C = {
 			isa = PBXGroup;
 			children = (
-				CDCFCCD91B8E690300547F5C /* googleTranslateWidget */,
-				CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */,
-				CD8EEB881B8E69AA00E2991B /* todayWidget */,
+				CD8F79971C08CF980094742F /* Helpers */,
+				CD8F79991C08D0160094742F /* Backend */,
+				CD8F79961C08CED60094742F /* CustomMainClasses */,
+				CDCFCCD91B8E690300547F5C /* MainApp */,
+				CD8F79981C08CFBD0094742F /* CustomWidgetClasses */,
+				CD8EEB881B8E69AA00E2991B /* Widget */,
 				CD8EEB851B8E69AA00E2991B /* Frameworks */,
 				CDCFCCD81B8E690300547F5C /* Products */,
+				CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,7 +265,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CDCFCCD91B8E690300547F5C /* googleTranslateWidget */ = {
+		CDCFCCD91B8E690300547F5C /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
 				75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */,
@@ -227,31 +274,13 @@
 				CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */,
 				CD253CDC1BDABDF000662162 /* DataSource.h */,
 				CD253CDD1BDABDF000662162 /* DataSource.m */,
-				758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */,
-				758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */,
-				CD6F9F611BE519E400E4B850 /* ValidateString.h */,
-				CD6F9F621BE519E400E4B850 /* ValidateString.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
-				75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */,
-				75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */,
-				CD9DA14C1BE6B45900B1D0CA /* RequestReceiver.h */,
-				CD9DA1491BE564CC00B1D0CA /* InputTextView.h */,
-				CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */,
-				CD6F9F641BE5294900E4B850 /* InputScroll.h */,
-				CD6F9F651BE5294900E4B850 /* InputScroll.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
-				CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */,
-				CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */,
-				CDD783311BF1265E00F32CD2 /* LanguageCell.h */,
-				CDD783321BF1265E00F32CD2 /* LanguageCell.m */,
-				CD6F9F581BDC418F00E4B850 /* InnerScroll.h */,
-				CD6F9F591BDC418F00E4B850 /* InnerScroll.m */,
-				CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */,
-				CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
 				CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */,
 			);
+			name = MainApp;
 			path = googleTranslateWidget;
 			sourceTree = "<group>";
 		};
@@ -417,7 +446,6 @@
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
-				CD6F9F631BE519E400E4B850 /* ValidateString.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
 				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
 				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,

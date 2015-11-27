@@ -11,5 +11,6 @@
 @interface NSTextView (ValidateTextView)
 -(BOOL)isEmpty;
 -(BOOL)isWhiteSpace;
+-(NSUInteger)countWords;
 
 @end

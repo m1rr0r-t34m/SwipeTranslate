@@ -55,6 +55,7 @@
 
 //Methods for managing data
 -(void)updateLanguageModel;
--(void)performGoogleRequest;
+-(void)performTranslateRequest;
+-(void)performDictionaryRequest;
 
 @end

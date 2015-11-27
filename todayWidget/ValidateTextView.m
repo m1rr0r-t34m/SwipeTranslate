@@ -24,6 +24,14 @@
     return NO;
 
 }
-
+-(NSUInteger)countWords {
+    __block NSUInteger wordCount = 0;
+    [[self string] enumerateSubstringsInRange:NSMakeRange(0, [self string].length)
+                             options:NSStringEnumerationByWords
+                          usingBlock:^(NSString *character, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+                              wordCount++;
+                          }];
+    return wordCount;
+}
 
 @end

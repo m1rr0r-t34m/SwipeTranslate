@@ -113,7 +113,7 @@
         [_sharedDefaults setAutoPushed:YES];
         [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
         if(!_inputText.ready) {
-            if ([_inputText.string countWords] == 1)
+            if ([_inputText countWords] == 1)
                 [self performDictionaryRequest];
             else
                 [self performTranslateRequest];
@@ -166,7 +166,7 @@
    if( [_autoLanguageButton state])
        [self enableAutoLanguage:self];
     if(!_inputText.ready&&_sLanguage&&_tLanguage) {
-        if ([_inputText.string countWords] == 1)
+        if ([_inputText countWords] == 1)
             [self performDictionaryRequest];
         else
             [self performTranslateRequest];
@@ -178,7 +178,7 @@
     [_targetLanguage setStringValue:index];
     _tLanguage=index;
     if(!_inputText.ready&&_sLanguage&&_tLanguage) {
-        if ([_inputText.string countWords] == 1)
+        if ([_inputText countWords] == 1)
             [self performDictionaryRequest];
         else
             [self performTranslateRequest];
@@ -267,7 +267,7 @@
     else {
         if(key == 0x24 || key == 0x4C) {
             if(!flags) {
-                if ([_inputText.string countWords] == 1)
+                if ([_inputText countWords] == 1)
                     [self performDictionaryRequest];
                 else
                     [self performTranslateRequest];
@@ -311,7 +311,7 @@
             [_inputText setString:userString];
         }
     }
-    else if([_inputText.string isEmpty])
+    else if([_inputText isEmpty])
             [_inputText setReady:YES];
     
     
@@ -326,9 +326,9 @@
             [inputScroll setScrolling:NO];
         
         _clearTextButton.hidden = NO;
-        if(![[_inputText string] isWhiteSpace]){
+        if(![_inputText isWhiteSpace]){
             if ([_liveTranslate state]){
-                if ([_inputText.string countWords] == 1)
+                if ([_inputText countWords] == 1)
                     [self performDictionaryRequest];
                 else
                     [self performTranslateRequest];
@@ -368,6 +368,7 @@
 }
 
 -(void)receiveTranslateResponse:(NSArray *)data {
+   
     NSFont *translateResponseFont = [NSFont systemFontOfSize:16.0];
     NSDictionary *translateResponseFontAttributes = @{NSFontAttributeName : translateResponseFont};
     
@@ -381,97 +382,17 @@
     _requestProgressIndicator.hidden = YES;
 }
 -(void)receiveDictionaryResponse:(NSArray *)data {
+   
     NSDictionary *receivedData=(NSDictionary *)data[0];
     NSString *inputWord=[receivedData objectForKey:@"text"];
-    NSMutableAttributedString *outputText=[NSMutableAttributedString new];
-    NSMutableAttributedString *newLineString = [[NSMutableAttributedString alloc] initWithString:@"\n"];
+    NSAttributedString *outputText=[NSAttributedString new];
     
-    //Font attributes base
-    NSFont *translatedWordFont = [NSFont boldSystemFontOfSize:18.0];
-    NSDictionary *translatedWordAttributes = @{NSFontAttributeName : translatedWordFont};
-    
-    NSFont *translatedSynonimsFont = [NSFont systemFontOfSize:17.0];
-    NSDictionary *translatedSynonimsAttributes = @{NSFontAttributeName : translatedSynonimsFont};
-    
-    NSFont *speechPartFont = [NSFont systemFontOfSize:15.5];
-    NSDictionary *speechPartAttributes = @{NSFontAttributeName : speechPartFont};
-    
-    NSColor *lightColor = [NSColor grayColor];
-    NSFont *transcriptionFont = [NSFont systemFontOfSize:24.0];
-    NSDictionary *transcriptionAttributes = @{NSFontAttributeName : transcriptionFont, NSForegroundColorAttributeName : lightColor};
-    
-    NSFont *meaningsFont = [NSFont systemFontOfSize:16.0 weight:NSFontWeightLight];
-    NSDictionary *meaningsAttributes = @{NSFontAttributeName : meaningsFont};
-    
-    NSFont *examplesFont = [NSFont systemFontOfSize:14.0 weight:NSFontWeightLight];
-    NSDictionary *examplesAttribtes = @{NSFontAttributeName : examplesFont};
-    
-    //Creating layout for a dictionary response
-    if([inputWord length]>0) {
-        NSString *transcription=[receivedData objectForKey:@"transcription"];
-        if ([transcription length]){
-        [outputText appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"[%@]\n",transcription] attributes:transcriptionAttributes]];
-        [outputText appendAttributedString:newLineString];
-        }
-        
-        NSArray *posArray=[receivedData objectForKey:@"posArr"];
-        for(int i=0;i<[posArray count];i++) {
-            
-            NSMutableAttributedString *posString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@:", posArray [i]] attributes:speechPartAttributes];
-    
-            [outputText appendAttributedString:posString];
-            [outputText appendAttributedString:newLineString];
-            
-            NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[i]];
-            for(int j=0;j<[allMeanings count];j++) {
-                NSArray *synonims = [allMeanings[j] objectForKey:@"tSynonims"];
-                NSString *translation = [[NSString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
-                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",translation] attributes:translatedWordAttributes]];
-                
-                if (![synonims count])
-                    [outputText appendAttributedString:newLineString];
-    
-                else {
-                    for(int k=0;k<[synonims count];k++) {
-                        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",synonims[k]]attributes:translatedSynonimsAttributes]];
-                    }
-                [outputText appendAttributedString:newLineString];
-                }
-                
-                NSArray *meanings = [allMeanings[j] objectForKey:@"meanings"];
-                if([meanings count]) {
-                    for(int k=0;k<[meanings count];k++) {
-                        if (k != [meanings count] - 1)
-                        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@, ",meanings[k]]attributes:meaningsAttributes]];
-                        else
-                         [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ ",meanings[k]]attributes:meaningsAttributes]];
-                    }
-                    
-                    [outputText appendAttributedString:newLineString];
-                    [outputText appendAttributedString:newLineString];
-                }
-                
-
-                NSArray *examples = [allMeanings[j] objectForKey:@"examples"];
-                NSArray *translatedExamples = [allMeanings[j] objectForKey:@"tExamples"];
-                if([examples count]) {
-                    for(int k=0;k<[examples count];k++) {
-                        
-                        [outputText appendAttributedString: [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@  %C  %@ \n",examples[k], 0x2014, translatedExamples[k]]attributes:examplesAttribtes]];
-                        
-                    }
-                    [outputText appendAttributedString:newLineString];
-                }
-        
-            [outputText appendAttributedString:newLineString];
-            }
-        }
-        
-    }
-    else {
+    if([inputWord length]>0)
+        outputText=[Parser outputStringForMainAppDictionary:receivedData];
+    else
         [self performTranslateRequest];
-        //[outputText setAttributedString:[[NSMutableAttributedString alloc] initWithString:[_inputText string] ]];
-    }
+
+    
     if (!_inputText.ready)
     [[_outputText textStorage] setAttributedString:outputText];
     [_requestProgressIndicator stopAnimation:self];

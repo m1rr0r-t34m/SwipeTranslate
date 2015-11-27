@@ -157,7 +157,12 @@
     
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty)) {
         _clearTextButton.hidden=NO;
-        [self performGoogleRequest];
+        
+        if ([_inputText countWords] == 1)
+            [self performDictionaryRequest];
+        else
+            [self performTranslateRequest];
+
     }
     else if(_inputText.isEmpty) {
         [self clearOutput];
@@ -197,10 +202,14 @@
     
     
     //Perform request
-    if(![_inputText isEmpty])
-        [self performGoogleRequest];
+    if(![_inputText isEmpty]) {
+        if ([_inputText countWords] == 1)
+            [self performDictionaryRequest];
+        else
+            [self performTranslateRequest];
+
+    }
     
-    //Save new selection to defaults
     
     
 }
@@ -222,8 +231,13 @@
     [self updateLanguageModel];
     
     //Perform request
-    if(![_inputText isEmpty])
-        [self performGoogleRequest];
+    if(![_inputText isEmpty]) {
+        if ([_inputText countWords] == 1)
+            [self performDictionaryRequest];
+        else
+            [self performTranslateRequest];
+
+    }
     
     //Save new selection to defaults
     [self saveChosenLanguages];
@@ -262,8 +276,13 @@
         
         [self updateLanguageModel];
         
-        if(![_inputText isEmpty])
-            [self performGoogleRequest];
+        if(![_inputText isEmpty]) {
+            if ([_inputText countWords] == 1)
+                [self performDictionaryRequest];
+            else
+                [self performTranslateRequest];
+        }
+        
     }
     else if(_autoLanguageTitle)
     {
@@ -273,8 +292,13 @@
         [self updateLanguageModel];
         [self clearAutoLanguage];
         
-        if(![_inputText isEmpty])
-            [self performGoogleRequest];
+        if(![_inputText isEmpty]) {
+            if ([_inputText countWords] == 1)
+                [self performDictionaryRequest];
+            else
+                [self performTranslateRequest];
+
+        }
         
     }
     
@@ -301,16 +325,25 @@
 
 
 
-- (void)performGoogleRequest{
+- (void)performTranslateRequest{
     RequestHandler *handler = [RequestHandler NewTranslateRequest];
     [handler setDelegate:self];
+    
     [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }
+-(void)performDictionaryRequest {
+    RequestHandler *handler = [RequestHandler NewDictionaryRequest];
+    [handler setDelegate:self];
+    
+    if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
+        [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    }
+}
+
 -(void)receiveTranslateResponse:(NSArray *)data {
     if([_sLanguage isEqualToString:@"Auto"]) {
         
         _autoLanguageTitle = [NSString new];
-        
         _autoLanguageTitle = [data objectAtIndex:0];
        
         if(_autoLanguageTitle) {
@@ -322,7 +355,23 @@
     [self saveDefaultText];
     [self saveAutoLanguage];
 }
+-(void)receiveDictionaryResponse:(NSArray *)data {
+    
+    NSDictionary *receivedData=(NSDictionary *)data[0];
+    NSString *inputWord=[receivedData objectForKey:@"text"];
+    NSAttributedString *outputText=[NSAttributedString new];
+    
+    if([inputWord length]>0) {
+        outputText=[Parser outputStringForWidgetAppDictionary:receivedData];
+        [[_outputText textStorage] setAttributedString:outputText];
+    }
+    else
+        [self performTranslateRequest];
+    
+    [self saveDefaultText];
+    [self saveAutoLanguage];
 
+}
 
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {

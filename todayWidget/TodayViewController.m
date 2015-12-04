@@ -351,7 +351,8 @@
         }
     }
     
-    [_outputText setString:[data objectAtIndex:1]];
+    if(!_inputText.isEmpty)
+        [_outputText setString:[data objectAtIndex:1]];
     [self saveDefaultText];
     [self saveAutoLanguage];
 }
@@ -365,7 +366,7 @@
         outputText=[Parser outputStringForWidgetAppDictionary:receivedData];
         [[_outputText textStorage] setAttributedString:outputText];
     }
-    else
+    else if(!_inputText.isEmpty)
         [self performTranslateRequest];
     
     [self saveDefaultText];

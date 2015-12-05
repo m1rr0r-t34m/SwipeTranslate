@@ -265,13 +265,13 @@
    
     NSMutableAttributedString *outputText=[NSMutableAttributedString new];
     NSMutableAttributedString *newLineString = [[NSMutableAttributedString alloc] initWithString:@"\n"];
-    NSMutableAttributedString *comma = [[NSMutableAttributedString alloc] initWithString:@","];
     
     //Font attributes base
     NSColor *whiteColor = [NSColor whiteColor];
     NSFont *mainFont = [NSFont systemFontOfSize:12.0];
     NSDictionary *mainAttributes = @{NSFontAttributeName : mainFont, NSForegroundColorAttributeName : whiteColor};
-
+    NSFont *firstTranslationFont = [NSFont systemFontOfSize:16.0];
+    NSDictionary *firstTranslationAttributes = @{NSFontAttributeName : firstTranslationFont, NSForegroundColorAttributeName : whiteColor};
     
     //Creating layout for a dictionary response
     NSString *transcription=[receivedData objectForKey:@"transcription"];
@@ -281,29 +281,19 @@
     }
     
     NSArray *posArray=[receivedData objectForKey:@"posArr"];
-    for(int i=0;i<[posArray count];i++) {
-        
-        NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[i]];
+    NSArray *allMeanings=[[receivedData objectForKey:@"posDic"] objectForKey:posArray[0]];
         for(int j=0;j<[allMeanings count];j++) {
-            
             NSString *translation = [[NSString alloc] initWithString:[allMeanings[j] objectForKey:@"tText"]];
-            if(i>0)
-                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",translation] attributes:mainAttributes]];
+            if (j == 0)
+                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",translation] attributes:firstTranslationAttributes]];
             else
-                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",translation] attributes:mainAttributes]];
-            
-            
+                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",translation] attributes:mainAttributes]];
             NSArray *synonims = [allMeanings[j] objectForKey:@"tSynonims"];
-
             
-            for(int k=0;k<[synonims count];k++) {
-                [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",synonims[k]]attributes:mainAttributes]];
+                    for(int k=0;k<[synonims count];k++) {
+                        [outputText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",synonims[k]]attributes:mainAttributes]];
             }
-            
-            [outputText appendAttributedString:comma];
         }
-    }
-    
     
     return outputText;
 

@@ -13,6 +13,7 @@
 @implementation ViewController {
     BOOL returnInInputPressed;
     int readyInputLength;
+    BOOL dictionaryRequest;
 }
 
 
@@ -122,8 +123,10 @@
     }
     else {
         [_sharedDefaults setAutoPushed:NO];
-        if([_sourceLanguageTable selectedRow]<0||[_sourceLanguageTable selectedRow]>4)
-            [_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+        if([_sourceLanguageTable selectedRow]<0||[_sourceLanguageTable selectedRow]>4) {
+            [_dataHandler pushNewSourceLanguage:[_sourceLanguage stringValue]];
+        }
+            //[_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     }
     
     
@@ -311,8 +314,14 @@
             [_inputText setString:userString];
         }
     }
-    else if([_inputText isEmpty])
-            [_inputText setReady:YES];
+    else if([_inputText isEmpty]) {
+        [_translateHandler cancelCurrentSession];
+        [_dictionaryHandler cancelCurrentSession];
+        [_requestProgressIndicator stopAnimation:self];
+        _requestProgressIndicator.hidden = YES;
+        [_inputText setReady:YES];
+    }
+    
     
     
     
@@ -355,54 +364,77 @@
     [_translateHandler cancelCurrentSession];
     [_dictionaryHandler cancelCurrentSession];
     
-    if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
-        _requestProgressIndicator.hidden = NO;
-        [_requestProgressIndicator startAnimation:self];
-        
-        [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
-    }
+    [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    
+    _requestProgressIndicator.hidden = NO;
+    [_requestProgressIndicator startAnimation:self];
+
 }
 -(void)performDictionaryRequest {
+    
     [_translateHandler cancelCurrentSession];
     [_dictionaryHandler cancelCurrentSession];
-    
-    if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
-        _requestProgressIndicator.hidden = NO;
-        [_requestProgressIndicator startAnimation:self];
-        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    dictionaryRequest=YES;
+
+    if([_sLanguage isEqualToString:@"Auto" ]) {
+        if(!_autoLanguage||![_autoLanguage length]) {
+            [self performTranslateRequest];
+            return;
+        }
+        else
+            [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+            
     }
+    else
+        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    
+    
+    _requestProgressIndicator.hidden = NO;
+    [_requestProgressIndicator startAnimation:self];
 }
 
 -(void)receiveTranslateResponse:(NSArray *)data {
    
-    NSFont *translateResponseFont = [NSFont systemFontOfSize:16.0];
-    NSDictionary *translateResponseFontAttributes = @{NSFontAttributeName : translateResponseFont};
-    
     if([_sLanguage isEqualToString:@"Auto" ]) {
         [_sharedDefaults setAutoLanguage:(NSString *)data[0]];
         [_sourceLanguage setStringValue:(NSString *)data[0]];
+        if(dictionaryRequest) {
+            _autoLanguage=(NSString *)data[0];
+            [self performDictionaryRequest];
+            return;
+        }
     }
-    if(!_inputText.ready)
-        [[_outputText textStorage] setAttributedString:[[NSAttributedString alloc]initWithString: (NSString *)data[1] attributes:translateResponseFontAttributes]];
+    
+    
+    
+    NSFont *translateResponseFont = [NSFont systemFontOfSize:16.0];
+    NSDictionary *translateResponseFontAttributes = @{NSFontAttributeName : translateResponseFont};
+    [[_outputText textStorage] setAttributedString:[[NSAttributedString alloc]initWithString: (NSString *)data[1] attributes:translateResponseFontAttributes]];
+    
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
+    _autoLanguage=nil;
 }
 -(void)receiveDictionaryResponse:(NSArray *)data {
    
+    dictionaryRequest=NO;
+    _autoLanguage=nil;
+    
     NSDictionary *receivedData=(NSDictionary *)data[0];
     NSString *inputWord=[receivedData objectForKey:@"text"];
     NSAttributedString *outputText=[NSAttributedString new];
     
     if([inputWord length]>0)
         outputText=[Parser outputStringForMainAppDictionary:receivedData];
-    else
+    else {
         [self performTranslateRequest];
+        return;
+    }
 
-    
-    if (!_inputText.ready)
     [[_outputText textStorage] setAttributedString:outputText];
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
+    
 }
 
 @end

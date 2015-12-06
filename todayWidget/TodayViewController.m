@@ -32,6 +32,8 @@
     
     [_outputText setString:@""];
     [self clearAutoLanguage];
+    [_dictionaryHandler cancelCurrentSession];
+    [_translateHandler cancelCurrentSession];
     _clearTextButton.hidden = YES;
 }
 -(void)saveDefaultText {

@@ -41,7 +41,6 @@
 @property NSArray* alphaLang;
 @property NSString* autoLanguageCode;
 @property NSString* autoLanguageTitle;
-@property SavedInfo *sharedDefaults;
 @property SavedInfo *localDefaults;
 @property RequestHandler *translateHandler;
 @property RequestHandler *dictionaryHandler;

@@ -17,67 +17,48 @@
         [instance createInitialDefaults];
     return instance;
 }
-+(SavedInfo *)sharedDefaults {
-    SavedInfo *instance=[super new];
-    [instance setUserDefaults:[[NSUserDefaults alloc] initWithSuiteName:@"LX39229ZDY.SwipeTranslateDesktop"]];
-    [instance setType:@"shared"];
-    if([instance isEmpty])
-        [instance createInitialDefaults];
-    return instance;
-    
-}
+
 -(void)createInitialDefaults {
-    if([[self type]isEqualToString:@"local"]) {
+
         [self setInputText:@""];
         [self setOutputText:@""];
         [self setSourceLanguages:@[@"English",@"French",@"Spanish",@"Russian",@"Finnish"]];
         [self setTargetLanguages:@[@"French",@"Russian",@"English",@"Finnish",@"Spanish"]];
-    }
-    else {
         [self setSourceSelection:@"English"];
         [self setTargetSelection:@"French"];
         [self setAutoLanguage:nil];
-    }
+
     
 }
 -(BOOL)isEmpty {
-    if([[self type]isEqualToString:@"local"]){
-        if(![self hasLanguages])
-            return YES;
-        
-        
-        else {
-            for(int i=0;i<[[self targetLanguages] count];i++){
-                if(![[NSArray getValuesArray:NO] containsObject:[self targetLanguages][i]])
-                    return YES;
-            }
-            for(int i=0;i<[[self sourceLanguages] count];i++){
-                if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
-                    return YES;
-            }
-            
-            return NO;
-        }
-        
+
+    if(![self hasLanguages]) {
+        return YES;
     }
     else {
-        if(![self hasChosenLanguages])
-            return YES;
-        
-        else {
-            for(int i=0;i<[[self sourceLanguages] count];i++){
-                if(![[NSArray getValuesArray:NO] containsObject:[self sourceSelection]])
-                    return YES;
-            }
-            for(int i=0;i<[[self targetLanguages] count];i++){
-                if(![[NSArray getValuesArray:NO] containsObject:[self targetSelection]])
-                    return YES;
-            }
-            return NO;
+        for(int i=0;i<[[self targetLanguages] count];i++){
+            if(![[NSArray getValuesArray:NO] containsObject:[self targetLanguages][i]])
+                return YES;
         }
-        
+        for(int i=0;i<[[self sourceLanguages] count];i++){
+            if(![[NSArray getValuesArray:NO] containsObject:[self sourceLanguages][i]])
+                return YES;
+        }
     }
-    
+    if(![self hasChosenLanguages])
+        return YES;
+    else {
+        for(int i=0;i<[[self sourceLanguages] count];i++){
+            if(![[NSArray getValuesArray:NO] containsObject:[self sourceSelection]])
+                return YES;
+        }
+        for(int i=0;i<[[self targetLanguages] count];i++){
+            if(![[NSArray getValuesArray:NO] containsObject:[self targetSelection]])
+                return YES;
+        }
+    }
+
+    return NO;
 }
 -(BOOL)hasLanguages {
     if([ self.userDefaults objectForKey:@"sourceDefault"]&&[[self userDefaults]objectForKey:@"targetDefault"])

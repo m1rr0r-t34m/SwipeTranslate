@@ -22,7 +22,7 @@
     //Create language menus
     _sourceLanguageMenu = [PopupMenu createMenuWithAction:@"sourceMenuClick:" andSender:self];
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetMenuClick:" andSender:self];
-    
+    _localDefaults =[SavedInfo localDefaults];
     
     
 }
@@ -68,12 +68,10 @@
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
     
     
-    
-    _sharedDefaults =[SavedInfo sharedDefaults];
-    if([_sharedDefaults autoPushed]) {
+    if([_localDefaults autoPushed]) {
         [self enableAutoLanguage:self];
-        if([_sharedDefaults hasAutoLanguage])
-            [_sourceLanguage setStringValue:[_sharedDefaults autoLanguage]];
+        if([_localDefaults hasAutoLanguage])
+            [_sourceLanguage setStringValue:[_localDefaults autoLanguage]];
     }
     
     
@@ -111,7 +109,7 @@
     
     if ([_autoLanguageButton state]) {
         _sLanguage = @"Auto";
-        [_sharedDefaults setAutoPushed:YES];
+        [_localDefaults setAutoPushed:YES];
         [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
         if(!_inputText.ready) {
             if ([_inputText countWords] == 1)
@@ -122,7 +120,7 @@
 
     }
     else {
-        [_sharedDefaults setAutoPushed:NO];
+        [_localDefaults setAutoPushed:NO];
         if([_sourceLanguageTable selectedRow]<0||[_sourceLanguageTable selectedRow]>4) {
             [_dataHandler pushNewSourceLanguage:[_sourceLanguage stringValue]];
         }
@@ -396,7 +394,7 @@
 -(void)receiveTranslateResponse:(NSArray *)data {
    
     if([_sLanguage isEqualToString:@"Auto" ]) {
-        [_sharedDefaults setAutoLanguage:(NSString *)data[0]];
+        [_localDefaults setAutoLanguage:(NSString *)data[0]];
         [_sourceLanguage setStringValue:(NSString *)data[0]];
         if(dictionaryRequest) {
             _autoLanguage=(NSString *)data[0];

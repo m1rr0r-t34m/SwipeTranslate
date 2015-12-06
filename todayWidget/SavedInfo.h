@@ -12,7 +12,6 @@
 @interface SavedInfo : NSUserDefaults
 
 +(SavedInfo *)localDefaults;
-+(SavedInfo *)sharedDefaults;
 
 
 -(BOOL)hasLanguages;

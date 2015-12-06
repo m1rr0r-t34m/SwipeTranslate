@@ -52,7 +52,6 @@
 @property NSString* sLanguage;
 @property NSString* tLanguage;
 @property NSString* autoLanguage;
-@property SavedInfo *sharedDefaults;
 @property SavedInfo *localDefaults;
 
 //Menu properties

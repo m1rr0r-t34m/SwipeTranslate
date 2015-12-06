@@ -24,7 +24,6 @@
     _autoLanguageTitle=nil;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
     [self saveAutoLanguage];
-    [_sharedDefaults setAutoPushed:NO];
 }
 -(void)clearOutput {
     
@@ -51,18 +50,17 @@
     [_localDefaults setTargetLanguages:tArray];
 }
 -(void)saveChosenLanguages {
-      [_sharedDefaults setSourceSelection:[_sourceSegmentedButton labelForSegment:[_sourceSegmentedButton selectedSegment]]];
-      [_sharedDefaults setTargetSelection:[_targetSegmentedButton labelForSegment:[_targetSegmentedButton selectedSegment]]];
+      [_localDefaults setSourceSelection:[_sourceSegmentedButton labelForSegment:[_sourceSegmentedButton selectedSegment]]];
+      [_localDefaults setTargetSelection:[_targetSegmentedButton labelForSegment:[_targetSegmentedButton selectedSegment]]];
 }
 -(void)saveAutoLanguage {
-    [_sharedDefaults setAutoLanguage:_autoLanguageTitle];
+    [_localDefaults setAutoLanguage:_autoLanguageTitle];
 }
 
 - (void)awakeFromNib {
     
     [super awakeFromNib];
     
-    _sharedDefaults = [SavedInfo sharedDefaults];
     _localDefaults=[SavedInfo localDefaults];
 
 
@@ -74,19 +72,19 @@
         [_targetSegmentedButton setLabel:[[_localDefaults targetLanguages] objectAtIndex:i-1] forSegment:i];
     }
     
-    if(![_sharedDefaults autoPushed]) {
-        [_sourceSegmentedButton tryToPushNewSourceLanguage:[_sharedDefaults sourceSelection]];
+    if(![_localDefaults autoPushed]) {
+        [_sourceSegmentedButton tryToPushNewSourceLanguage:[_localDefaults sourceSelection]];
         [self clearAutoLanguage];
     }
     else {
         [_sourceSegmentedButton setSelectedSegment:1];
-        if([_sharedDefaults hasAutoLanguage])
-            [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)",[_sharedDefaults autoLanguage]] forSegment:1];
+        if([_localDefaults hasAutoLanguage])
+            [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)",[_localDefaults autoLanguage]] forSegment:1];
         else
             [self clearAutoLanguage];
     }
     
-    [_targetSegmentedButton tryToPushNewTargetLanguage:[_sharedDefaults targetSelection]];
+    [_targetSegmentedButton tryToPushNewTargetLanguage:[_localDefaults targetSelection]];
     
         
 
@@ -201,10 +199,11 @@
     if([sender selectedSegment]!=1) {
         [self clearAutoLanguage];
         [self saveChosenLanguages];
+        [_localDefaults setAutoPushed:NO];
     }
     
     else
-        [_sharedDefaults setAutoPushed:YES];
+        [_localDefaults setAutoPushed:YES];
     
     //Update languages
     [self updateLanguageModel];

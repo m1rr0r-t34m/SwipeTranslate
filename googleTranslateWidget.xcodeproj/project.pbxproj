@@ -363,7 +363,7 @@
 						CreatedOnToolsVersion = 6.4;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -371,7 +371,7 @@
 						CreatedOnToolsVersion = 6.4;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Sandbox = {
 								enabled = 1;

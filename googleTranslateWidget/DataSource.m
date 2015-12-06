@@ -17,7 +17,6 @@
 
 //Data handling methods
 -(void)awakeFromNib{
-    _sharedDefaults = [SavedInfo sharedDefaults];
     _localDefaults =[SavedInfo localDefaults];
     
     sourceLanguageList = [[_localDefaults sourceLanguages] mutableCopy];
@@ -27,8 +26,8 @@
     [sourceTableView reloadData];
     [targetTableView reloadData];
     
-    [self pushNewSourceLanguage:[_sharedDefaults sourceSelection]];
-    [self pushNewTargetLanguage:[_sharedDefaults targetSelection]];
+    [self pushNewSourceLanguage:[_localDefaults sourceSelection]];
+    [self pushNewTargetLanguage:[_localDefaults targetSelection]];
     
 }
 //Pushing new languages
@@ -50,7 +49,7 @@
     [_localDefaults setSourceLanguages:sourceLanguageList];
     [sourceTableView reloadData];
     }
-     [_sharedDefaults setSourceSelection:language];
+     [_localDefaults setSourceSelection:language];
 }
 -(void)pushNewTargetLanguage:(NSString *)language {
     BOOL isHighlighted = FALSE;
@@ -70,7 +69,7 @@
     [_delegate targetLanguageTableSelectionDidChange:[targetLanguageList objectAtIndex:0]];
     [targetTableView reloadData];
     }
-     [_sharedDefaults setTargetSelection:language];
+     [_localDefaults setTargetSelection:language];
 }
 
 
@@ -93,13 +92,13 @@
     
     if([aNotification object]==sourceTableView) {
         if(index>=0&&index<5) {
-            [_sharedDefaults setSourceSelection:[sourceLanguageList objectAtIndex:index]];
+            [_localDefaults setSourceSelection:[sourceLanguageList objectAtIndex:index]];
             [_delegate sourceLanguageTableSelectionDidChange:[sourceLanguageList objectAtIndex:index]];
         }
         
     }
     else if([aNotification object]==targetTableView) {
-        [_sharedDefaults setTargetSelection:[targetLanguageList objectAtIndex:index]];
+        [_localDefaults setTargetSelection:[targetLanguageList objectAtIndex:index]];
         [_delegate targetLanguageTableSelectionDidChange:[targetLanguageList objectAtIndex:index]];
     }
     

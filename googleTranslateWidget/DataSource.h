@@ -18,7 +18,6 @@
 @property(readwrite, assign) id<DataSourceDelegate>delegate;
 @property  NSMutableArray* sourceLanguageList;
 @property NSMutableArray* targetLanguageList;
-@property SavedInfo* sharedDefaults;
 @property SavedInfo* localDefaults;
 //@property  NSTableView* tableView;
 

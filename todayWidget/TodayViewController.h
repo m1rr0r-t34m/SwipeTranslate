@@ -10,15 +10,16 @@
 #import "SeparatedButton.h"
 #import "LanguagesStorage.h"
 #import "PopupMenu.h"
-#import "RequestHandler.h"
+
 #import "WidgetView.h"
 #import "ValidateTextView.h"
 #import "SavedInfo.h"
 #import "../googleTranslateWidget/RequestReceiver.h"
 
-
+@class RequestHandler;
 @interface TodayViewController : NSViewController <ResponseReceiver>
 //Outlets from view
+
 @property (strong) IBOutlet NSView *widgetMainView;
 
 @property (strong) IBOutlet NSTextView *inputText;
@@ -42,6 +43,9 @@
 @property NSString* autoLanguageTitle;
 @property SavedInfo *sharedDefaults;
 @property SavedInfo *localDefaults;
+@property RequestHandler *translateHandler;
+@property RequestHandler *dictionaryHandler;
+
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

@@ -16,9 +16,11 @@
 }
 @property NSString *requestType;
 @property(readwrite, assign) id<ResponseReceiver>delegate;
+@property(readonly) NSURLSession *currentSession;
 +(RequestHandler *)NewDictionaryRequest;
 +(RequestHandler *)NewTranslateRequest;
 -(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText;
+-(void)cancelCurrentSession;
 @end
 
 

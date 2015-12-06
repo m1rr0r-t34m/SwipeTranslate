@@ -7,13 +7,16 @@
 //
 
 #import "TodayViewController.h"
+#import "RequestHandler.h"
 #import <NotificationCenter/NotificationCenter.h>
 
 
 @interface delegateAppDelegate : NSObject <NSApplicationDelegate, NSTextViewDelegate> {
     NSWindow *window;
 }
+
 @end
+
 
 @implementation TodayViewController
 
@@ -123,6 +126,12 @@
     //Update source and target language values
     [self updateLanguageModel];
     
+    //Create request handlers
+    _translateHandler = [RequestHandler NewTranslateRequest];
+        [_translateHandler setDelegate:self];
+    _dictionaryHandler = [RequestHandler NewDictionaryRequest];
+        [_dictionaryHandler setDelegate:self];
+    
 }
 
 - (void)viewWillAppear {
@@ -192,7 +201,7 @@
     if([sender selectedSegment]!=1) {
         [self clearAutoLanguage];
         [self saveChosenLanguages];
-    }\
+    }
     
     else
         [_sharedDefaults setAutoPushed:YES];
@@ -326,17 +335,18 @@
 
 
 - (void)performTranslateRequest{
-    RequestHandler *handler = [RequestHandler NewTranslateRequest];
-    [handler setDelegate:self];
+    [_dictionaryHandler cancelCurrentSession];
+    [_translateHandler cancelCurrentSession];
     
-    [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    
+    [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }
 -(void)performDictionaryRequest {
-    RequestHandler *handler = [RequestHandler NewDictionaryRequest];
-    [handler setDelegate:self];
+    [_dictionaryHandler cancelCurrentSession];
+    [_translateHandler cancelCurrentSession];
     
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
-        [handler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     }
 }
 

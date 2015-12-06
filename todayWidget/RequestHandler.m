@@ -52,10 +52,10 @@
 }
 -(void)performRequestWithURL:(NSURL *)url {
     NSURLSessionConfiguration *config=[NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session=[NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
+    _currentSession=[NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
     
     
-    NSURLSessionDataTask *dataTask = [session dataTaskWithURL:url];
+    NSURLSessionDataTask *dataTask = [_currentSession dataTaskWithURL:url];
     
     
     [dataTask resume];
@@ -104,6 +104,9 @@ didCompleteWithError:(NSError *)error {
         NSLog(@"%@",error);
     }
 }
-
+-(void)cancelCurrentSession {
+    if(self.currentSession)
+        [self.currentSession invalidateAndCancel];
+}
 
 @end

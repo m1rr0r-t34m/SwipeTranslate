@@ -352,6 +352,9 @@
         return newSelectedCharRange;
 }
 -(void)performTranslateRequest {
+    [_translateHandler cancelCurrentSession];
+    [_dictionaryHandler cancelCurrentSession];
+    
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
         _requestProgressIndicator.hidden = NO;
         [_requestProgressIndicator startAnimation:self];
@@ -360,6 +363,9 @@
     }
 }
 -(void)performDictionaryRequest {
+    [_translateHandler cancelCurrentSession];
+    [_dictionaryHandler cancelCurrentSession];
+    
     if (_inputText.isEmpty == NO && _inputText.isWhiteSpace == NO){
         _requestProgressIndicator.hidden = NO;
         [_requestProgressIndicator startAnimation:self];

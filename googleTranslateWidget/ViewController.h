@@ -54,6 +54,8 @@
 @property NSString* autoLanguage;
 @property SavedInfo *localDefaults;
 
+@property NSAttributedString* translateText;
+
 //Menu properties
 @property NSMenu *sourceLanguageMenu;
 @property NSMenu *targetLanguageMenu;

@@ -19,12 +19,8 @@
 @end
 
 
-@implementation TodayViewController {
-    BOOL dictionaryRequest;
-}
-
+@implementation TodayViewController
 -(void)clearAutoLanguage {
-    _autoLanguage=nil;
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
     [self saveAutoLanguage];
 }
@@ -65,6 +61,7 @@
 - (void)awakeFromNib {
     
     [super awakeFromNib];
+    _translatedText=[NSString new];
     
     _localDefaults=[SavedInfo localDefaults];
 
@@ -169,12 +166,7 @@
     
     if(!(_inputText.isWhiteSpace||_inputText.isEmpty)) {
         _clearTextButton.hidden=NO;
-        
-        if ([_inputText countWords] == 1)
-            [self performDictionaryRequest];
-        else
-            [self performTranslateRequest];
-
+        [self startRequst];
     }
     else if(_inputText.isEmpty) {
         [self clearOutput];
@@ -215,16 +207,8 @@
     
     
     //Perform request
-    if(![_inputText isEmpty]) {
-        if ([_inputText countWords] == 1)
-            [self performDictionaryRequest];
-        else
-            [self performTranslateRequest];
-
-    }
-    
-    
-    
+    if(![_inputText isEmpty])
+        [self startRequst];
 }
 
 - (IBAction)targetTabClick:(id)sender {
@@ -244,13 +228,10 @@
     [self updateLanguageModel];
     
     //Perform request
-    if(![_inputText isEmpty]) {
-        if ([_inputText countWords] == 1)
-            [self performDictionaryRequest];
-        else
-            [self performTranslateRequest];
+    if(![_inputText isEmpty])
+        [self startRequst];
 
-    }
+
     
     //Save new selection to defaults
     [self saveChosenLanguages];
@@ -290,10 +271,7 @@
         [self updateLanguageModel];
         
         if(![_inputText isEmpty]) {
-            if ([_inputText countWords] == 1)
-                [self performDictionaryRequest];
-            else
-                [self performTranslateRequest];
+            [self startRequst];
         }
         
     }
@@ -306,10 +284,7 @@
         [self clearAutoLanguage];
         
         if(![_inputText isEmpty]) {
-            if ([_inputText countWords] == 1)
-                [self performDictionaryRequest];
-            else
-                [self performTranslateRequest];
+            [self startRequst];
 
         }
         
@@ -337,61 +312,40 @@
 }
 
 
-
-- (void)performTranslateRequest{
+-(void)startRequst {
     [_dictionaryHandler cancelCurrentSession];
     [_translateHandler cancelCurrentSession];
+    [self performTranslateRequest];
     
-    
+}
+- (void)performTranslateRequest{
     [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }
--(void)performDictionaryRequest {
-    [_dictionaryHandler cancelCurrentSession];
-    [_translateHandler cancelCurrentSession];
-    dictionaryRequest=YES;
-    
-    if([_sLanguage isEqualToString:@"Auto" ]) {
-        if(!_autoLanguage||![_autoLanguage length]) {
-            [self performTranslateRequest];
-            return;
-        }
-        else
-            [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
-        
-    }
-    else
-        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
-
-}
-
 -(void)receiveTranslateResponse:(NSArray *)data {
     
     if([_sLanguage isEqualToString:@"Auto"]) {
-        
         _autoLanguage = [NSString new];
         _autoLanguage = [data objectAtIndex:0];
         [self saveAutoLanguage];
-       [_localDefaults setAutoLanguage:(NSString *)data[0]];
+        [_localDefaults setAutoLanguage:_autoLanguage];
         if(_autoLanguage) {
             [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguage] forSegment:1];
         }
-        if(dictionaryRequest) {
-            _autoLanguage=(NSString *)data[0];
-            [self performDictionaryRequest];
-            return;
-        }
     }
     
-
-    [_outputText setString:[data objectAtIndex:1]];
-    [self saveDefaultText];
-    
-    _autoLanguage=nil;
+    _translatedText = [data objectAtIndex:1];
+    [self performDictionaryRequest];
 }
--(void)receiveDictionaryResponse:(NSArray *)data {
+-(void)performDictionaryRequest {
     
-    dictionaryRequest=NO;
-    _autoLanguage=nil;
+    if([_sLanguage isEqualToString:@"Auto" ])
+        [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    else
+        [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+}
+
+
+-(void)receiveDictionaryResponse:(NSArray *)data {
     
     NSDictionary *receivedData=(NSDictionary *)data[0];
     NSString *inputWord=[receivedData objectForKey:@"text"];
@@ -401,8 +355,8 @@
         outputText=[Parser outputStringForWidgetAppDictionary:receivedData];
         [[_outputText textStorage] setAttributedString:outputText];
     }
-    else if(!_inputText.isEmpty)
-        [self performTranslateRequest];
+    else
+        [_outputText setString:_translatedText];
     
     [self saveDefaultText];
 }

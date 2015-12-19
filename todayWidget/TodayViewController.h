@@ -44,6 +44,8 @@
 @property RequestHandler *translateHandler;
 @property RequestHandler *dictionaryHandler;
 
+@property NSString *translatedText;
+
 
 //IBActions and other methods to handle actions from view
 - (IBAction)sourceTabClick:(id)sender;

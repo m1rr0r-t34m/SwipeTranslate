@@ -72,10 +72,10 @@
     if([[self requestType]isEqualToString:@"translate"]) {
         NSString *lang=[Parser AutoLanguage:data];
         NSString *text=[Parser Text:data];
-        if(lang)
+        if(lang&&lang.length>0)
             lang=[[NSArray getValuesArray:YES] objectAtIndex:[[NSArray getKeysArray] indexOfObject:lang]];
         
-                [array addObject:lang];
+        [array addObject:lang];
         [array addObject:text];
         
         dispatch_async(dispatch_get_main_queue(),^ {

@@ -22,6 +22,7 @@
 @implementation TodayViewController
 -(void)clearAutoLanguage {
     [_sourceSegmentedButton setLabel:@"Ⓐ Detect" forSegment:1];
+    _autoLanguage=nil;
     [self saveAutoLanguage];
 }
 -(void)clearOutput {
@@ -326,9 +327,9 @@
     if([_sLanguage isEqualToString:@"Auto"]) {
         _autoLanguage = [NSString new];
         _autoLanguage = [data objectAtIndex:0];
-        [self saveAutoLanguage];
-        [_localDefaults setAutoLanguage:_autoLanguage];
-        if(_autoLanguage) {
+        if(_autoLanguage&&_autoLanguage.length>0) {
+            [self saveAutoLanguage];
+            [_localDefaults setAutoLanguage:_autoLanguage];
             [_sourceSegmentedButton setLabel:[NSString stringWithFormat: @"Ⓐ > (%@)", _autoLanguage] forSegment:1];
         }
     }
@@ -338,8 +339,15 @@
 }
 -(void)performDictionaryRequest {
     
-    if([_sLanguage isEqualToString:@"Auto" ])
-        [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    if([_sLanguage isEqualToString:@"Auto" ]) {
+        if(_autoLanguage&&_autoLanguage.length>0)
+            [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+        else {
+            [_outputText setString:_translatedText];
+            [self saveDefaultText];
+            return;
+        }
+    }
     else
         [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
 }

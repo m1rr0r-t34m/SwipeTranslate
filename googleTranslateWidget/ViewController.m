@@ -353,8 +353,10 @@
     
     if([_sLanguage isEqualToString:@"Auto" ]) {
         _autoLanguage=(NSString *)data[0];
-        [_localDefaults setAutoLanguage:_autoLanguage];
-        [_sourceLanguage setStringValue:_autoLanguage];
+        if(_autoLanguage&&_autoLanguage.length>0) {
+            [_localDefaults setAutoLanguage:_autoLanguage];
+            [_sourceLanguage setStringValue:_autoLanguage];
+        }
     }
     
     _requestProgressIndicator.hidden = YES;
@@ -367,8 +369,16 @@
 
     if(![_sLanguage isEqualToString:@"Auto" ])
         [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
-    else
-        [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+    
+    else {
+        if(_autoLanguage&&_autoLanguage.length>0)
+            [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
+        else {
+            [[_outputText textStorage] setAttributedString:_translateText];
+            return;
+        }
+    }
+    
     
     
     _requestProgressIndicator.hidden = NO;

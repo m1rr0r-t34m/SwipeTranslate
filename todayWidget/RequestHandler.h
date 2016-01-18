@@ -17,10 +17,13 @@
 @property NSString *requestType;
 @property(readwrite, assign) id<ResponseReceiver>delegate;
 @property(readonly) NSURLSession *currentSession;
+@property NSMutableArray *translateKeysArray;
+@property NSMutableArray *expiredTranslateKeysArray;
 +(RequestHandler *)NewDictionaryRequest;
 +(RequestHandler *)NewTranslateRequest;
 -(void)performRequestForSourceLanguage:(NSString *)sLang TargetLanguage:(NSString *)tLang Text:(NSString *)inputText;
 -(void)cancelCurrentSession;
+-(void)changeCurrentTranslateKey;
 @end
 
 

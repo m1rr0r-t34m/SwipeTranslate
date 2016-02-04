@@ -15,7 +15,7 @@
     NSMutableArray* dataObject;
 }
 
-@property(readwrite, assign) id<DataSourceDelegate>delegate;
+@property(weak) id<DataSourceDelegate>delegate;
 @property  NSMutableArray* sourceLanguageList;
 @property NSMutableArray* targetLanguageList;
 @property SavedInfo* localDefaults;

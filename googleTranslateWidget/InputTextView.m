@@ -11,33 +11,6 @@
 @implementation InputTextView
 @synthesize ready = _ready;
 
-/*-(void)unfold {
-    InputScroll *scrollView = (InputScroll *) self.superview.superview;
-
-    NSRect scrollFrame = scrollView.frame;
-    
-    scrollFrame.size.height=62;
-    scrollFrame.origin.y-=40;
-    [scrollView setHasVerticalScroller:NO];
-    
-    self.superview.superview.frame = scrollFrame;
-
-    [scrollView setScrolling:YES];
-    self.open=YES;
-}
--(void)fold {
-    InputScroll *scrollView = (InputScroll *) self.superview.superview;
-    
-    NSRect scrollFrame = scrollView.frame;
-    
-    scrollFrame.size.height=22;
-    scrollFrame.origin.y+=40;
-    
-    self.superview.superview.frame = scrollFrame;
-    
-    [scrollView setScrolling:NO];
-    self.open=NO;
-}*/
 -(void)setReady:(BOOL)ready {
     _ready = ready;
     if(ready) {

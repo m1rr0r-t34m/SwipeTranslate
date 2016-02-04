@@ -15,7 +15,7 @@
     NSViewController *returnView;
 }
 @property NSString *requestType;
-@property(readwrite, assign) id<ResponseReceiver>delegate;
+@property(weak) id<ResponseReceiver>delegate;
 @property(readonly) NSURLSession *currentSession;
 @property NSMutableArray *translateKeysArray;
 @property NSMutableArray *expiredTranslateKeysArray;

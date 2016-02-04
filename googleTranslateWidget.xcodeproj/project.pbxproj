@@ -25,6 +25,8 @@
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
 		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; };
 		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; };
+		CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
+		CD733F4A1C63A701007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; };
@@ -95,6 +97,8 @@
 		CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageTable.m; sourceTree = "<group>"; };
 		CD6F9F641BE5294900E4B850 /* InputScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputScroll.h; path = googleTranslateWidget/InputScroll.h; sourceTree = "<group>"; };
 		CD6F9F651BE5294900E4B850 /* InputScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputScroll.m; path = googleTranslateWidget/InputScroll.m; sourceTree = "<group>"; };
+		CD733F461C63924F007C4D9E /* KeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyHandler.h; sourceTree = "<group>"; };
+		CD733F471C63924F007C4D9E /* KeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyHandler.m; sourceTree = "<group>"; };
 		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedInfo.h; path = todayWidget/SavedInfo.h; sourceTree = "<group>"; };
 		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedInfo.m; path = todayWidget/SavedInfo.m; sourceTree = "<group>"; };
 		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateTextView.h; path = todayWidget/ValidateTextView.h; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 			children = (
 				CD338B551B8F198A00CDB0D8 /* RequestHandler.h */,
 				CD338B531B8F198500CDB0D8 /* RequestHandler.m */,
+				CD733F461C63924F007C4D9E /* KeyHandler.h */,
+				CD733F471C63924F007C4D9E /* KeyHandler.m */,
 				CDBFD8321B9A257500C5414D /* Parser.h */,
 				CDBFD8331B9A257500C5414D /* Parser.m */,
 				CD7CED791BD9772600789E8E /* SavedInfo.h */,
@@ -431,6 +437,7 @@
 				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
 				CDBFD8341B9A257500C5414D /* Parser.m in Sources */,
 				CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */,
+				CD733F4A1C63A701007C4D9E /* KeyHandler.m in Sources */,
 				CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */,
 				CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */,
 				75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */,
@@ -443,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,

@@ -41,7 +41,6 @@
             break;
     }
     
-    return @"cool";
 }
 +(NSString *)AutoLanguage:(NSData *)data{
 
@@ -82,7 +81,24 @@
     NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     
     NSArray *values=[dict objectForKey:@"def"];
+    NSNumber *code=[dict valueForKey:@"code"];
     
+    switch ([code intValue]) {
+        case 401:
+            NSLog(@"Invalid API key.");
+            return nil;
+            break;
+        case 402:
+            NSLog(@"This API key has been blocked.");
+            return nil;
+            break;
+        case 403:
+            NSLog(@"You have reached the daily limit for requests (including calls of the translate method).");
+            return nil;
+            break;
+        default:
+            break;
+    }
     
     NSString *transcription=[NSString new];
     NSString *originalText=[NSString new];

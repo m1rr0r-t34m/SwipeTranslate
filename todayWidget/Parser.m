@@ -25,7 +25,6 @@
             break;
         case 402:
             NSLog(@"This API key has been blocked.");
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"402" object:self];
             return nil;
             break;
         case 403:

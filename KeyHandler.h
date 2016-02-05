@@ -17,6 +17,6 @@
 
 @property NSArray* dictionaryKeys;
 @property NSArray* translationKeys;
-@property NSInteger* dictionaryKeyIndex;
-@property NSInteger* translationKeyIndex;
+@property NSInteger dictionaryKeyIndex;
+@property NSInteger translationKeyIndex;
 @end

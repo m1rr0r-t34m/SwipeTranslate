@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754CE1061C67E47100A2FB5A /* FavouritesListView.m */; settings = {ASSET_TAGS = (); }; };
 		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */; };
@@ -74,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		754CE1051C67E46800A2FB5A /* FavouritesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesListView.h; sourceTree = "<group>"; };
+		754CE1061C67E47100A2FB5A /* FavouritesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesListView.m; sourceTree = "<group>"; };
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
 		758DDE301BDC1DBD00210924 /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
 		758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageSuggestionMenu.h; path = googleTranslateWidget/LanguageSuggestionMenu.h; sourceTree = "<group>"; };
@@ -282,6 +285,8 @@
 				CD253CDD1BDABDF000662162 /* DataSource.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
+				754CE1051C67E46800A2FB5A /* FavouritesListView.h */,
+				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
 				CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */,
@@ -465,6 +470,7 @@
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
+				754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */,
 				758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
 				75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */,

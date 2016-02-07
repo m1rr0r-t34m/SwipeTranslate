@@ -1,10 +1,3 @@
-//
-//  ViewController.m
-//  googleTranslateWidget
-//
-//  Created by Mark Vasiv on 27/08/15.
-//  Copyright (c) 2015 Mark Vasiv. All rights reserved.
-//
 
 #import "ViewController.h"
 
@@ -33,30 +26,38 @@
     [_dataHandler setDelegate:self];
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
-
+    
     [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenu]];
     [[NSApp mainMenu] addItem: [MainApplicationMenu createEditMenu]];
     
     _liveTranslate = [[[[NSApp mainMenu] itemAtIndex:1] submenu] itemAtIndex:0];
-
+    
     [_sourceLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     [_targetLanguageTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     [_inputText setDelegate:self];
     [_inputText setReady:YES];
-  
+    
     readyInputLength=14;
     
     _translateHandler = [RequestHandler NewTranslateRequest];
     [_translateHandler setDelegate:self];
     _dictionaryHandler=[RequestHandler NewDictionaryRequest];
     [_dictionaryHandler setDelegate:self];
-
+    
     _clearTextButton.hidden = YES;
     _requestProgressIndicator.hidden = YES;
     
     _translateText=[NSAttributedString new];
-
+    
+    [_favouritesView setWantsLayer:YES];
+    _favouritesView.layer.backgroundColor = [NSColor grayColor].CGColor;
+    
+    [self.view setAcceptsTouchEvents:YES];
+    
+    _initialTouches=[NSMutableArray new];
+    
+    
 }
 
 -(void)viewWillAppear{
@@ -88,7 +89,7 @@
 
 - (IBAction)enableAutoLanguage:(id)sender {
     
- 
+    
     NSImage *tmp = [_autoLanguageButton image];
     [_autoLanguageButton setImage:[_autoLanguageButton alternateImage]];
     [_autoLanguageButton setAlternateImage:tmp];
@@ -114,15 +115,15 @@
         [_sourceLanguageTable deselectRow:[_sourceLanguageTable selectedRow]];
         if(!_inputText.ready)
             [self startRequest];
-
-
+        
+        
     }
     else {
         [_localDefaults setAutoPushed:NO];
         if([_sourceLanguageTable selectedRow]<0||[_sourceLanguageTable selectedRow]>4) {
             [_dataHandler pushNewSourceLanguage:[_sourceLanguage stringValue]];
         }
-            //[_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
+        //[_sourceLanguageTable selectRowIndexes:[NSIndexSet indexSetWithIndex:0] byExtendingSelection:NO];
     }
     
     
@@ -132,7 +133,7 @@
 
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
-   //Swap selected table cells
+    //Swap selected table cells
     NSString * selectedSource;
     NSString * selectedTarget;
     if([_autoLanguageButton state]) {
@@ -142,9 +143,9 @@
     else {
         selectedSource = _sLanguage;
         selectedTarget = _tLanguage;
-
+        
     }
-   
+    
     [_dataHandler pushNewSourceLanguage:selectedTarget];
     [_dataHandler pushNewTargetLanguage:selectedSource];
     
@@ -162,8 +163,8 @@
 -(void)sourceLanguageTableSelectionDidChange:(NSString *)index {
     [_sourceLanguage setStringValue:index];
     _sLanguage=index;
-   if( [_autoLanguageButton state])
-       [self enableAutoLanguage:self];
+    if( [_autoLanguageButton state])
+        [self enableAutoLanguage:self];
     if(!_inputText.ready&&_sLanguage&&_tLanguage)
         [self startRequest];
     
@@ -173,7 +174,7 @@
     _tLanguage=index;
     if(!_inputText.ready&&_sLanguage&&_tLanguage)
         [self startRequest];
-
+    
 }
 
 //Creating menu at button
@@ -194,49 +195,49 @@
 
 -(void)controlTextDidChange:(NSNotification *)obj{
     //This should be an array of all available languages
-   /* NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
-    NSMutableArray *arrayOfPossibleOutputs=[NSMutableArray new];
+    /* NSArray *arrayOfLanguages=[[NSArray alloc ]initWithObjects:@"English",@"Russian",@"Egyptian", nil];
+     NSMutableArray *arrayOfPossibleOutputs=[NSMutableArray new];
+     
+     NSString *inputString=[NSString new];
+     if([obj object]==_sourceLanguage)
+     inputString=[_sourceLanguage stringValue];
+     
+     else if([obj object]==_targetLanguage)
+     inputString=[_targetLanguage stringValue];
+     
+     
+     if(inputString) {
+     
+     NSString *pattern=[NSString stringWithFormat:@"^%@.*",inputString];
+     NSError *error;
+     NSRegularExpression *regex = [NSRegularExpression
+     regularExpressionWithPattern:pattern
+     options:NSRegularExpressionCaseInsensitive
+     error:&error];
+     
+     
+     for(int i=0;i<arrayOfLanguages.count;i++){
+     
+     NSString *string=[arrayOfLanguages objectAtIndex:i];
+     
+     NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
+     
+     if (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
+     NSString *substringForFirstMatch = [string substringWithRange:rangeOfFirstMatch];
+     [arrayOfPossibleOutputs addObject:string];
+     }
+     
+     
+     }
+     
+     }
+     
+     if([arrayOfPossibleOutputs count]==0)
+     NSLog(@"Not found");
+     else
+     NSLog(@"%@",arrayOfPossibleOutputs);*/
     
-    NSString *inputString=[NSString new];
-    if([obj object]==_sourceLanguage)
-        inputString=[_sourceLanguage stringValue];
     
-    else if([obj object]==_targetLanguage)
-        inputString=[_targetLanguage stringValue];
-    
-
-    if(inputString) {
-        
-        NSString *pattern=[NSString stringWithFormat:@"^%@.*",inputString];
-        NSError *error;
-        NSRegularExpression *regex = [NSRegularExpression
-                                      regularExpressionWithPattern:pattern
-                                      options:NSRegularExpressionCaseInsensitive
-                                      error:&error];
-        
-        
-        for(int i=0;i<arrayOfLanguages.count;i++){
-            
-            NSString *string=[arrayOfLanguages objectAtIndex:i];
-                
-            NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:string options:0 range:NSMakeRange(0, [string length])];
-            
-            if (!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0))) {
-                NSString *substringForFirstMatch = [string substringWithRange:rangeOfFirstMatch];
-                [arrayOfPossibleOutputs addObject:string];
-            }
-
-            
-        }
-    
-    }
-    
-    if([arrayOfPossibleOutputs count]==0)
-        NSLog(@"Not found");
-    else
-        NSLog(@"%@",arrayOfPossibleOutputs);*/
-    
-   
     
     
     
@@ -330,8 +331,12 @@
         _clearTextButton.hidden = YES;
         [_outputText setString:@""];
     }
-
+    
+    
+    
 }
+
+
 
 - (NSRange)textView:(NSTextView *)aTextView willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange toCharacterRange:(NSRange) newSelectedCharRange {
     if(_inputText.ready)
@@ -343,7 +348,7 @@
     [_translateHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     _requestProgressIndicator.hidden = NO;
     [_requestProgressIndicator startAnimation:self];
-
+    
 }
 -(void)receiveTranslateResponse:(NSArray *)data {
     
@@ -366,7 +371,7 @@
 }
 -(void)performDictionaryRequest {
     
-
+    
     if(![_sLanguage isEqualToString:@"Auto" ])
         [_dictionaryHandler performRequestForSourceLanguage:_sLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
     
@@ -387,7 +392,7 @@
 
 
 -(void)receiveDictionaryResponse:(NSArray *)data {
-   
+    
     NSDictionary *receivedData=(NSDictionary *)data[0];
     NSString *inputWord=[receivedData objectForKey:@"text"];
     
@@ -395,7 +400,7 @@
         [[_outputText textStorage] setAttributedString:[Parser outputStringForMainAppDictionary:receivedData]];
     else
         [[_outputText textStorage] setAttributedString:_translateText];
-
+    
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }
@@ -413,4 +418,108 @@
     [self performTranslateRequest];
 }
 
+
+- (void)touchesBeganWithEvent:(NSEvent *)event {
+    
+    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
+    if (touches.count == 2) {
+        NSArray *array = [touches allObjects];
+        [_initialTouches insertObject:[array objectAtIndex:0] atIndex:0];
+        [_initialTouches insertObject:[array objectAtIndex:1] atIndex:1];
+    } else if(touches.count>2) {
+        // More than 2 touches. Only track 2.
+        if(_initialTouches)
+            [_initialTouches removeAllObjects];
+        
+    }
+    
+}
+- (void)touchesMovedWithEvent:(NSEvent *)event{
+    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
+    if (touches.count == 2) {
+        
+        NSArray *array = [touches allObjects];
+        NSTouch *currentTouch = [array objectAtIndex:0];
+        
+        if(_initialTouches.count==2) {
+            
+            
+            NSTouch *initialTouch = [_initialTouches objectAtIndex:0];
+            
+            CGFloat firstDelta;
+            CGFloat secondDelta;
+            
+            if([currentTouch.identity isEqual:initialTouch.identity]) {
+                firstDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+                
+                currentTouch = [array objectAtIndex:1];
+                initialTouch = [_initialTouches objectAtIndex:1];
+                
+                secondDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+            }
+            else {
+                currentTouch = [array objectAtIndex:1];
+                firstDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+                
+                currentTouch = [array objectAtIndex:0];
+                initialTouch = [_initialTouches objectAtIndex:1];
+                
+                secondDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+            }
+            if(firstDelta!=0||secondDelta!=0){
+                NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
+                [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*3000];
+            }
+            /* else if(firstDelta<0&&secondDelta<0){
+             NSLog(@"Moved left, delta1: %f, delta2: %f",firstDelta,secondDelta);
+             }*/
+            
+            [_initialTouches insertObject:[array objectAtIndex:0] atIndex:0];
+            [_initialTouches insertObject:[array objectAtIndex:1] atIndex:1];
+        }
+        else {
+            [_initialTouches removeAllObjects];
+            [_initialTouches insertObject:array[0] atIndex:0];
+            [_initialTouches insertObject:array[1] atIndex:1];
+        }
+    }
+}
+- (void)touchesEndedWithEvent:(NSEvent *)event{
+    NSSet *endedTouches = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.view];
+    NSSet *initialSet=[[NSSet alloc] initWithArray:_initialTouches];
+    
+    if(_initialTouches.count>0) {
+        [endedTouches intersectsSet:initialSet];
+        if(endedTouches.count==2){
+            NSLog(@"lol");
+            [_initialTouches removeAllObjects];
+            [_favouritesView checkState];
+        }
+        else if(endedTouches.count==1){
+            if(_initialTouches.count==1){
+                NSLog(@"lol");
+                [_initialTouches removeAllObjects];
+                [_favouritesView checkState];
+            } else if(_initialTouches.count==2){
+                NSArray *array=[initialSet allObjects];
+                NSTouch *detectedTouch=[array objectAtIndex:0];
+                NSTouch *secondTouch=[_initialTouches objectAtIndex:1];
+                
+                if([secondTouch.identity isEqual:detectedTouch])
+                    [_initialTouches removeLastObject];
+                else {
+                    [_initialTouches removeAllObjects];
+                    [_initialTouches addObject:secondTouch];
+                }
+                
+            }
+        }
+    }
+}
+- (void)touchesCancelledWithEvent:(NSEvent *)event{
+    if(_initialTouches)
+        [_initialTouches removeAllObjects];
+}
+
 @end
+

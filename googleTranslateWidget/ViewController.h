@@ -19,6 +19,7 @@
 #import "RequestReceiver.h"
 #import "SavedInfo.h"
 #import "MainApplicationMenu.h"
+#import "FavouritesListView.h"
 
 @interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate>
 
@@ -35,7 +36,7 @@
 @property (strong) IBOutlet NSButton *clearTextButton;
 @property (strong) IBOutlet InputScroll *inputScrollView;
 @property (strong) IBOutlet NSProgressIndicator *requestProgressIndicator;
-
+@property (strong) IBOutlet favouritesListView *favouritesView;
 
 //Actions from View
 - (IBAction)enableAutoLanguage:(id)sender;
@@ -53,6 +54,7 @@
 @property NSString* tLanguage;
 @property NSString* autoLanguage;
 @property SavedInfo *localDefaults;
+@property NSMutableArray *initialTouches;
 
 @property NSAttributedString* translateText;
 

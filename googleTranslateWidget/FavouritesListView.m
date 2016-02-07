@@ -12,22 +12,28 @@
 
 -(void)changeOrigin:(CGFloat)change{
     [[NSAnimationContext currentContext ]setDuration:0];
-    if (self.frame.origin.x <= 503)
-        _isOpened = YES;
-    else
-        _isOpened = NO;
+
+    if(change > 0){
+        if(self.frame.origin.x <= 803){
+            if(self.frame.origin.x + change <= 803)
+                [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x + change, self.frame.origin.y)];
+            else
+                [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
+        }
+        
+    }
+    else if(change < 0){
+        if(self.frame.origin.x >= 503){
+            if(self.frame.origin.x + change >= 503)
+                [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x + change, self.frame.origin.y)];
+            else
+                [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
+        }
+        
+    }
     
-    if (self.frame.origin.x >= 803)
-        _isClosed = YES;
-    else
-        _isClosed = NO;
     
-    if (_isOpened == YES && change < 0)
-        [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
-    else if (_isClosed == YES && change > 0)
-        [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
-    else
-        [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x + change, self.frame.origin.y)];
+    lastChange=change;
     
 }
 

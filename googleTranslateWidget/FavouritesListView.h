@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface favouritesListView : NSView <NSAnimatablePropertyContainer>
+@interface favouritesListView : NSView <NSAnimatablePropertyContainer>{
+    CGFloat lastChange;
+}
 
 @property BOOL isOpened;
 @property BOOL isClosed;

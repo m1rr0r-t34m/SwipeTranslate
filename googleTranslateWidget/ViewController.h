@@ -20,6 +20,7 @@
 #import "SavedInfo.h"
 #import "MainApplicationMenu.h"
 #import "FavouritesListView.h"
+#import "NSMutableSet+TouchSet.h"
 
 @interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate>
 
@@ -54,8 +55,7 @@
 @property NSString* tLanguage;
 @property NSString* autoLanguage;
 @property SavedInfo *localDefaults;
-@property NSMutableArray *initialTouches;
-
+@property NSMutableSet *initialTouches;
 @property NSAttributedString* translateText;
 
 //Menu properties

@@ -55,7 +55,7 @@
     
     [self.view setAcceptsTouchEvents:YES];
     
-    _initialTouches=[NSMutableArray new];
+    _initialTouches=[NSMutableSet new];
     
     
 }
@@ -423,9 +423,8 @@
     
     NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
     if (touches.count == 2) {
-        NSArray *array = [touches allObjects];
-        [_initialTouches insertObject:[array objectAtIndex:0] atIndex:0];
-        [_initialTouches insertObject:[array objectAtIndex:1] atIndex:1];
+        [_initialTouches removeAllObjects];
+        [_initialTouches unionSet:touches];
     } else if(touches.count>2) {
         // More than 2 touches. Only track 2.
         if(_initialTouches)
@@ -435,82 +434,60 @@
     
 }
 - (void)touchesMovedWithEvent:(NSEvent *)event{
-    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
-    if (touches.count == 2) {
-        
-        NSArray *array = [touches allObjects];
-        NSTouch *currentTouch = [array objectAtIndex:0];
-        
-        if(_initialTouches.count==2) {
-            
-            
-            NSTouch *initialTouch = [_initialTouches objectAtIndex:0];
-            
-            CGFloat firstDelta;
-            CGFloat secondDelta;
-            
-            if([currentTouch.identity isEqual:initialTouch.identity]) {
-                firstDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
-                
-                currentTouch = [array objectAtIndex:1];
-                initialTouch = [_initialTouches objectAtIndex:1];
-                
-                secondDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
+    NSMutableSet *touches=[NSMutableSet setWithSet:set];
+    
+    CGFloat firstDelta=0;
+    CGFloat secondDelta=0;
+    BOOL changed=NO;
+    
+    if(touches.count==2) {
+        [touches touchIntersect:_initialTouches];
+        if(touches.count==2){
+            for (NSTouch *initialTouch in _initialTouches) {
+                for(NSTouch *detectedTouch in set) {
+                    if([initialTouch.identity isEqual:detectedTouch.identity])
+                    {
+                        if (!changed)
+                            firstDelta=detectedTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+                        else
+                            secondDelta=detectedTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
+                        changed=YES;
+                    }
+                }
             }
-            else {
-                currentTouch = [array objectAtIndex:1];
-                firstDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
-                
-                currentTouch = [array objectAtIndex:0];
-                initialTouch = [_initialTouches objectAtIndex:1];
-                
-                secondDelta = currentTouch.normalizedPosition.x-initialTouch.normalizedPosition.x;
-            }
-            if(firstDelta!=0||secondDelta!=0){
-                NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
-                [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*3000];
-            }
-            /* else if(firstDelta<0&&secondDelta<0){
-             NSLog(@"Moved left, delta1: %f, delta2: %f",firstDelta,secondDelta);
-             }*/
-            
-            [_initialTouches insertObject:[array objectAtIndex:0] atIndex:0];
-            [_initialTouches insertObject:[array objectAtIndex:1] atIndex:1];
         }
-        else {
+        
+        if(changed){
             [_initialTouches removeAllObjects];
-            [_initialTouches insertObject:array[0] atIndex:0];
-            [_initialTouches insertObject:array[1] atIndex:1];
+            [_initialTouches unionSet:set];
+            NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
+            [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*1000];
         }
     }
+    
+    
+
 }
 - (void)touchesEndedWithEvent:(NSEvent *)event{
-    NSSet *endedTouches = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.view];
-    NSSet *initialSet=[[NSSet alloc] initWithArray:_initialTouches];
+    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.view];
+    NSMutableSet *touches=[[NSMutableSet alloc] initWithSet:set];
     
     if(_initialTouches.count>0) {
-        [endedTouches intersectsSet:initialSet];
-        if(endedTouches.count==2){
+        [touches touchIntersect:_initialTouches];
+        if(touches.count==2){
             NSLog(@"lol");
             [_initialTouches removeAllObjects];
             [_favouritesView checkState];
         }
-        else if(endedTouches.count==1){
+        else if(touches.count==1){
             if(_initialTouches.count==1){
                 NSLog(@"lol");
                 [_initialTouches removeAllObjects];
                 [_favouritesView checkState];
-            } else if(_initialTouches.count==2){
-                NSArray *array=[initialSet allObjects];
-                NSTouch *detectedTouch=[array objectAtIndex:0];
-                NSTouch *secondTouch=[_initialTouches objectAtIndex:1];
-                
-                if([secondTouch.identity isEqual:detectedTouch])
-                    [_initialTouches removeLastObject];
-                else {
-                    [_initialTouches removeAllObjects];
-                    [_initialTouches addObject:secondTouch];
-                }
+            }
+            else if(_initialTouches.count==2){
+                [_initialTouches touchRemove:touches];
                 
             }
         }

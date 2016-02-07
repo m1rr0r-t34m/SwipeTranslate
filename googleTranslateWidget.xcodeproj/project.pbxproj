@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754CE1061C67E47100A2FB5A /* FavouritesListView.m */; settings = {ASSET_TAGS = (); }; };
+		754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754CE1061C67E47100A2FB5A /* FavouritesListView.m */; };
 		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */; };
@@ -23,6 +23,7 @@
 		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
 		CD253CDE1BDABDF000662162 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD253CDD1BDABDF000662162 /* DataSource.m */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
+		CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
 		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; };
 		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; };
@@ -75,8 +76,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		754CE1051C67E46800A2FB5A /* FavouritesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesListView.h; sourceTree = "<group>"; };
-		754CE1061C67E47100A2FB5A /* FavouritesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesListView.m; sourceTree = "<group>"; };
+		754CE1051C67E46800A2FB5A /* FavouritesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListView.h; path = googleTranslateWidget/FavouritesListView.h; sourceTree = "<group>"; };
+		754CE1061C67E47100A2FB5A /* FavouritesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListView.m; path = googleTranslateWidget/FavouritesListView.m; sourceTree = "<group>"; };
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
 		758DDE301BDC1DBD00210924 /* DataSourceDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataSourceDelegate.h; sourceTree = "<group>"; };
 		758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageSuggestionMenu.h; path = googleTranslateWidget/LanguageSuggestionMenu.h; sourceTree = "<group>"; };
@@ -94,6 +95,8 @@
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestHandler.m; path = todayWidget/RequestHandler.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestHandler.h; path = todayWidget/RequestHandler.h; sourceTree = "<group>"; };
+		CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+TouchSet.h"; sourceTree = "<group>"; };
+		CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+TouchSet.m"; sourceTree = "<group>"; };
 		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InnerScroll.h; path = googleTranslateWidget/InnerScroll.h; sourceTree = "<group>"; };
 		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InnerScroll.m; path = googleTranslateWidget/InnerScroll.m; sourceTree = "<group>"; };
 		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTable.h; sourceTree = "<group>"; };
@@ -190,6 +193,10 @@
 		CD8F79961C08CED60094742F /* CustomMainClasses */ = {
 			isa = PBXGroup;
 			children = (
+				754CE1051C67E46800A2FB5A /* FavouritesListView.h */,
+				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
+				CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */,
+				CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */,
 				758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */,
 				758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */,
 				75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */,
@@ -285,8 +292,6 @@
 				CD253CDD1BDABDF000662162 /* DataSource.m */,
 				CDCFCCE11B8E690300547F5C /* ViewController.h */,
 				CDCFCCE21B8E690300547F5C /* ViewController.m */,
-				754CE1051C67E46800A2FB5A /* FavouritesListView.h */,
-				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CDCFCCDA1B8E690300547F5C /* Supporting Files */,
 				CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */,
@@ -466,6 +471,7 @@
 				CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */,
 				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,
 				CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */,
+				CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */,
 				754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,

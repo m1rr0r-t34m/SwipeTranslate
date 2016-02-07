@@ -11,7 +11,7 @@
 @implementation favouritesListView
 
 -(void)changeOrigin:(CGFloat)change{
-    [[NSAnimationContext currentContext ]setDuration:1.0];
+    [[NSAnimationContext currentContext ]setDuration:0];
     if (self.frame.origin.x <= 503)
         _isOpened = YES;
     else

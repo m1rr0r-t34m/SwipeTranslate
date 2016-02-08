@@ -38,11 +38,14 @@
 }
 
 -(void)checkState{
-    if (self.frame.origin.x < 700)
-        [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
-    else
+    if(lastChange>0){
+        [[NSAnimationContext currentContext ]setDuration:1/lastChange];
         [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
-  
+    }
+    else if(lastChange<0){
+        [[NSAnimationContext currentContext ]setDuration:-1/lastChange];
+        [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
+    }
 }
 
 

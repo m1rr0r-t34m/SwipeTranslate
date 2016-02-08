@@ -461,7 +461,7 @@
         if(changed){
             [_initialTouches removeAllObjects];
             [_initialTouches unionSet:set];
-            NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
+          //  NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
             [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*1000];
         }
     }
@@ -476,13 +476,13 @@
     if(_initialTouches.count>0) {
         [touches touchIntersect:_initialTouches];
         if(touches.count==2){
-            NSLog(@"lol");
+           // NSLog(@"lol");
             [_initialTouches removeAllObjects];
             [_favouritesView checkState];
         }
         else if(touches.count==1){
             if(_initialTouches.count==1){
-                NSLog(@"lol");
+              //  NSLog(@"lol");
                 [_initialTouches removeAllObjects];
                 [_favouritesView checkState];
             }

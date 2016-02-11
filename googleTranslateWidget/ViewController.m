@@ -461,7 +461,7 @@
         if(changed){
             [_initialTouches removeAllObjects];
             [_initialTouches unionSet:set];
-          //  NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
+        //    NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
             [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*1000];
         }
     }

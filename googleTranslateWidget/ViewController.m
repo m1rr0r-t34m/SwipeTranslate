@@ -56,6 +56,8 @@
     [self.view setAcceptsTouchEvents:YES];
     
     _initialTouches=[NSMutableSet new];
+    touchDistance = 0;
+    inTouch = false;
     
     
 }
@@ -461,8 +463,16 @@
         if(changed){
             [_initialTouches removeAllObjects];
             [_initialTouches unionSet:set];
+            float convertedAverageDelta = 1000 * (firstDelta+secondDelta) / 2;
+            if(!inTouch && ABS(touchDistance) < 80) {
+                touchDistance +=convertedAverageDelta;
+            }
+            else {
+                inTouch = true;
+                [_favouritesView changeOrigin: convertedAverageDelta];
+            }
         //    NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
-            [_favouritesView changeOrigin:((firstDelta+secondDelta)/2)*1000];
+            
         }
     }
     
@@ -483,6 +493,8 @@
         else if(touches.count==1){
             if(_initialTouches.count==1){
               //  NSLog(@"lol");
+                inTouch = false;
+                touchDistance = 0;
                 [_initialTouches removeAllObjects];
                 [_favouritesView checkState];
             }
@@ -494,8 +506,11 @@
     }
 }
 - (void)touchesCancelledWithEvent:(NSEvent *)event{
-    if(_initialTouches)
+    if(_initialTouches) {
+        inTouch = false;
+        touchDistance = 0;
         [_initialTouches removeAllObjects];
+    }
 }
 
 @end

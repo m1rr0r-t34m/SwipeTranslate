@@ -22,7 +22,10 @@
 #import "FavouritesListView.h"
 #import "NSMutableSet+TouchSet.h"
 
-@interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate>
+@interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
+    float touchDistance;
+    BOOL inTouch;
+}
 
 //Outlets from View
 @property (strong) IBOutlet NSTextField *sourceLanguage;

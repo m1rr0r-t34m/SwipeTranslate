@@ -11,7 +11,7 @@
 @implementation favouritesListView
 float const defaultSlowSpeed = 150;
 float const defaultMediumSpeed = 230;
-float const defaultFastSpeed = 300;
+float const defaultFastSpeed = 400;
 
 -(void)changeOrigin:(CGFloat)change{
     [[NSAnimationContext currentContext ]setDuration:0];
@@ -53,7 +53,7 @@ float const defaultFastSpeed = 300;
             [self openBar:origin.x-503 withSpeed:defaultSlowSpeed];
         
     }
-    else if(modulusChange < 30) {
+    else if(modulusChange < 15) {
         if(lastChange>0)
             [self closeBar:origin.x-503 withSpeed:defaultMediumSpeed];
         

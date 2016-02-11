@@ -53,7 +53,7 @@
     [_favouritesView setWantsLayer:YES];
     _favouritesView.layer.backgroundColor = [NSColor grayColor].CGColor;
     
-    [self.view setAcceptsTouchEvents:YES];
+    [self.rightSplittedView setAcceptsTouchEvents:YES];
     
     _initialTouches=[NSMutableSet new];
     touchDistance = 0;
@@ -423,7 +423,7 @@
 
 - (void)touchesBeganWithEvent:(NSEvent *)event {
     
-    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
+    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
     if (touches.count == 2) {
         [_initialTouches removeAllObjects];
         [_initialTouches unionSet:touches];
@@ -436,7 +436,7 @@
     
 }
 - (void)touchesMovedWithEvent:(NSEvent *)event{
-    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.view];
+    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
     NSMutableSet *touches=[NSMutableSet setWithSet:set];
     
     CGFloat firstDelta=0;
@@ -480,7 +480,7 @@
 
 }
 - (void)touchesEndedWithEvent:(NSEvent *)event{
-    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.view];
+    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.rightSplittedView];
     NSMutableSet *touches=[[NSMutableSet alloc] initWithSet:set];
     
     if(_initialTouches.count>0) {

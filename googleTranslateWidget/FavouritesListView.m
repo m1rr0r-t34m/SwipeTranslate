@@ -9,7 +9,9 @@
 #import "favouritesListView.h"
 
 @implementation favouritesListView
-float const defaultSpeed = 80;
+float const defaultSlowSpeed = 150;
+float const defaultMediumSpeed = 230;
+float const defaultFastSpeed = 300;
 
 -(void)changeOrigin:(CGFloat)change{
     [[NSAnimationContext currentContext ]setDuration:0];
@@ -41,35 +43,42 @@ float const defaultSpeed = 80;
 -(void)checkState{
     CGPoint origin = self.frame.origin;
     float modulusChange = ABS(lastChange);
-    
+    NSLog(@"last change %f",lastChange);
 
     if(modulusChange < 4) {
         if(origin.x > 653)
-            [self closeBar:803-origin.x];
+            [self closeBar:803-origin.x withSpeed:defaultSlowSpeed];
         
         else
-            [self openBar:origin.x-503];
+            [self openBar:origin.x-503 withSpeed:defaultSlowSpeed];
         
+    }
+    else if(modulusChange < 30) {
+        if(lastChange>0)
+            [self closeBar:origin.x-503 withSpeed:defaultMediumSpeed];
+        
+        else
+            [self openBar:803-origin.x withSpeed:defaultMediumSpeed];
     }
     else{
         if(lastChange>0)
-            [self closeBar:origin.x-503];
+            [self closeBar:origin.x-503 withSpeed:defaultFastSpeed];
         
         else
-            [self openBar:803-origin.x];
+            [self openBar:803-origin.x withSpeed:defaultFastSpeed];
     }
     
 
 
 }
 
--(void)closeBar:(int)distance {
-    [[NSAnimationContext currentContext ]setDuration:distance/(defaultSpeed)];
+-(void)closeBar:(int)distance withSpeed:(float)speed {
+    [[NSAnimationContext currentContext ]setDuration:distance/(speed)];
     [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
 }
 
--(void)openBar:(int)distance {
-    [[NSAnimationContext currentContext ]setDuration:distance/(defaultSpeed)];
+-(void)openBar:(int)distance withSpeed: (float)speed {
+    [[NSAnimationContext currentContext ]setDuration:distance/(speed)];
     [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
 }
 

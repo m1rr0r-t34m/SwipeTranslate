@@ -11,7 +11,7 @@
 		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */; };
-		75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B196681C6D304100796584 /* FavouritesDataHandler.m */; settings = {ASSET_TAGS = (); }; };
+		75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B196681C6D304100796584 /* FavouritesDataHandler.m */; };
 		75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */; };
 		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
@@ -537,7 +537,7 @@
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "markvasiv.Swipe-Translate.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -553,7 +553,7 @@
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "markvasiv.Swipe-Translate.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -647,6 +647,7 @@
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -660,6 +661,7 @@
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -183,6 +183,11 @@
     
 }
 - (IBAction)starButton:(id)sender {
+    
+    //Update icon
+    NSImage *tmp = [_favouritesStar image];
+    [_favouritesStar setImage:[_favouritesStar alternateImage]];
+    [_favouritesStar setAlternateImage:tmp];
 
     //Serialize input and output strings
     NSData *inputData;
@@ -421,6 +426,14 @@
         [_outputText setString:@""];
     }
     
+    //Update favourites icon
+    NSImage *tmpStar = [_favouritesStar image];
+    if([tmpStar.name isEqualToString:@"FavouritesButtonPressed"]) {
+         [_favouritesStar setImage:[_favouritesStar alternateImage]];
+         [_favouritesStar setAlternateImage:tmpStar];
+    }
+   
+   
     
     
 }

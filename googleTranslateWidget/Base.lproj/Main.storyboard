@@ -113,11 +113,11 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Cq4-N5-6L6">
-                                            <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
+                                            <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="tg2-O8-Vzg">
-                                            <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
+                                            <rect key="frame" x="-15" y="1" width="16" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -381,7 +381,7 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MWT-gf-XFr">
-                                                <rect key="frame" x="65" y="350" width="521" height="5"/>
+                                                <rect key="frame" x="65" y="350" width="521" height="4"/>
                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <font key="titleFont" metaFont="system"/>
@@ -418,7 +418,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Pmz-ng-32l" customClass="HiddenScroll">
-                                                    <rect key="frame" x="-15" y="0.0" width="15" height="0.0"/>
+                                                    <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -459,13 +459,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Hpu-Dn-7FR" customClass="HiddenScroll">
-                                                    <rect key="frame" x="-15" y="0.0" width="15" height="0.0"/>
+                                                    <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-Nb-ar5">
-                                                <rect key="frame" x="14" y="290" width="38" height="32"/>
-                                                <buttonCell key="cell" type="push" title="S" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Pv-9q-Wop">
+                                                <rect key="frame" x="10" y="300" width="36" height="36"/>
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="FavouritesButton" imagePosition="only" alignment="center" alternateImage="FavouritesButtonPressed" imageScaling="proportionallyDown" inset="2" id="6Pv-9q-Wop">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -521,6 +521,8 @@
     <resources>
         <image name="AutoButtonIcon" width="256" height="256"/>
         <image name="AutoButtonPushed" width="256" height="256"/>
+        <image name="FavouritesButton" width="256" height="256"/>
+        <image name="FavouritesButtonPressed" width="256" height="256"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

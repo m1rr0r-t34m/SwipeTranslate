@@ -14,9 +14,9 @@
     NSMutableArray *favouritesData;
 }
 
-@property NSMutableArray *initialData;
+//@property NSArray *favouritesArray;
 
 -(int)numberOfRowsInTableView:(NSTableView*) tableView;
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex;
-
+-(void)pushFavouritesArray:(NSMutableArray *)array;
 @end

@@ -12,24 +12,47 @@
 
 
 -(void)awakeFromNib{
-    _initialData = [[NSMutableArray alloc] initWithArray:@[@"Good evening", @"Добрый вечер", @"I am a dispatch", @"Я диспетчер"]] ;
     [favouritesTable reloadData];
 }
 
 -(int)numberOfRowsInTableView:(NSTableView*) tableView{
-        return (int)[self.initialData count];
+    if(favouritesData)
+        return (int)[favouritesData count];
+    else
+        return 0;
 }
-
+-(void)pushFavouritesArray:(NSMutableArray *)array {
+    favouritesData = [[NSMutableArray alloc] initWithArray:array];
+}
 
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex{
     if (tableView == favouritesTable){
+        if(favouritesData) {
+            NSDictionary *dict = [favouritesData objectAtIndex:rowIndex];
+            
+            NSData *inputData = [dict objectForKey:@"input"];
+            NSData *outputData = [dict objectForKey:@"output"];
+            
+            NSMutableAttributedString* inputString = [[NSMutableAttributedString alloc] initWithRTFD:inputData
+                                                                                       documentAttributes:nil];
+            NSMutableAttributedString* outputString = [[NSMutableAttributedString alloc] initWithRTFD:outputData
+                                                                                        documentAttributes:nil];
+
+            if(inputString && outputString) {
+                NSMutableAttributedString *finalString = [NSMutableAttributedString new];
+                [finalString appendAttributedString:inputString];
+                [finalString appendAttributedString:outputString];
+                return finalString;
+            }
+
+                
+                
+            
+        }
         
-        NSLog(@"%@", [_initialData objectAtIndex:rowIndex]);
-        return [_initialData objectAtIndex:rowIndex];
     }
-    else
-        NSLog(@"FAIL");
-        return nil;
+    
+    return nil;
 }
 
 @end

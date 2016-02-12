@@ -78,8 +78,16 @@
     if(!(_favouritesArray = [NSMutableArray arrayWithContentsOfFile:favouritesPath]))
         _favouritesArray = [NSMutableArray new];
     
+    //Pass favourites array to the table view data handler
+    _favouritesHandler = [FavouritesDataHandler new];
+    [_favouritesTable.delegate performSelector:@selector(pushFavouritesArray:) withObject:_favouritesArray];
+    
+    
+    [_favouritesTable reloadData];
+    
     //Set star button to disabled mode
     [_favouritesStar setEnabled:false];
+    
     
     
     
@@ -96,7 +104,7 @@
     self.view.window.titleVisibility = NSWindowTitleHidden;
     self.view.window.titlebarAppearsTransparent = YES;
     self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
-    [_favouritesTable reloadData];
+
     [_sourceLanguageTable reloadData];
     [_targetLanguageTable reloadData];
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
@@ -204,12 +212,16 @@
 
     //Check if entry is already in the favourites list
     if(![self isDataInFavouritesList:inputData andOutput:outputData]) {
+        
         //Put serialized data into dictionary and then write to plist
+        //Push favourites array to table view data handler
         NSMutableDictionary *dict = [NSMutableDictionary new];
         [dict setObject:inputData forKey:@"input"];
         [dict setObject:outputData forKey:@"output"];
         
         [_favouritesArray addObject:dict];
+        [_favouritesTable.delegate performSelector:@selector(pushFavouritesArray:) withObject:_favouritesArray];
+        [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
     }
 }

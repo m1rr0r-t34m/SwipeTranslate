@@ -23,6 +23,7 @@
 		CD1A16CE1BF5525A00EA90D3 /* HiddenScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */; };
 		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
 		CD253CDE1BDABDF000662162 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD253CDD1BDABDF000662162 /* DataSource.m */; };
+		CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
@@ -96,6 +97,8 @@
 		CD1A16D91BF557AB00EA90D3 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CD253CDC1BDABDF000662162 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		CD2608451C6E543E0017E10F /* NSAttributedString+Trimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Trimming.h"; sourceTree = "<group>"; };
+		CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Trimming.m"; sourceTree = "<group>"; };
 		CD338B531B8F198500CDB0D8 /* RequestHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RequestHandler.m; path = todayWidget/RequestHandler.m; sourceTree = "<group>"; };
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestHandler.h; path = todayWidget/RequestHandler.h; sourceTree = "<group>"; };
 		CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+TouchSet.h"; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */,
 				CD7CED7B1BD9772600789E8E /* ValidateTextView.h */,
 				CD7CED7C1BD9772600789E8E /* ValidateTextView.m */,
+				CD2608451C6E543E0017E10F /* NSAttributedString+Trimming.h */,
+				CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
 				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
+				CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */,
 				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
 				CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */,

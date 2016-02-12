@@ -22,6 +22,7 @@
 #import "FavouritesListView.h"
 #import "NSMutableSet+TouchSet.h"
 #import "FavouritesDataHandler.h"
+#import "NSAttributedString+Trimming.h"
 
 @interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
     float touchDistance;

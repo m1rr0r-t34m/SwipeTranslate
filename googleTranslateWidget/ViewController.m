@@ -80,6 +80,15 @@
     
     //Set star button to disabled mode
     [_favouritesStar setEnabled:false];
+    
+    
+    
+    //USE THIS SNIPPET TO DESERIALIZE NSData TO NSAttributedString
+    
+   /* NSData *data = [[_favouritesArray objectAtIndex:1]objectForKey:@"output"];
+    NSMutableAttributedString* attributedString = [[NSMutableAttributedString alloc] initWithRTFD:data
+                                                                  documentAttributes:nil];
+    [[_outputText textStorage]setAttributedString :attributedString];*/
 }
 
 -(void)viewWillAppear{
@@ -174,15 +183,57 @@
     
 }
 - (IBAction)starButton:(id)sender {
-    //Create new dictionary and put it into array property
-    NSMutableDictionary *dict = [NSMutableDictionary new];
-    [dict setObject:[_inputText string] forKey:[_outputText string]];
-    [_favouritesArray addObject:dict];
+
+    //Serialize input and output strings
+    NSData *inputData;
+    NSData *outputData;
+    NSAttributedString *inputAttributedString = [_inputText attributedString];
+    NSAttributedString *outputAttributedString = [_outputText attributedString];
     
-    //Update favourities plist
-    [_favouritesArray writeToFile:favouritesPath atomically:YES];
+    inputData = [inputAttributedString RTFDFromRange:NSMakeRange(0,[inputAttributedString length])
+                                            documentAttributes:nil];
+    
+    outputData = [outputAttributedString RTFDFromRange:NSMakeRange(0,[outputAttributedString length])
+                                  documentAttributes:nil];
+    
+
+    //Check if entry is already in the favourites list
+    if(![self isDataInFavouritesList:inputData andOutput:outputData]) {
+        //Put serialized data into dictionary and then write to plist
+        NSMutableDictionary *dict = [NSMutableDictionary new];
+        [dict setObject:inputData forKey:@"input"];
+        [dict setObject:outputData forKey:@"output"];
+        
+        [_favouritesArray addObject:dict];
+        [_favouritesArray writeToFile:favouritesPath atomically:YES];
+    }
 }
 
+-(BOOL)isDataInFavouritesList:(NSData *)input andOutput:(NSData *)output {
+    for(NSDictionary *dict in _favouritesArray) {
+        NSData *inputData = [dict objectForKey:@"input"];
+        NSData *outputData = [dict objectForKey:@"output"];
+        if(inputData!=nil && outputData!=nil) {
+            NSMutableAttributedString* inputString1 = [[NSMutableAttributedString alloc] initWithRTFD:inputData
+                                                                                  documentAttributes:nil];
+            NSMutableAttributedString* outputString1 = [[NSMutableAttributedString alloc] initWithRTFD:outputData
+                                                                                   documentAttributes:nil];
+            NSMutableAttributedString* inputString2 = [[NSMutableAttributedString alloc] initWithRTFD:input
+                                                                                   documentAttributes:nil];
+            NSMutableAttributedString* outputString2 = [[NSMutableAttributedString alloc] initWithRTFD:output
+                                                                                    documentAttributes:nil];
+            [inputString1 trimWhitespace];
+            [inputString2 trimWhitespace];
+            [outputString1 trimWhitespace];
+            [outputString2 trimWhitespace];
+            
+            if([inputString1 isEqualTo:inputString2] && [outputString1 isEqualTo:outputString2])
+                return true;
+        }
+        
+    }
+    return false;
+}
 //Updating tables with new entries
 -(void)sourceMenuClick:(id)sender{
     [_dataHandler pushNewSourceLanguage:[sender title]];

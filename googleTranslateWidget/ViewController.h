@@ -21,6 +21,7 @@
 #import "MainApplicationMenu.h"
 #import "FavouritesListView.h"
 #import "NSMutableSet+TouchSet.h"
+#import "FavouritesDataHandler.h"
 
 @interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
     float touchDistance;
@@ -41,6 +42,8 @@
 @property (strong) IBOutlet InputScroll *inputScrollView;
 @property (strong) IBOutlet NSProgressIndicator *requestProgressIndicator;
 @property (strong) IBOutlet favouritesListView *favouritesView;
+@property (strong) IBOutlet FavouritesDataHandler *favouritesHandler;
+@property (strong) IBOutlet NSTableView *favouritesTable;
 
 //Actions from View
 - (IBAction)enableAutoLanguage:(id)sender;

@@ -71,11 +71,62 @@
             <objects>
                 <viewController id="hJv-Ja-bsx" customClass="ViewController" sceneMemberID="viewController">
                     <customView key="view" id="UpM-B5-RvE" userLabel="View">
-                        <rect key="frame" x="0.0" y="0.0" width="802" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="803" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMo-5p-Icv" customClass="favouritesListView">
                                 <rect key="frame" x="803" y="0.0" width="300" height="460"/>
+                                <subviews>
+                                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFX-BN-MX2">
+                                        <rect key="frame" x="0.0" y="0.0" width="301" height="460"/>
+                                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="b45-eI-7Dx">
+                                            <rect key="frame" x="1" y="1" width="299" height="458"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="21" id="Vpq-J2-MoE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="299" height="458"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <animations/>
+                                                    <size key="intercellSpacing" width="3" height="3"/>
+                                                    <color key="backgroundColor" red="0.30796065642859954" green="0.24873333336274767" blue="0.32047611256544506" alpha="0.0" colorSpace="calibratedRGB"/>
+                                                    <color key="gridColor" white="0.80000000000000004" alpha="0.0" colorSpace="deviceWhite"/>
+                                                    <tableColumns>
+                                                        <tableColumn width="296" minWidth="40" maxWidth="1000" id="DRy-NO-0ix">
+                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                            </tableHeaderCell>
+                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="lPJ-of-ai7">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" red="0.91954352094240832" green="0.91954352094240832" blue="0.91954352094240832" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                        </tableColumn>
+                                                    </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="0GN-vw-DgB" id="8FV-f9-dDu"/>
+                                                        <outlet property="delegate" destination="0GN-vw-DgB" id="PzF-uN-rjC"/>
+                                                    </connections>
+                                                </tableView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </clipView>
+                                        <animations/>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Cq4-N5-6L6">
+                                            <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="tg2-O8-Vzg">
+                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
                                 <animations/>
                             </customView>
                             <splitView fixedFrame="YES" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xlZ-yT-fLh">
@@ -478,6 +529,8 @@
                         <outlet property="autoLanguageButton" destination="9Vw-LM-f9F" id="VuS-cx-u4G"/>
                         <outlet property="clearTextButton" destination="nfS-zw-JRZ" id="hLc-9F-4qp"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
+                        <outlet property="favouritesHandler" destination="0GN-vw-DgB" id="qG1-9j-7wW"/>
+                        <outlet property="favouritesTable" destination="Vpq-J2-MoE" id="daG-bi-gl6"/>
                         <outlet property="favouritesView" destination="fMo-5p-Icv" id="WyL-pd-6ht"/>
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
@@ -497,8 +550,13 @@
                         <outlet property="targetTableView" destination="rdF-mn-PCf" id="fqI-t5-vMd"/>
                     </connections>
                 </customObject>
+                <customObject id="0GN-vw-DgB" customClass="FavouritesDataHandler">
+                    <connections>
+                        <outlet property="favouritesTable" destination="Vpq-J2-MoE" id="o0p-bw-FS5"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="53" y="869"/>
+            <point key="canvasLocation" x="65.5" y="867"/>
         </scene>
     </scenes>
     <resources>

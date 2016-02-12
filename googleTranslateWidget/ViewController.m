@@ -24,6 +24,7 @@
     [_targetLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_sourceLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_dataHandler setDelegate:self];
+    
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
     
@@ -67,6 +68,7 @@
     self.view.window.titleVisibility = NSWindowTitleHidden;
     self.view.window.titlebarAppearsTransparent = YES;
     self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
+    [_favouritesTable reloadData];
     [_sourceLanguageTable reloadData];
     [_targetLanguageTable reloadData];
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];

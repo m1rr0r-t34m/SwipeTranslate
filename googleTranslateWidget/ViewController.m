@@ -6,6 +6,8 @@
 @implementation ViewController {
     BOOL returnInInputPressed;
     int readyInputLength;
+    NSString *favouritesFolderPath;
+    NSString *favouritesPath;
 }
 
 
@@ -56,11 +58,28 @@
     
     [self.rightSplittedView setAcceptsTouchEvents:YES];
     
+    //Register touches to open favourites sidebar
     _initialTouches=[NSMutableSet new];
     touchDistance = 0;
     inTouch = false;
+
+    //FAVOURITES HANDLING
+    favouritesFolderPath = [[[NSHomeDirectory() stringByAppendingPathComponent:@"Library"]stringByAppendingPathComponent:@"Application Support"] stringByAppendingPathComponent:@"mark.Swipe-Translate"];
+    favouritesPath = [favouritesFolderPath stringByAppendingPathComponent:@"Favourites.plist"];
     
+    //Check if there is a folder in Application Support
+    BOOL isDir;
+    NSFileManager *fileManager= [NSFileManager defaultManager];
+    if(![fileManager fileExistsAtPath:favouritesFolderPath isDirectory:&isDir])
+        if(![fileManager createDirectoryAtPath:favouritesFolderPath withIntermediateDirectories:YES attributes:nil error:NULL])
+            NSLog(@"Error: Create folder failed %@", favouritesFolderPath);
     
+    //Read favorites plist to array
+    if(!(_favouritesArray = [NSMutableArray arrayWithContentsOfFile:favouritesPath]))
+        _favouritesArray = [NSMutableArray new];
+    
+    //Set star button to disabled mode
+    [_favouritesStar setEnabled:false];
 }
 
 -(void)viewWillAppear{
@@ -154,6 +173,15 @@
     [_dataHandler pushNewTargetLanguage:selectedSource];
     
 }
+- (IBAction)starButton:(id)sender {
+    //Create new dictionary and put it into array property
+    NSMutableDictionary *dict = [NSMutableDictionary new];
+    [dict setObject:[_inputText string] forKey:[_outputText string]];
+    [_favouritesArray addObject:dict];
+    
+    //Update favourities plist
+    [_favouritesArray writeToFile:favouritesPath atomically:YES];
+}
 
 //Updating tables with new entries
 -(void)sourceMenuClick:(id)sender{
@@ -191,10 +219,14 @@
 }
 
 - (IBAction)clearTextButtonAction:(id)sender {
+    //Set star button to disabled mode
+    [_favouritesStar setEnabled:false];
     [_inputText setReady:YES];
     [_outputText setString:@""];
     _clearTextButton.hidden = YES;
 }
+
+
 
 
 -(void)controlTextDidChange:(NSNotification *)obj{
@@ -308,6 +340,8 @@
         [_requestProgressIndicator stopAnimation:self];
         _requestProgressIndicator.hidden = YES;
         [_inputText setReady:YES];
+        //Set star button to disabled mode
+        [_favouritesStar setEnabled:false];
     }
     
     
@@ -404,6 +438,9 @@
         [[_outputText textStorage] setAttributedString:[Parser outputStringForMainAppDictionary:receivedData]];
     else
         [[_outputText textStorage] setAttributedString:_translateText];
+    
+    //Set star button to enabled mode
+    [_favouritesStar setEnabled:true];
     
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;

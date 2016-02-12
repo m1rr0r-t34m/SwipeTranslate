@@ -44,6 +44,7 @@
 @property (strong) IBOutlet favouritesListView *favouritesView;
 @property (strong) IBOutlet FavouritesDataHandler *favouritesHandler;
 @property (strong) IBOutlet NSTableView *favouritesTable;
+@property (strong) IBOutlet NSButton *favouritesStar;
 
 //Actions from View
 - (IBAction)enableAutoLanguage:(id)sender;
@@ -51,6 +52,7 @@
 - (IBAction)showSourceMenu:(id)sender;
 - (IBAction)showTargetMenu:(id)sender;
 - (IBAction)clearTextButtonAction:(id)sender;
+- (IBAction)starButton:(id)sender;
 
 //Methods
 -(void)sourceMenuClick:(id)sender;
@@ -62,7 +64,8 @@
 @property NSString* autoLanguage;
 @property SavedInfo *localDefaults;
 @property NSMutableSet *initialTouches;
-@property NSAttributedString* translateText;
+@property NSAttributedString *translateText;
+@property NSMutableArray *favouritesArray;
 
 //Menu properties
 @property NSMenu *sourceLanguageMenu;

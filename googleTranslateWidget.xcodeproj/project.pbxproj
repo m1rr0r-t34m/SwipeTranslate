@@ -197,9 +197,9 @@
 			isa = PBXGroup;
 			children = (
 				754CE1051C67E46800A2FB5A /* FavouritesListView.h */,
+				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				75B196671C6D304100796584 /* FavouritesDataHandler.h */,
 				75B196681C6D304100796584 /* FavouritesDataHandler.m */,
-				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */,
 				CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */,
 				758DDE341BDC2F0500210924 /* LanguageSuggestionMenu.h */,

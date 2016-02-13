@@ -49,11 +49,16 @@
         
         
         NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 100)];
-
+        [view setWantsLayer:YES];
         
-
+        
         NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 50, 300, 50)];
         NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 50)];
+        
+        [result setDrawsBackground:NO];
+        [result setBordered:NO];
+        [result2 setDrawsBackground:NO];
+        [result2 setBordered:NO];
         
         [result setAttributedStringValue:input];
         [result2 setAttributedStringValue:output];

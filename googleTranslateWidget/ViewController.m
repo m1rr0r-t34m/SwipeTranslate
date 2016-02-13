@@ -90,6 +90,8 @@
     NSScrollView *scrollView = [[NSScrollView alloc]initWithFrame:rect];
     [_favouritesVisualEffectsView addSubview:scrollView];
     [scrollView setHasVerticalRuler:true];
+    [scrollView setDrawsBackground:NO];
+    [scrollView setBorderType:NSBorderlessWindowMask];
     
     _favouritesTable = [[NSTableView alloc]initWithFrame:rect];
     NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"id"];
@@ -103,6 +105,10 @@
     
     [_favouritesTable setDelegate:_favouritesHandler];
     [_favouritesTable setDataSource:_favouritesHandler];
+    [_favouritesTable setBackgroundColor:[NSColor clearColor]];
+    [_favouritesTable setGridStyleMask:NSTableViewSolidHorizontalGridLineMask];
+
+    
     [_favouritesTable reloadData];
     
     

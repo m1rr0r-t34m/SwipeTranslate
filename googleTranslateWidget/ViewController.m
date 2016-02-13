@@ -116,6 +116,11 @@
     }
     
     
+    //Put sidebar on top of everything :)
+    _favouritesView.layer.zPosition=1;
+
+
+
 }
 
 

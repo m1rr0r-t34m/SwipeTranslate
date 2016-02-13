@@ -9,14 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 
-@interface FavouritesDataHandler : NSObject{
-    IBOutlet NSTableView *favouritesTable;
+@interface FavouritesDataHandler : NSObject <NSTableViewDelegate, NSTableViewDataSource>{
+   // IBOutlet NSTableView *favouritesTable;
     NSMutableArray *favouritesData;
 }
 
 //@property NSArray *favouritesArray;
-
--(int)numberOfRowsInTableView:(NSTableView*) tableView;
--(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex;
+@property NSTableView *favouritesTable;
 -(void)pushFavouritesArray:(NSMutableArray *)array;
 @end

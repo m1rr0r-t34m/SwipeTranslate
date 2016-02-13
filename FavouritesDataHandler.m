@@ -12,12 +12,13 @@
 
 
 -(void)awakeFromNib{
-    [favouritesTable reloadData];
+    [_favouritesTable reloadData];
 }
 
--(int)numberOfRowsInTableView:(NSTableView*) tableView{
+
+-(NSInteger)numberOfRowsInTableView:(NSTableView*) tableView{
     if(favouritesData)
-        return (int)[favouritesData count];
+        return (NSInteger)[favouritesData count];
     else
         return 0;
 }
@@ -25,33 +26,46 @@
     favouritesData = [[NSMutableArray alloc] initWithArray:array];
 }
 
--(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)rowIndex{
-    if (tableView == favouritesTable){
-        if(favouritesData) {
-            NSDictionary *dict = [favouritesData objectAtIndex:rowIndex];
-            
-            NSData *inputData = [dict objectForKey:@"input"];
-            NSData *outputData = [dict objectForKey:@"output"];
-            
-            NSMutableAttributedString* inputString = [[NSMutableAttributedString alloc] initWithRTFD:inputData
-                                                                                       documentAttributes:nil];
-            NSMutableAttributedString* outputString = [[NSMutableAttributedString alloc] initWithRTFD:outputData
-                                                                                        documentAttributes:nil];
-
-            if(inputString && outputString) {
-                NSMutableAttributedString *finalString = [NSMutableAttributedString new];
-                [finalString appendAttributedString:inputString];
-                [finalString appendAttributedString:outputString];
-                return finalString;
-            }
-
-                
-                
-            
-        }
+-(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    if (tableView == _favouritesTable){
         
-    }
+        NSDictionary *dict = [favouritesData objectAtIndex:row];
+
+        
+        NSMutableAttributedString* input = [[NSMutableAttributedString alloc] initWithRTFD:[dict objectForKey:@"input"]
+                                                                               documentAttributes:nil];
+        NSAttributedString* output = [[NSMutableAttributedString alloc] initWithRTFD:[dict objectForKey:@"output"]
+                                                                              documentAttributes:nil];
+        
+        
+
+       /* NSMutableDictionary *styles = [NSMutableDictionary new];
+        [styles setObject:[NSFont systemFontOfSize:16.0 weight:NSFontWeightLight] forKey:NSFontAttributeName];
+        
+        NSMutableAttributedString *outputString = [[NSMutableAttributedString alloc] initWithString:[output stringByReplacingOccurrencesOfString:@"\r" withString:@" "] attributes:styles];*/
+        
+
+       // [string repla]
+        
+        
+        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 100)];
+
+        
+
+        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 50, 300, 50)];
+        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 50)];
+        
+        [result setAttributedStringValue:input];
+        [result2 setAttributedStringValue:output];
+
+        [view setSubviews:@[result,result2]];
+        [view setNeedsDisplay:YES];
+
+        
+        return view;
+        
     
+    }
     return nil;
 }
 

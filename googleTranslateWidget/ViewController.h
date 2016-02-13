@@ -46,6 +46,7 @@
 @property (strong) IBOutlet FavouritesDataHandler *favouritesHandler;
 @property (strong) IBOutlet NSTableView *favouritesTable;
 @property (strong) IBOutlet NSButton *favouritesStar;
+@property (strong) IBOutlet NSVisualEffectView *favouritesVisualEffectsView;
 
 //Actions from View
 - (IBAction)enableAutoLanguage:(id)sender;

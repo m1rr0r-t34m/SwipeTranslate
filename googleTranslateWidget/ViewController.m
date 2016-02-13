@@ -19,6 +19,8 @@
     _localDefaults =[SavedInfo localDefaults];
     
     
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -78,9 +80,42 @@
     if(!(_favouritesArray = [NSMutableArray arrayWithContentsOfFile:favouritesPath]))
         _favouritesArray = [NSMutableArray new];
     
-    //Pass favourites array to the table view data handler
-    [_favouritesTable.delegate performSelector:@selector(pushFavouritesArray:) withObject:_favouritesArray];
     
+    
+    
+    //Create favourites table view
+    
+    NSRect rect = NSMakeRect(0, 0, 300, 460);
+    
+    NSScrollView *scrollView = [[NSScrollView alloc]initWithFrame:rect];
+    [_favouritesVisualEffectsView addSubview:scrollView];
+    [scrollView setHasVerticalRuler:true];
+    
+    _favouritesTable = [[NSTableView alloc]initWithFrame:rect];
+    NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"id"];
+    [column setWidth:300];
+    [_favouritesTable setHeaderView:nil];
+    [_favouritesTable addTableColumn:column];
+    [_favouritesTable setRowHeight:100];
+    
+    [_favouritesHandler setFavouritesTable:_favouritesTable ];
+    
+    
+    [_favouritesTable setDelegate:_favouritesHandler];
+    [_favouritesTable setDataSource:_favouritesHandler];
+    [_favouritesTable reloadData];
+    
+    
+    
+    [scrollView setDocumentView:_favouritesTable];
+
+    
+    
+    
+    
+    
+    //Pass favourites array to the table view data handler
+    [_favouritesHandler pushFavouritesArray:_favouritesArray];    
     
     [_favouritesTable reloadData];
     

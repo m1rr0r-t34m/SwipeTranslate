@@ -79,7 +79,6 @@
         _favouritesArray = [NSMutableArray new];
     
     //Pass favourites array to the table view data handler
-    _favouritesHandler = [FavouritesDataHandler new];
     [_favouritesTable.delegate performSelector:@selector(pushFavouritesArray:) withObject:_favouritesArray];
     
     
@@ -220,7 +219,7 @@
         [dict setObject:outputData forKey:@"output"];
         
         [_favouritesArray addObject:dict];
-        [_favouritesTable.delegate performSelector:@selector(pushFavouritesArray:) withObject:_favouritesArray];
+        [_favouritesHandler pushFavouritesArray:_favouritesArray];
         [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
     }

@@ -98,7 +98,7 @@
     [column setWidth:300];
     [_favouritesTable setHeaderView:nil];
     [_favouritesTable addTableColumn:column];
-    [_favouritesTable setRowHeight:100];
+    [_favouritesTable setRowHeight:60];
     
     [_favouritesHandler setFavouritesTable:_favouritesTable ];
     

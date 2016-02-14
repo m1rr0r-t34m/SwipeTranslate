@@ -34,11 +34,11 @@
         
         //Determening styles for both textViews in the table
         
-        NSFont *inputStyleFont = [NSFont systemFontOfSize:16 weight:NSFontWeightBold];
-        NSFont *outputStyleFont = [NSFont systemFontOfSize:15 weight:NSFontWeightLight];
+        NSFont *inputStyleFont = [NSFont systemFontOfSize:18 weight:NSFontWeightLight];
+        NSFont *outputStyleFont = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
         
         NSDictionary *inputStyle = @{NSFontAttributeName : inputStyleFont};
-        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont};
+        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont,NSForegroundColorAttributeName : [NSColor grayColor]};
         
         //Extracting attributed strings from data storage
 
@@ -67,12 +67,13 @@
        //Building up a view for the table cell
         
         
-        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 60)];
+        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 50)];
         [view setWantsLayer:YES];
         
         
-        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 30, 290, 30)];
-        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 0, 285, 30)];
+        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 30, 285, 20)];
+        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 10, 285, 20)];
+        
         
         [result setDrawsBackground:NO];
         [result setBordered:NO];

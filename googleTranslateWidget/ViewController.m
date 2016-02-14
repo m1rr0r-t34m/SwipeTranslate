@@ -96,6 +96,7 @@
     _favouritesTable = [[NSTableView alloc]initWithFrame:rect];
     NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"id"];
     [column setWidth:300];
+    [column setEditable:NO];
     [_favouritesTable setHeaderView:nil];
     [_favouritesTable addTableColumn:column];
     [_favouritesTable setRowHeight:60];
@@ -269,6 +270,10 @@
         [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
     }
+}
+
+- (IBAction)openBarButton:(id)sender {
+    [_favouritesView moveWithButton];
 }
 
 -(BOOL)isDataInFavouritesList:(NSData *)input andOutput:(NSData *)output {

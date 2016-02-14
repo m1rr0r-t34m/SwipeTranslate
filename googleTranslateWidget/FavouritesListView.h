@@ -18,4 +18,6 @@
 -(void)changeOrigin:(CGFloat)change;
 -(void)checkState;
 
+-(void)moveWithButton;
+
 @end

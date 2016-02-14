@@ -478,6 +478,17 @@
                                                     <action selector="starButton:" target="hJv-Ja-bsx" id="eI1-3v-7j6"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJv-jx-aMm">
+                                                <rect key="frame" x="10" y="20" width="36" height="30"/>
+                                                <animations/>
+                                                <buttonCell key="cell" type="square" title="⬅︎" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="va2-H1-3UZ">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system" size="22"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openBarButton:" target="hJv-Ja-bsx" id="evO-6G-bOd"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>

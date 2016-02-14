@@ -70,7 +70,7 @@
         <scene sceneID="7f7-l2-4Pd">
             <objects>
                 <viewController id="hJv-Ja-bsx" customClass="ViewController" sceneMemberID="viewController">
-                    <customView key="view" id="UpM-B5-RvE" userLabel="View">
+                    <customView key="view" wantsLayer="YES" id="UpM-B5-RvE" userLabel="View">
                         <rect key="frame" x="0.0" y="0.0" width="803" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
@@ -367,7 +367,7 @@
                                         </subviews>
                                         <animations/>
                                     </customView>
-                                    <customView fixedFrame="YES" id="gGN-sP-6rJ">
+                                    <customView wantsLayer="YES" fixedFrame="YES" id="gGN-sP-6rJ">
                                         <rect key="frame" x="227" y="0.0" width="586" height="465"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>

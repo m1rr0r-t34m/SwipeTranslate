@@ -63,9 +63,6 @@
         
         [input setAttributes:inputStyle range:NSMakeRange(0, [input length])];
         [output setAttributes:outputStyle range:NSMakeRange(0, [output length])];
-        
-
-        
 
        //Building up a view for the table cell
         
@@ -74,8 +71,8 @@
         [view setWantsLayer:YES];
         
         
-        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 30, 300, 30)];
-        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 300, 30)];
+        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(10, 30, 290, 30)];
+        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 0, 285, 30)];
         
         [result setDrawsBackground:NO];
         [result setBordered:NO];

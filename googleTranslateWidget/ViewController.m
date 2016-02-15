@@ -116,7 +116,10 @@
     
     [scrollView setHorizontalScrollElasticity:NSScrollElasticityNone];
     [scrollView setDocumentView:_favouritesTable];
-    
+    [_favouritesTable setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
+    [_favouritesTable setFocusRingType:NSFocusRingTypeNone];
+    [_favouritesTable setRefusesFirstResponder:true];
+
     
     //Pass favourites array to the table view data handler
     [_favouritesHandler pushFavouritesArray:_favouritesArray];    

@@ -80,6 +80,11 @@
         [result2 setDrawsBackground:NO];
         [result2 setBordered:NO];
         
+        [result setEditable:false];
+        [result2 setEditable:false];
+        [result setSelectable:false];
+        [result2 setSelectable:false];
+        
         [result setAttributedStringValue:input];
         [result2 setAttributedStringValue:output];
 

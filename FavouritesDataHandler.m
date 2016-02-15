@@ -67,7 +67,7 @@
        //Building up a view for the table cell
         
         
-        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 300, 50)];
+        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 500, 50)];
         [view setWantsLayer:YES];
         
         

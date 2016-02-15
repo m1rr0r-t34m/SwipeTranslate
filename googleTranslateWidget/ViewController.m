@@ -59,6 +59,7 @@
     _favouritesView.layer.backgroundColor = [NSColor grayColor].CGColor;
     
     [self.rightSplittedView setAcceptsTouchEvents:YES];
+    [self.favouritesView setAcceptsTouchEvents:YES];
     
     //Register touches to open favourites sidebar
     _initialTouches=[NSMutableSet new];
@@ -113,12 +114,8 @@
     [_favouritesTable reloadData];
     
     
-    
+    [scrollView setHorizontalScrollElasticity:NSScrollElasticityNone];
     [scrollView setDocumentView:_favouritesTable];
-
-    
-    
-    
     
     
     //Pass favourites array to the table view data handler
@@ -586,7 +583,11 @@
 
 - (void)touchesBeganWithEvent:(NSEvent *)event {
     
-    NSSet *touches = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
+    NSSet *touches1 = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
+    NSSet *touches2 = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.favouritesView];
+    NSMutableSet *touches = [NSMutableSet setWithSet:touches1];
+    [touches unionSet:touches2];
+    
     if (touches.count == 2) {
         [_initialTouches removeAllObjects];
         [_initialTouches unionSet:touches];
@@ -599,7 +600,11 @@
     
 }
 - (void)touchesMovedWithEvent:(NSEvent *)event{
-    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
+    NSSet *set1 = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.rightSplittedView];
+    NSSet *set2 = [event touchesMatchingPhase:NSTouchPhaseTouching inView:self.favouritesView];
+    NSMutableSet *set = [NSMutableSet setWithSet:set1];
+    [set unionSet:set2];
+    
     NSMutableSet *touches=[NSMutableSet setWithSet:set];
     
     CGFloat firstDelta=0;
@@ -643,7 +648,11 @@
 
 }
 - (void)touchesEndedWithEvent:(NSEvent *)event{
-    NSSet *set = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.rightSplittedView];
+    NSSet *set1 = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.rightSplittedView];
+    NSSet *set2 = [event touchesMatchingPhase:NSTouchPhaseEnded inView:self.favouritesView];
+    NSMutableSet *set = [NSMutableSet setWithSet:set1];
+    [set unionSet:set2];
+    
     NSMutableSet *touches=[[NSMutableSet alloc] initWithSet:set];
     
     if(_initialTouches.count>0) {

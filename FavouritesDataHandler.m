@@ -98,5 +98,26 @@
     }
     return nil;
 }
+-(void)tableViewSelectionDidChange:(NSNotification *)notification {
+    int index=(int)[[notification object] selectedRow];
+    
+    if([notification object]==_favouritesTable) {
+     /*   NSTextField *secondField = [[[_favouritesTable viewAtColumn:0 row:index makeIfNecessary:NO] subviews] objectAtIndex:1];
+        
+        //Update color of selected textFiled text
+        NSFont *outputStyleFont = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
+        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont,NSForegroundColorAttributeName : [NSColor whiteColor]};
+        
+        
+        NSAttributedString *string = [[NSAttributedString alloc] initWithString:[secondField stringValue] attributes:outputStyle];
+       
+        
+        [secondField setAttributedStringValue:string];*/
+        
+        
+
+        
+    }
+}
 
 @end

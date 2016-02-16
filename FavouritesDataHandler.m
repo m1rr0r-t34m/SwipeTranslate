@@ -38,7 +38,7 @@
         NSFont *outputStyleFont = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
         
         NSDictionary *inputStyle = @{NSFontAttributeName : inputStyleFont};
-        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont,NSForegroundColorAttributeName : [NSColor grayColor]};
+        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont,NSForegroundColorAttributeName : [NSColor colorWithCalibratedRed:0.2 green:0.2 blue:0.2 alpha:1]};
         
         //Extracting attributed strings from data storage
 

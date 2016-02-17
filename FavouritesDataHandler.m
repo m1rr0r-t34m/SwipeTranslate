@@ -102,6 +102,8 @@
     int index=(int)[[notification object] selectedRow];
     
     if([notification object]==_favouritesTable) {
+        
+        [_delegate favouritesTableSelectionDidChange:index];
      /*   NSTextField *secondField = [[[_favouritesTable viewAtColumn:0 row:index makeIfNecessary:NO] subviews] objectAtIndex:1];
         
         //Update color of selected textFiled text

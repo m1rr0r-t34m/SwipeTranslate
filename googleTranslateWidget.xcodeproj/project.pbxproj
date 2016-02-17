@@ -78,6 +78,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		754851961C73FE8600767079 /* FavouritesHandlerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesHandlerDelegate.h; sourceTree = "<group>"; };
 		754CE1051C67E46800A2FB5A /* FavouritesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListView.h; path = googleTranslateWidget/FavouritesListView.h; sourceTree = "<group>"; };
 		754CE1061C67E47100A2FB5A /* FavouritesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListView.m; path = googleTranslateWidget/FavouritesListView.m; sourceTree = "<group>"; };
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		CD8F79961C08CED60094742F /* CustomMainClasses */ = {
 			isa = PBXGroup;
 			children = (
+				754851961C73FE8600767079 /* FavouritesHandlerDelegate.h */,
 				754CE1051C67E46800A2FB5A /* FavouritesListView.h */,
 				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				75B196671C6D304100796584 /* FavouritesDataHandler.h */,

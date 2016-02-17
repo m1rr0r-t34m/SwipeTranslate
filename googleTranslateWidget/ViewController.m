@@ -67,6 +67,7 @@
     inTouch = false;
 
     //FAVOURITES HANDLING
+    [_favouritesHandler setDelegate:self];
     favouritesFolderPath = [[[NSHomeDirectory() stringByAppendingPathComponent:@"Library"]stringByAppendingPathComponent:@"Application Support"] stringByAppendingPathComponent:@"mark.Swipe-Translate"];
     favouritesPath = [favouritesFolderPath stringByAppendingPathComponent:@"Favourites.plist"];
     
@@ -323,6 +324,21 @@
     if(!_inputText.ready&&_sLanguage&&_tLanguage)
         [self startRequest];
     
+}
+//Responding to changes in favourites list
+
+-(void)favouritesTableSelectionDidChange: (int)index{
+    NSData *inputData = [[_favouritesArray objectAtIndex:index]objectForKey:@"input"];
+    NSMutableAttributedString* inputAttributedString = [[NSMutableAttributedString alloc] initWithRTFD:inputData
+                                                                                     documentAttributes:nil];
+    
+    NSData *outputData = [[_favouritesArray objectAtIndex:index]objectForKey:@"output"];
+    NSMutableAttributedString* outputAttributedString = [[NSMutableAttributedString alloc] initWithRTFD:outputData
+                                                                               documentAttributes:nil];
+    [_inputText setReady:NO];
+    [_inputText setString:[inputAttributedString string]];
+    [[_outputText textStorage] setAttributedString:outputAttributedString];
+   // [_favouritesView closeView];
 }
 
 //Creating menu at button

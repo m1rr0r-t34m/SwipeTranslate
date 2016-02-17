@@ -23,8 +23,10 @@
 #import "NSMutableSet+TouchSet.h"
 #import "FavouritesDataHandler.h"
 #import "NSAttributedString+Trimming.h"
+#import "FavouritesHandlerDelegate.h"
 
-@interface ViewController : NSViewController<DataSourceDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
+
+@interface ViewController : NSViewController<DataSourceDelegate, FavouritesHandlerDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
     float touchDistance;
     BOOL inTouch;
 }

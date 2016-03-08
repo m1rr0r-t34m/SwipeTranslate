@@ -90,9 +90,8 @@
         
         //Create a remove button
         
-        NSButton *removeButton = [NSButton new];
-        [removeButton setFrame:NSMakeRect(260, 30, 20, 20)];
-        [removeButton setTitle:@"X"];
+        NSButton *removeButton = [[NSButton alloc] initWithFrame:NSMakeRect(270, 35, 25, 25)];
+        [removeButton setImage:[NSImage imageNamed:@"ClearButtonMain"]];
         [removeButton setBordered:NO];
         [removeButton setTag:row];
         [removeButton setTarget:self];

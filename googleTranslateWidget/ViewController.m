@@ -326,7 +326,9 @@
     
 }
 //Responding to changes in favourites list
+//FAVOURITES DELEGATE METHODS
 
+//Respond to favourites table clicks 
 -(void)favouritesTableSelectionDidChange: (int)index{
     NSData *inputData = [[_favouritesArray objectAtIndex:index]objectForKey:@"input"];
     NSMutableAttributedString* inputAttributedString = [[NSMutableAttributedString alloc] initWithRTFD:inputData
@@ -338,7 +340,14 @@
     [_inputText setReady:NO];
     [_inputText setString:[inputAttributedString string]];
     [[_outputText textStorage] setAttributedString:outputAttributedString];
-   // [_favouritesView closeView];
+    //Close sidebar
+    [_favouritesView moveWithButton];
+}
+
+//Delete entry from plist after removal
+-(void)deleteFavouritesTableEntry:(NSInteger)index{
+    [_favouritesArray removeObjectAtIndex:index];
+    [_favouritesArray writeToFile:favouritesPath atomically:YES];
 }
 
 //Creating menu at button
@@ -658,6 +667,7 @@
                 inTouch = true;
                 [_favouritesView changeOrigin: convertedAverageDelta];
             }
+            
         //    NSLog(@"Moved right, delta1: %f, delta2: %f",firstDelta,secondDelta);
             
         }

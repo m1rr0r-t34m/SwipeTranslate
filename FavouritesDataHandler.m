@@ -87,8 +87,18 @@
         
         [result setAttributedStringValue:input];
         [result2 setAttributedStringValue:output];
-
-        [view setSubviews:@[result,result2]];
+        
+        //Create a remove button
+        
+        NSButton *removeButton = [NSButton new];
+        [removeButton setFrame:NSMakeRect(260, 30, 20, 20)];
+        [removeButton setTitle:@"X"];
+        [removeButton setBordered:NO];
+        [removeButton setTag:row];
+        [removeButton setTarget:self];
+        [removeButton setAction:@selector(removeTableRow:)];
+        
+        [view setSubviews:@[result,result2, removeButton]];
         [view setNeedsDisplay:YES];
 
         
@@ -120,6 +130,28 @@
 
         
     }
+}
+
+//Remove a table row with animation
+
+-(void)removeTableRow:(id)sender {
+    
+    [CATransaction begin];
+    
+    [_favouritesTable beginUpdates];
+    
+    [CATransaction setCompletionBlock: ^{
+        [self.favouritesTable reloadData];
+    }];
+    
+    [_favouritesTable removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:[sender tag]] withAnimation:NSTableViewAnimationSlideRight];
+    
+    [_favouritesTable endUpdates];
+    
+    [CATransaction commit];
+    
+    [favouritesData removeObjectAtIndex:[sender tag]];
+    [_delegate deleteFavouritesTableEntry:[sender tag]];
 }
 
 @end

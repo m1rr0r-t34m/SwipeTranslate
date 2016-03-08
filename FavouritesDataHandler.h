@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 #import "FavouritesHandlerDelegate.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface FavouritesDataHandler : NSObject <NSTableViewDelegate, NSTableViewDataSource>{
    // IBOutlet NSTableView *favouritesTable;
@@ -18,5 +19,6 @@
 //@property NSArray *favouritesArray;
 @property (weak) id<FavouritesHandlerDelegate>delegate;
 @property NSTableView *favouritesTable;
+
 -(void)pushFavouritesArray:(NSMutableArray *)array;
 @end

@@ -11,4 +11,5 @@
 
 @protocol FavouritesHandlerDelegate < NSObject >
 -(void)favouritesTableSelectionDidChange:(int)index;
+-(void)deleteFavouritesTableEntry:(NSInteger)index;
 @end

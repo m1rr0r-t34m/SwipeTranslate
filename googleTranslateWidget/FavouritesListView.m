@@ -68,7 +68,7 @@ float const defaultFastSpeed = 400;
             [self openBar:803-origin.x withSpeed:defaultFastSpeed];
     }
     
-
+    lastChange = 0;
 
 }
 
@@ -85,10 +85,12 @@ float const defaultFastSpeed = 400;
 -(void)moveWithButton {
     [[NSAnimationContext currentContext] setDuration:0.5];
     
+
     if (self.frame.origin.x == 803)
         [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
     else if (self.frame.origin.x == 503)
         [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
 }
+
 
 @end

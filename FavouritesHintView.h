@@ -13,5 +13,6 @@
 @interface FavouritesHintView : NSView <NSAnimatablePropertyContainer>
 
 -(void)moveFavouritesBar;
+-(void)closeFavouritesBar;
 
 @end

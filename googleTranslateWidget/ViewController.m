@@ -18,12 +18,10 @@
     _targetLanguageMenu = [PopupMenu createMenuWithAction:@"targetMenuClick:" andSender:self];
     _localDefaults =[SavedInfo localDefaults];
     
-    
-    
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //Remove focus rings from table views
     [_targetLanguageTable setFocusRingType:NSFocusRingTypeNone];
     [_sourceLanguageTable setFocusRingType:NSFocusRingTypeNone];
@@ -132,8 +130,7 @@
     
     //Create hint view for favourites bar
     
-  
-
+    [_favouritesHintView setWantsLayer:YES];
     
     
     //USE THIS SNIPPET TO DESERIALIZE NSData TO NSAttributedString
@@ -272,11 +269,11 @@
         [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
         
-        if (![_localDefaults hasUsedSidebar]) {
-            [_favouritesHintView moveFavouritesBar];
-            [_localDefaults setUsedSidebar:true];
-        }
     }
+    if (![_localDefaults hasUsedSidebar]  && _favouritesHintView.frame.origin.y == -65) {
+        [_favouritesHintView moveFavouritesBar];
+    }
+
 }
 //TESTING VIEW BEHAVIOUR BUTTON ACTIONS
 - (IBAction)openBarButton:(id)sender {

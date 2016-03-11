@@ -91,7 +91,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MGl-2g-FRg">
-                                                                    <rect key="frame" x="0.0" y="23" width="159" height="4"/>
+                                                                    <rect key="frame" x="0.0" y="23" width="159" height="5"/>
                                                                     <animations/>
                                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -511,17 +511,23 @@
                                 <animations/>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfx-T0-nSv" customClass="FavouritesHintView">
-                                <rect key="frame" x="312" y="-65" width="408" height="66"/>
+                                <rect key="frame" x="221" y="-65" width="586" height="66"/>
                                 <subviews>
-                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rl5-Xm-ThR">
-                                        <rect key="frame" x="96" y="25" width="216" height="17"/>
+                                    <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-jv-RRN">
+                                        <rect key="frame" x="0.0" y="0.0" width="586" height="66"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rl5-Xm-ThR">
+                                                <rect key="frame" x="142" y="29" width="302" height="17"/>
+                                                <animations/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="To open the bar drag two fingers to the left" id="ESY-aP-anA">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
                                         <animations/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="To open the bar drag two fingers" id="ESY-aP-anA">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    </visualEffectView>
                                 </subviews>
                                 <animations/>
                             </customView>

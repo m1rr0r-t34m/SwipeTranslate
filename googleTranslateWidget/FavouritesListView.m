@@ -13,6 +13,11 @@ float const defaultSlowSpeed = 150;
 float const defaultMediumSpeed = 230;
 float const defaultFastSpeed = 400;
 
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    _localDefaults =[SavedInfo localDefaults];
+}
+
 -(void)changeOrigin:(CGFloat)change{
     [[NSAnimationContext currentContext ]setDuration:0];
     

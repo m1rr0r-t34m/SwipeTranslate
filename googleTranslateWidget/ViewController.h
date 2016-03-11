@@ -62,8 +62,9 @@
 - (IBAction)showTargetMenu:(id)sender;
 - (IBAction)clearTextButtonAction:(id)sender;
 - (IBAction)starButton:(id)sender;
-- (IBAction)openBarButton:(id)sender;
 - (IBAction)openHintBar:(id)sender;
+
+-(void)openBar;
 
 //Methods
 -(void)sourceMenuClick:(id)sender;

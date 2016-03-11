@@ -275,12 +275,13 @@
     }
 
 }
-//TESTING VIEW BEHAVIOUR BUTTON ACTIONS
-- (IBAction)openBarButton:(id)sender {
+- (void)openBar{
     [_favouritesView moveWithButton];
     [_localDefaults setUsedSidebar:true];
 }
 
+
+//TESTING VIEW BEHAVIOUR BUTTON ACTIONS
 - (IBAction)openHintBar: (id)sender {
     [_favouritesHintView moveFavouritesBar];
 }

@@ -113,20 +113,6 @@
     if([notification object]==_favouritesTable) {
         
         [_delegate favouritesTableSelectionDidChange:index];
-     /*   NSTextField *secondField = [[[_favouritesTable viewAtColumn:0 row:index makeIfNecessary:NO] subviews] objectAtIndex:1];
-        
-        //Update color of selected textFiled text
-        NSFont *outputStyleFont = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
-        NSDictionary *outputStyle = @{NSFontAttributeName : outputStyleFont,NSForegroundColorAttributeName : [NSColor whiteColor]};
-        
-        
-        NSAttributedString *string = [[NSAttributedString alloc] initWithString:[secondField stringValue] attributes:outputStyle];
-       
-        
-        [secondField setAttributedStringValue:string];*/
-        
-        
-
         
     }
 }

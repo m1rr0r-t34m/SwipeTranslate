@@ -72,6 +72,13 @@
     return NO;
 }
 
+-(BOOL)hasUsedSidebar {
+    if ([self.userDefaults objectForKey:@"sidebarUsage"])
+        return true;
+    else
+        return false;
+}
+
 
 -(BOOL)hasChosenLanguages {
     if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"sourceDefaultSelection"]]scanInt:nil]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"targetDefaultSelection"]]scanInt:nil])
@@ -146,5 +153,12 @@
     [[self userDefaults] setBool:value forKey:@"autoPushed"];
 }
 
+-(void)setUsedSidebar:(BOOL)value {
+    [[self userDefaults] setBool:value forKey:@"sidebarUsage"];
+}
+
+-(void)removeSidebarDefault {
+    [[self userDefaults] removeObjectForKey:@"sidebarUsage"];
+}
 
 @end

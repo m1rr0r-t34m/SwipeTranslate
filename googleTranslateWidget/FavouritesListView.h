@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "SavedInfo.h"
 
 @interface favouritesListView : NSView <NSAnimatablePropertyContainer>{
     CGFloat lastChange;
@@ -14,6 +15,7 @@
 
 @property BOOL isOpened;
 @property BOOL isClosed;
+@property SavedInfo *localDefaults;
 
 -(void)changeOrigin:(CGFloat)change;
 -(void)checkState;

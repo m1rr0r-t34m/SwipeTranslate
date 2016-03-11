@@ -91,7 +91,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MGl-2g-FRg">
-                                                                    <rect key="frame" x="0.0" y="23" width="159" height="5"/>
+                                                                    <rect key="frame" x="0.0" y="23" width="159" height="4"/>
                                                                     <animations/>
                                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -479,6 +479,17 @@
                                                     <action selector="openBarButton:" target="hJv-Ja-bsx" id="evO-6G-bOd"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTg-ez-0Si">
+                                                <rect key="frame" x="14" y="222" width="32" height="19"/>
+                                                <animations/>
+                                                <buttonCell key="cell" type="roundRect" title="B" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wQT-OC-lT1">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="cellTitle"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openHintBar:" target="hJv-Ja-bsx" id="skl-UO-M7t"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -499,6 +510,21 @@
                                 </subviews>
                                 <animations/>
                             </customView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfx-T0-nSv" customClass="FavouritesHintView">
+                                <rect key="frame" x="312" y="-65" width="408" height="66"/>
+                                <subviews>
+                                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rl5-Xm-ThR">
+                                        <rect key="frame" x="96" y="25" width="216" height="17"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" alignment="center" title="To open the bar drag two fingers" id="ESY-aP-anA">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <animations/>
+                            </customView>
                         </subviews>
                         <animations/>
                     </customView>
@@ -507,11 +533,13 @@
                         <outlet property="clearTextButton" destination="nfS-zw-JRZ" id="hLc-9F-4qp"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="favouritesHandler" destination="0GN-vw-DgB" id="qG1-9j-7wW"/>
+                        <outlet property="favouritesHintView" destination="wfx-T0-nSv" id="EOr-zu-Qco"/>
                         <outlet property="favouritesStar" destination="gX9-Nb-ar5" id="758-kS-b1Q"/>
                         <outlet property="favouritesView" destination="fMo-5p-Icv" id="WyL-pd-6ht"/>
                         <outlet property="favouritesVisualEffectsView" destination="Iec-Nj-bZf" id="Gz0-kv-TwY"/>
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
+                        <outlet property="openHintBarButton" destination="XTg-ez-0Si" id="hxQ-gd-mW1"/>
                         <outlet property="outputText" destination="qIM-AB-biP" id="VC7-ex-WGU"/>
                         <outlet property="requestProgressIndicator" destination="CF8-jx-hO3" id="chc-Xg-42I"/>
                         <outlet property="rightSplittedView" destination="gGN-sP-6rJ" id="hiv-Bn-t7t"/>

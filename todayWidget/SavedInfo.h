@@ -18,6 +18,7 @@
 -(BOOL)hasChosenLanguages;
 -(BOOL)hasDefaultText;
 -(BOOL)hasAutoLanguage;
+-(BOOL)hasUsedSidebar;
 
 
 -(NSString *)inputText;
@@ -37,8 +38,11 @@
 -(void)setTargetSelection:(NSString *)lang;
 -(void)setAutoLanguage:(NSString *)lang;
 -(void)setAutoPushed:(BOOL)value;
+-(void)setUsedSidebar:(BOOL)value;
 
 -(BOOL)isEmpty;
+
+-(void)removeSidebarDefault;
 
 @property NSUserDefaults *userDefaults;
 @property NSString *type;

@@ -35,7 +35,7 @@ float const defaultFastSpeed = 400;
         
     }
     
-    
+    [_localDefaults setUsedSidebar:true];
     lastChange=change;
     
 }

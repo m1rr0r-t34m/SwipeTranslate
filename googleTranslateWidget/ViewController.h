@@ -24,6 +24,7 @@
 #import "FavouritesDataHandler.h"
 #import "NSAttributedString+Trimming.h"
 #import "FavouritesHandlerDelegate.h"
+#import "FavouritesHintView.h"
 
 
 @interface ViewController : NSViewController<DataSourceDelegate, FavouritesHandlerDelegate, ResponseReceiver, NSTextFieldDelegate, NSTextViewDelegate> {
@@ -49,6 +50,10 @@
 @property (strong) IBOutlet NSTableView *favouritesTable;
 @property (strong) IBOutlet NSButton *favouritesStar;
 @property (strong) IBOutlet NSVisualEffectView *favouritesVisualEffectsView;
+@property (strong) IBOutlet NSButton *openHintBarButton;
+
+@property (strong) IBOutlet FavouritesHintView *favouritesHintView;
+
 
 //Actions from View
 - (IBAction)enableAutoLanguage:(id)sender;
@@ -58,6 +63,7 @@
 - (IBAction)clearTextButtonAction:(id)sender;
 - (IBAction)starButton:(id)sender;
 - (IBAction)openBarButton:(id)sender;
+- (IBAction)openHintBar:(id)sender;
 
 //Methods
 -(void)sourceMenuClick:(id)sender;

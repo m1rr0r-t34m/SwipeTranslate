@@ -130,7 +130,10 @@
     //Set star button to disabled mode
     [_favouritesStar setEnabled:false];
     
+    //Create hint view for favourites bar
     
+  
+
     
     
     //USE THIS SNIPPET TO DESERIALIZE NSData TO NSAttributedString
@@ -268,11 +271,21 @@
         [_favouritesHandler pushFavouritesArray:_favouritesArray];
         [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
+        
+        if (![_localDefaults hasUsedSidebar]) {
+            [_favouritesHintView moveFavouritesBar];
+            [_localDefaults setUsedSidebar:true];
+        }
     }
 }
-
+//TESTING VIEW BEHAVIOUR BUTTON ACTIONS
 - (IBAction)openBarButton:(id)sender {
     [_favouritesView moveWithButton];
+    [_localDefaults setUsedSidebar:true];
+}
+
+- (IBAction)openHintBar: (id)sender {
+    [_favouritesHintView moveFavouritesBar];
 }
 
 -(BOOL)isDataInFavouritesList:(NSData *)input andOutput:(NSData *)output {

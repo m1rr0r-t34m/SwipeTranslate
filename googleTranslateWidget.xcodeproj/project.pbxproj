@@ -14,6 +14,7 @@
 		75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B196681C6D304100796584 /* FavouritesDataHandler.m */; };
 		75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */; };
 		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
+		75FEA2401C91B115006B9B1D /* FavouritesHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */; settings = {ASSET_TAGS = (); }; };
 		CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
 		CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
@@ -91,6 +92,8 @@
 		75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainApplicationMenu.m; path = googleTranslateWidget/MainApplicationMenu.m; sourceTree = "<group>"; };
 		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupMenu.h; path = todayWidget/PopupMenu.h; sourceTree = "<group>"; };
 		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupMenu.m; path = todayWidget/PopupMenu.m; sourceTree = "<group>"; };
+		75FEA23E1C91B115006B9B1D /* FavouritesHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesHintView.h; sourceTree = "<group>"; };
+		75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesHintView.m; sourceTree = "<group>"; };
 		CD12BB6F1BD849D8003ED768 /* WidgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WidgetView.h; path = todayWidget/WidgetView.h; sourceTree = "<group>"; };
 		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WidgetView.m; path = todayWidget/WidgetView.m; sourceTree = "<group>"; };
 		CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiddenScroll.h; path = googleTranslateWidget/HiddenScroll.h; sourceTree = "<group>"; };
@@ -214,6 +217,8 @@
 				CD9DA1491BE564CC00B1D0CA /* InputTextView.h */,
 				CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */,
 				CD6F9F641BE5294900E4B850 /* InputScroll.h */,
+				75FEA23E1C91B115006B9B1D /* FavouritesHintView.h */,
+				75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */,
 				CD6F9F651BE5294900E4B850 /* InputScroll.m */,
 				CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */,
 				CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */,
@@ -478,6 +483,7 @@
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
 				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
 				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
+				75FEA2401C91B115006B9B1D /* FavouritesHintView.m in Sources */,
 				CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */,
 				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,

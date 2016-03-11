@@ -505,6 +505,11 @@
                                     <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-jv-RRN">
                                         <rect key="frame" x="0.0" y="0.0" width="586" height="66"/>
                                         <subviews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-A8-LFO">
+                                                <rect key="frame" x="584" y="0.0" width="66" height="66"/>
+                                                <animations/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HintArrowLeft" id="kMa-WQ-bi9"/>
+                                            </imageView>
                                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rl5-Xm-ThR">
                                                 <rect key="frame" x="142" y="29" width="302" height="17"/>
                                                 <animations/>
@@ -519,6 +524,9 @@
                                     </visualEffectView>
                                 </subviews>
                                 <animations/>
+                                <connections>
+                                    <outlet property="arrowImageLeft" destination="kPu-A8-LFO" id="XuB-Ke-rhG"/>
+                                </connections>
                             </customView>
                         </subviews>
                         <animations/>
@@ -553,7 +561,7 @@
                 </customObject>
                 <customObject id="0GN-vw-DgB" customClass="FavouritesDataHandler"/>
             </objects>
-            <point key="canvasLocation" x="65.5" y="867"/>
+            <point key="canvasLocation" x="67.5" y="861.5"/>
         </scene>
     </scenes>
     <resources>
@@ -561,6 +569,7 @@
         <image name="AutoButtonPushed" width="256" height="256"/>
         <image name="FavouritesButton" width="256" height="256"/>
         <image name="FavouritesButtonPressed" width="256" height="256"/>
+        <image name="HintArrowLeft" width="119" height="258"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

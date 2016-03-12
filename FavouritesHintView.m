@@ -22,7 +22,7 @@
                                      userInfo:nil
                                      repeats:NO];
     
-    _arrowTimer = [NSTimer scheduledTimerWithTimeInterval:2.0
+    _arrowTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                            target:self
                                                            selector:@selector(moveArrow)
                                                            userInfo:nil
@@ -33,16 +33,21 @@
 }
 
 -(void)moveArrow {
-    [[NSAnimationContext currentContext] setDuration:0.7];
+    [[NSAnimationContext currentContext] setDuration:0.9];
+    [arrowImageLeft setHidden:NO];
+    
+   // [arrowImageLeft setFrameOrigin:NSMakePoint(100, arrowImageLeft.frame.origin.y)];
+    
     
     [CATransaction begin];
     
     [CATransaction setCompletionBlock:^{
-        [arrowImageLeft setFrameOrigin:NSMakePoint(arrowImageLeft.frame.origin.x + 650, arrowImageLeft.frame.origin.y)];
+        [arrowImageLeft setFrameOrigin:NSMakePoint(arrowImageLeft.frame.origin.x + 166, arrowImageLeft.frame.origin.y)];
+        [arrowImageLeft setHidden:YES];
     }];
     
-    if (arrowImageLeft.frame.origin.x == 584)
-        [[arrowImageLeft animator] setFrameOrigin:NSMakePoint(arrowImageLeft.frame.origin.x - 650, arrowImageLeft.frame.origin.y)];
+    if (arrowImageLeft.frame.origin.x == 100)
+        [[arrowImageLeft animator] setFrameOrigin:NSMakePoint(arrowImageLeft.frame.origin.x - 166, arrowImageLeft.frame.origin.y)];
     [CATransaction commit];
 }
 

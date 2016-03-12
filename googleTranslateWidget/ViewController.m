@@ -126,7 +126,7 @@
     [_favouritesTable reloadData];
     
     //Set star button to disabled mode
-    [_favouritesStar setEnabled:false];
+    [_favouritesStar setHidden:YES];
     
     //Create hint view for favourites bar
     
@@ -353,6 +353,10 @@
     [[_outputText textStorage] setAttributedString:outputAttributedString];
     //Close sidebar
     [_favouritesView moveWithButton];
+    //Update star button
+    [_favouritesStar setImage:[_favouritesStar alternateImage]];
+    [_favouritesStar setEnabled:YES];
+    [_clearTextButton setHidden:NO];
 }
 
 //Delete entry from plist after removal
@@ -372,7 +376,7 @@
 
 - (IBAction)clearTextButtonAction:(id)sender {
     //Set star button to disabled mode
-    [_favouritesStar setEnabled:false];
+    [_favouritesStar setHidden:YES];
     [_inputText setReady:YES];
     [_outputText setString:@""];
     _clearTextButton.hidden = YES;
@@ -480,6 +484,7 @@
     
     //Ready validation
     if(_inputText.ready) {
+        _favouritesStar.hidden = YES;
         if(_inputText.string.length>readyInputLength) {
             [_inputText setReady:NO];
             NSString *userString=[[_inputText string] stringByReplacingCharactersInRange:NSMakeRange(_inputText.string.length-readyInputLength, readyInputLength) withString:@""];
@@ -493,7 +498,7 @@
         _requestProgressIndicator.hidden = YES;
         [_inputText setReady:YES];
         //Set star button to disabled mode
-        [_favouritesStar setEnabled:false];
+        [_favouritesStar setHidden:YES];
     }
     
     
@@ -509,6 +514,7 @@
             [inputScroll setScrolling:NO];
         
         _clearTextButton.hidden = NO;
+        _favouritesStar.hidden = NO;
         if(![_inputText isWhiteSpace]){
             if ([_liveTranslate state])
                 [self startRequest];
@@ -519,6 +525,7 @@
     }
     else {
         _clearTextButton.hidden = YES;
+        _favouritesStar.hidden = YES;
         [_outputText setString:@""];
     }
     

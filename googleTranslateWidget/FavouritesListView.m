@@ -16,6 +16,7 @@ float const defaultFastSpeed = 400;
 -(void)awakeFromNib{
     [super awakeFromNib];
     _localDefaults =[SavedInfo localDefaults];
+    
 }
 
 -(void)changeOrigin:(CGFloat)change{

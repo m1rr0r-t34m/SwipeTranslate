@@ -16,17 +16,18 @@
     if (self.frame.origin.y == -65)
         [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x, self.frame.origin.y + 60)];
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0
+    _barTimer = [NSTimer scheduledTimerWithTimeInterval:5.0
                                      target:self
-                                     selector:@selector(closeFavouritesBar)
+                                     selector:@selector(closeHintBar)
                                      userInfo:nil
                                      repeats:NO];
     
     _arrowTimer = [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                           target:self
-                                                           selector:@selector(moveArrow)
-                                                           userInfo:nil
-                                                           repeats:YES];
+                                     target:self
+                                     selector:@selector(moveArrow)
+                                     userInfo:nil
+                                     repeats:YES];
+    _isOpened = YES;
     
 
     
@@ -51,13 +52,37 @@
     [CATransaction commit];
 }
 
--(void)closeFavouritesBar {
-    
-    [[NSAnimationContext currentContext] setDuration:0.6];
-    
-    if (self.frame.origin.y == -5)
-        [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x, self.frame.origin.y -60)];
+-(void)closeHintBar{
+    [[NSAnimationContext currentContext] setDuration:0.08];
+    [[self animator] setHidden:YES];
+
+    [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x, -65)];
     [_arrowTimer invalidate];
+    [_barTimer invalidate];
+    _isOpened = NO;
 }
+
+/*-(void)closeHintBarWithSpeed:(CGFloat)change {
+
+  
+    
+        [[NSAnimationContext currentContext] setDuration:0.08];
+    
+    
+    [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x, -65)];
+    [_barTimer invalidate];
+    [_arrowTimer invalidate];
+    
+    if (change < 0){
+        if (self.frame.origin.y <= -5) {
+            if (self.frame.origin.y + change <= -5 && self.frame.origin.y + change >= -65)
+                [self setFrameOrigin:NSMakePoint(self.frame.origin.x, self.frame.origin.y + change)];
+            else
+                [self setFrameOrigin:NSMakePoint(self.frame.origin.x, -65)];
+        }
+    }
+}
+*/
+
 
 @end

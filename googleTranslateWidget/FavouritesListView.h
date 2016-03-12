@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 #import "SavedInfo.h"
+#import "FavouritesHintView.h"
 
 @interface favouritesListView : NSView <NSAnimatablePropertyContainer>{
     CGFloat lastChange;
+    IBOutlet FavouritesHintView *hintView;
 }
 
 @property BOOL isOpened;

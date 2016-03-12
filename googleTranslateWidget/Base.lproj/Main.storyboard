@@ -498,6 +498,9 @@
                                     </visualEffectView>
                                 </subviews>
                                 <animations/>
+                                <connections>
+                                    <outlet property="hintView" destination="wfx-T0-nSv" id="Vac-y7-xGd"/>
+                                </connections>
                             </customView>
                             <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfx-T0-nSv" customClass="FavouritesHintView">
                                 <rect key="frame" x="221" y="-65" width="586" height="66"/>

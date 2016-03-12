@@ -29,4 +29,6 @@
         range = [self.string rangeOfCharacterFromSet:charSet options:NSBackwardsSearch];
     }
 }
+
+
 @end

@@ -16,8 +16,12 @@
 }
 
 @property NSTimer *arrowTimer;
+@property NSTimer *barTimer;
+@property BOOL isOpened;
 
 -(void)moveFavouritesBar;
--(void)closeFavouritesBar;
+-(void)closeHintBar;
+
+-(void)closeHintBarWithSpeed:(CGFloat)change;
 
 @end

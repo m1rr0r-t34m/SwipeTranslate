@@ -80,9 +80,6 @@
     if(!(_favouritesArray = [NSMutableArray arrayWithContentsOfFile:favouritesPath]))
         _favouritesArray = [NSMutableArray new];
     
-    
-    
-    
     //Create favourites table view
     
     NSRect rect = NSMakeRect(0, 0, 300, 460);
@@ -126,7 +123,7 @@
     [_favouritesTable reloadData];
     
     //Set star button to disabled mode
-    [_favouritesStar setEnabled:false];
+    [_favouritesStar setHidden:YES];
     
     //Create hint view for favourites bar
     
@@ -214,8 +211,6 @@
     
 }
 
-
-
 //Swap button implementation
 - (IBAction)swapButton:(id)sender {
     //Swap selected table cells
@@ -270,6 +265,11 @@
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
         
     }
+    else if ([self isDataInFavouritesList:inputData andOutput:outputData]){
+        [self removeDataFromFavouritesList:inputData andOutput:outputData];
+        [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButton"]];
+    }
+        
     if (![_localDefaults hasUsedSidebar]  && _favouritesHintView.frame.origin.y == -65) {
         [_favouritesHintView moveFavouritesBar];
     }
@@ -311,6 +311,40 @@
     }
     return false;
 }
+
+-(void)removeDataFromFavouritesList: (NSData *)input andOutput:(NSData *)output {
+    NSInteger index = 0;
+    for(NSDictionary *dict in _favouritesArray) {
+        NSData *inputData = [dict objectForKey:@"input"];
+        NSData *outputData = [dict objectForKey:@"output"];
+        if(inputData!=nil && outputData!=nil) {
+            NSMutableAttributedString* inputString1 = [[NSMutableAttributedString alloc] initWithRTFD:inputData
+                                                                                   documentAttributes:nil];
+            NSMutableAttributedString* outputString1 = [[NSMutableAttributedString alloc] initWithRTFD:outputData
+                                                                                    documentAttributes:nil];
+            NSMutableAttributedString* inputString2 = [[NSMutableAttributedString alloc] initWithRTFD:input
+                                                                                   documentAttributes:nil];
+            NSMutableAttributedString* outputString2 = [[NSMutableAttributedString alloc] initWithRTFD:output
+                                                                                    documentAttributes:nil];
+            [inputString1 trimWhitespace];
+            [inputString2 trimWhitespace];
+            [outputString1 trimWhitespace];
+            [outputString2 trimWhitespace];
+            
+            if([inputString1 isEqualTo:inputString2] && [outputString1 isEqualTo:outputString2]){
+                [_favouritesArray removeObjectAtIndex:index];
+                [_favouritesArray writeToFile:favouritesPath atomically:YES];
+                [_favouritesHandler pushFavouritesArray:_favouritesArray];
+                [_favouritesTable reloadData];
+            }
+            index++;
+        }
+        
+    }
+
+    
+}
+
 //Updating tables with new entries
 -(void)sourceMenuClick:(id)sender{
     [_dataHandler pushNewSourceLanguage:[sender title]];
@@ -353,6 +387,10 @@
     [[_outputText textStorage] setAttributedString:outputAttributedString];
     //Close sidebar
     [_favouritesView moveWithButton];
+    //Update star button
+    [_favouritesStar setImage:[_favouritesStar alternateImage]];
+    [_favouritesStar setEnabled:YES];
+    [_clearTextButton setHidden:NO];
 }
 
 //Delete entry from plist after removal
@@ -372,14 +410,11 @@
 
 - (IBAction)clearTextButtonAction:(id)sender {
     //Set star button to disabled mode
-    [_favouritesStar setEnabled:false];
+    [_favouritesStar setHidden:YES];
     [_inputText setReady:YES];
     [_outputText setString:@""];
     _clearTextButton.hidden = YES;
 }
-
-
-
 
 -(void)controlTextDidChange:(NSNotification *)obj{
     //This should be an array of all available languages
@@ -425,10 +460,6 @@
      else
      NSLog(@"%@",arrayOfPossibleOutputs);*/
     
-    
-    
-    
-    
 }
 
 - (BOOL)textView:(NSTextView *)aTextView doCommandBySelector:(SEL)aSelector {
@@ -454,7 +485,7 @@
                 if(flags&NSCommandKeyMask) {
                     stat=YES;
                     [aTextView insertNewlineIgnoringFieldEditor:self];
-                }
+            }
             
         }
         
@@ -475,11 +506,9 @@
         index = NSMaxRange(lineRange);
     }
     
-    
-    
-    
     //Ready validation
     if(_inputText.ready) {
+        _favouritesStar.hidden = YES;
         if(_inputText.string.length>readyInputLength) {
             [_inputText setReady:NO];
             NSString *userString=[[_inputText string] stringByReplacingCharactersInRange:NSMakeRange(_inputText.string.length-readyInputLength, readyInputLength) withString:@""];
@@ -493,10 +522,8 @@
         _requestProgressIndicator.hidden = YES;
         [_inputText setReady:YES];
         //Set star button to disabled mode
-        [_favouritesStar setEnabled:false];
+        [_favouritesStar setHidden:YES];
     }
-    
-    
     
     
     //Input text validation (clear button, requests and scrolling)
@@ -509,6 +536,8 @@
             [inputScroll setScrolling:NO];
         
         _clearTextButton.hidden = NO;
+       
+        
         if(![_inputText isWhiteSpace]){
             if ([_liveTranslate state])
                 [self startRequest];
@@ -519,6 +548,7 @@
     }
     else {
         _clearTextButton.hidden = YES;
+        _favouritesStar.hidden = YES;
         [_outputText setString:@""];
     }
     
@@ -528,13 +558,8 @@
          [_favouritesStar setImage:[_favouritesStar alternateImage]];
          [_favouritesStar setAlternateImage:tmpStar];
     }
-   
-   
-    
-    
+
 }
-
-
 
 - (NSRange)textView:(NSTextView *)aTextView willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange toCharacterRange:(NSRange) newSelectedCharRange {
     if(_inputText.ready)
@@ -578,6 +603,27 @@
             [_dictionaryHandler performRequestForSourceLanguage:_autoLanguage TargetLanguage:_tLanguage Text:[_inputText string]];
         else {
             [[_outputText textStorage] setAttributedString:_translateText];
+            [_favouritesStar setEnabled:true];
+            _favouritesStar.hidden = NO;
+            
+            NSData *inputData;
+            NSData *outputData;
+            NSAttributedString *inputAttributedString = [_inputText attributedString];
+            NSAttributedString *outputAttributedString = [_outputText attributedString];
+            
+            inputData = [inputAttributedString RTFDFromRange:NSMakeRange(0,[inputAttributedString length])
+                                          documentAttributes:nil];
+            
+            outputData = [outputAttributedString RTFDFromRange:NSMakeRange(0,[outputAttributedString length])
+                                            documentAttributes:nil];
+            
+            if([self isDataInFavouritesList:inputData andOutput:outputData])
+                [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButtonPressed"]];
+            else{
+                
+                [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButton"]];
+                
+            }
             return;
         }
     }
@@ -601,15 +647,30 @@
     
     //Set star button to enabled mode
     [_favouritesStar setEnabled:true];
+    _favouritesStar.hidden = NO;
+    
+    NSData *inputData;
+    NSData *outputData;
+    NSAttributedString *inputAttributedString = [_inputText attributedString];
+    NSAttributedString *outputAttributedString = [_outputText attributedString];
+    
+    inputData = [inputAttributedString RTFDFromRange:NSMakeRange(0,[inputAttributedString length])
+                                  documentAttributes:nil];
+    
+    outputData = [outputAttributedString RTFDFromRange:NSMakeRange(0,[outputAttributedString length])
+                                    documentAttributes:nil];
+    
+    if([self isDataInFavouritesList:inputData andOutput:outputData])
+        [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButtonPressed"]];
+    else{
+        
+        [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButton"]];
+        
+    }
     
     [_requestProgressIndicator stopAnimation:self];
     _requestProgressIndicator.hidden = YES;
 }
-
-
-
-
-
 
 -(void)startRequest {
     [_translateHandler cancelCurrentSession];
@@ -683,8 +744,6 @@
             
         }
     }
-    
-    
 
 }
 - (void)touchesEndedWithEvent:(NSEvent *)event{

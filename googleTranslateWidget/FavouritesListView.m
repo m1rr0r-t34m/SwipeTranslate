@@ -16,6 +16,7 @@ float const defaultFastSpeed = 400;
 -(void)awakeFromNib{
     [super awakeFromNib];
     _localDefaults =[SavedInfo localDefaults];
+    
 }
 
 -(void)changeOrigin:(CGFloat)change{
@@ -23,8 +24,9 @@ float const defaultFastSpeed = 400;
     
     if(change > 0){
         if(self.frame.origin.x <= 803){
-            if(self.frame.origin.x + change <= 803)
+            if(self.frame.origin.x + change <= 803) {
                 [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x + change, self.frame.origin.y)];
+            }
             else
                 [[self animator] setFrameOrigin:NSMakePoint(803, self.frame.origin.y)];
         }
@@ -32,8 +34,11 @@ float const defaultFastSpeed = 400;
     }
     else if(change < 0){
         if(self.frame.origin.x >= 503){
-            if(self.frame.origin.x + change >= 503)
+            if(self.frame.origin.x + change >= 503){
                 [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x + change, self.frame.origin.y)];
+                [hintView closeHintBar];
+                
+            }
             else
                 [[self animator] setFrameOrigin:NSMakePoint(503, self.frame.origin.y)];
         }

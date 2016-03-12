@@ -54,7 +54,6 @@
 
 -(void)closeHintBar{
     [[NSAnimationContext currentContext] setDuration:0.08];
-    [[self animator] setHidden:YES];
 
     [[self animator] setFrameOrigin:NSMakePoint(self.frame.origin.x, -65)];
     [_arrowTimer invalidate];

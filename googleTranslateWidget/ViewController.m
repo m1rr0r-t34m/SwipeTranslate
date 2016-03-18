@@ -232,11 +232,6 @@
 }
 - (IBAction)starButton:(id)sender {
     
-    //Update icon
-    NSImage *tmp = [_favouritesStar image];
-    [_favouritesStar setImage:[_favouritesStar alternateImage]];
-    [_favouritesStar setAlternateImage:tmp];
-
     //Serialize input and output strings
     NSData *inputData;
     NSData *outputData;
@@ -263,6 +258,7 @@
         [_favouritesHandler pushFavouritesArray:_favouritesArray];
         [_favouritesTable reloadData];
         [_favouritesArray writeToFile:favouritesPath atomically:YES];
+        [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButtonPressed"]];
         
     }
     else if ([self isDataInFavouritesList:inputData andOutput:outputData]){
@@ -388,9 +384,10 @@
     //Close sidebar
     [_favouritesView moveWithButton];
     //Update star button
-    [_favouritesStar setImage:[_favouritesStar alternateImage]];
-    [_favouritesStar setEnabled:YES];
     [_clearTextButton setHidden:NO];
+    [_favouritesStar setImage:[NSImage imageNamed:@"FavouritesButtonPressed"]];
+    [_favouritesStar setEnabled:YES];
+    [_favouritesStar setHidden:NO];
 }
 
 //Delete entry from plist after removal

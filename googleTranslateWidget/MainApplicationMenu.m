@@ -31,7 +31,7 @@
     MainApplicationMenu *fileMenuItem = [[super alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
     NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
     MainApplicationMenu *liveTranslate = [[super alloc] initWithTitle:@"Live Translate" action:@selector(swapState) keyEquivalent:@"l"];
-    MainApplicationMenu *favouritesSidebar = [[super alloc] initWithTitle:@"Show Favourites" action:@selector(openBar) keyEquivalent:@"s"];
+    MainApplicationMenu *favouritesSidebar = [[super alloc] initWithTitle:@"Show Favourites" action:@selector(openBar) keyEquivalent:@"f"];
     
     [liveTranslate setTarget:liveTranslate];
     [liveTranslate setState:1];

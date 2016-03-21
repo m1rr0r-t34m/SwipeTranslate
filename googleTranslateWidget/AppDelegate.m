@@ -7,11 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "iRate.h"
 
 @implementation AppDelegate
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     return YES;
 }
-
+-(void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [iRate sharedInstance].previewMode = YES;
+}
 @end

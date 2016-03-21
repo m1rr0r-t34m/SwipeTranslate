@@ -32,6 +32,7 @@
     NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
     MainApplicationMenu *liveTranslate = [[super alloc] initWithTitle:@"Live Translate" action:@selector(swapState) keyEquivalent:@"l"];
     MainApplicationMenu *favouritesSidebar = [[super alloc] initWithTitle:@"Show Favourites" action:@selector(openBar) keyEquivalent:@"f"];
+    MainApplicationMenu *starButtonMenu = [[super alloc] initWithTitle:@"Save to favourites" action:@selector(starButton:) keyEquivalent:@"s"];
     
     [liveTranslate setTarget:liveTranslate];
     [liveTranslate setState:1];
@@ -41,8 +42,13 @@
     [favouritesSidebar setEnabled:YES];
     [favouritesSidebar setTarget:sender];
     
+    [starButtonMenu setState:0];
+    [starButtonMenu setEnabled:YES];
+    [starButtonMenu setTarget:sender];
+    
     [fileMenu addItem: liveTranslate];
     [fileMenu addItem: favouritesSidebar];
+    [fileMenu addItem: starButtonMenu];
     [fileMenuItem setSubmenu: fileMenu];
     
     return fileMenuItem;

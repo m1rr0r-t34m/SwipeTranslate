@@ -45,7 +45,6 @@
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
 		CDB84E051CA04FC700A919AA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDB84E021CA04FC700A919AA /* iRate.bundle */; };
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
-		CDB84E091CA0509400A919AA /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB84E081CA0509400A919AA /* StoreKit.framework */; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
@@ -137,7 +136,6 @@
 		CDB84E021CA04FC700A919AA /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		CDB84E031CA04FC700A919AA /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		CDB84E041CA04FC700A919AA /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
-		CDB84E081CA0509400A919AA /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CDBFD8321B9A257500C5414D /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parser.h; path = todayWidget/Parser.h; sourceTree = "<group>"; };
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = todayWidget/Parser.m; sourceTree = "<group>"; };
 		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguagesStorage.h; path = todayWidget/LanguagesStorage.h; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDB84E091CA0509400A919AA /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +178,6 @@
 		CD8EEB851B8E69AA00E2991B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CDB84E081CA0509400A919AA /* StoreKit.framework */,
 				CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -424,6 +420,9 @@
 						CreatedOnToolsVersion = 6.4;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 0;
 							};
 							com.apple.Sandbox = {

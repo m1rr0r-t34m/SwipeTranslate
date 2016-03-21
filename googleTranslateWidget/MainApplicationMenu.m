@@ -26,7 +26,7 @@
     return editMenuItem;
 }
 
-+(NSMenuItem*)createFileMenu{
++(NSMenuItem*)createFileMenu:(id)sender{
 
     MainApplicationMenu *fileMenuItem = [[super alloc] initWithTitle:@"File" action:NULL keyEquivalent:@""];
     NSMenu *fileMenu = [[NSMenu alloc] initWithTitle:@"File"];
@@ -36,10 +36,10 @@
     [liveTranslate setTarget:liveTranslate];
     [liveTranslate setState:1];
     [liveTranslate setEnabled:YES];
-    
+
     [favouritesSidebar setState:0];
     [favouritesSidebar setEnabled:YES];
-    //[favouritesSidebar setTarget:favouritesSidebar];
+    [favouritesSidebar setTarget:sender];
     
     [fileMenu addItem: liveTranslate];
     [fileMenu addItem: favouritesSidebar];
@@ -49,8 +49,7 @@
 }
 -(void)swapState {
 
-    NSInteger s=[self state];
-    if (s)
+    if ([self state])
         [self setState:0];
     else
         [self setState:1];

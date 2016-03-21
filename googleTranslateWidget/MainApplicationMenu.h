@@ -13,7 +13,7 @@
 @interface MainApplicationMenu : NSMenuItem
 
 +(NSMenuItem*)createEditMenu;
-+(NSMenuItem*)createFileMenu;
++(NSMenuItem*)createFileMenu:(id)sender;
 
 
 @end

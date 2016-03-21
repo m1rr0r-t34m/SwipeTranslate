@@ -30,7 +30,7 @@
     [_sourceLanguage setDelegate:self];
     [_targetLanguage setDelegate:self];
     
-    [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenu]];
+    [[NSApp mainMenu] addItem: [MainApplicationMenu createFileMenu:self]];
     [[NSApp mainMenu] addItem: [MainApplicationMenu createEditMenu]];
     
     _liveTranslate = [[[[NSApp mainMenu] itemAtIndex:1] submenu] itemAtIndex:0];

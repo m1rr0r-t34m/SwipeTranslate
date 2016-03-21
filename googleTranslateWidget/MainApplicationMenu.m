@@ -39,6 +39,7 @@
     
     [favouritesSidebar setState:0];
     [favouritesSidebar setEnabled:YES];
+    //[favouritesSidebar setTarget:favouritesSidebar];
     
     [fileMenu addItem: liveTranslate];
     [fileMenu addItem: favouritesSidebar];

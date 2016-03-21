@@ -50,7 +50,6 @@
 @property (strong) IBOutlet NSTableView *favouritesTable;
 @property (strong) IBOutlet NSButton *favouritesStar;
 @property (strong) IBOutlet NSVisualEffectView *favouritesVisualEffectsView;
-@property (strong) IBOutlet NSButton *openHintBarButton;
 
 @property (strong) IBOutlet FavouritesHintView *favouritesHintView;
 
@@ -62,7 +61,6 @@
 - (IBAction)showTargetMenu:(id)sender;
 - (IBAction)clearTextButtonAction:(id)sender;
 - (IBAction)starButton:(id)sender;
-- (IBAction)openHintBar:(id)sender;
 
 -(void)openBar;
 

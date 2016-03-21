@@ -278,9 +278,6 @@
 
 
 //TESTING VIEW BEHAVIOUR BUTTON ACTIONS
-- (IBAction)openHintBar: (id)sender {
-    [_favouritesHintView moveFavouritesBar];
-}
 
 -(BOOL)isDataInFavouritesList:(NSData *)input andOutput:(NSData *)output {
     for(NSDictionary *dict in _favouritesArray) {

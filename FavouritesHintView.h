@@ -22,6 +22,4 @@
 -(void)moveFavouritesBar;
 -(void)closeHintBar;
 
--(void)closeHintBarWithSpeed:(CGFloat)change;
-
 @end

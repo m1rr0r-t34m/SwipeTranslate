@@ -468,17 +468,6 @@
                                                     <action selector="starButton:" target="hJv-Ja-bsx" id="eI1-3v-7j6"/>
                                                 </connections>
                                             </button>
-                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XTg-ez-0Si">
-                                                <rect key="frame" x="14" y="222" width="32" height="19"/>
-                                                <animations/>
-                                                <buttonCell key="cell" type="roundRect" title="B" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wQT-OC-lT1">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="openHintBar:" target="hJv-Ja-bsx" id="skl-UO-M7t"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <animations/>
                                     </customView>
@@ -545,7 +534,6 @@
                         <outlet property="favouritesVisualEffectsView" destination="Iec-Nj-bZf" id="Gz0-kv-TwY"/>
                         <outlet property="inputScrollView" destination="ouR-Cn-kYh" id="XnW-1B-Cx5"/>
                         <outlet property="inputText" destination="mHu-K6-7V8" id="8Bl-yd-UW5"/>
-                        <outlet property="openHintBarButton" destination="XTg-ez-0Si" id="hxQ-gd-mW1"/>
                         <outlet property="outputText" destination="qIM-AB-biP" id="VC7-ex-WGU"/>
                         <outlet property="requestProgressIndicator" destination="CF8-jx-hO3" id="chc-Xg-42I"/>
                         <outlet property="rightSplittedView" destination="gGN-sP-6rJ" id="hiv-Bn-t7t"/>
@@ -572,7 +560,7 @@
         <image name="AutoButtonPushed" width="256" height="256"/>
         <image name="FavouritesButton" width="256" height="256"/>
         <image name="FavouritesButtonPressed" width="256" height="256"/>
-        <image name="HintArrowLeft" width="119" height="258"/>
+        <image name="HintArrowLeft" width="383" height="383"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="SwapButtonMainIcon" width="256" height="256"/>
     </resources>

@@ -14,6 +14,7 @@
 @interface FavouritesDataHandler : NSObject <NSTableViewDelegate, NSTableViewDataSource>{
    // IBOutlet NSTableView *favouritesTable;
     NSMutableArray *favouritesData;
+    IBOutlet NSButton *starButton;
 }
 
 //@property NSArray *favouritesArray;

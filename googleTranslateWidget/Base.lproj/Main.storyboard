@@ -550,9 +550,13 @@
                         <outlet property="targetTableView" destination="rdF-mn-PCf" id="fqI-t5-vMd"/>
                     </connections>
                 </customObject>
-                <customObject id="0GN-vw-DgB" customClass="FavouritesDataHandler"/>
+                <customObject id="0GN-vw-DgB" customClass="FavouritesDataHandler">
+                    <connections>
+                        <outlet property="starButton" destination="gX9-Nb-ar5" id="euy-Yf-bbY"/>
+                    </connections>
+                </customObject>
             </objects>
-            <point key="canvasLocation" x="67.5" y="861"/>
+            <point key="canvasLocation" x="123.5" y="861"/>
         </scene>
     </scenes>
     <resources>

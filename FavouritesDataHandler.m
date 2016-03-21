@@ -127,6 +127,7 @@
     
     [CATransaction setCompletionBlock: ^{
         [self.favouritesTable reloadData];
+        [starButton setImage:[NSImage imageNamed:@"FavouritesButton"]];
     }];
     
     [_favouritesTable removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:[sender tag]] withAnimation:NSTableViewAnimationSlideRight];
@@ -137,6 +138,7 @@
     
     [favouritesData removeObjectAtIndex:[sender tag]];
     [_delegate deleteFavouritesTableEntry:[sender tag]];
+    
 }
 
 @end

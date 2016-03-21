@@ -53,7 +53,6 @@ float const defaultFastSpeed = 400;
 -(void)checkState{
     CGPoint origin = self.frame.origin;
     float modulusChange = ABS(lastChange);
-    NSLog(@"last change %f",lastChange);
 
     if(modulusChange < 4) {
         if(origin.x > 653)

@@ -52,7 +52,11 @@
     [_localDefaults setTargetLanguages:tArray];
 }
 -(void)saveChosenLanguages {
-      [_localDefaults setSourceSelection:[_sourceSegmentedButton labelForSegment:[_sourceSegmentedButton selectedSegment]]];
+    
+    if(!(_sourceSegmentedButton.selectedSegment == 1)) {
+        [_localDefaults setSourceSelection:[_sourceSegmentedButton labelForSegment:[_sourceSegmentedButton selectedSegment]]];
+    }
+    
       [_localDefaults setTargetSelection:[_targetSegmentedButton labelForSegment:[_targetSegmentedButton selectedSegment]]];
 }
 -(void)saveAutoLanguage {

@@ -31,6 +31,8 @@
     
 }
 -(BOOL)isEmpty {
+    NSString *a = [self sourceSelection];
+    NSLog(a);
 
     if(![self hasLanguages]) {
         return YES;

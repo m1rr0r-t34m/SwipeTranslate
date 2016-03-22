@@ -47,6 +47,7 @@
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
+		CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
@@ -140,6 +141,7 @@
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = todayWidget/Parser.m; sourceTree = "<group>"; };
 		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguagesStorage.h; path = todayWidget/LanguagesStorage.h; sourceTree = "<group>"; };
 		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguagesStorage.m; path = todayWidget/LanguagesStorage.m; sourceTree = "<group>"; };
+		CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CDCFCCD71B8E690300547F5C /* Swipe Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Translate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDCFCCDC1B8E690300547F5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +181,7 @@
 		CD8EEB851B8E69AA00E2991B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */,
 				CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
@@ -410,6 +414,7 @@
 				TargetAttributes = {
 					CD8EEB831B8E69AA00E2991B = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = LX39229ZDY;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -418,6 +423,7 @@
 					};
 					CDCFCCD61B8E690300547F5C = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = LX39229ZDY;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
@@ -563,7 +569,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -572,8 +577,9 @@
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a91097d-7b7e-4adc-8453-767477e60345";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -583,13 +589,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
-				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = todayWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate.Widget";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate.today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6a91097d-7b7e-4adc-8453-767477e60345";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -682,8 +688,9 @@
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1cfdf325-eb2e-4338-8130-208ddcb5312c";
 			};
 			name = Debug;
 		};
@@ -696,8 +703,9 @@
 				INFOPLIST_FILE = googleTranslateWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "mark.Swipe-Translate";
+				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1cfdf325-eb2e-4338-8130-208ddcb5312c";
 			};
 			name = Release;
 		};

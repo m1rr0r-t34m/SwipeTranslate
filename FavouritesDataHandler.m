@@ -25,7 +25,9 @@
 -(void)pushFavouritesArray:(NSMutableArray *)array {
     favouritesData = [[NSMutableArray alloc] initWithArray:array];
 }
-
+-(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+    return 65;
+}
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     if (tableView == _favouritesTable){
         
@@ -67,12 +69,20 @@
        //Building up a view for the table cell
         
         
-        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 500, 50)];
+        NSView *view = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 500, 65)];
         [view setWantsLayer:YES];
         
+        //Style bottom border
+        NSColor *borderColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.1];
+        CALayer *cellBorder = [CALayer layer];
+        cellBorder.frame = CGRectMake(0.0f, 0, view.frame.size.width, 1.0f);
+        cellBorder.backgroundColor = borderColor.CGColor;
+        [view.layer addSublayer:cellBorder];
+
         
-        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 30, 285, 20)];
-        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 10, 285, 20)];
+        
+        NSTextField *result = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 30, 285, 25)];
+        NSTextField *result2 = [[NSTextField alloc] initWithFrame:NSMakeRect(15, 10, 285, 25)];
         
         
         [result setDrawsBackground:NO];

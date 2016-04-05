@@ -105,8 +105,8 @@
     [_favouritesTable setDelegate:_favouritesHandler];
     [_favouritesTable setDataSource:_favouritesHandler];
     [_favouritesTable setBackgroundColor:[NSColor clearColor]];
-    [_favouritesTable setGridStyleMask:NSTableViewSolidHorizontalGridLineMask];
-
+    [_favouritesTable setGridStyleMask:NSTableViewGridNone];
+    
     
     [_favouritesTable reloadData];
     
@@ -308,7 +308,8 @@
 
 -(void)removeDataFromFavouritesList: (NSData *)input andOutput:(NSData *)output {
     NSInteger index = 0;
-    for(NSDictionary *dict in _favouritesArray) {
+    NSMutableArray *favouritesEnum = [NSMutableArray arrayWithArray:_favouritesArray];
+    for(NSDictionary *dict in favouritesEnum) {
         NSData *inputData = [dict objectForKey:@"input"];
         NSData *outputData = [dict objectForKey:@"output"];
         if(inputData!=nil && outputData!=nil) {

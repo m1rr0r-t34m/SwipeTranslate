@@ -17,10 +17,12 @@
     MainApplicationMenu *copyItem = [[super alloc] initWithTitle:@"Copy" action:@selector(copy:) keyEquivalent:@"c"];
     MainApplicationMenu *pasteItem = [[super alloc] initWithTitle:@"Paste" action:@selector(pasteAsPlainText:) keyEquivalent:@"v"];
     MainApplicationMenu *cutItem = [[super alloc] initWithTitle:@"Cut" action:@selector(cut:) keyEquivalent:@"x"];
+    MainApplicationMenu *selectAllItem = [[super alloc] initWithTitle:@"Select all" action:@selector(selectAll:) keyEquivalent:@"a"];
     
     [editMenu addItem:copyItem];
     [editMenu addItem:pasteItem];
     [editMenu addItem:cutItem];
+    [editMenu addItem:selectAllItem];
     [editMenuItem setSubmenu:editMenu];
     
     return editMenuItem;

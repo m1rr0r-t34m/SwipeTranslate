@@ -332,6 +332,7 @@
                         </constraints>
                     </customView>
                     <connections>
+                        <outlet property="SourceTextView" destination="XkX-uv-W0y" id="ZKg-cH-Uvo"/>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="favouritesHandler" destination="0GN-vw-DgB" id="qG1-9j-7wW"/>
                         <outlet property="sourceLanguageTableView" destination="dCe-Pz-oWf" id="Sfm-Q1-GiH"/>

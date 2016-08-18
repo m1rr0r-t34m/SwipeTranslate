@@ -8,14 +8,21 @@
 
 #import "MainViewController.h"
 #import "STLanguageCell.h"
+#import "NSTextView+Ready.h"
 
 #define LanguageCellHeight 50
+#define PlaceholderInputText @"Input some text"
 
-@interface MainViewController ()
+@interface MainViewController () <NSTextViewDelegate>
 
 @property (weak) IBOutlet NSTableView *sourceLanguageTableView;
 @property (weak) IBOutlet NSTableView *targetLanguageTableView;
 @property (weak) IBOutlet NSLayoutConstraint *sourceLanguageTableViewHeight;
+@property (unsafe_unretained) IBOutlet NSTextView *SourceTextView;
+
+@property (strong, nonatomic) NSValue *SelectedRange;
+
+
 
 @end
 
@@ -24,7 +31,6 @@
 -(instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
         self.ViewModel = [MainViewControllerModel new];
-        
 
     }
     
@@ -39,6 +45,7 @@
     [self.targetLanguageTableView setDelegate:self];
     [self.targetLanguageTableView setDataSource:self];
     
+    [self.SourceTextView setDelegate:self];
     
     [self.sourceLanguageTableView reloadData];
     [self.targetLanguageTableView reloadData];
@@ -67,6 +74,7 @@
         }];
     
     
+    
     [[RACObserve(self.sourceLanguageTableViewHeight, constant)
         distinctUntilChanged]
         subscribeNext:^(NSNumber *Height) {
@@ -75,6 +83,44 @@
             [self.sourceLanguageTableView reloadData];
             [self.targetLanguageTableView reloadData];
         }];
+    
+    
+    
+    
+    [[[self.SourceTextView.rac_textSignal
+        filter:^BOOL(NSString *Text) {
+            return Text.length == 0;
+        }]
+        map:^id(NSString *Text) {
+            return PlaceholderInputText;
+        }]
+        subscribeNext:^(NSString *Text) {
+            @strongify(self);
+            [self.SourceTextView setString:PlaceholderInputText];
+            [self.SourceTextView setTextColor:[NSColor grayColor]];
+            [self.SourceTextView setSelectedRange:NSMakeRange(0, 0)];
+        }];
+    
+    
+    [[[[[self.SourceTextView.rac_textSignal
+        map:^id(NSString *Text) {
+           return @(Text.length == 0 || [Text isEqualToString:PlaceholderInputText]);
+        }]
+        distinctUntilChanged]
+        skip:1]
+        filter:^BOOL(NSNumber *Placeholded) {
+            return ![Placeholded boolValue];
+        }]
+        subscribeNext:^(NSNumber *Placeholded) {
+            @strongify(self);
+            
+            [self.SourceTextView setTextColor:[NSColor blackColor]];
+            [self.SourceTextView setString:[self.SourceTextView.string substringFromIndex:PlaceholderInputText.length]];
+        }];
+    
+    
+    
+
 }
 
 
@@ -106,6 +152,16 @@
     
     
     return 0;
+}
+
+
+
+- (NSRange)textView:(NSTextView *)aTextView willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange toCharacterRange:(NSRange)newSelectedCharRange {
+    if(aTextView == self.SourceTextView && [aTextView.string isEqualToString:PlaceholderInputText])
+        return NSMakeRange(0, 0);
+    
+    return newSelectedCharRange;
+
 }
 
 @end

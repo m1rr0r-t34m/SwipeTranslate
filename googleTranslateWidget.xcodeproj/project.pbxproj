@@ -55,6 +55,7 @@
 		CDD1FF7A1D663A560031FC94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF791D663A560031FC94 /* MainViewController.m */; };
 		CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */; };
 		CDD1FF831D6645920031FC94 /* MainViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */; };
+		CDD1FF861D6655F50031FC94 /* NSTextView+Ready.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF851D6655F50031FC94 /* NSTextView+Ready.m */; };
 		CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD783321BF1265E00F32CD2 /* LanguageCell.m */; };
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
@@ -166,6 +167,8 @@
 		CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageCell.m; sourceTree = "<group>"; };
 		CDD1FF811D6645920031FC94 /* MainViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewControllerModel.h; sourceTree = "<group>"; };
 		CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerModel.m; sourceTree = "<group>"; };
+		CDD1FF841D6655F50031FC94 /* NSTextView+Ready.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+Ready.h"; sourceTree = "<group>"; };
+		CDD1FF851D6655F50031FC94 /* NSTextView+Ready.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+Ready.m"; sourceTree = "<group>"; };
 		CDD783311BF1265E00F32CD2 /* LanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageCell.h; path = googleTranslateWidget/LanguageCell.h; sourceTree = "<group>"; };
 		CDD783321BF1265E00F32CD2 /* LanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageCell.m; path = googleTranslateWidget/LanguageCell.m; sourceTree = "<group>"; };
 		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				CDD1FF791D663A560031FC94 /* MainViewController.m */,
 				CDD1FF811D6645920031FC94 /* MainViewControllerModel.h */,
 				CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */,
+				CDD1FF841D6655F50031FC94 /* NSTextView+Ready.h */,
+				CDD1FF851D6655F50031FC94 /* NSTextView+Ready.m */,
 			);
 			name = MainApp;
 			path = googleTranslateWidget;
@@ -663,6 +668,7 @@
 				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
 				CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */,
 				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,
+				CDD1FF861D6655F50031FC94 /* NSTextView+Ready.m in Sources */,
 				CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */,
 				CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* MainViewController.m in Sources */,

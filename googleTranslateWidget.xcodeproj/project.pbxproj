@@ -54,6 +54,7 @@
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
 		CDD1FF7A1D663A560031FC94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF791D663A560031FC94 /* MainViewController.m */; };
 		CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */; };
+		CDD1FF831D6645920031FC94 /* MainViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */; };
 		CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD783321BF1265E00F32CD2 /* LanguageCell.m */; };
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
@@ -163,6 +164,8 @@
 		CDD1FF791D663A560031FC94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		CDD1FF7C1D663B260031FC94 /* STLanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageCell.h; sourceTree = "<group>"; };
 		CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageCell.m; sourceTree = "<group>"; };
+		CDD1FF811D6645920031FC94 /* MainViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewControllerModel.h; sourceTree = "<group>"; };
+		CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControllerModel.m; sourceTree = "<group>"; };
 		CDD783311BF1265E00F32CD2 /* LanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguageCell.h; path = googleTranslateWidget/LanguageCell.h; sourceTree = "<group>"; };
 		CDD783321BF1265E00F32CD2 /* LanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguageCell.m; path = googleTranslateWidget/LanguageCell.m; sourceTree = "<group>"; };
 		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
@@ -365,6 +368,8 @@
 				CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */,
 				CDD1FF781D663A560031FC94 /* MainViewController.h */,
 				CDD1FF791D663A560031FC94 /* MainViewController.m */,
+				CDD1FF811D6645920031FC94 /* MainViewControllerModel.h */,
+				CDD1FF821D6645920031FC94 /* MainViewControllerModel.m */,
 			);
 			name = MainApp;
 			path = googleTranslateWidget;
@@ -645,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
+				CDD1FF831D6645920031FC94 /* MainViewControllerModel.m in Sources */,
 				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
 				CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */,
 				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,

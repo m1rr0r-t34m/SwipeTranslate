@@ -9,52 +9,103 @@
 #import "MainViewController.h"
 #import "STLanguageCell.h"
 
+#define LanguageCellHeight 50
+
 @interface MainViewController ()
 
 @property (weak) IBOutlet NSTableView *sourceLanguageTableView;
 @property (weak) IBOutlet NSTableView *targetLanguageTableView;
+@property (weak) IBOutlet NSLayoutConstraint *sourceLanguageTableViewHeight;
 
 @end
 
 @implementation MainViewController
 
+-(instancetype)initWithCoder:(NSCoder *)coder {
+    if(self = [super initWithCoder:coder]) {
+        self.ViewModel = [MainViewControllerModel new];
+        
+
+    }
+    
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self.sourceLanguageTableView setDelegate:self];
     [self.sourceLanguageTableView setDataSource:self];
+    
+    [self.targetLanguageTableView setDelegate:self];
+    [self.targetLanguageTableView setDataSource:self];
+    
+    
     [self.sourceLanguageTableView reloadData];
+    [self.targetLanguageTableView reloadData];
+    
+    [self bindAll];
 }
 
-//-(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-//    return 50;
-//}
 
-//-(NSCell *)tableView:(NSTableView *)tableView dataCellForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-//    
-//    STLanguageCell *cell =[NSC new];
-//    
-//    [cell setStringValue:@"Hello"];
-//    [cell setTextColor:[NSColor redColor]];
-//    
-//    return cell;
-//}
+
+
+
+- (void) bindAll {
+    
+    @weakify(self);
+    
+    [[[[RACSignal
+        merge:@[RACObserve(self.view, frame), RACObserve(self.view, bounds)]]
+        map:^(NSValue *value) {
+            return @(CGRectGetHeight([value rectValue]));
+        }]
+        distinctUntilChanged]
+        subscribeNext:^(NSNumber *Height) {
+            @strongify(self);
+            
+            [self.sourceLanguageTableViewHeight setConstant:[Height floatValue]/2];
+        }];
+    
+    
+    [[RACObserve(self.sourceLanguageTableViewHeight, constant)
+        distinctUntilChanged]
+        subscribeNext:^(NSNumber *Height) {
+            @strongify(self);
+         
+            [self.sourceLanguageTableView reloadData];
+            [self.targetLanguageTableView reloadData];
+        }];
+}
+
+
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     STLanguageCell *cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
+    [cell.Label setTextColor:[NSColor blackColor]];
     
-    //[cell setFrame:NSMakeRect(0, 0, 50, 50)];
-    NSTextField *field = cell.Label;
-    [cell.Label setTextColor:[NSColor redColor]];
-    [cell.Label setStringValue:@"MYYY"];
+    [cell.Label setStringValue:@"English"];
+    
+    if(tableView == self.sourceLanguageTableView) {
+        if(self.ViewModel.sourceLanguages.count > row)
+            [cell.Label setStringValue:[self.ViewModel.sourceLanguages objectAtIndex:row]];
+    }
+    else if(tableView == self.targetLanguageTableView) {
+        if(self.ViewModel.targetLanguages.count > row)
+            [cell.Label setStringValue:[self.ViewModel.targetLanguages objectAtIndex:row]];
+    }
+    
+    
+    
     return cell;
 }
 
-//-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-//    return @"MY";
-//}
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return 5;
+    if(tableView == self.sourceLanguageTableView || tableView == self.targetLanguageTableView)
+        return (NSUInteger)self.sourceLanguageTableViewHeight.constant/LanguageCellHeight;
+    
+    
+    return 0;
 }
 
 @end

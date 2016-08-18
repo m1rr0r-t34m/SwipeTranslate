@@ -9,6 +9,10 @@
 #import <Cocoa/Cocoa.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "MainViewControllerModel.h"
+
 @interface MainViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
+
+@property (strong, nonatomic) MainViewControllerModel *ViewModel;
 
 @end

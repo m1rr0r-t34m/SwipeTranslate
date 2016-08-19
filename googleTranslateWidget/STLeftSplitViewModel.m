@@ -1,14 +1,14 @@
 //
-//  MainViewControllerModel.m
+//  LeftSplitViewModel.m
 //  googleTranslateWidget
 //
-//  Created by Mark Vasiv on 18/08/16.
+//  Created by Mark Vasiv on 19/08/16.
 //  Copyright © 2016 Mark Vasiv. All rights reserved.
 //
 
-#import "MainViewControllerModel.h"
+#import "STLeftSplitViewModel.h"
 
-@implementation MainViewControllerModel
+@implementation STLeftSplitViewModel
 
 -(instancetype)init {
     if(self = [super init]) {

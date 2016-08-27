@@ -13,4 +13,7 @@
 @property (strong, nonatomic) NSArray *sourceLanguages;
 @property (strong, nonatomic) NSArray *targetLanguages;
 
+@property (strong, nonatomic) NSString *sourceSelectedLanguage;
+@property (strong, nonatomic) NSString *targetSelectedLanguage;
+
 @end

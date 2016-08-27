@@ -28,6 +28,7 @@
 		CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */; };
+		CD5502721D7197E80089484D /* STLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5502711D7197E80089484D /* STLanguages.m */; };
 		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
 		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; };
 		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; };
@@ -123,6 +124,8 @@
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestHandler.h; path = todayWidget/RequestHandler.h; sourceTree = "<group>"; };
 		CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+TouchSet.h"; sourceTree = "<group>"; };
 		CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+TouchSet.m"; sourceTree = "<group>"; };
+		CD5502701D7197E80089484D /* STLanguages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguages.h; sourceTree = "<group>"; };
+		CD5502711D7197E80089484D /* STLanguages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguages.m; sourceTree = "<group>"; };
 		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InnerScroll.h; path = googleTranslateWidget/InnerScroll.h; sourceTree = "<group>"; };
 		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InnerScroll.m; path = googleTranslateWidget/InnerScroll.m; sourceTree = "<group>"; };
 		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTable.h; sourceTree = "<group>"; };
@@ -218,6 +221,15 @@
 				EEC482CB727960562A5BCF19 /* Pods-Swipe Translate Widget.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD55026F1D7197930089484D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CD5502701D7197E80089484D /* STLanguages.h */,
+				CD5502711D7197E80089484D /* STLanguages.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		CD8EEB851B8E69AA00E2991B /* Frameworks */ = {
@@ -367,6 +379,7 @@
 		CDCFCCD91B8E690300547F5C /* MainApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD55026F1D7197930089484D /* Model */,
 				75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */,
 				758DDE301BDC1DBD00210924 /* DataSourceDelegate.h */,
 				CDCFCCDC1B8E690300547F5C /* AppDelegate.h */,
@@ -715,6 +728,7 @@
 				754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */,
 				75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
+				CD5502721D7197E80089484D /* STLanguages.m in Sources */,
 				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
 				754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */,

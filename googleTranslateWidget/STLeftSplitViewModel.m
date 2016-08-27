@@ -7,13 +7,13 @@
 //
 
 #import "STLeftSplitViewModel.h"
-
+#import "STLanguages.h"
 @implementation STLeftSplitViewModel
 
 -(instancetype)init {
     if(self = [super init]) {
-        self.sourceLanguages = @[@"English", @"Russian", @"Finnish", @"Swedish", @"French", @"German", @"Italian", @"Arabic", @"Danish"];
-        self.targetLanguages = @[@"English", @"Russian", @"Finnish", @"Swedish", @"French", @"German", @"Italian", @"Arabic", @"Danish"];
+        self.sourceLanguages = Languages;
+        self.targetLanguages = Languages;
     }
     return self;
 }

@@ -25,7 +25,7 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        self.ViewModel = [STMainViewControllerModel new];
+        _ViewModel = [STMainViewControllerModel new];
         
     }
     
@@ -36,8 +36,6 @@
     [super viewDidLoad];
     
     [self.splitView setDelegate:self];
-    
-    
 }
 
 - (void) setupSplitResize {

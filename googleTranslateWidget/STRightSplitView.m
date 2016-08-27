@@ -24,7 +24,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        self.ViewModel = [STRightSplitViewModel new];
+        _ViewModel = [STRightSplitViewModel new];
     }
     return self;
 }

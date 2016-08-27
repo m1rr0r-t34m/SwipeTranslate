@@ -11,13 +11,16 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import <QuartzCore/QuartzCore.h>
+
 #define NumberOfRows 10
 #define NSTableViewHeightBug 32
+
 @interface STLeftSplitView () <NSTableViewDelegate, NSTableViewDataSource>
 
 @property (weak) IBOutlet NSTableView *sourceLanguageTable;
 @property (weak) IBOutlet NSTableView *targetLanguageTable;
 @property (weak) IBOutlet NSLayoutConstraint *sourceLanguageTableHeight;
+@property (weak) IBOutlet NSScrollView *sourceLanguageTableScroll;
 
 @property (strong, nonatomic) NSNumber *LanguageCellHeight;
 @property (strong, nonatomic) STLanguageCell *SampleCell;
@@ -30,8 +33,8 @@
 
 -(instancetype)initWithCoder:(NSCoder *)coder {
     if(self  = [super initWithCoder:coder]) {
-        self.ViewModel = [STLeftSplitViewModel new];
-        self.LanguageCellHeight = @(50);
+        _ViewModel = [STLeftSplitViewModel new];
+        _LanguageCellHeight = @(50);
     }
     
     return self;
@@ -59,49 +62,66 @@
 - (void) setupViewResizes {
     @weakify(self);
     
-    [[[[RACSignal
-        merge:@[RACObserve(self.view, frame), RACObserve(self.view, bounds)]]
+    [[[[RACObserve(self.view, frame)
         map:^(NSValue *value) {
            return @(CGRectGetHeight([value rectValue]));
         }]
-        distinctUntilChanged]
+        distinctUntilChanged] deliverOnMainThread]
         subscribeNext:^(NSNumber *Height) {
             @strongify(self);
-            [self.sourceLanguageTableHeight setConstant:[Height floatValue]*0.4];
+//            NSRect rect = self.sourceLanguageTableScroll.frame;
+//            
+//            rect.size.height = [Height floatValue]*0.4;
+//            [self.sourceLanguageTableScroll setFrame:rect];
+            
+            
+//            [self.sourceLanguageTableHeight setConstant:[Height floatValue]*0.4];
+//            [self.sourceLanguageTableScroll setNeedsLayout:YES];
+            //[self.sourceLanguageTable setNeedsLayout:YES];
         }];
     
-    [[RACObserve(self.sourceLanguageTableHeight, constant)
+    [[[RACObserve(self.sourceLanguageTableScroll, frame)
+        map:^id(NSValue *frameValue) {
+            return @(CGRectGetHeight([frameValue rectValue]));
+        }]
         distinctUntilChanged]
         subscribeNext:^(NSNumber *Height) {
             @strongify(self);
             self.LanguageCellHeight = @((Height.floatValue - NSTableViewHeightBug)/NumberOfRows);
             
+            
+            [NSAnimationContext beginGrouping];
+            [[NSAnimationContext currentContext] setDuration:0];
             [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, NumberOfRows)]];
             [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, NumberOfRows)]];
+
+            [NSAnimationContext endGrouping];
             
     
         }];
     
     
-    [[[[[RACObserve(self.SampleCell, frame) map:^id(NSValue *FrameValue) {
-        return @(CGRectGetHeight([FrameValue rectValue]));
-    }]
-        map:^id(NSNumber *Height) {
-            return @(roundf(Height.floatValue/2));
-        }] distinctUntilChanged] filter:^BOOL(NSNumber *FontSize) {
+    [[[[[RACObserve(self.SampleCell, frame)
+         map:^id(NSValue *FrameValue) {
+             return @(CGRectGetHeight([FrameValue rectValue]));
+         }]
+         map:^id(NSNumber *Height) {
+             return @(roundf(Height.floatValue/2));
+         }]
+         distinctUntilChanged]
+         filter:^BOOL(NSNumber *FontSize) {
             
-            CGFloat cellHeight = self.SampleCell.frame.size.height;
-            CGFloat previousFontSize = self.SampleCell.Label.font.pointSize;
+             CGFloat cellHeight = self.SampleCell.frame.size.height;
+             CGFloat previousFontSize = self.SampleCell.Label.font.pointSize;
             
-            return (previousFontSize > 0.7 * cellHeight || previousFontSize < 0.6*cellHeight);
-        }]
-     subscribeNext:^(NSNumber *FontSize) {
-         for(int i =0;i<NumberOfRows;i++) {
-             STLanguageCell *cell = [self.sourceLanguageTable viewAtColumn:0 row:i makeIfNecessary:NO];
-              [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:[FontSize integerValue]]];
-             
-             
-         }
+            //return (previousFontSize > 0.7 * cellHeight || previousFontSize < 0.4*cellHeight);
+            return YES;
+         }]
+         subscribeNext:^(NSNumber *FontSize) {
+            for(int i =0;i<NumberOfRows;i++) {
+                STLanguageCell *cell = [self.sourceLanguageTable viewAtColumn:0 row:i makeIfNecessary:NO];
+                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:[FontSize integerValue]]];
+            }
         
          
          
@@ -132,10 +152,7 @@
 
 #pragma mark - Table Views
 
--(void)tableView:(NSTableView *)tableView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    
 
-}
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     STLanguageCell *Cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
     

@@ -9,12 +9,12 @@
 #import "STRightSplitView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#define PlaceholderInputText @"Input some text"
 
 @interface STRightSplitView () <NSTextViewDelegate>
 
 @property (unsafe_unretained) IBOutlet NSTextView *sourceTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *targetTextView;
+@property (weak) IBOutlet NSTextField *placeholderLabel;
 
 @end
 
@@ -33,51 +33,38 @@
     [super viewDidLoad];
     
     [self.sourceTextView setDelegate:self];
+    
+    [self.sourceTextView setTextColor:[NSColor blackColor]];
+    [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:19]];
+    
     [self setupSourceTextPlaceholder];
 }
 
 - (void) setupSourceTextPlaceholder {
     @weakify(self);
     
-    [[[self.sourceTextView.rac_textSignal
+    [[self.sourceTextView.rac_textSignal
         filter:^BOOL(NSString *Text) {
-            return Text.length == 0;
-        }]
-        map:^id(NSString *Text) {
-            return PlaceholderInputText;
+            @strongify(self);
+            return (Text.length == 0 && self.placeholderLabel.alphaValue == 0);
         }]
         subscribeNext:^(NSString *Text) {
             @strongify(self);
-            [self.sourceTextView setString:PlaceholderInputText];
-            [self.sourceTextView setTextColor:[NSColor grayColor]];
-            [self.sourceTextView setSelectedRange:NSMakeRange(0, 0)];
+            [self.placeholderLabel setAlphaValue:1.0];
         }];
     
-    [[[[[self.sourceTextView.rac_textSignal
-        map:^id(NSString *Text) {
-            return @(Text.length == 0 || [Text isEqualToString:PlaceholderInputText]);
-        }]
-        distinctUntilChanged]
-        skip:1]
-        filter:^BOOL(NSNumber *Placeholded) {
-            return ![Placeholded boolValue];
-        }]
-        subscribeNext:^(NSNumber *Placeholded) {
+    [[self.sourceTextView.rac_textSignal
+        filter:^BOOL(NSString *Text) {
             @strongify(self);
-         
-            [self.sourceTextView setTextColor:[NSColor blackColor]];
-            [self.sourceTextView setString:[self.sourceTextView.string substringFromIndex:PlaceholderInputText.length]];
+            return (Text.length !=0 && self.placeholderLabel.alphaValue != 0);
+        }]
+        subscribeNext:^(NSString *Text) {
+            @strongify(self);
+            [self.placeholderLabel setAlphaValue:0.0];
         }];
 }
 
 #pragma mark - Text Views
 
-- (NSRange)textView:(NSTextView *)aTextView willChangeSelectionFromCharacterRange:(NSRange)oldSelectedCharRange toCharacterRange:(NSRange)newSelectedCharRange {
-    if(aTextView == self.sourceTextView && [aTextView.string isEqualToString:PlaceholderInputText])
-        return NSMakeRange(0, 0);
-    
-    return newSelectedCharRange;
-    
-}
 
 @end

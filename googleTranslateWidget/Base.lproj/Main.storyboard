@@ -130,6 +130,7 @@
                     <connections>
                         <outlet property="dataHandler" destination="rVM-0Y-fdf" id="ZIH-E3-qKT"/>
                         <outlet property="favouritesHandler" destination="0GN-vw-DgB" id="qG1-9j-7wW"/>
+                        <outlet property="splitView" destination="XUJ-2R-1Zh" id="jap-CT-snk"/>
                     </connections>
                 </viewController>
                 <customObject id="Rbw-IA-4qd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -306,6 +307,52 @@
                                     <constraint firstAttribute="height" constant="1" id="T4c-pH-XXu"/>
                                 </constraints>
                             </customView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sbc-cg-33x">
+                                <rect key="frame" x="74" y="496" width="97" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Type here..." id="Hge-qP-9X5">
+                                    <font key="font" size="19" name="HelveticaNeue-Thin"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-9V-EgQ" userLabel="Input Text View">
+                                <rect key="frame" x="70" y="371" width="818" height="150"/>
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pgO-wI-TfO">
+                                    <rect key="frame" x="1" y="1" width="816" height="148"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView drawsBackground="NO" importsGraphics="NO" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="XkX-uv-W0y">
+                                            <rect key="frame" x="0.0" y="0.0" width="816" height="148"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="816" height="148"/>
+                                            <size key="maxSize" width="818" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="816" height="148"/>
+                                            <size key="maxSize" width="818" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="0Cr-4H-eJd"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="CLe-DL-Drd">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9Xd-wJ-djp">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="150"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="w2q-Ru-0Zd" userLabel="Buttons Panel">
+                                <rect key="frame" x="15" y="30" width="40" height="491"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Fzf-py-KI1"/>
+                                </constraints>
+                            </customView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-yl-nEK" userLabel="Output Text View">
                                 <rect key="frame" x="70" y="30" width="818" height="340"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HYe-Dd-OxT">
@@ -334,45 +381,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="w2q-Ru-0Zd" userLabel="Buttons Panel">
-                                <rect key="frame" x="15" y="30" width="40" height="491"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Fzf-py-KI1"/>
-                                </constraints>
-                            </customView>
-                            <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="sbH-9V-EgQ" userLabel="Input Text View">
-                                <rect key="frame" x="70" y="371" width="818" height="150"/>
-                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="pgO-wI-TfO">
-                                    <rect key="frame" x="1" y="1" width="816" height="148"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView drawsBackground="NO" importsGraphics="NO" richText="NO" continuousSpellChecking="YES" allowsUndo="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="XkX-uv-W0y">
-                                            <rect key="frame" x="0.0" y="0.0" width="816" height="148"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="816" height="148"/>
-                                            <size key="maxSize" width="818" height="10000000"/>
-                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="816" height="148"/>
-                                            <size key="maxSize" width="818" height="10000000"/>
-                                        </textView>
-                                    </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="0Cr-4H-eJd"/>
-                                </constraints>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="CLe-DL-Drd">
-                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="9Xd-wJ-djp">
-                                    <rect key="frame" x="-100" y="-100" width="16" height="150"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </scroller>
-                            </scrollView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="sbc-cg-33x" firstAttribute="top" secondItem="sbH-9V-EgQ" secondAttribute="top" constant="2" id="0VI-PF-6xk"/>
                             <constraint firstItem="Z2Q-yl-nEK" firstAttribute="top" secondItem="7GT-dg-up5" secondAttribute="bottom" id="2Dm-99-16e"/>
                             <constraint firstItem="w2q-Ru-0Zd" firstAttribute="top" secondItem="SQQ-iM-ddv" secondAttribute="top" constant="30" id="4nd-yl-KTs"/>
                             <constraint firstAttribute="trailing" secondItem="Z2Q-yl-nEK" secondAttribute="trailing" constant="15" id="5pu-Lq-oDl"/>
@@ -381,6 +392,7 @@
                             <constraint firstItem="7GT-dg-up5" firstAttribute="leading" secondItem="w2q-Ru-0Zd" secondAttribute="trailing" constant="15" id="Krf-0X-3L1"/>
                             <constraint firstAttribute="bottom" secondItem="w2q-Ru-0Zd" secondAttribute="bottom" constant="30" id="Pvl-jH-Pdc"/>
                             <constraint firstItem="sbH-9V-EgQ" firstAttribute="leading" secondItem="w2q-Ru-0Zd" secondAttribute="trailing" constant="15" id="Qfk-8Q-1y1"/>
+                            <constraint firstItem="sbc-cg-33x" firstAttribute="leading" secondItem="sbH-9V-EgQ" secondAttribute="leading" constant="6" id="Uaj-xh-ata"/>
                             <constraint firstItem="Z2Q-yl-nEK" firstAttribute="leading" secondItem="w2q-Ru-0Zd" secondAttribute="trailing" constant="15" id="Vsb-Q3-lrW"/>
                             <constraint firstItem="sbH-9V-EgQ" firstAttribute="top" secondItem="SQQ-iM-ddv" secondAttribute="top" constant="30" id="nxR-wg-Xun"/>
                             <constraint firstItem="w2q-Ru-0Zd" firstAttribute="leading" secondItem="SQQ-iM-ddv" secondAttribute="leading" constant="15" id="rAt-aO-ggk"/>
@@ -389,6 +401,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="placeholderLabel" destination="sbc-cg-33x" id="WnB-u5-LKg"/>
                         <outlet property="sourceTextView" destination="XkX-uv-W0y" id="dkr-8m-XSu"/>
                         <outlet property="targetTextView" destination="2yI-Jm-v96" id="uVT-9h-gzb"/>
                     </connections>

@@ -62,7 +62,7 @@
         distinctUntilChanged]
         subscribeNext:^(NSNumber *Height) {
             @strongify(self);
-            [self.sourceLanguageTableHeight setConstant:[Height floatValue]/2];
+            [self.sourceLanguageTableHeight setConstant:[Height floatValue]*0.4];
         }];
     
     [[RACObserve(self.sourceLanguageTableHeight, constant)

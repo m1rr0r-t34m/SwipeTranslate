@@ -25,7 +25,7 @@
 @implementation STTranslationManager
 
 
-+ (instancetype)Manager {
++ (instancetype)manager {
     
     static STTranslationManager *managerSignleton;
     static dispatch_once_t onceToken;

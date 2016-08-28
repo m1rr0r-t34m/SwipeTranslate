@@ -38,6 +38,7 @@
     [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:19]];
     
     [self setupSourceTextPlaceholder];
+    [self setupSourceTextScrolling];
     [self bindViewModel];
 }
 
@@ -63,6 +64,29 @@
             @strongify(self);
             [self.placeholderLabel setAlphaValue:0.0];
         }];
+}
+
+- (void) setupSourceTextScrolling {
+    @weakify(self);
+    
+    [self.sourceTextView.rac_textSignal subscribeNext:^(NSString *text) {
+        @strongify(self);
+        
+        unsigned long numberOfLines, index, numberOfGlyphs = [self.sourceTextView.layoutManager numberOfGlyphs];
+        NSRange lineRange;
+        
+        for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
+            (void) [self.sourceTextView.layoutManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&lineRange];
+            index = NSMaxRange(lineRange);
+        }
+        
+        if([text containsString:@"\n"] || numberOfLines > 1)
+            [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityAllowed];
+        else
+            [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityNone];
+    }];
+    
+
 }
 
 -(void)bindViewModel {

@@ -9,8 +9,8 @@
 #import "STTranslationManager.h"
 #import <AFNetworking/AFNetworking.h>
 
-#define translationTocken @"trnsl.1.1.20151022T101327Z.947a48f231e6aa6e.7e71b163761e2e6791c492f9448b63e1c1f27a2e"
-#define dictionaryTocken @"dict.1.1.20151022T180334Z.52a72548fccdbcf3.fe30ded92dd2687f0229f3ebc9709f4e27891329"
+#define translationToken @"trnsl.1.1.20151022T101327Z.947a48f231e6aa6e.7e71b163761e2e6791c492f9448b63e1c1f27a2e"
+#define dictionaryToken @"dict.1.1.20151022T180334Z.52a72548fccdbcf3.fe30ded92dd2687f0229f3ebc9709f4e27891329"
 #define translationBaseURL @"https://translate.yandex.net/api/v1.5/tr.json/translate"
 #define dictionaryBaseURL @"https://dictionary.yandex.net/api/v1/dicservice.json/lookup"
 
@@ -18,6 +18,7 @@
 
 @property (nonatomic, readwrite) NSDictionary *result;
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
+@property (nonatomic) NSURLSessionDataTask *currentTask;
 
 @end
 
@@ -48,46 +49,47 @@
     
     [self cancelCurrentSession];
     
-    sourceLang = @"auto";
+    //Handle auto language
     NSString *languages = [NSString new];
     
-    //Handle auto languages
     if ([sourceLang isEqualToString:@"auto"]) {
         languages = targetLang;
     }
     else {
         languages = [NSString stringWithFormat:@"%@-%@", sourceLang, targetLang];
     }
-    NSDictionary *params = @{@"key":translationTocken, @"text":string, @"lang":languages, @"options":@"1"};
     
+    NSDictionary *params = @{@"key" : translationToken,
+                            @"text" : string,
+                            @"lang" : languages,
+                         @"options" : @"1"};
     
-    NSURLSessionDataTask *task = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    self.currentTask = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Successfully performed translate request %@", responseObject);
         self.result = responseObject;
+        
         if ([responseObject objectForKey:@"detected"] != nil) {
             NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
             [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
         }
         else {
-        [self dictionaryTranslationForString:string sourceLanguage:sourceLang targetLanguage:targetLang];
+            [self dictionaryTranslationForString:string sourceLanguage:sourceLang targetLanguage:targetLang];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        NSLog(@"Failed to perform translate request, %@", error);
     }];
 }
 
 -(void)dictionaryTranslationForString:(NSString *)string sourceLanguage:(NSString *)sourceLang targetLanguage:(NSString *)targetLang {
     
     NSString *languages = [NSString stringWithFormat:@"%@-%@", sourceLang, targetLang];
-    NSDictionary *params = @{@"key" : dictionaryTocken,
+    NSDictionary *params = @{@"key" : dictionaryToken,
                             @"lang" : languages,
                             @"text" : string};
-    NSURLSessionDataTask *task = [self.manager GET:dictionaryBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
+    self.currentTask = [self.manager GET:dictionaryBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Successfully performed dictionary request %@", responseObject);
-        NSDictionary *responseDict = [NSDictionary new];
-        if ([[responseDict objectForKey:@"def"] allKeys] == 0) {
+        
+        if ([[responseObject objectForKey:@"def"] allKeys].count == 0) {
             //Dictionary response not available, handle previous request
             return;
         }
@@ -100,9 +102,7 @@
 }
 
 -(void)cancelCurrentSession {
-    if (self.manager.session) {
-        [self.manager.session invalidateAndCancel];        
-    }
+    [self.currentTask cancel];
 }
 
 @end

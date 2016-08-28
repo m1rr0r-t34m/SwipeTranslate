@@ -14,5 +14,6 @@
 
 +(instancetype)Manager;
 -(void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang;
+-(void)cancelCurrentSession;
 
 @end

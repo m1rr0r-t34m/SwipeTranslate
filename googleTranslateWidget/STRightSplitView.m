@@ -38,6 +38,7 @@
     [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:19]];
     
     [self setupSourceTextPlaceholder];
+    [self bindViewModel];
 }
 
 - (void) setupSourceTextPlaceholder {
@@ -62,6 +63,10 @@
             @strongify(self);
             [self.placeholderLabel setAlphaValue:0.0];
         }];
+}
+
+-(void)bindViewModel {
+    RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
 }
 
 #pragma mark - Text Views

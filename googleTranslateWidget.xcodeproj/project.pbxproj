@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A027B4784FC1670EB3E7BFD /* libPods-Swipe Translate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */; };
 		754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754CE1061C67E47100A2FB5A /* FavouritesListView.m */; };
 		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
 		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
@@ -15,7 +16,7 @@
 		75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */; };
 		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		75FEA2401C91B115006B9B1D /* FavouritesHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */; };
-		ABD9DEF7B8FED0E273A63FAA /* libPods-Swipe Translate Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D63F22F74B9422AAE5DD685 /* libPods-Swipe Translate Widget.a */; };
+		A8C0A0A13DB5A762BB656252 /* libPods-Swipe Translate Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BC85D0DDB0765A13935BD8 /* libPods-Swipe Translate Widget.a */; };
 		CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
 		CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
@@ -49,6 +50,7 @@
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
 		CDBFD8341B9A257500C5414D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
+		CDC13ED31D73571E0093A9F0 /* STTranslationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */; };
 		CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
 		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
@@ -64,7 +66,6 @@
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
 		CDFF839A1BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
-		E01A6F79968C0F5C37B2A203 /* libPods-Swipe Translate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA2A1E81AE8DB6E44B98F69 /* libPods-Swipe Translate.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,9 +93,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		399FEFE07E9121DA60911D90 /* Pods-Swipe Translate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.release.xcconfig"; sourceTree = "<group>"; };
-		3D63F22F74B9422AAE5DD685 /* libPods-Swipe Translate Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swipe Translate Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6AA2A1E81AE8DB6E44B98F69 /* libPods-Swipe Translate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swipe Translate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07BC85D0DDB0765A13935BD8 /* libPods-Swipe Translate Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swipe Translate Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3712BE4D37CDB3CDF6D94FC8 /* Pods-Swipe Translate Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget.release.xcconfig"; sourceTree = "<group>"; };
+		554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swipe Translate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		754851961C73FE8600767079 /* FavouritesHandlerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesHandlerDelegate.h; sourceTree = "<group>"; };
 		754CE1051C67E46800A2FB5A /* FavouritesListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavouritesListView.h; path = googleTranslateWidget/FavouritesListView.h; sourceTree = "<group>"; };
 		754CE1061C67E47100A2FB5A /* FavouritesListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavouritesListView.m; path = googleTranslateWidget/FavouritesListView.m; sourceTree = "<group>"; };
@@ -110,7 +111,8 @@
 		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupMenu.m; path = todayWidget/PopupMenu.m; sourceTree = "<group>"; };
 		75FEA23E1C91B115006B9B1D /* FavouritesHintView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavouritesHintView.h; sourceTree = "<group>"; };
 		75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavouritesHintView.m; sourceTree = "<group>"; };
-		C8B090638FC65705DEF97E44 /* Pods-Swipe Translate Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget.debug.xcconfig"; sourceTree = "<group>"; };
+		A7D61FF587E0E6EACB2C79A2 /* Pods-Swipe Translate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.debug.xcconfig"; sourceTree = "<group>"; };
+		AD84E40A948DFFE9F9FAC17E /* Pods-Swipe Translate Widget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate Widget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget.debug.xcconfig"; sourceTree = "<group>"; };
 		CD12BB6F1BD849D8003ED768 /* WidgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WidgetView.h; path = todayWidget/WidgetView.h; sourceTree = "<group>"; };
 		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WidgetView.m; path = todayWidget/WidgetView.m; sourceTree = "<group>"; };
 		CD1A16CC1BF5525900EA90D3 /* HiddenScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HiddenScroll.h; path = googleTranslateWidget/HiddenScroll.h; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		CDBFD8331B9A257500C5414D /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parser.m; path = todayWidget/Parser.m; sourceTree = "<group>"; };
 		CDBFFA6D1BB065EE007E2DD2 /* LanguagesStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LanguagesStorage.h; path = todayWidget/LanguagesStorage.h; sourceTree = "<group>"; };
 		CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LanguagesStorage.m; path = todayWidget/LanguagesStorage.m; sourceTree = "<group>"; };
+		CDC13ED11D73571E0093A9F0 /* STTranslationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTranslationManager.h; sourceTree = "<group>"; };
+		CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STTranslationManager.m; sourceTree = "<group>"; };
 		CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		CDCFCCD71B8E690300547F5C /* Swipe Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipe Translate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCFCCDB1B8E690300547F5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -186,8 +190,7 @@
 		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
 		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeparatedButton.m; path = todayWidget/SeparatedButton.m; sourceTree = "<group>"; };
 		CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainIcon.xcassets; sourceTree = "<group>"; };
-		EEC482CB727960562A5BCF19 /* Pods-Swipe Translate Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget.release.xcconfig"; sourceTree = "<group>"; };
-		F85D02A15BCEC0E27CCEF5BE /* Pods-Swipe Translate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.debug.xcconfig"; sourceTree = "<group>"; };
+		D00D167EE596EF8CC1A0CDF4 /* Pods-Swipe Translate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */,
-				ABD9DEF7B8FED0E273A63FAA /* libPods-Swipe Translate Widget.a in Frameworks */,
+				A8C0A0A13DB5A762BB656252 /* libPods-Swipe Translate Widget.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,20 +208,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */,
-				E01A6F79968C0F5C37B2A203 /* libPods-Swipe Translate.a in Frameworks */,
+				3A027B4784FC1670EB3E7BFD /* libPods-Swipe Translate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9E34E12EA56D1959F46F3712 /* Pods */ = {
+		076BF452E83F4F4B750E6475 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F85D02A15BCEC0E27CCEF5BE /* Pods-Swipe Translate.debug.xcconfig */,
-				399FEFE07E9121DA60911D90 /* Pods-Swipe Translate.release.xcconfig */,
-				C8B090638FC65705DEF97E44 /* Pods-Swipe Translate Widget.debug.xcconfig */,
-				EEC482CB727960562A5BCF19 /* Pods-Swipe Translate Widget.release.xcconfig */,
+				A7D61FF587E0E6EACB2C79A2 /* Pods-Swipe Translate.debug.xcconfig */,
+				D00D167EE596EF8CC1A0CDF4 /* Pods-Swipe Translate.release.xcconfig */,
+				AD84E40A948DFFE9F9FAC17E /* Pods-Swipe Translate Widget.debug.xcconfig */,
+				3712BE4D37CDB3CDF6D94FC8 /* Pods-Swipe Translate Widget.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -228,6 +231,8 @@
 			children = (
 				CD5502701D7197E80089484D /* STLanguages.h */,
 				CD5502711D7197E80089484D /* STLanguages.m */,
+				CDC13ED11D73571E0093A9F0 /* STTranslationManager.h */,
+				CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -237,8 +242,8 @@
 			children = (
 				CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */,
 				CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */,
-				6AA2A1E81AE8DB6E44B98F69 /* libPods-Swipe Translate.a */,
-				3D63F22F74B9422AAE5DD685 /* libPods-Swipe Translate Widget.a */,
+				554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */,
+				07BC85D0DDB0765A13935BD8 /* libPods-Swipe Translate Widget.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -363,7 +368,7 @@
 				CD8EEB851B8E69AA00E2991B /* Frameworks */,
 				CDCFCCD81B8E690300547F5C /* Products */,
 				CDCFCCF01B8E690300547F5C /* googleTranslateWidgetTests */,
-				9E34E12EA56D1959F46F3712 /* Pods */,
+				076BF452E83F4F4B750E6475 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,12 +480,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "Swipe Translate Widget" */;
 			buildPhases = (
-				64D4A6812660EDB688D97730 /* Check Pods Manifest.lock */,
+				F8C08807B53E1E299C209C41 /* [CP] Check Pods Manifest.lock */,
 				CD8EEB801B8E69AA00E2991B /* Sources */,
 				CD8EEB811B8E69AA00E2991B /* Frameworks */,
 				CD8EEB821B8E69AA00E2991B /* Resources */,
-				5B73A51365EC4E9D7869BBE6 /* Embed Pods Frameworks */,
-				2000A0BA829A7CE462201E99 /* Copy Pods Resources */,
+				E922BA1F0CAB0AEA0CB8AC02 /* [CP] Embed Pods Frameworks */,
+				8303BAB3E4F421AFC26EFFB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -495,13 +500,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDCFCCF71B8E690300547F5C /* Build configuration list for PBXNativeTarget "Swipe Translate" */;
 			buildPhases = (
-				7E0C70B4FF4043C7E106AAC8 /* Check Pods Manifest.lock */,
+				260E3A8F87813AC71E3A5119 /* [CP] Check Pods Manifest.lock */,
 				CDCFCCD31B8E690300547F5C /* Sources */,
 				CDCFCCD41B8E690300547F5C /* Frameworks */,
 				CDCFCCD51B8E690300547F5C /* Resources */,
 				CD8EEB9A1B8E69AA00E2991B /* Embed App Extensions */,
-				DC72B079CD8C5EC893574387 /* Embed Pods Frameworks */,
-				4171C9E5D78FAC4161F084AF /* Copy Pods Resources */,
+				FC440D47A4A62516C208FF47 /* [CP] Embed Pods Frameworks */,
+				6EC3AD5B6A1CC5C8E4B8CAB8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -592,29 +597,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2000A0BA829A7CE462201E99 /* Copy Pods Resources */ = {
+		260E3A8F87813AC71E3A5119 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4171C9E5D78FAC4161F084AF /* Copy Pods Resources */ = {
+		6EC3AD5B6A1CC5C8E4B8CAB8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -622,14 +627,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B73A51365EC4E9D7869BBE6 /* Embed Pods Frameworks */ = {
+		8303BAB3E4F421AFC26EFFB9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E922BA1F0CAB0AEA0CB8AC02 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,14 +657,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Swipe Translate Widget/Pods-Swipe Translate Widget-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		64D4A6812660EDB688D97730 /* Check Pods Manifest.lock */ = {
+		F8C08807B53E1E299C209C41 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,29 +672,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		7E0C70B4FF4043C7E106AAC8 /* Check Pods Manifest.lock */ = {
+		FC440D47A4A62516C208FF47 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		DC72B079CD8C5EC893574387 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -732,6 +737,7 @@
 				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,
 				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
 				754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */,
+				CDC13ED31D73571E0093A9F0 /* STTranslationManager.m in Sources */,
 				758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
 				CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */,
@@ -777,7 +783,7 @@
 /* Begin XCBuildConfiguration section */
 		CD8EEB971B8E69AA00E2991B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C8B090638FC65705DEF97E44 /* Pods-Swipe Translate Widget.debug.xcconfig */;
+			baseConfigurationReference = AD84E40A948DFFE9F9FAC17E /* Pods-Swipe Translate Widget.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
@@ -798,7 +804,7 @@
 		};
 		CD8EEB981B8E69AA00E2991B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEC482CB727960562A5BCF19 /* Pods-Swipe Translate Widget.release.xcconfig */;
+			baseConfigurationReference = 3712BE4D37CDB3CDF6D94FC8 /* Pods-Swipe Translate Widget.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
@@ -894,7 +900,7 @@
 		};
 		CDCFCCF81B8E690300547F5C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F85D02A15BCEC0E27CCEF5BE /* Pods-Swipe Translate.debug.xcconfig */;
+			baseConfigurationReference = A7D61FF587E0E6EACB2C79A2 /* Pods-Swipe Translate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = googleTranslateWidget/googleTranslateWidget.entitlements;
@@ -910,7 +916,7 @@
 		};
 		CDCFCCF91B8E690300547F5C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 399FEFE07E9121DA60911D90 /* Pods-Swipe Translate.release.xcconfig */;
+			baseConfigurationReference = D00D167EE596EF8CC1A0CDF4 /* Pods-Swipe Translate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = googleTranslateWidget/googleTranslateWidget.entitlements;

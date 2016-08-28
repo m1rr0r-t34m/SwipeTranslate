@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Swipe Translate Widget.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>00C2840158DE80C7564706626E6FFB7C</key>
+		<key>30883DBBBEBD84298767CA3F511D3598</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>72188EAF1961DAB2F27AB6B0FD384977</key>
+		<key>61030E0DE4FB2929682DB75B56AD7707</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BDC028CE9A5AA720F8F5AECD9F5B2379</key>
+		<key>9F06BFBB7DEA71400E4464F128E4C306</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F1CD54B521C05F64664B50B361E42A34</key>
 		<dict>
 			<key>primary</key>
 			<true/>

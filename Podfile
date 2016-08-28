@@ -5,9 +5,11 @@
 
 target 'Swipe Translate' do
   pod 'ReactiveCocoa', '2.5'
+  pod 'AFNetworking'
 end
 
 target 'Swipe Translate Widget' do
   pod 'ReactiveCocoa', '2.5'
+  pod 'AFNetworking'
 end
 

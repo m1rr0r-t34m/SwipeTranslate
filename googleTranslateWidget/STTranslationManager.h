@@ -10,6 +10,8 @@
 
 @interface STTranslationManager : NSObject
 
+@property (nonatomic, readonly) NSDictionary *result;
+
 +(instancetype)Manager;
 -(void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang;
 

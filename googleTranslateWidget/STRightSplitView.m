@@ -15,6 +15,8 @@
 @property (unsafe_unretained) IBOutlet NSTextView *sourceTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *targetTextView;
 @property (weak) IBOutlet NSTextField *placeholderLabel;
+@property (weak) IBOutlet NSButton *clearButton;
+@property (strong, nonatomic) NSNumber *clearPressed;
 
 @end
 
@@ -35,7 +37,7 @@
     [self.sourceTextView setDelegate:self];
     
     [self.sourceTextView setTextColor:[NSColor blackColor]];
-    [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:19]];
+    [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:24]];
     
     [self setupSourceTextPlaceholder];
     [self setupSourceTextScrolling];
@@ -69,28 +71,35 @@
 - (void) setupSourceTextScrolling {
     @weakify(self);
     
-    [self.sourceTextView.rac_textSignal subscribeNext:^(NSString *text) {
-        @strongify(self);
-        
-        unsigned long numberOfLines, index, numberOfGlyphs = [self.sourceTextView.layoutManager numberOfGlyphs];
-        NSRange lineRange;
-        
-        for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
-            (void) [self.sourceTextView.layoutManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&lineRange];
-            index = NSMaxRange(lineRange);
-        }
-        
-        if([text containsString:@"\n"] || numberOfLines > 1)
-            [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityAllowed];
-        else
-            [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityNone];
-    }];
+    [[self.sourceTextView.rac_textSignal merge:RACObserve(self, clearPressed)]
+        subscribeNext:^(id x) {
+            @strongify(self);
+            
+            unsigned long numberOfLines, index, numberOfGlyphs = [self.sourceTextView.layoutManager numberOfGlyphs];
+            NSRange lineRange;
+            
+            for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
+                (void) [self.sourceTextView.layoutManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&lineRange];
+                index = NSMaxRange(lineRange);
+            }
+            
+            if([self.sourceTextView.string containsString:@"\n"] || numberOfLines > 1)
+                [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityAllowed];
+            else
+                [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityNone];
+        }];
     
 
 }
 
 -(void)bindViewModel {
     RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
+    
+}
+- (IBAction)clearButtonPress:(id)sender {
+    [self.sourceTextView setString:@""];
+    self.clearPressed = @(YES);
+    
 }
 
 #pragma mark - Text Views

@@ -46,8 +46,19 @@
         [self setupFlow];
     });
     
+
     
     
+    
+}
+
+-(void)viewWillAppear {
+    [super viewWillAppear];
+    
+    self.view.window.titleVisibility = NSWindowTitleHidden;
+    self.view.window.titlebarAppearsTransparent = YES;
+    self.view.window.styleMask |= NSFullSizeContentViewWindowMask;
+    [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
 }
 
 -(void)setupFlow {

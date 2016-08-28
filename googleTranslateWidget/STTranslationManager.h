@@ -12,8 +12,8 @@
 
 @property (nonatomic, readonly) NSDictionary *result;
 
-+(instancetype)Manager;
--(void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang;
--(void)cancelCurrentSession;
++ (instancetype)Manager;
+- (void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang;
+- (void)cancelCurrentSession;
 
 @end

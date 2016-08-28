@@ -10,7 +10,7 @@
 #import "STLanguages.h"
 @implementation STLeftSplitViewModel
 
--(instancetype)init {
+- (instancetype)init {
     if(self = [super init]) {
         self.sourceLanguages = Languages;
         self.targetLanguages = Languages;

@@ -25,7 +25,7 @@
 @implementation STTranslationManager
 
 
-+(instancetype)Manager {
++ (instancetype)Manager {
     
     static STTranslationManager *managerSignleton;
     static dispatch_once_t onceToken;
@@ -36,7 +36,7 @@
     return managerSignleton;
 }
 
--(instancetype)init {
+- (instancetype)init {
     if(self = [super init]) {
         _result = [NSDictionary new];
         _manager = [AFHTTPSessionManager new];
@@ -45,7 +45,7 @@
     return self;
 }
 
--(void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang {
+- (void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang {
     
     [self cancelCurrentSession];
     
@@ -80,7 +80,7 @@
     }];
 }
 
--(void)dictionaryTranslationForString:(NSString *)string sourceLanguage:(NSString *)sourceLang targetLanguage:(NSString *)targetLang {
+- (void)dictionaryTranslationForString:(NSString *)string sourceLanguage:(NSString *)sourceLang targetLanguage:(NSString *)targetLang {
     
     NSString *languages = [NSString stringWithFormat:@"%@-%@", sourceLang, targetLang];
     NSDictionary *params = @{@"key" : dictionaryToken,
@@ -101,7 +101,7 @@
     }];
 }
 
--(void)cancelCurrentSession {
+- (void)cancelCurrentSession {
     [self.currentTask cancel];
 }
 

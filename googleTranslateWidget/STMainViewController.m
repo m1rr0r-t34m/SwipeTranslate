@@ -26,7 +26,7 @@
 
 #pragma mark - Initialization
 
--(instancetype)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
         _ViewModel = [STMainViewControllerModel new];
         
@@ -52,7 +52,7 @@
     
 }
 
--(void)viewWillAppear {
+- (void)viewWillAppear {
     [super viewWillAppear];
     
     self.view.window.titleVisibility = NSWindowTitleHidden;
@@ -61,7 +61,7 @@
     [self.view.window setBackgroundColor:[NSColor colorWithCalibratedRed:0.95 green:0.95 blue:0.95 alpha:1]];
 }
 
--(void)setupFlow {
+- (void)setupFlow {
     
     [[[RACSignal combineLatest:@[
         [[RACObserve(self.rightView.ViewModel, inputText) ignore:nil] ignore:@""],
@@ -84,16 +84,16 @@
 }
 
 #pragma mark - Split View 
--(CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex {
     return 350;
 }
--(CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex {
+- (CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex {
     return 180;
 }
 
 
 #pragma mark - Segues
--(void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"EmbedLeftView"])
         self.leftView = segue.destinationController;
     else if([segue.identifier isEqualToString:@"EmbedRightView"])

@@ -29,7 +29,7 @@
 
 #pragma mark - Initialization
 
--(instancetype)initWithCoder:(NSCoder *)coder {
+- (instancetype)initWithCoder:(NSCoder *)coder {
     if(self  = [super initWithCoder:coder]) {
         _ViewModel = [STLeftSplitViewModel new];
         _LanguageCellHeight = @(50);
@@ -56,7 +56,7 @@
     [self.targetLanguageTable reloadData];
 }
 
-- (void) setupDelegates {
+- (void)setupDelegates {
     [self.sourceLanguageTable setDelegate:self];
     [self.sourceLanguageTable setDataSource:self];
     
@@ -64,7 +64,7 @@
     [self.targetLanguageTable setDataSource:self];
 }
 
-- (void) setupViewResizes {
+- (void)setupViewResizes {
     @weakify(self);
     
     [[[RACObserve(self.sourceLanguageTableScroll, frame)
@@ -121,7 +121,7 @@
 
 #pragma mark - Table Views
 
--(NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     
     STLanguageCell *Cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
     
@@ -143,7 +143,7 @@
     return Cell;
 }
 
--(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
+- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return self.LanguageCellHeight.floatValue;
     
 }
@@ -152,7 +152,7 @@
     return NumberOfRows;
 }
 
--(void)tableViewSelectionDidChange:(NSNotification *)notification {
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
     if(notification.object == self.sourceLanguageTable)
         self.ViewModel.sourceSelectedLanguage = [self.ViewModel.sourceLanguages objectAtIndex:[self.sourceLanguageTable selectedRow]];
     else if(notification.object == self.targetLanguageTable)

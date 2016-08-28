@@ -44,7 +44,7 @@
     [self bindViewModel];
 }
 
-- (void) setupSourceTextPlaceholder {
+- (void)setupSourceTextPlaceholder {
     @weakify(self);
     
     [[self.sourceTextView.rac_textSignal
@@ -68,7 +68,7 @@
         }];
 }
 
-- (void) setupSourceTextScrolling {
+- (void)setupSourceTextScrolling {
     @weakify(self);
     
     [[self.sourceTextView.rac_textSignal merge:RACObserve(self, clearPressed)]
@@ -92,7 +92,7 @@
 
 }
 
--(void)bindViewModel {
+- (void)bindViewModel {
     RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
     
 }

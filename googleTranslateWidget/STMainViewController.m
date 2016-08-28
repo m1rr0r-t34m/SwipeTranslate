@@ -41,6 +41,7 @@
     
     [self.splitView setDelegate:self];
     
+    //TODO: SMTHG MORE CLEVER??
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setupFlow];
     });
@@ -67,7 +68,6 @@
                 
                 
                 [[STTranslationManager Manager] getTranslationForString:text SourceLanguage:sourceLangKey AndTargetLanguage:targetLangKey];
-                
             }];
     
 }

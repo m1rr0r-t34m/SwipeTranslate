@@ -8,7 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface STLanguageCell : NSTableCellView
+@interface STLanguageCell : NSTableRowView
+
+@property (assign) NSInteger index;
 @property (weak) IBOutlet NSTextField *Label;
+
 
 @end

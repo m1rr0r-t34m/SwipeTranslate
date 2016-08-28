@@ -12,8 +12,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#define NumberOfRows 10
-#define NSTableViewHeightBug 32
+#define NumberOfRows 7
+#define NSTableViewHeightBug 0
+
 
 @interface STLeftSplitView () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -44,9 +45,15 @@
     [super viewDidLoad];
     
     [self setupDelegates];
-    [self setupViewResizes];
-
     
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self setupViewResizes];
+    });
+    
+    
+    
+    [self.sourceLanguageTable setRefusesFirstResponder:YES];
+    [self.targetLanguageTable setRefusesFirstResponder:YES];
     [self.sourceLanguageTable reloadData];
     [self.targetLanguageTable reloadData];
 }
@@ -106,7 +113,7 @@
              return @(CGRectGetHeight([FrameValue rectValue]));
          }]
          map:^id(NSNumber *Height) {
-             return @(roundf(Height.floatValue/2));
+             return @(roundf(Height.floatValue/3));
          }]
          distinctUntilChanged]
          filter:^BOOL(NSNumber *FontSize) {
@@ -119,8 +126,14 @@
          }]
          subscribeNext:^(NSNumber *FontSize) {
             for(int i =0;i<NumberOfRows;i++) {
-                STLanguageCell *cell = [self.sourceLanguageTable viewAtColumn:0 row:i makeIfNecessary:NO];
-                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:[FontSize integerValue]]];
+                
+                STLanguageCell *cell = [self.sourceLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+                [cell.Label setNeedsLayout:YES];
+                
+                cell = [self.targetLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+                [cell.Label setNeedsLayout:YES];
             }
         
          
@@ -152,11 +165,11 @@
 
 #pragma mark - Table Views
 
-
--(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+-(NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     STLanguageCell *Cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
     
-
+    [Cell setIndex:row];
+    
     [Cell.Label setTextColor:[NSColor blackColor]];
     
     [Cell.Label setStringValue:@"English"];
@@ -171,13 +184,17 @@
         if(self.ViewModel.targetLanguages.count > row)
             [Cell.Label setStringValue:[self.ViewModel.targetLanguages objectAtIndex:row]];
     }
-
     
     
     self.SampleCell = Cell;
     
     return Cell;
 }
+//-(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+//    
+//}
+
+
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
     return self.LanguageCellHeight.floatValue;
@@ -195,5 +212,6 @@
     else if(notification.object == self.targetLanguageTable)
         self.ViewModel.targetSelectedLanguage = [self.ViewModel.targetLanguages objectAtIndex:[self.targetLanguageTable selectedRow]];
 }
+
 
 @end

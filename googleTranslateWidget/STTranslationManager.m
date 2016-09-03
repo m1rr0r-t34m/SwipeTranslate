@@ -68,7 +68,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.result = responseObject;
         
-        if ([responseObject objectForKey:@"detected"] != nil) {
+        if ([responseObject objectForKey:@"detected"]) {
             NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
             [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
         }
@@ -89,7 +89,7 @@
     self.currentTask = [self.manager GET:dictionaryBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        if ([[responseObject objectForKey:@"def"] allKeys].count == 0) {
+        if ([[responseObject objectForKey:@"def"] count]) {
             //Dictionary response not available, handle previous request
             return;
         }

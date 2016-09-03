@@ -14,4 +14,7 @@
 
 @interface STLanguages : NSObject
 
++ (NSString *)languageForKey:(NSString *)key;
++ (NSString *)keyForLanguage:(NSString *)language;
+
 @end

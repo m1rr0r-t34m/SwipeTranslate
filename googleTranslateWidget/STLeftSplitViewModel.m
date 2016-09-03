@@ -55,7 +55,22 @@
     
     self.sourceLanguages = sourceLanguages;
     self.targetLanguages = targetLanguages;
+}
+
+- (void)setSourceSelected:(NSInteger)index {
+    NSString *language = [self sourceLanguages][index];
+    NSString *key = [STLanguages keyForLanguage:language];
     
+    self.sourceSelectedLanguage = language;
+    self.sourceSelectedLanguageKey = key;
+}
+
+- (void)setTargetSelected:(NSInteger)index {
+    NSString *language = [self targetLanguages][index];
+    NSString *key = [STLanguages keyForLanguage:language];
+    
+    self.targetSelectedLanguage = language;
+    self.targetSelectedLanguageKey = key;
 }
 
 @end

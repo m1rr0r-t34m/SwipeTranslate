@@ -153,10 +153,15 @@
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    if(notification.object == self.sourceLanguageTable)
-        self.ViewModel.sourceSelectedLanguage = [self.ViewModel.sourceLanguages objectAtIndex:[self.sourceLanguageTable selectedRow]];
-    else if(notification.object == self.targetLanguageTable)
-        self.ViewModel.targetSelectedLanguage = [self.ViewModel.targetLanguages objectAtIndex:[self.targetLanguageTable selectedRow]];
+    
+    if(notification.object == self.sourceLanguageTable) {
+        [[self ViewModel] setSourceSelected:[[self sourceLanguageTable] selectedRow]];
+    }
+    
+    else if(notification.object == self.targetLanguageTable) {
+        [[self ViewModel] setTargetSelected:[[self targetLanguageTable] selectedRow]];
+    }
+    
 }
 
 

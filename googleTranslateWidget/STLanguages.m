@@ -10,4 +10,16 @@
 
 @implementation STLanguages
 
+//TODO: Auto language
+
++ (NSString *)languageForKey:(NSString *)key {
+    NSInteger index = [LanguageKeys indexOfObject:key];
+    return [Languages objectAtIndex:index];
+}
+
++ (NSString *)keyForLanguage:(NSString *)language {
+    NSInteger index = [Languages indexOfObject:language];
+    return [LanguageKeys objectAtIndex:index];
+}
+
 @end

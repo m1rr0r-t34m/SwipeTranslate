@@ -78,7 +78,7 @@
                 NSString *targetLangKey = [LanguageKeys objectAtIndex:[Languages indexOfObject:targetLang]];
                 
                 
-                [[STTranslationManager Manager] getTranslationForString:text SourceLanguage:sourceLangKey AndTargetLanguage:targetLangKey];
+                [[STTranslationManager manager] getTranslationForString:text SourceLanguage:sourceLangKey AndTargetLanguage:targetLangKey];
             }];
     
 }

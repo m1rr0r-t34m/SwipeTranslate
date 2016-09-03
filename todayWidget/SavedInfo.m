@@ -9,16 +9,17 @@
 #import "SavedInfo.h"
 
 @implementation SavedInfo
-+(SavedInfo *)localDefaults {
-    SavedInfo *instance=[super new];
-    [instance setUserDefaults:[NSUserDefaults standardUserDefaults]];
-    [instance setType:@"local"];
-    if([instance isEmpty])
-        [instance createInitialDefaults];
-    return instance;
-}
+//+(SavedInfo *)localDefaults {
+//    SavedInfo *instance=[super new];
+//    
+//    //[instance setUserDefaults:[NSUserDefaults standardUserDefaults]];
+//    //[instance setType:@"local"];
+//    if([instance isEmpty])
+//        [instance createInitialDefaults];
+//    return instance;
+//}
 
--(void)createInitialDefaults {
++(void)createInitialDefaults {
 
         [self setInputText:@""];
         [self setOutputText:@""];
@@ -30,10 +31,9 @@
 
     
 }
--(BOOL)isEmpty {
-    NSString *a = [self sourceSelection];
-    NSLog(a);
 
++(BOOL)isEmpty {
+    
     if(![self hasLanguages]) {
         return YES;
     }
@@ -47,8 +47,10 @@
                 return YES;
         }
     }
-    if(![self hasChosenLanguages])
+    
+    if(![self hasChosenLanguages]) {
         return YES;
+    }
     else {
         for(int i=0;i<[[self sourceLanguages] count];i++){
             if(![[NSArray getValuesArray:NO] containsObject:[self sourceSelection]])
@@ -62,10 +64,11 @@
 
     return NO;
 }
--(BOOL)hasLanguages {
-    if([ self.userDefaults objectForKey:@"sourceDefault"]&&[[self userDefaults]objectForKey:@"targetDefault"])
+
++(BOOL)hasLanguages {
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"sourceDefault"]&&[[NSUserDefaults standardUserDefaults]objectForKey:@"targetDefault"])
     {
-        if([[self.userDefaults objectForKey:@"sourceDefault"] count]==5&&[[self.userDefaults objectForKey:@"targetDefault"] count]==5)
+        if([[[NSUserDefaults standardUserDefaults] objectForKey:@"sourceDefault"] count]==5&&[[[NSUserDefaults standardUserDefaults] objectForKey:@"targetDefault"] count]==5)
             return YES;
         else
             return NO;
@@ -74,93 +77,93 @@
     return NO;
 }
 
--(BOOL)hasUsedSidebar {
-    if ([self.userDefaults objectForKey:@"sidebarUsage"])
++(BOOL)hasUsedSidebar {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"sidebarUsage"])
         return true;
     else
         return false;
 }
 
 
--(BOOL)hasChosenLanguages {
-    if([[self userDefaults]objectForKey:@"sourceDefaultSelection"]&&[[self userDefaults] objectForKey:@"targetDefaultSelection"]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"sourceDefaultSelection"]]scanInt:nil]&&![[NSScanner scannerWithString:[[self userDefaults]stringForKey:@"targetDefaultSelection"]]scanInt:nil])
++(BOOL)hasChosenLanguages {
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"sourceDefaultSelection"]&&[[NSUserDefaults standardUserDefaults] objectForKey:@"targetDefaultSelection"]&&![[NSScanner scannerWithString:[[NSUserDefaults standardUserDefaults]stringForKey:@"sourceDefaultSelection"]]scanInt:nil]&&![[NSScanner scannerWithString:[[NSUserDefaults standardUserDefaults]stringForKey:@"targetDefaultSelection"]]scanInt:nil])
         return YES;
     return NO;
 }
--(BOOL)hasDefaultText {
-    if([[self userDefaults]objectForKey:@"defaultInput"]&&[[self userDefaults]objectForKey:@"defaultOutput"])
++(BOOL)hasDefaultText {
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"defaultInput"]&&[[NSUserDefaults standardUserDefaults]objectForKey:@"defaultOutput"])
         return YES;
     return NO;
 }
--(BOOL)hasAutoLanguage {
-    if([[self userDefaults]objectForKey:@"autoLanguage"])
++(BOOL)hasAutoLanguage {
+    if([[NSUserDefaults standardUserDefaults]objectForKey:@"autoLanguage"])
         return YES;
     return NO;
 }
 
--(NSString *)inputText {
-    return [[self userDefaults]stringForKey:@"defaultInput"];
++(NSString *)inputText {
+    return [[NSUserDefaults standardUserDefaults]stringForKey:@"defaultInput"];
 }
--(NSString *)outputText {
-     return [[self userDefaults]stringForKey:@"defaultOutput"];
++(NSString *)outputText {
+     return [[NSUserDefaults standardUserDefaults]stringForKey:@"defaultOutput"];
 }
--(NSArray *)sourceLanguages {
-    return [[self userDefaults]arrayForKey:@"sourceDefault"];
++(NSArray *)sourceLanguages {
+    return [[NSUserDefaults standardUserDefaults]arrayForKey:@"sourceDefault"];
 }
--(NSArray *)targetLanguages {
-    return [[self userDefaults]arrayForKey:@"targetDefault"];
++(NSArray *)targetLanguages {
+    return [[NSUserDefaults standardUserDefaults]arrayForKey:@"targetDefault"];
 }
--(NSString *)sourceSelection {
-    return [[self userDefaults] objectForKey:@"sourceDefaultSelection"];
++(NSString *)sourceSelection {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"sourceDefaultSelection"];
 }
--(NSString *)targetSelection {
-    return [[self userDefaults] objectForKey:@"targetDefaultSelection"];
++(NSString *)targetSelection {
+    return [[NSUserDefaults standardUserDefaults]objectForKey:@"targetDefaultSelection"];
 }
--(NSString *)autoLanguage {
-    return [[self userDefaults] stringForKey:@"autoLanguage"];
++(NSString *)autoLanguage {
+    return [[NSUserDefaults standardUserDefaults] stringForKey:@"autoLanguage"];
 }
--(BOOL)autoPushed {
-    return [[self userDefaults] boolForKey:@"autoPushed"];
-}
-
-
--(void)setInputText:(NSString *)input {
-    [[self userDefaults]setObject:input forKey:@"defaultInput"];
-    [[self userDefaults] synchronize];
-}
--(void)setOutputText:(NSString *)output {
-    [[self userDefaults]setObject:output forKey:@"defaultOutput"];
-    [[self userDefaults] synchronize];
-}
--(void)setSourceLanguages:(NSArray *)array {
-    [[self userDefaults]setObject:array forKey:@"sourceDefault"];
-    [[self userDefaults] synchronize];
-}
--(void)setTargetLanguages:(NSArray *)array {
-    [[self userDefaults]setObject:array forKey:@"targetDefault"];
-    [[self userDefaults] synchronize];
-}
--(void)setSourceSelection:(NSString *)lang {
-    [[self userDefaults] setObject:lang forKey:@"sourceDefaultSelection"];
-    [[self userDefaults] synchronize];
-}
--(void)setTargetSelection:(NSString *)lang {
-    [[self userDefaults] setObject:lang forKey:@"targetDefaultSelection"];
-    [[self userDefaults] synchronize];
-}
--(void)setAutoLanguage:(NSString *)lang {
-    [[self userDefaults] setObject:lang forKey:@"autoLanguage"];
-}
--(void)setAutoPushed:(BOOL)value {
-    [[self userDefaults] setBool:value forKey:@"autoPushed"];
++(BOOL)autoPushed {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"autoPushed"];
 }
 
--(void)setUsedSidebar:(BOOL)value {
-    [[self userDefaults] setBool:value forKey:@"sidebarUsage"];
+
++(void)setInputText:(NSString *)input {
+    [[NSUserDefaults standardUserDefaults]setObject:input forKey:@"defaultInput"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setOutputText:(NSString *)output {
+    [[NSUserDefaults standardUserDefaults]setObject:output forKey:@"defaultOutput"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setSourceLanguages:(NSArray *)array {
+    [[NSUserDefaults standardUserDefaults]setObject:array forKey:@"sourceDefault"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setTargetLanguages:(NSArray *)array {
+    [[NSUserDefaults standardUserDefaults]setObject:array forKey:@"targetDefault"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setSourceSelection:(NSString *)lang {
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:@"sourceDefaultSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setTargetSelection:(NSString *)lang {
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:@"targetDefaultSelection"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
++(void)setAutoLanguage:(NSString *)lang {
+    [[NSUserDefaults standardUserDefaults] setObject:lang forKey:@"autoLanguage"];
+}
++(void)setAutoPushed:(BOOL)value {
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"autoPushed"];
 }
 
--(void)removeSidebarDefault {
-    [[self userDefaults] removeObjectForKey:@"sidebarUsage"];
++(void)setUsedSidebar:(BOOL)value {
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:@"sidebarUsage"];
+}
+
++(void)removeSidebarDefault {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sidebarUsage"];
 }
 
 @end

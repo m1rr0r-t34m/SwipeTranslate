@@ -8,43 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		3A027B4784FC1670EB3E7BFD /* libPods-Swipe Translate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */; };
-		754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 754CE1061C67E47100A2FB5A /* FavouritesListView.m */; };
-		754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
-		754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
-		758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 758DDE351BDC2F0500210924 /* LanguageSuggestionMenu.m */; };
-		75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B196681C6D304100796584 /* FavouritesDataHandler.m */; };
-		75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */; };
 		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
-		75FEA2401C91B115006B9B1D /* FavouritesHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = 75FEA23F1C91B115006B9B1D /* FavouritesHintView.m */; };
 		A8C0A0A13DB5A762BB656252 /* libPods-Swipe Translate Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07BC85D0DDB0765A13935BD8 /* libPods-Swipe Translate Widget.a */; };
-		CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
-		CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFFA6E1BB065EE007E2DD2 /* LanguagesStorage.m */; };
-		CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
-		CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
-		CD12BB721BD84AF8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
-		CD1A16CE1BF5525A00EA90D3 /* HiddenScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1A16CD1BF5525A00EA90D3 /* HiddenScroll.m */; };
 		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
-		CD253CDE1BDABDF000662162 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD253CDD1BDABDF000662162 /* DataSource.m */; };
-		CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */ = {isa = PBXBuildFile; fileRef = CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
-		CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */; };
 		CD5502721D7197E80089484D /* STLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5502711D7197E80089484D /* STLanguages.m */; };
-		CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F591BDC418F00E4B850 /* InnerScroll.m */; };
-		CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F5F1BE3B0F400E4B850 /* LanguageTable.m */; };
-		CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F9F651BE5294900E4B850 /* InputScroll.m */; };
 		CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
 		CD733F4A1C63A701007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
-		CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; };
 		CD7CED821BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
-		CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8EEB901B8E69AA00E2991B /* TodayViewController.m */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
 		CDB84E051CA04FC700A919AA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDB84E021CA04FC700A919AA /* iRate.bundle */; };
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
@@ -53,7 +31,6 @@
 		CDC13ED31D73571E0093A9F0 /* STTranslationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */; };
 		CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
-		CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCE21B8E690300547F5C /* ViewController.m */; };
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
 		CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF791D663A560031FC94 /* STMainViewController.m */; };
 		CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */; };
@@ -62,7 +39,6 @@
 		CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */; };
 		CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */; };
 		CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */; };
-		CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD783321BF1265E00F32CD2 /* LanguageCell.m */; };
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
 		CDFF839A1BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
@@ -702,7 +678,6 @@
 				CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */,
 				CDBFFA6F1BB065EE007E2DD2 /* LanguagesStorage.m in Sources */,
 				75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */,
-				CD8EEB911B8E69AA00E2991B /* TodayViewController.m in Sources */,
 				CD7CED821BD9772600789E8E /* ValidateTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,40 +688,17 @@
 			files = (
 				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
 				CDD1FF831D6645920031FC94 /* STMainViewControllerModel.m in Sources */,
-				CD12BB6D1BD7C3CE003ED768 /* SeparatedButton.m in Sources */,
-				CDD783331BF1265E00F32CD2 /* LanguageCell.m in Sources */,
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,
-				CD12BB6C1BD7C3CB003ED768 /* Parser.m in Sources */,
-				CD7CED811BD9772600789E8E /* ValidateTextView.m in Sources */,
-				CD6F9F5A1BDC418F00E4B850 /* InnerScroll.m in Sources */,
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,
-				75FEA2401C91B115006B9B1D /* FavouritesHintView.m in Sources */,
-				CD2608471C6E543E0017E10F /* NSAttributedString+Trimming.m in Sources */,
-				CD253CDE1BDABDF000662162 /* DataSource.m in Sources */,
-				CD12BB6A1BD7C1D5003ED768 /* TodayViewController.m in Sources */,
-				CD6F9F601BE3B0F400E4B850 /* LanguageTable.m in Sources */,
-				754D685C1BD7A6DB00C75CFE /* PopupMenu.m in Sources */,
-				CD9DA14B1BE564CC00B1D0CA /* InputTextView.m in Sources */,
 				CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */,
-				CD33F7F71C67FE5A00B6D06C /* NSMutableSet+TouchSet.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */,
-				754D685B1BD7A6D500C75CFE /* RequestHandler.m in Sources */,
-				75B196691C6D304100796584 /* FavouritesDataHandler.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CD5502721D7197E80089484D /* STLanguages.m in Sources */,
-				CD12BB6B1BD7C3C6003ED768 /* LanguagesStorage.m in Sources */,
-				CDCFCCE31B8E690300547F5C /* ViewController.m in Sources */,
-				754CE1071C67E47100A2FB5A /* FavouritesListView.m in Sources */,
 				CDC13ED31D73571E0093A9F0 /* STTranslationManager.m in Sources */,
-				758DDE361BDC2F0500210924 /* LanguageSuggestionMenu.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
 				CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */,
-				75F5A8221BF5412C009A5CBC /* MainApplicationMenu.m in Sources */,
 				CDD1FF891D66EA880031FC94 /* STLeftSplitView.m in Sources */,
 				CDB84E061CA04FC700A919AA /* iRate.m in Sources */,
-				CD1A16CE1BF5525A00EA90D3 /* HiddenScroll.m in Sources */,
-				CD6F9F661BE5294900E4B850 /* InputScroll.m in Sources */,
-				CD12BB721BD84AF8003ED768 /* WidgetView.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

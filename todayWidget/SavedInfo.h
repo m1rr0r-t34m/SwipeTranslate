@@ -11,39 +11,39 @@
 
 @interface SavedInfo : NSUserDefaults
 
-+(SavedInfo *)localDefaults;
+//+(SavedInfo *)localDefaults;
 
 
--(BOOL)hasLanguages;
--(BOOL)hasChosenLanguages;
--(BOOL)hasDefaultText;
--(BOOL)hasAutoLanguage;
--(BOOL)hasUsedSidebar;
++(BOOL)hasLanguages;
++(BOOL)hasChosenLanguages;
++(BOOL)hasDefaultText;
++(BOOL)hasAutoLanguage;
++(BOOL)hasUsedSidebar;
 
 
--(NSString *)inputText;
--(NSString *)outputText;
--(NSArray *)sourceLanguages;
--(NSArray *)targetLanguages;
--(NSString *)sourceSelection;
--(NSString *)targetSelection;
--(NSString *)autoLanguage;
--(BOOL)autoPushed;
++(NSString *)inputText;
++(NSString *)outputText;
++(NSArray *)sourceLanguages;
++(NSArray *)targetLanguages;
++(NSString *)sourceSelection;
++(NSString *)targetSelection;
++(NSString *)autoLanguage;
++(BOOL)autoPushed;
 
--(void)setInputText:(NSString *)input;
--(void)setOutputText:(NSString *)output;
--(void)setSourceLanguages:(NSArray *)array;
--(void)setTargetLanguages:(NSArray *)array;
--(void)setSourceSelection:(NSString *)lang;
--(void)setTargetSelection:(NSString *)lang;
--(void)setAutoLanguage:(NSString *)lang;
--(void)setAutoPushed:(BOOL)value;
--(void)setUsedSidebar:(BOOL)value;
++(void)setInputText:(NSString *)input;
++(void)setOutputText:(NSString *)output;
++(void)setSourceLanguages:(NSArray *)array;
++(void)setTargetLanguages:(NSArray *)array;
++(void)setSourceSelection:(NSString *)lang;
++(void)setTargetSelection:(NSString *)lang;
++(void)setAutoLanguage:(NSString *)lang;
++(void)setAutoPushed:(BOOL)value;
++(void)setUsedSidebar:(BOOL)value;
 
--(BOOL)isEmpty;
++(BOOL)isEmpty;
 
--(void)removeSidebarDefault;
++(void)removeSidebarDefault;
 
-@property NSUserDefaults *userDefaults;
-@property NSString *type;
+//@property NSUserDefaults *userDefaults;
+//@property NSString *type;
 @end

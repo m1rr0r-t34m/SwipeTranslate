@@ -81,8 +81,14 @@
 - (void)bindViewModel {
     RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
     
-    [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *ModelText) {
-        self.sourceTextView.string = ModelText;
+    @weakify(self);
+    [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *modelText) {
+        @strongify(self);
+        self.sourceTextView.string = modelText;
+    }];
+    [[RACObserve(self.ViewModel, outputText) ignore:nil] subscribeNext:^(NSAttributedString *modelText) {
+        @strongify(self);
+        self.targetTextView.textStorage.attributedString = modelText;
     }];
 }
 

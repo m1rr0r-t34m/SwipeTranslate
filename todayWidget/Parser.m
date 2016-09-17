@@ -314,4 +314,15 @@
     return outputText;
 
 }
+
++(NSAttributedString *)parsedResult:(NSDictionary *)receivedData {
+    if([receivedData objectForKey:@"text"] && [receivedData objectForKey:@"text"][0]) {
+        NSDictionary *translateResponseFontAttributes = @{NSFontAttributeName : [NSFont systemFontOfSize:16.0]};
+        return [[NSAttributedString alloc] initWithString:[receivedData objectForKey:@"text"][0] attributes:translateResponseFontAttributes];
+    }
+    else {
+        //TODO: Somehow handle mainApp/widget detection/switch
+        return [Parser outputStringForMainAppDictionary:receivedData];
+    }
+}
 @end

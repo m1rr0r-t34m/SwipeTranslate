@@ -11,5 +11,6 @@
 @interface STRightSplitViewModel : NSObject
 
 @property (strong, nonatomic) NSString *inputText;
+@property (strong, nonatomic) NSAttributedString *outputText;
 
 @end

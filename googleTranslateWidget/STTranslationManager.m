@@ -23,7 +23,7 @@
 @end
 
 @implementation STTranslationManager
-
+//TODO: Change keys
 
 + (instancetype)manager {
     
@@ -64,6 +64,10 @@
                             @"lang" : languages,
                          @"options" : @"1"};
     
+    //Review
+    //Зачем (75) такая логика?
+    //Мне кажется лучше if (sourceLang != auto)
+    //detected может вернуть неправильный язык, и если пользователь его указал сам - нужно его и использовать
     self.currentTask = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.result = responseObject;

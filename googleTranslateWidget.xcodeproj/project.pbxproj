@@ -16,6 +16,7 @@
 		CD5502721D7197E80089484D /* STLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5502711D7197E80089484D /* STLanguages.m */; };
 		CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
 		CD733F4A1C63A701007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
+		CD752FF11D8DEF960036591D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED821BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; };
@@ -686,6 +687,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD752FF11D8DEF960036591D /* Parser.m in Sources */,
 				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
 				CDD1FF831D6645920031FC94 /* STMainViewControllerModel.m in Sources */,
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,

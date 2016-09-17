@@ -15,6 +15,6 @@
 @property (strong, nonatomic) NSString *sourceLanguage;
 @property (strong, nonatomic) NSString *targetLanguage;
 
-@property (strong, nonatomic) NSString *translatedText;
+@property (strong, nonatomic) NSAttributedString *translatedText;
 
 @end

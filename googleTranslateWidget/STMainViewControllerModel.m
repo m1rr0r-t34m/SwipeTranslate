@@ -10,6 +10,7 @@
 
 #import "STLanguages.h"
 #import "STTranslationManager.h"
+#import "Parser.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
@@ -24,12 +25,25 @@
 
 - (void) setupBindings {
     
-    [self rac_liftSelector:@selector(performTranslationFor:from:to:)
-               withSignals:[RACObserve(self, sourceText) ignore:nil],
-                           [RACObserve(self, sourceLanguage) ignore:nil],
-                           [RACObserve(self, targetLanguage) ignore:nil], nil];
+    RACSignal *translationNeedSignal =
+    [RACSignal combineLatest:@[[RACObserve(self, sourceText) ignore:nil],
+                       [RACObserve(self, sourceLanguage) ignore:nil],
+                       [RACObserve(self, targetLanguage) ignore:nil]]];
     
-    //RACObserve([STTranslationManager manager], result)
+    [self rac_liftSelector:@selector(performTranslationFor:from:to:)
+               withSignalOfArguments:[translationNeedSignal throttle:0.5]];
+    
+    RACSignal *translationSignal =
+    [[[RACObserve([STTranslationManager manager], result)
+        ignore:nil] 
+        filter:^BOOL(NSDictionary *receivedData) {
+            return [[receivedData allKeys] count];
+        }]
+        map:^id(NSDictionary *receivedData) {
+            return [Parser parsedResult:receivedData];
+        }];
+    
+    RAC(self, translatedText) = translationSignal;
     
 }
 - (void) performTranslationFor:(NSString *)text from:(NSString *)source to:(NSString *)target {

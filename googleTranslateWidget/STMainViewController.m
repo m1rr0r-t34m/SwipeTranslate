@@ -58,6 +58,8 @@
     RAC(self.ViewModel, sourceText) = [RACObserve(self.rightView.ViewModel, inputText) ignore:nil];
     RAC(self.ViewModel, sourceLanguage) = [RACObserve(self.leftView.ViewModel, sourceSelectedLanguage) ignore:nil];
     RAC(self.ViewModel, targetLanguage) = [RACObserve(self.leftView.ViewModel, targetSelectedLanguage) ignore:nil];
+    
+    RAC(self.rightView.ViewModel, outputText) = [RACObserve(self.ViewModel, translatedText) ignore:nil];
 }
 
 

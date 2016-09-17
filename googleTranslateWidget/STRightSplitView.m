@@ -39,15 +39,16 @@
     [self.sourceTextView setTextColor:[NSColor blackColor]];
     [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:24]];
     
+    [self bindViewModel];
     [self setupSourceTextPlaceholder];
     [self setupSourceTextScrolling];
-    [self bindViewModel];
+    
 }
 
 - (void)setupSourceTextPlaceholder {
     @weakify(self);
     
-    [[self.sourceTextView.rac_textSignal
+    [[RACObserve(self.ViewModel, inputText)
         filter:^BOOL(NSString *Text) {
             @strongify(self);
             return (Text.length == 0 && self.placeholderLabel.alphaValue == 0);
@@ -57,7 +58,7 @@
             [self.placeholderLabel setAlphaValue:1.0];
         }];
     
-    [[self.sourceTextView.rac_textSignal
+    [[RACObserve(self.ViewModel, inputText)
         filter:^BOOL(NSString *Text) {
             @strongify(self);
             return (Text.length !=0 && self.placeholderLabel.alphaValue != 0);
@@ -94,10 +95,12 @@
 
 - (void)bindViewModel {
     RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
-    
+    [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *ModelText) {
+        self.sourceTextView.string = ModelText;
+    }];
 }
 - (IBAction)clearButtonPress:(id)sender {
-    [self.sourceTextView setString:@""];
+    [self.ViewModel setInputText:@""];
     self.clearPressed = @(YES);
     
 }

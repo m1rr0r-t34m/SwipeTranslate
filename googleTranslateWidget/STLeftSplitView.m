@@ -12,7 +12,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#define NumberOfRows 7
+#define NumberOfRows 5
 
 @interface STLeftSplitView () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -105,14 +105,14 @@
          subscribeNext:^(NSNumber *FontSize) {
              
             for(int i =0;i<NumberOfRows;i++) {
-                
-                STLanguageCell *cell = [self.sourceLanguageTable rowViewAtRow:i makeIfNecessary:NO];
-                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
-                [cell.Label setNeedsLayout:YES];
-                
-                cell = [self.targetLanguageTable rowViewAtRow:i makeIfNecessary:NO];
-                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
-                [cell.Label setNeedsLayout:YES];
+//                
+//                STLanguageCell *cell = [self.sourceLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+//                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+//                [cell.Label setNeedsLayout:YES];
+//                
+//                cell = [self.targetLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+//                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+//                [cell.Label setNeedsLayout:YES];
             }
         
          }];

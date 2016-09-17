@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface STMainViewControllerModel : NSObject
 
+@property (strong, nonatomic) NSString *sourceText;
+@property (strong, nonatomic) NSString *sourceLanguage;
+@property (strong, nonatomic) NSString *targetLanguage;
 
-
+@property (strong, nonatomic) NSString *translatedText;
 
 @end

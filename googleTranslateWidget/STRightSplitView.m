@@ -40,69 +40,55 @@
     [self.sourceTextView setFont:[NSFont fontWithName:@"Helvetica Neue Thin" size:24]];
     
     [self bindViewModel];
-    [self setupSourceTextPlaceholder];
-    [self setupSourceTextScrolling];
-    
+    [self setupSourceTextView];
 }
 
-- (void)setupSourceTextPlaceholder {
+- (void)setupSourceTextView {
+    
+    RACSignal *PlaceholderAlphaSignal =
+    [[RACObserve(self.ViewModel, inputText)
+        map:^id(NSString *Text) {
+            return @(Text.length == 0);
+        }]
+        distinctUntilChanged];
+    
+    RAC(self.placeholderLabel, alphaValue) = PlaceholderAlphaSignal;
+    
     @weakify(self);
     
-    [[RACObserve(self.ViewModel, inputText)
-        filter:^BOOL(NSString *Text) {
-            @strongify(self);
-            return (Text.length == 0 && self.placeholderLabel.alphaValue == 0);
-        }]
-        subscribeNext:^(NSString *Text) {
-            @strongify(self);
-            [self.placeholderLabel setAlphaValue:1.0];
-        }];
+    RACSignal *SourceTextViewElasticitySignal =
+    [[RACObserve(self.ViewModel, inputText) merge:RACObserve(self, clearPressed)]
+     map:^id(id value) {
+         @strongify(self);
+         
+         unsigned long numberOfLines, index, numberOfGlyphs = [self.sourceTextView.layoutManager numberOfGlyphs];
+         NSRange lineRange;
+         
+         for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
+             [self.sourceTextView.layoutManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&lineRange];
+             index = NSMaxRange(lineRange);
+         }
+         
+         if([self.sourceTextView.string containsString:@"\n"] || numberOfLines > 1)
+             return @(NSScrollElasticityAllowed);
+         else
+             return @(NSScrollElasticityNone);
+     }];
     
-    [[RACObserve(self.ViewModel, inputText)
-        filter:^BOOL(NSString *Text) {
-            @strongify(self);
-            return (Text.length !=0 && self.placeholderLabel.alphaValue != 0);
-        }]
-        subscribeNext:^(NSString *Text) {
-            @strongify(self);
-            [self.placeholderLabel setAlphaValue:0.0];
-        }];
-}
-
-- (void)setupSourceTextScrolling {
-    @weakify(self);
-    
-    [[self.sourceTextView.rac_textSignal merge:RACObserve(self, clearPressed)]
-        subscribeNext:^(id x) {
-            @strongify(self);
-            
-            unsigned long numberOfLines, index, numberOfGlyphs = [self.sourceTextView.layoutManager numberOfGlyphs];
-            NSRange lineRange;
-            
-            for (numberOfLines = 0, index = 0; index < numberOfGlyphs; numberOfLines++){
-                (void) [self.sourceTextView.layoutManager lineFragmentRectForGlyphAtIndex:index effectiveRange:&lineRange];
-                index = NSMaxRange(lineRange);
-            }
-            
-            if([self.sourceTextView.string containsString:@"\n"] || numberOfLines > 1)
-                [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityAllowed];
-            else
-                [self.sourceTextView.enclosingScrollView setVerticalScrollElasticity:NSScrollElasticityNone];
-        }];
-    
-
+    RAC(self.sourceTextView.enclosingScrollView, verticalScrollElasticity) = SourceTextViewElasticitySignal;
 }
 
 - (void)bindViewModel {
     RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
+    
     [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *ModelText) {
         self.sourceTextView.string = ModelText;
     }];
 }
+
 - (IBAction)clearButtonPress:(id)sender {
     [self.ViewModel setInputText:@""];
     self.clearPressed = @(YES);
-    
 }
 
 #pragma mark - Text Views

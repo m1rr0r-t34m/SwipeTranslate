@@ -8,6 +8,7 @@
 
 #import "STRightSplitView.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "STTranslationManager.h"
 
 
 @interface STRightSplitView () <NSTextViewDelegate>
@@ -85,6 +86,11 @@
     [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *modelText) {
         @strongify(self);
         self.sourceTextView.string = modelText;
+        
+        if(![modelText length]) {
+            [[STTranslationManager manager] cancelCurrentSession];
+            self.targetTextView.string = @"";
+        }
     }];
     [[RACObserve(self.ViewModel, outputText) ignore:nil] subscribeNext:^(NSAttributedString *modelText) {
         @strongify(self);

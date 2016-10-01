@@ -10,9 +10,9 @@
 #import "TodayViewController.h"
 
 @interface Parser : NSObject
-+(NSString *)Text:(NSData *)data;
++(NSString *)Text:(NSDictionary *)dict;
 +(NSString *)AutoLanguage:(NSData *)data;
-+(NSDictionary *)Dictionary:(NSData *)data;
++(NSDictionary *)Dictionary:(NSDictionary *)dict;
 
 +(NSAttributedString *)parsedResult:(NSDictionary *)receivedData;
 +(NSAttributedString *)outputStringForMainAppDictionary:(NSDictionary *)receivedData;

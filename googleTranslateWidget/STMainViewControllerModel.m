@@ -34,13 +34,16 @@
                withSignalOfArguments:[translationNeedSignal throttle:0.5]];
     
     RACSignal *translationSignal =
-    [[[RACObserve([STTranslationManager manager], result)
+    [[[[RACObserve([STTranslationManager manager], result)
         ignore:nil] 
         filter:^BOOL(NSDictionary *receivedData) {
             return [[receivedData allKeys] count];
         }]
         map:^id(NSDictionary *receivedData) {
             return [Parser parsedResult:receivedData];
+        }]
+        filter:^BOOL(NSAttributedString *result) {
+            return [result length] > 0;
         }];
     
     RAC(self, translatedText) = translationSignal;

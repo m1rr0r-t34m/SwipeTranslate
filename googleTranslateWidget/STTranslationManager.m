@@ -45,6 +45,7 @@
     return self;
 }
 
+//TODO: Maybe we can store translation response in the private buffer (to avoid multiple public object updates)
 - (void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang {
     
     [self cancelCurrentSession];
@@ -64,22 +65,19 @@
                             @"lang" : languages,
                          @"options" : @"1"};
     
-    //Review
-    //Зачем (75) такая логика?
-    //Мне кажется лучше if (sourceLang != auto)
-    //detected может вернуть неправильный язык, и если пользователь его указал сам - нужно его и использовать
     self.currentTask = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.result = responseObject;
         
-        if ([responseObject objectForKey:@"detected"]) {
-            NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
-            [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
+        if([sourceLang isEqualToString:@"auto"] && [responseObject objectForKey:@"detected"]) {
+                NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
+                [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
         }
         else {
             [self dictionaryTranslationForString:string sourceLanguage:sourceLang targetLanguage:targetLang];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //TODO: Do something, reschedule, etc
         NSLog(@"Failed to perform translate request, %@", error);
     }];
 }
@@ -93,8 +91,8 @@
     self.currentTask = [self.manager GET:dictionaryBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
-        if ([[responseObject objectForKey:@"def"] count]) {
-            //Dictionary response not available, handle previous request
+        if (![[responseObject objectForKey:@"def"] count]) {
+            //Dictionary response not available, handle previous response
             return;
         }
         else {

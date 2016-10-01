@@ -9,8 +9,7 @@
 #import "Parser.h"
 
 @implementation Parser
-+(NSString *)Text:(NSData *)data {
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
++(NSString *)Text:(NSDictionary *)dict {
     NSNumber *code=[dict valueForKey:@"code"];
     NSString *text=[[dict valueForKey:@"text"]objectAtIndex:0];
     
@@ -76,8 +75,7 @@
 }
 
 
-+(NSDictionary *)Dictionary:(NSData *)data {
-    NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
++(NSDictionary *)Dictionary:(NSDictionary *)dict {
     
     NSArray *values=[dict objectForKey:@"def"];
     NSNumber *code=[dict valueForKey:@"code"];
@@ -317,12 +315,10 @@
 
 +(NSAttributedString *)parsedResult:(NSDictionary *)receivedData {
     if([receivedData objectForKey:@"text"] && [receivedData objectForKey:@"text"][0]) {
-        NSDictionary *translateResponseFontAttributes = @{NSFontAttributeName : [NSFont systemFontOfSize:16.0]};
-        return [[NSAttributedString alloc] initWithString:[receivedData objectForKey:@"text"][0] attributes:translateResponseFontAttributes];
+        return [[NSAttributedString alloc] initWithString:[Parser Text:receivedData] attributes:@{NSFontAttributeName : [NSFont systemFontOfSize:16.0]}];
     }
     else {
-        //TODO: Somehow handle mainApp/widget detection/switch
-        return [Parser outputStringForMainAppDictionary:receivedData];
+        return [Parser outputStringForMainAppDictionary:[Parser Dictionary:receivedData]];
     }
 }
 @end

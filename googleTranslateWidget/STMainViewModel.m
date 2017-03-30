@@ -6,15 +6,15 @@
 //  Copyright © 2016 Mark Vasiv. All rights reserved.
 //
 
-#import "STMainViewControllerModel.h"
+#import "STMainViewModel.h"
 
-#import "STLanguages.h"
+#import "STLanguagesManager.h"
 #import "STTranslationManager.h"
 #import "Parser.h"
 
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-@implementation STMainViewControllerModel
+@implementation STMainViewModel
 
 - (instancetype)init {
     if(self = [super init]) {
@@ -24,14 +24,11 @@
 }
 
 - (void) setupBindings {
+    RACSignal *translationNeedSignal = [RACSignal combineLatest:@[[RACObserve(self, sourceText) ignore:nil],
+                                                                  [RACObserve(self, sourceLanguage) ignore:nil],
+                                                                  [RACObserve(self, targetLanguage) ignore:nil]]];
     
-    RACSignal *translationNeedSignal =
-    [RACSignal combineLatest:@[[RACObserve(self, sourceText) ignore:nil],
-                       [RACObserve(self, sourceLanguage) ignore:nil],
-                       [RACObserve(self, targetLanguage) ignore:nil]]];
-    
-    [self rac_liftSelector:@selector(performTranslationFor:from:to:)
-               withSignalOfArguments:[translationNeedSignal throttle:0.5]];
+    [self rac_liftSelector:@selector(performTranslationFor:from:to:) withSignalOfArguments:[translationNeedSignal throttle:0.5]];
     
     RACSignal *translationSignal =
     [[[[RACObserve([STTranslationManager manager], result)
@@ -49,9 +46,9 @@
     RAC(self, translatedText) = translationSignal;
     
 }
-- (void) performTranslationFor:(NSString *)text from:(NSString *)source to:(NSString *)target {
 
-    [[STTranslationManager manager] getTranslationForString:text SourceLanguage:[STLanguages keyForLanguage:source] AndTargetLanguage:[STLanguages keyForLanguage:target]];
+- (void) performTranslationFor:(NSString *)text from:(NSString *)source to:(NSString *)target {
+ //   [[STTranslationManager manager] getTranslationForString:text SourceLanguage:[STLanguages keyForLanguage:source] AndTargetLanguage:[STLanguages keyForLanguage:target]];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface STMainViewControllerModel : NSObject
+@interface STMainViewModel : NSObject
 
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) NSString *sourceLanguage;

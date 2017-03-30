@@ -8,11 +8,15 @@
 
 #import "STLeftSplitView.h"
 #import "STLanguageCell.h"
+#import "STLanguageCellModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
-
 #import <QuartzCore/QuartzCore.h>
 
 #define NumberOfRows 5
+
+static CGFloat minRowHeight = 40;
+static CGFloat maxRowHeight = 60;
+static NSUInteger maxNumberOfRows = 10;
 
 @interface STLeftSplitView () <NSTableViewDelegate, NSTableViewDataSource>
 
@@ -22,6 +26,8 @@
 
 @property (strong, nonatomic) NSNumber *LanguageCellHeight;
 @property (strong, nonatomic) STLanguageCell *SampleCell;
+@property (strong) IBOutlet NSTextFieldCell *fromTextField;
+@property (strong) IBOutlet NSTextFieldCell *toTextField;
 
 @end
 
@@ -49,6 +55,19 @@
             [self setupViewResizes];
     });
     
+//    @weakify(self);
+//    [[RACObserve(self.ViewModel, sourceSelectedLanguage) ignore:nil] subscribeNext:^(NSString *selectedLanguage) {
+//        @strongify(self);
+//        self.fromTextField.stringValue = selectedLanguage;
+//    }];
+//    
+//    [[RACObserve(self.ViewModel, targetSelectedLanguage) ignore:nil] subscribeNext:^(NSString *selectedLanguage) {
+//        @strongify(self);
+//        self.toTextField.stringValue = selectedLanguage;
+//    }];
+    
+    
+    
     
     [self.sourceLanguageTable setRefusesFirstResponder:YES];
     [self.targetLanguageTable setRefusesFirstResponder:YES];
@@ -67,44 +86,34 @@
 - (void)setupViewResizes {
     @weakify(self);
     
-    [[[RACObserve(self.sourceLanguageTableScroll, frame)
-        map:^id(NSValue *frameValue) {
-            return @(CGRectGetHeight([frameValue rectValue]));
-        }]
-        distinctUntilChanged]
-        subscribeNext:^(NSNumber *Height) {
-            @strongify(self);
-            self.LanguageCellHeight = @(Height.floatValue/NumberOfRows);
-            
-            
-            [NSAnimationContext beginGrouping];
-            [[NSAnimationContext currentContext] setDuration:0];
-            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, NumberOfRows)]];
-            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, NumberOfRows)]];
-            [NSAnimationContext endGrouping];
-        }];
+    [self.ViewModel.dataReloadSignal subscribeNext:^(id x) {
+        @strongify(self);
+        [self.sourceLanguageTable reloadData];
+        [self.targetLanguageTable reloadData];
+    }];
+
     
     
-    [[[[[RACObserve(self.SampleCell, frame)
-         map:^id(NSValue *FrameValue) {
-             return @(CGRectGetHeight([FrameValue rectValue]));
-         }]
-         map:^id(NSNumber *Height) {
-             return @(roundf(Height.floatValue/3));
-         }]
-         distinctUntilChanged]
-         filter:^BOOL(NSNumber *FontSize) {
-            
-             //TODO: make staging
-             CGFloat cellHeight = self.SampleCell.frame.size.height;
-             CGFloat previousFontSize = self.SampleCell.Label.font.pointSize;
-            
-            //return (previousFontSize > 0.7 * cellHeight || previousFontSize < 0.4*cellHeight);
-            return YES;
-         }]
-         subscribeNext:^(NSNumber *FontSize) {
-             
-            for(int i =0;i<NumberOfRows;i++) {
+//    [[[[[RACObserve(self.SampleCell, frame)
+//         map:^id(NSValue *FrameValue) {
+//             return @(CGRectGetHeight([FrameValue rectValue]));
+//         }]
+//         map:^id(NSNumber *Height) {
+//             return @(roundf(Height.floatValue/3));
+//         }]
+//         distinctUntilChanged]
+//         filter:^BOOL(NSNumber *FontSize) {
+//            
+////             //TODO: make staging
+////             CGFloat cellHeight = self.SampleCell.frame.size.height;
+////             CGFloat previousFontSize = self.SampleCell.Label.font.pointSize;
+////            
+////            return (previousFontSize > 0.7 * cellHeight || previousFontSize < 0.4*cellHeight);
+//            return YES;
+//         }]
+//         subscribeNext:^(NSNumber *FontSize) {
+//             
+//            for(int i =0;i<self.ViewModel.visibleLanguagesCount;i++) {
 //                
 //                STLanguageCell *cell = [self.sourceLanguageTable rowViewAtRow:i makeIfNecessary:NO];
 //                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
@@ -113,9 +122,93 @@
 //                cell = [self.targetLanguageTable rowViewAtRow:i makeIfNecessary:NO];
 //                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
 //                [cell.Label setNeedsLayout:YES];
-            }
+//            }
+//        
+//         }];
+    
+//    [[[[[RACObserve(self.SampleCell, frame)
+//        map:^id(NSValue *FrameValue) {
+//            return @(CGRectGetHeight([FrameValue rectValue]));
+//        }]
+//        map:^id(NSNumber *Height) {
+//            return @(roundf(Height.floatValue/3));
+//        }]
+//        distinctUntilChanged]
+//        filter:^BOOL(NSNumber *FontSize) {
+//          
+//            //TODO: make staging
+//            CGFloat cellHeight = self.SampleCell.frame.size.height;
+//            CGFloat previousFontSize = self.SampleCell.Label.font.pointSize;
+//          
+//            //return (previousFontSize > 0.7 * cellHeight || previousFontSize < 0.4*cellHeight);
+//            return YES;
+//        }]
+//        subscribeNext:^(NSNumber *FontSize) {
+//         
+//         for(int i =0;i<NumberOfRows;i++) {
+//             //
+//             //                STLanguageCell *cell = [self.sourceLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+//             //                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+//             //                [cell.Label setNeedsLayout:YES];
+//             //
+//             //                cell = [self.targetLanguageTable rowViewAtRow:i makeIfNecessary:NO];
+//             //                [cell.Label setFont:[NSFont fontWithName:@"Helvetica Neue Light" size:[FontSize integerValue]]];
+//             //                [cell.Label setNeedsLayout:YES];
+//         }
+//         
+//     }];
+    
+    [[[RACObserve(self.sourceLanguageTableScroll, frame)
+        map:^id(NSValue *frameValue) {
+            return @(CGRectGetHeight([frameValue rectValue]));
+        }]
+        distinctUntilChanged]
+        subscribeNext:^(NSNumber *Height) {
+            @strongify(self);
+            self.ViewModel.rowHeight = Height.floatValue / self.ViewModel.visibleLanguagesCount;
+         
+         
+            [NSAnimationContext beginGrouping];
+            [[NSAnimationContext currentContext] setDuration:0];
+            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleLanguagesCount)]];
+            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleLanguagesCount)]];
+            [NSAnimationContext endGrouping];
+        }];
+    
+    
+    [[[[RACObserve(self.sourceLanguageTableScroll, frame)
+        map:^id(NSValue *FrameValue) {
+            return @(CGRectGetHeight([FrameValue rectValue]));
+        }]
+        map:^id(NSNumber *Height) {
+            @strongify(self);
+
+            NSUInteger rowsCount = self.ViewModel.visibleLanguagesCount;
         
-         }];
+            if (self.ViewModel.visibleLanguagesCount > 1 && [Height floatValue] / rowsCount < minRowHeight) {
+                rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
+            }
+            
+            if (self.ViewModel.visibleLanguagesCount < maxNumberOfRows && [Height floatValue] / rowsCount > maxRowHeight) {
+                rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
+            }
+            
+            
+            if (rowsCount == 0) {
+                rowsCount = 1;
+            } else if (rowsCount > maxNumberOfRows) {
+                rowsCount = maxNumberOfRows;
+            }
+            
+            self.ViewModel.rowHeight = [Height floatValue] / rowsCount;
+            
+            return @(rowsCount);
+        }]
+        distinctUntilChanged]
+        subscribeNext:^(NSNumber *rowsCount) {
+            @strongify(self);
+            self.ViewModel.visibleLanguagesCount = [rowsCount unsignedIntegerValue];
+        }];
 }
 
 
@@ -124,19 +217,22 @@
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
     
     STLanguageCell *Cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
+    STLanguageCellModel *cellModel;
     
-    [Cell setIndex:row];
+    if (tableView == self.sourceLanguageTable) {
+        cellModel = self.ViewModel.sourceLanguages[row];
+    } else if (tableView == self.targetLanguageTable) {
+        cellModel = self.ViewModel.targetLanguages[row];
+    }
     
+    [Cell setViewModel:cellModel];
     [Cell.Label setTextColor:[NSColor blackColor]];
+    [Cell.Label setStringValue:cellModel.title];
     
-    if(tableView == self.sourceLanguageTable) {
-        if(self.ViewModel.sourceLanguages.count > row)
-            [Cell.Label setStringValue:[self.ViewModel.sourceLanguages objectAtIndex:row]];
+    if (cellModel.selected) {
+        [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
-    else if(tableView == self.targetLanguageTable) {
-        if(self.ViewModel.targetLanguages.count > row)
-            [Cell.Label setStringValue:[self.ViewModel.targetLanguages objectAtIndex:row]];
-    }
+    
     
     self.SampleCell = Cell;
     
@@ -144,24 +240,21 @@
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return self.LanguageCellHeight.floatValue;
+    return self.ViewModel.rowHeight;
     
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return NumberOfRows;
+    return self.ViewModel.visibleLanguagesCount;
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     
-    if(notification.object == self.sourceLanguageTable) {
-        [[self ViewModel] setSourceSelected:[[self sourceLanguageTable] selectedRow]];
+    if (notification.object == self.sourceLanguageTable) {
+        [self.ViewModel setSourceSelected:[[self sourceLanguageTable] selectedRow]];
+    } else if(notification.object == self.targetLanguageTable) {
+        [self.ViewModel setTargetSelected:[[self targetLanguageTable] selectedRow]];
     }
-    
-    else if(notification.object == self.targetLanguageTable) {
-        [[self ViewModel] setTargetSelected:[[self targetLanguageTable] selectedRow]];
-    }
-    
 }
 
 

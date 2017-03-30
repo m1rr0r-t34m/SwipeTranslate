@@ -9,10 +9,11 @@
 #import <Cocoa/Cocoa.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-#import "STMainViewControllerModel.h"
+@class STMainViewModel;
+
 
 @interface STMainViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
-@property (strong, nonatomic) STMainViewControllerModel *ViewModel;
+@property (strong, nonatomic) STMainViewModel *ViewModel;
 
 @end

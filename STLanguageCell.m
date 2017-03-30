@@ -7,16 +7,16 @@
 //
 
 #import "STLanguageCell.h"
+#import "STLanguageCellModel.h"
 
 @implementation STLanguageCell
 
-
-
 - (void)drawSeparatorInRect:(NSRect)dirtyRect {
-    if(self.index == 6) {
+    if (!self.viewModel.shouldDrawBorder) {
+        
         return;
     }
-        
+    
     NSBezierPath * gridPath = [NSBezierPath bezierPath];
     NSRect rowRect = dirtyRect;
 
@@ -25,7 +25,5 @@
     [[NSColor colorWithCalibratedRed:0.756 green:0.756 blue:0.756 alpha:0.65] set];
     [gridPath stroke];    
 }
-
-
 
 @end

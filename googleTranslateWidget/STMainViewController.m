@@ -7,15 +7,16 @@
 //
 
 #import "STMainViewController.h"
-
 #import "STLeftSplitView.h"
 #import "STRightSplitView.h"
-
+#import "STMainViewModel.h"
 
 @interface STMainViewController () <NSSplitViewDelegate>
 
 @property (strong, nonatomic) STLeftSplitView *leftView;
 @property (strong, nonatomic) STRightSplitView *rightView;
+@property (assign, nonatomic) BOOL leftSplitHidden;
+
 @property (weak) IBOutlet NSSplitView *splitView;
 
 #define leftSplitViewWidth 300.0
@@ -27,7 +28,7 @@
 #pragma mark - Initialization
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        _ViewModel = [STMainViewControllerModel new];
+        _ViewModel = [STMainViewModel new];
         
     }
     return self;
@@ -57,16 +58,13 @@
 }
 
 - (void)setupFlow {
-    
     RAC(self.ViewModel, sourceText) = [RACObserve(self.rightView.ViewModel, inputText) ignore:nil];
     RAC(self.ViewModel, sourceLanguage) = [RACObserve(self.leftView.ViewModel, sourceSelectedLanguage) ignore:nil];
     RAC(self.ViewModel, targetLanguage) = [RACObserve(self.leftView.ViewModel, targetSelectedLanguage) ignore:nil];
-    
     RAC(self.rightView.ViewModel, outputText) = [RACObserve(self.ViewModel, translatedText) ignore:nil];
 }
 
--(void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize: (NSSize)oldSize
-{
+- (void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize:(NSSize)oldSize {
     CGFloat dividerThickness = [sender dividerThickness];
     NSRect leftRect = [[[sender subviews] objectAtIndex:0] frame];
     NSRect rightRect = [[[sender subviews] objectAtIndex:1] frame];
@@ -75,13 +73,15 @@
     leftRect.size.height = newFrame.size.height;
     leftRect.origin = NSMakePoint(0, 0);
     
-    if(newFrame.size.width < leftSplitViewWidth * 2)
+    if(newFrame.size.width < leftSplitViewWidth * 2) {
         leftRect.size.width = 0;
-    else
+        self.leftSplitHidden = YES;
+    } else {
         leftRect.size.width = leftSplitViewWidth;
+        self.leftSplitHidden = NO;
+    }
     
-    rightRect.size.width = newFrame.size.width - leftRect.size.width
-    - dividerThickness;
+    rightRect.size.width = newFrame.size.width - leftRect.size.width - dividerThickness;
     rightRect.size.height = newFrame.size.height;
     rightRect.origin.x = leftRect.size.width + dividerThickness;
     
@@ -90,7 +90,11 @@
 }
 - (CGFloat)splitView:(NSSplitView *)splitView constrainSplitPosition:(CGFloat)proposedPosition ofSubviewAt:(NSInteger)dividerIndex {
     
-    return leftSplitViewWidth;
+    if (self.leftSplitHidden) {
+        return 0;
+    } else {
+        return leftSplitViewWidth;
+    }
 }
 
 #pragma mark - Segues

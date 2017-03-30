@@ -13,9 +13,12 @@
 		CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
 		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
 		CD338B541B8F198500CDB0D8 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD338B531B8F198500CDB0D8 /* RequestHandler.m */; };
-		CD5502721D7197E80089484D /* STLanguages.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5502711D7197E80089484D /* STLanguages.m */; };
+		CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */; };
+		CD5502721D7197E80089484D /* STLanguagesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5502711D7197E80089484D /* STLanguagesManager.m */; };
 		CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
 		CD733F4A1C63A701007C4D9E /* KeyHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = CD733F471C63924F007C4D9E /* KeyHandler.m */; };
+		CD74D6B71E8D96A60033A5D1 /* STLanguageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74D6B61E8D96A60033A5D1 /* STLanguageCellModel.m */; };
+		CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */; };
 		CD752FF11D8DEF960036591D /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBFD8331B9A257500C5414D /* Parser.m */; };
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
@@ -35,7 +38,7 @@
 		CDCFCCE81B8E690300547F5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDCFCCE61B8E690300547F5C /* Main.storyboard */; };
 		CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF791D663A560031FC94 /* STMainViewController.m */; };
 		CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */; };
-		CDD1FF831D6645920031FC94 /* STMainViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF821D6645920031FC94 /* STMainViewControllerModel.m */; };
+		CDD1FF831D6645920031FC94 /* STMainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF821D6645920031FC94 /* STMainViewModel.m */; };
 		CDD1FF891D66EA880031FC94 /* STLeftSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF881D66EA880031FC94 /* STLeftSplitView.m */; };
 		CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */; };
 		CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */; };
@@ -103,8 +106,10 @@
 		CD338B551B8F198A00CDB0D8 /* RequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RequestHandler.h; path = todayWidget/RequestHandler.h; sourceTree = "<group>"; };
 		CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+TouchSet.h"; sourceTree = "<group>"; };
 		CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+TouchSet.m"; sourceTree = "<group>"; };
-		CD5502701D7197E80089484D /* STLanguages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguages.h; sourceTree = "<group>"; };
-		CD5502711D7197E80089484D /* STLanguages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguages.m; sourceTree = "<group>"; };
+		CD4BFABE1E4235650089AEC5 /* STLanguageTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageTextField.h; sourceTree = "<group>"; };
+		CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageTextField.m; sourceTree = "<group>"; };
+		CD5502701D7197E80089484D /* STLanguagesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguagesManager.h; sourceTree = "<group>"; };
+		CD5502711D7197E80089484D /* STLanguagesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguagesManager.m; sourceTree = "<group>"; };
 		CD6F9F581BDC418F00E4B850 /* InnerScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InnerScroll.h; path = googleTranslateWidget/InnerScroll.h; sourceTree = "<group>"; };
 		CD6F9F591BDC418F00E4B850 /* InnerScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InnerScroll.m; path = googleTranslateWidget/InnerScroll.m; sourceTree = "<group>"; };
 		CD6F9F5E1BE3B0F400E4B850 /* LanguageTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageTable.h; sourceTree = "<group>"; };
@@ -113,6 +118,10 @@
 		CD6F9F651BE5294900E4B850 /* InputScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputScroll.m; path = googleTranslateWidget/InputScroll.m; sourceTree = "<group>"; };
 		CD733F461C63924F007C4D9E /* KeyHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyHandler.h; sourceTree = "<group>"; };
 		CD733F471C63924F007C4D9E /* KeyHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyHandler.m; sourceTree = "<group>"; };
+		CD74D6B51E8D96A60033A5D1 /* STLanguageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageCellModel.h; sourceTree = "<group>"; };
+		CD74D6B61E8D96A60033A5D1 /* STLanguageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageCellModel.m; sourceTree = "<group>"; };
+		CD74D6B81E8D9BF50033A5D1 /* STLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguage.h; sourceTree = "<group>"; };
+		CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguage.m; sourceTree = "<group>"; };
 		CD7CED791BD9772600789E8E /* SavedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SavedInfo.h; path = todayWidget/SavedInfo.h; sourceTree = "<group>"; };
 		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedInfo.m; path = todayWidget/SavedInfo.m; sourceTree = "<group>"; };
 		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateTextView.h; path = todayWidget/ValidateTextView.h; sourceTree = "<group>"; };
@@ -152,8 +161,8 @@
 		CDD1FF791D663A560031FC94 /* STMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMainViewController.m; sourceTree = "<group>"; };
 		CDD1FF7C1D663B260031FC94 /* STLanguageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageCell.h; sourceTree = "<group>"; };
 		CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageCell.m; sourceTree = "<group>"; };
-		CDD1FF811D6645920031FC94 /* STMainViewControllerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMainViewControllerModel.h; sourceTree = "<group>"; };
-		CDD1FF821D6645920031FC94 /* STMainViewControllerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMainViewControllerModel.m; sourceTree = "<group>"; };
+		CDD1FF811D6645920031FC94 /* STMainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMainViewModel.h; sourceTree = "<group>"; };
+		CDD1FF821D6645920031FC94 /* STMainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMainViewModel.m; sourceTree = "<group>"; };
 		CDD1FF871D66EA880031FC94 /* STLeftSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLeftSplitView.h; sourceTree = "<group>"; };
 		CDD1FF881D66EA880031FC94 /* STLeftSplitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLeftSplitView.m; sourceTree = "<group>"; };
 		CDD1FF8A1D66EBF50031FC94 /* STRightSplitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRightSplitView.h; sourceTree = "<group>"; };
@@ -206,8 +215,10 @@
 		CD55026F1D7197930089484D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CD5502701D7197E80089484D /* STLanguages.h */,
-				CD5502711D7197E80089484D /* STLanguages.m */,
+				CD5502701D7197E80089484D /* STLanguagesManager.h */,
+				CD5502711D7197E80089484D /* STLanguagesManager.m */,
+				CD74D6B81E8D9BF50033A5D1 /* STLanguage.h */,
+				CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */,
 				CDC13ED11D73571E0093A9F0 /* STTranslationManager.h */,
 				CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */,
 			);
@@ -334,7 +345,6 @@
 		CDCFCCCE1B8E690200547F5C = {
 			isa = PBXGroup;
 			children = (
-				CDD1FF7B1D663AFE0031FC94 /* LanguageTable */,
 				CDB84E071CA04FE500A919AA /* iRate */,
 				CD8F79971C08CF980094742F /* Helpers */,
 				CD8F79991C08D0160094742F /* Backend */,
@@ -408,13 +418,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CDD1FF7B1D663AFE0031FC94 /* LanguageTable */ = {
+		CDD1FF7B1D663AFE0031FC94 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				CDD1FF7C1D663B260031FC94 /* STLanguageCell.h */,
 				CDD1FF7D1D663B260031FC94 /* STLanguageCell.m */,
+				CD74D6B51E8D96A60033A5D1 /* STLanguageCellModel.h */,
+				CD74D6B61E8D96A60033A5D1 /* STLanguageCellModel.m */,
 			);
-			name = LanguageTable;
+			name = Cells;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		CDD1FF8F1D66EDC00031FC94 /* RightSplitView */ = {
@@ -435,6 +448,9 @@
 				CDD1FF881D66EA880031FC94 /* STLeftSplitView.m */,
 				CDD1FF921D66EE260031FC94 /* STLeftSplitViewModel.h */,
 				CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */,
+				CD4BFABE1E4235650089AEC5 /* STLanguageTextField.h */,
+				CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */,
+				CDD1FF7B1D663AFE0031FC94 /* Cells */,
 			);
 			name = LeftSplitView;
 			sourceTree = "<group>";
@@ -444,8 +460,8 @@
 			children = (
 				CDD1FF781D663A560031FC94 /* STMainViewController.h */,
 				CDD1FF791D663A560031FC94 /* STMainViewController.m */,
-				CDD1FF811D6645920031FC94 /* STMainViewControllerModel.h */,
-				CDD1FF821D6645920031FC94 /* STMainViewControllerModel.m */,
+				CDD1FF811D6645920031FC94 /* STMainViewModel.h */,
+				CDD1FF821D6645920031FC94 /* STMainViewModel.m */,
 			);
 			name = MainView;
 			sourceTree = "<group>";
@@ -689,13 +705,16 @@
 			files = (
 				CD752FF11D8DEF960036591D /* Parser.m in Sources */,
 				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
-				CDD1FF831D6645920031FC94 /* STMainViewControllerModel.m in Sources */,
+				CDD1FF831D6645920031FC94 /* STMainViewModel.m in Sources */,
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,
+				CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */,
+				CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */,
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,
 				CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
-				CD5502721D7197E80089484D /* STLanguages.m in Sources */,
+				CD74D6B71E8D96A60033A5D1 /* STLanguageCellModel.m in Sources */,
+				CD5502721D7197E80089484D /* STLanguagesManager.m in Sources */,
 				CDC13ED31D73571E0093A9F0 /* STTranslationManager.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
 				CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */,

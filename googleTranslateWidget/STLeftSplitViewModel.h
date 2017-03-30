@@ -8,16 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+@class STLanguageCellModel;
+@class STLanguage;
+@class RACSignal;
+
 @interface STLeftSplitViewModel : NSObject
 
-@property (strong, nonatomic) NSArray *sourceLanguages;
-@property (strong, nonatomic) NSArray *targetLanguages;
+@property (strong, nonatomic) RACSignal *dataReloadSignal;
+@property (strong, nonatomic) NSArray <STLanguageCellModel *> *sourceLanguages;
+@property (strong, nonatomic) NSArray <STLanguageCellModel *> *targetLanguages;
 
-@property (strong, nonatomic) NSString *sourceSelectedLanguageKey;
-@property (strong, nonatomic) NSString *targetSelectedLanguageKey;
+@property (assign, nonatomic) CGFloat rowHeight;
+@property (assign, nonatomic) NSUInteger visibleLanguagesCount;
 
-@property (strong, nonatomic) NSString *sourceSelectedLanguage;
-@property (strong, nonatomic) NSString *targetSelectedLanguage;
+@property (strong, nonatomic) STLanguage *sourceSelectedLanguage;
+@property (strong, nonatomic) STLanguage *targetSelectedLanguage;
 
 - (void)setSourceSelected:(NSInteger)index;
 - (void)setTargetSelected:(NSInteger)index;

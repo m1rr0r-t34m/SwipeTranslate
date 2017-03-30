@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSArray <STLanguageCellModel *> *targetLanguages;
 
 @property (assign, nonatomic) CGFloat rowHeight;
-@property (assign, nonatomic) NSUInteger visibleLanguagesCount;
+@property (assign, nonatomic) NSUInteger visibleRowsCount;
 
 @property (strong, nonatomic) STLanguage *sourceSelectedLanguage;
 @property (strong, nonatomic) STLanguage *targetSelectedLanguage;

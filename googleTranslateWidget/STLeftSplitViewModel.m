@@ -42,7 +42,7 @@
 - (instancetype)init {
     if(self = [super init]) {
         
-        _visibleLanguagesCount = 10;
+        _visibleRowsCount = 10;
         _rowHeight = 40;
         _dataReloadSubject = [RACSubject new];
         _dataReloadSignal = [[_dataReloadSubject startWith:nil] ignore:nil];
@@ -57,7 +57,7 @@
 
 - (void)bindSignals {
     @weakify(self);
-    [RACObserve(self, visibleLanguagesCount) subscribeNext:^(NSNumber *count) {
+    [RACObserve(self, visibleRowsCount) subscribeNext:^(NSNumber *count) {
         @strongify(self);
 
         NSUInteger rowsCount = [count unsignedIntegerValue];
@@ -80,7 +80,6 @@
         
         [self saveLanguages];
         [self prepareViewModels];
-        //[self.dataReloadSubject sendNext:@YES];
     }];
 }
 

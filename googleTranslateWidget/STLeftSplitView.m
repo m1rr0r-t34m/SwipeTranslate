@@ -165,13 +165,13 @@ static NSUInteger maxNumberOfRows = 10;
         distinctUntilChanged]
         subscribeNext:^(NSNumber *Height) {
             @strongify(self);
-            self.ViewModel.rowHeight = Height.floatValue / self.ViewModel.visibleLanguagesCount;
+            self.ViewModel.rowHeight = Height.floatValue / self.ViewModel.visibleRowsCount;
          
          
             [NSAnimationContext beginGrouping];
             [[NSAnimationContext currentContext] setDuration:0];
-            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleLanguagesCount)]];
-            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleLanguagesCount)]];
+            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleRowsCount)]];
+            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleRowsCount)]];
             [NSAnimationContext endGrouping];
         }];
     
@@ -183,13 +183,13 @@ static NSUInteger maxNumberOfRows = 10;
         map:^id(NSNumber *Height) {
             @strongify(self);
 
-            NSUInteger rowsCount = self.ViewModel.visibleLanguagesCount;
+            NSUInteger rowsCount = self.ViewModel.visibleRowsCount;
         
-            if (self.ViewModel.visibleLanguagesCount > 1 && [Height floatValue] / rowsCount < minRowHeight) {
+            if (self.ViewModel.visibleRowsCount > 1 && [Height floatValue] / rowsCount < minRowHeight) {
                 rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
             }
             
-            if (self.ViewModel.visibleLanguagesCount < maxNumberOfRows && [Height floatValue] / rowsCount > maxRowHeight) {
+            if (self.ViewModel.visibleRowsCount < maxNumberOfRows && [Height floatValue] / rowsCount > maxRowHeight) {
                 rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
             }
             
@@ -207,7 +207,7 @@ static NSUInteger maxNumberOfRows = 10;
         distinctUntilChanged]
         subscribeNext:^(NSNumber *rowsCount) {
             @strongify(self);
-            self.ViewModel.visibleLanguagesCount = [rowsCount unsignedIntegerValue];
+            self.ViewModel.visibleRowsCount = [rowsCount unsignedIntegerValue];
         }];
 }
 
@@ -245,7 +245,7 @@ static NSUInteger maxNumberOfRows = 10;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.ViewModel.visibleLanguagesCount;
+    return self.ViewModel.visibleRowsCount;
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

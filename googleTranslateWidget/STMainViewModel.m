@@ -11,7 +11,7 @@
 #import "STLanguagesManager.h"
 #import "STTranslationManager.h"
 #import "Parser.h"
-
+#import "STLanguage.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @implementation STMainViewModel
@@ -47,8 +47,8 @@
     
 }
 
-- (void) performTranslationFor:(NSString *)text from:(NSString *)source to:(NSString *)target {
- //   [[STTranslationManager manager] getTranslationForString:text SourceLanguage:[STLanguages keyForLanguage:source] AndTargetLanguage:[STLanguages keyForLanguage:target]];
+- (void) performTranslationFor:(NSString *)text from:(STLanguage *)source to:(STLanguage *)target {
+    [[STTranslationManager manager] getTranslationForString:text SourceLanguage:source.key AndTargetLanguage:target.key];
 }
 
 @end

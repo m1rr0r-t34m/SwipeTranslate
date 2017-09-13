@@ -158,14 +158,25 @@
     return NSNotFound;
 }
 
-- (void)setSourceSelected:(NSInteger)index {
+- (void) setSourceSelected:(NSInteger)index {
     self.sourceSelectedLanguage = [self.sourceLanguages objectAtIndex:index].language;
     [SavedInfo setSourceSelection:self.sourceSelectedLanguage.title];
 }
 
-- (void)setTargetSelected:(NSInteger)index {
+- (void) setTargetSelected:(NSInteger)index {
     self.targetSelectedLanguage = [self.targetLanguages objectAtIndex:index].language;
     [SavedInfo setTargetSelection:self.targetSelectedLanguage.title];
+    
+}
+
+- (NSString *) sourceSelectedTitle {
+    
+    return _sourceSelectedLanguage.title;
+}
+
+- (NSString *) targetSelectedTitle {
+    
+    return _targetSelectedLanguage.title; 
 }
 
 @end

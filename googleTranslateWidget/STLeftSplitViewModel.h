@@ -24,7 +24,11 @@
 @property (strong, nonatomic) STLanguage *sourceSelectedLanguage;
 @property (strong, nonatomic) STLanguage *targetSelectedLanguage;
 
-- (void)setSourceSelected:(NSInteger)index;
-- (void)setTargetSelected:(NSInteger)index;
+
+@property (strong, nonatomic) NSString *sourceSelectedTitle;
+@property (strong, nonatomic) NSString *targetSelectedTitle;
+
+- (void) setSourceSelected:(NSInteger)index;
+- (void) setTargetSelected:(NSInteger)index;
 
 @end

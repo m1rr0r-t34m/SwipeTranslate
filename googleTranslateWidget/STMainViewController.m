@@ -19,7 +19,7 @@
 
 @property (weak) IBOutlet NSSplitView *splitView;
 
-#define leftSplitViewWidth 300.0
+#define leftSplitViewWidth 250.0
 
 @end
 
@@ -29,16 +29,15 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
         _ViewModel = [STMainViewModel new];
-        
     }
+    
     return self;
 }
-
 
 #pragma mark - Lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self.splitView setDelegate:self];
 }
 

@@ -28,6 +28,11 @@ static NSUInteger maxNumberOfRows = 10;
 @property (strong, nonatomic) STLanguageCell *SampleCell;
 @property (strong) IBOutlet NSTextFieldCell *fromTextField;
 @property (strong) IBOutlet NSTextFieldCell *toTextField;
+@property (strong, nonatomic) IBOutlet NSButton *autoLanguageButton;
+@property (strong, nonatomic) IBOutlet NSButton *SourceLanguageButton;
+
+@property (weak) IBOutlet NSTextField *sourceLanguageTitleTextField;
+@property (weak) IBOutlet NSTextField *targetLanguageTitleTextField;
 
 @end
 
@@ -48,8 +53,6 @@ static NSUInteger maxNumberOfRows = 10;
     [super viewDidLoad];
     
     [self setupDelegates];
-    
-    
     //TODO: SMTHG MORE CLEVER??
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self setupViewResizes];
@@ -65,14 +68,23 @@ static NSUInteger maxNumberOfRows = 10;
 //        @strongify(self);
 //        self.toTextField.stringValue = selectedLanguage;
 //    }];
-    
-    
-    
+
     
     [self.sourceLanguageTable setRefusesFirstResponder:YES];
     [self.targetLanguageTable setRefusesFirstResponder:YES];
     [self.sourceLanguageTable reloadData];
     [self.targetLanguageTable reloadData];
+    
+    @weakify(self);
+    [RACObserve(self.ViewModel, sourceSelectedLanguage) subscribeNext:^(id val) {
+        @strongify(self);
+        self.sourceLanguageTitleTextField.stringValue = self.ViewModel.sourceSelectedTitle;
+    }];
+    
+    [RACObserve(self.ViewModel, targetSelectedLanguage) subscribeNext:^(id val) {
+        @strongify(self);
+        self.targetLanguageTitleTextField.stringValue = self.ViewModel.targetSelectedTitle;
+    }];
 }
 
 - (void)setupDelegates {
@@ -257,5 +269,12 @@ static NSUInteger maxNumberOfRows = 10;
     }
 }
 
+#pragma mark - Button actions
+
+- (IBAction)autoButtonPress:(id)sender {
+}
+
+- (IBAction)sourceLanguageButtonPress:(id)sender {
+}
 
 @end

@@ -61,9 +61,9 @@
     }
     
     NSDictionary *params = @{@"key" : translationToken,
-                            @"text" : string,
-                            @"lang" : languages,
-                         @"options" : @"1"};
+                             @"text" : string,
+                             @"lang" : languages,
+                             @"options" : @"1"};
     
     self.currentTask = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

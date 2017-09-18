@@ -86,4 +86,7 @@ static NSArray <STLanguage *> *cachedAllLanguages;
   return [self languageForTitle:[SavedInfo targetSelection]];
 }
 
++ (STLanguage *)autoLanguage {
+    return [[STLanguage alloc] initWithKey:AutoLanguageKey andTitle:AutoLanguageTitle];
+}
 @end

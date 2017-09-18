@@ -16,9 +16,11 @@
 
 @interface STTranslationManager ()
 
-@property (nonatomic, readwrite) NSDictionary *result;
-@property (nonatomic, strong) AFHTTPSessionManager *manager;
-@property (nonatomic) NSURLSessionDataTask *currentTask;
+@property (strong, nonatomic, readwrite) NSDictionary *result;
+@property (strong, nonatomic, readwrite) NSDictionary *internalResult;
+@property (strong, nonatomic, readwrite) NSString *detectedLanguage;
+@property (strong, nonatomic) AFHTTPSessionManager *manager;
+@property (strong, nonatomic) NSURLSessionDataTask *currentTask;
 
 @end
 
@@ -46,6 +48,7 @@
 }
 
 //TODO: Maybe we can store translation response in the private buffer (to avoid multiple public object updates)
+// NSCAche
 - (void)getTranslationForString:(NSString *)string SourceLanguage:(NSString *)sourceLang AndTargetLanguage:(NSString *)targetLang {
     
     [self cancelCurrentSession];
@@ -67,11 +70,12 @@
     
     self.currentTask = [self.manager GET:translationBaseURL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        self.result = responseObject;
+        self.internalResult = responseObject;
         
         if([sourceLang isEqualToString:@"auto"] && [responseObject objectForKey:@"detected"]) {
-                NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
-                [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
+            NSString *detectedSourceLang = [[responseObject objectForKey:@"detected"] objectForKey:@"lang"];
+            [self dictionaryTranslationForString:string sourceLanguage:detectedSourceLang targetLanguage:targetLang];
+            self.detectedLanguage = detectedSourceLang;
         }
         else {
             [self dictionaryTranslationForString:string sourceLanguage:sourceLang targetLanguage:targetLang];
@@ -93,12 +97,15 @@
         
         if (![[responseObject objectForKey:@"def"] count]) {
             //Dictionary response not available, handle previous response
+            self.result = self.internalResult;
             return;
         }
         else {
+            self.internalResult = responseObject;
             self.result = responseObject;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        self.result = self.internalResult;
         NSLog(@"Failed to perform dictionary request, %@", error);
     }];
 }

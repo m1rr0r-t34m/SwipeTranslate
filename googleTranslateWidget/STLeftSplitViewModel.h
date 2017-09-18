@@ -13,22 +13,17 @@
 @class RACSignal;
 
 @interface STLeftSplitViewModel : NSObject
-
 @property (strong, nonatomic) RACSignal *dataReloadSignal;
 @property (strong, nonatomic) NSArray <STLanguageCellModel *> *sourceLanguages;
 @property (strong, nonatomic) NSArray <STLanguageCellModel *> *targetLanguages;
-
+@property (strong, nonatomic) STLanguage *sourceSelectedLanguage;
+@property (strong, nonatomic) STLanguage *targetSelectedLanguage;
+@property (strong, nonatomic) NSString *sourceSelectedTitle;
+@property (strong, nonatomic) NSString *targetSelectedTitle;
 @property (assign, nonatomic) CGFloat rowHeight;
 @property (assign, nonatomic) NSUInteger visibleRowsCount;
 
-@property (strong, nonatomic) STLanguage *sourceSelectedLanguage;
-@property (strong, nonatomic) STLanguage *targetSelectedLanguage;
-
-
-@property (strong, nonatomic) NSString *sourceSelectedTitle;
-@property (strong, nonatomic) NSString *targetSelectedTitle;
-
-- (void) setSourceSelected:(NSInteger)index;
-- (void) setTargetSelected:(NSInteger)index;
-
+- (void)setSourceSelected:(NSInteger)index;
+- (void)setTargetSelected:(NSInteger)index;
+- (void)switchAutoButton;
 @end

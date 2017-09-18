@@ -28,7 +28,7 @@
 #pragma mark - Initialization
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        _ViewModel = [STMainViewModel new];
+        _viewModel = [STMainViewModel new];
     }
     
     return self;
@@ -57,10 +57,10 @@
 }
 
 - (void)setupFlow {
-    RAC(self.ViewModel, sourceText) = [RACObserve(self.rightView.ViewModel, inputText) ignore:nil];
-    RAC(self.ViewModel, sourceLanguage) = [RACObserve(self.leftView.ViewModel, sourceSelectedLanguage) ignore:nil];
-    RAC(self.ViewModel, targetLanguage) = [RACObserve(self.leftView.ViewModel, targetSelectedLanguage) ignore:nil];
-    RAC(self.rightView.ViewModel, outputText) = [RACObserve(self.ViewModel, translatedText) ignore:nil];
+    RAC(self.viewModel, sourceText) = [RACObserve(self.rightView.ViewModel, inputText) ignore:nil];
+    RAC(self.viewModel, sourceLanguage) = [RACObserve(self.leftView.viewModel, sourceSelectedLanguage) ignore:nil];
+    RAC(self.viewModel, targetLanguage) = [RACObserve(self.leftView.viewModel, targetSelectedLanguage) ignore:nil];
+    RAC(self.rightView.ViewModel, outputText) = [RACObserve(self.viewModel, translatedText) ignore:nil];
 }
 
 - (void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize:(NSSize)oldSize {

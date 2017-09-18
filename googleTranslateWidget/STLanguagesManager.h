@@ -16,6 +16,9 @@
 
 #define FavouriteLanguagesCount 10
 
+#define AutoLanguageKey @"auto"
+#define AutoLanguageTitle @"Auto"
+
 @interface STLanguagesManager : NSObject
 
 + (NSArray <STLanguage *> *)sourceLanguages;
@@ -24,7 +27,7 @@
 + (NSArray<STLanguage *> *)randomLanguagesExcluding:(NSArray <STLanguage *> *)excludingArray withCount:(NSUInteger)count;
 + (STLanguage *)selectedSourceLanguage;
 + (STLanguage *)selectedTargetLanguage;
-
++ (STLanguage *)autoLanguage;
 + (NSString *)keyForLanguage:(NSString *)language;
 + (NSString *)languageForKey:(NSString *)key;
 

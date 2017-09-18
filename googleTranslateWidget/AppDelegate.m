@@ -15,4 +15,7 @@
 }
 -(void)applicationDidFinishLaunching:(NSNotification *)notification {
 }
+
+//TODO:
+// Почему outputText это textView а не таблица, например?
 @end

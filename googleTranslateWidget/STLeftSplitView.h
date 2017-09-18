@@ -11,6 +11,6 @@
 
 @interface STLeftSplitView : NSViewController
 
-@property (strong, nonatomic) STLeftSplitViewModel *ViewModel;
+@property (strong, nonatomic) STLeftSplitViewModel *viewModel;
 
 @end

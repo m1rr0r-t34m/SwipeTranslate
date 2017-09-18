@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '30883DBBBEBD84298767CA3F511D3598'
+               BlueprintIdentifier = '28C66CE029C9DDABBB7ADAB87378959A'
                BlueprintName = 'Pods-Swipe Translate Widget'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-Swipe Translate Widget.a'>

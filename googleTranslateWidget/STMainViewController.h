@@ -14,6 +14,6 @@
 
 @interface STMainViewController : NSViewController <NSTableViewDelegate, NSTableViewDataSource>
 
-@property (strong, nonatomic) STMainViewModel *ViewModel;
+@property (strong, nonatomic) STMainViewModel *viewModel;
 
 @end

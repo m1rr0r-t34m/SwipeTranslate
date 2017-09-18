@@ -25,7 +25,7 @@ static NSUInteger maxNumberOfRows = 10;
 @property (weak) IBOutlet NSScrollView *sourceLanguageTableScroll;
 
 @property (strong, nonatomic) NSNumber *LanguageCellHeight;
-@property (strong, nonatomic) STLanguageCell *SampleCell;
+@property (strong, nonatomic) STLanguageCell *sampleCell;
 @property (strong) IBOutlet NSTextFieldCell *fromTextField;
 @property (strong) IBOutlet NSTextFieldCell *toTextField;
 @property (strong, nonatomic) IBOutlet NSButton *autoLanguageButton;
@@ -42,7 +42,7 @@ static NSUInteger maxNumberOfRows = 10;
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self  = [super initWithCoder:coder]) {
-        _ViewModel = [STLeftSplitViewModel new];
+        _viewModel = [STLeftSplitViewModel new];
         _LanguageCellHeight = @(50);
     }
     
@@ -76,18 +76,19 @@ static NSUInteger maxNumberOfRows = 10;
     [self.targetLanguageTable reloadData];
     
     @weakify(self);
-    [RACObserve(self.ViewModel, sourceSelectedLanguage) subscribeNext:^(id val) {
+    [RACObserve(self.viewModel, sourceSelectedTitle) subscribeNext:^(NSString *title) {
         @strongify(self);
-        self.sourceLanguageTitleTextField.stringValue = self.ViewModel.sourceSelectedTitle;
+        self.sourceLanguageTitleTextField.stringValue = title;
     }];
     
-    [RACObserve(self.ViewModel, targetSelectedLanguage) subscribeNext:^(id val) {
+    [RACObserve(self.viewModel, targetSelectedTitle) subscribeNext:^(NSString *title) {
         @strongify(self);
-        self.targetLanguageTitleTextField.stringValue = self.ViewModel.targetSelectedTitle;
+        self.targetLanguageTitleTextField.stringValue = title;
     }];
 }
 
 - (void)setupDelegates {
+    //TODO: Use storyboard
     [self.sourceLanguageTable setDelegate:self];
     [self.sourceLanguageTable setDataSource:self];
     
@@ -98,7 +99,7 @@ static NSUInteger maxNumberOfRows = 10;
 - (void)setupViewResizes {
     @weakify(self);
     
-    [self.ViewModel.dataReloadSignal subscribeNext:^(id x) {
+    [self.viewModel.dataReloadSignal subscribeNext:^(id x) {
         @strongify(self);
         [self.sourceLanguageTable reloadData];
         [self.targetLanguageTable reloadData];
@@ -177,13 +178,13 @@ static NSUInteger maxNumberOfRows = 10;
         distinctUntilChanged]
         subscribeNext:^(NSNumber *Height) {
             @strongify(self);
-            self.ViewModel.rowHeight = Height.floatValue / self.ViewModel.visibleRowsCount;
+            self.viewModel.rowHeight = Height.floatValue / self.viewModel.visibleRowsCount;
          
          
             [NSAnimationContext beginGrouping];
             [[NSAnimationContext currentContext] setDuration:0];
-            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleRowsCount)]];
-            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.ViewModel.visibleRowsCount)]];
+            [self.sourceLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.viewModel.visibleRowsCount)]];
+            [self.targetLanguageTable noteHeightOfRowsWithIndexesChanged:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, self.viewModel.visibleRowsCount)]];
             [NSAnimationContext endGrouping];
         }];
     
@@ -195,13 +196,13 @@ static NSUInteger maxNumberOfRows = 10;
         map:^id(NSNumber *Height) {
             @strongify(self);
 
-            NSUInteger rowsCount = self.ViewModel.visibleRowsCount;
+            NSUInteger rowsCount = self.viewModel.visibleRowsCount;
         
-            if (self.ViewModel.visibleRowsCount > 1 && [Height floatValue] / rowsCount < minRowHeight) {
+            if (self.viewModel.visibleRowsCount > 1 && [Height floatValue] / rowsCount < minRowHeight) {
                 rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
             }
             
-            if (self.ViewModel.visibleRowsCount < maxNumberOfRows && [Height floatValue] / rowsCount > maxRowHeight) {
+            if (self.viewModel.visibleRowsCount < maxNumberOfRows && [Height floatValue] / rowsCount > maxRowHeight) {
                 rowsCount = (NSUInteger)([Height floatValue] / minRowHeight);
             }
             
@@ -212,69 +213,65 @@ static NSUInteger maxNumberOfRows = 10;
                 rowsCount = maxNumberOfRows;
             }
             
-            self.ViewModel.rowHeight = [Height floatValue] / rowsCount;
+            self.viewModel.rowHeight = [Height floatValue] / rowsCount;
             
             return @(rowsCount);
         }]
         distinctUntilChanged]
         subscribeNext:^(NSNumber *rowsCount) {
             @strongify(self);
-            self.ViewModel.visibleRowsCount = [rowsCount unsignedIntegerValue];
+            self.viewModel.visibleRowsCount = [rowsCount unsignedIntegerValue];
         }];
 }
 
 
 #pragma mark - Table Views
-
 - (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
-    
-    STLanguageCell *Cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
+    STLanguageCell *cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
     STLanguageCellModel *cellModel;
     
     if (tableView == self.sourceLanguageTable) {
-        cellModel = self.ViewModel.sourceLanguages[row];
+        cellModel = self.viewModel.sourceLanguages[row];
     } else if (tableView == self.targetLanguageTable) {
-        cellModel = self.ViewModel.targetLanguages[row];
+        cellModel = self.viewModel.targetLanguages[row];
     }
     
-    [Cell setViewModel:cellModel];
-    [Cell.Label setTextColor:[NSColor blackColor]];
-    [Cell.Label setStringValue:cellModel.title];
+    [cell setViewModel:cellModel];
+    [cell.Label setTextColor:[NSColor blackColor]];
+    [cell.Label setStringValue:cellModel.title];
     
     if (cellModel.selected) {
         [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
     
+    self.sampleCell = cell;
     
-    self.SampleCell = Cell;
-    
-    return Cell;
+    return cell;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
-    return self.ViewModel.rowHeight;
-    
+    return self.viewModel.rowHeight;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
-    return self.ViewModel.visibleRowsCount;
+    return self.viewModel.visibleRowsCount;
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    
     if (notification.object == self.sourceLanguageTable) {
-        [self.ViewModel setSourceSelected:[[self sourceLanguageTable] selectedRow]];
+        [self.viewModel setSourceSelected:[[self sourceLanguageTable] selectedRow]];
     } else if(notification.object == self.targetLanguageTable) {
-        [self.ViewModel setTargetSelected:[[self targetLanguageTable] selectedRow]];
+        [self.viewModel setTargetSelected:[[self targetLanguageTable] selectedRow]];
     }
 }
 
 #pragma mark - Button actions
-
 - (IBAction)autoButtonPress:(id)sender {
+    [self.viewModel switchAutoButton];
 }
 
 - (IBAction)sourceLanguageButtonPress:(id)sender {
+    //TODO: create menu
 }
 
 @end

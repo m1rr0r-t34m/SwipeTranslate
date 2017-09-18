@@ -12,6 +12,7 @@
 #import "SavedInfo.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "STLanguage.h"
+#import "STTranslationManager.h"
 
 @interface NSMutableArray (Helpers)
 - (void)replaceElementAtIndex:(NSUInteger)firstIndex withElementAtIndex:(NSUInteger)secondIndex;
@@ -35,6 +36,9 @@
 
 @interface STLeftSplitViewModel ()
 @property (strong, nonatomic) RACSubject *dataReloadSubject;
+@property (assign, nonatomic) BOOL autoLanguageSelected;
+@property (strong, nonatomic) STLanguage *lastSourceSelectedLanguage;
+@property (strong, nonatomic) NSString *detectedLanguage;
 @end
 
 @implementation STLeftSplitViewModel
@@ -81,6 +85,42 @@
         [self saveLanguages];
         [self prepareViewModels];
     }];
+    
+    [[RACObserve(self, autoLanguageSelected) skip:1] subscribeNext:^(NSNumber *selected) {
+        @strongify(self);
+        if (selected.boolValue) {
+            self.lastSourceSelectedLanguage = self.sourceSelectedLanguage;
+            self.sourceSelectedLanguage = [STLanguagesManager autoLanguage];
+        } else {
+            self.sourceSelectedLanguage = self.lastSourceSelectedLanguage;
+        }
+
+        //TODO: Don't need to recreate viewModels here
+        //Just drop selection and send reload signal (or even reload row if macOS can handle this)
+        [self prepareViewModels];
+    }];
+    
+    [[[[RACObserve([STTranslationManager manager], detectedLanguage) ignore:nil] distinctUntilChanged] map:^id(NSString *key) {
+        return [STLanguagesManager languageForKey:key];
+    }] subscribeNext:^(NSString *language) {
+        @strongify(self);
+        self.sourceSelectedTitle = [NSString stringWithFormat:@"(Auto) > %@", language];
+    }];
+    
+    
+    
+    [RACObserve(self, sourceSelectedLanguage) subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        self.sourceSelectedTitle = language.title;
+    }];
+    
+    [RACObserve(self, targetSelectedLanguage) subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        self.targetSelectedTitle = language.title;
+    }];
+    
+    
+    
 }
 
 - (void)saveLanguages {
@@ -121,7 +161,7 @@
         return cellModel.selected;
     }] array] count];
     
-    if (countOfSourceSelected == 0) {
+    if (countOfSourceSelected == 0 && !self.autoLanguageSelected) {
         [sourceLanguageViewModels firstObject].selected = YES;
     }
     
@@ -158,25 +198,30 @@
     return NSNotFound;
 }
 
-- (void) setSourceSelected:(NSInteger)index {
+- (void)setSourceSelected:(NSInteger)index {
     self.sourceSelectedLanguage = [self.sourceLanguages objectAtIndex:index].language;
     [SavedInfo setSourceSelection:self.sourceSelectedLanguage.title];
 }
 
-- (void) setTargetSelected:(NSInteger)index {
+- (void)setTargetSelected:(NSInteger)index {
     self.targetSelectedLanguage = [self.targetLanguages objectAtIndex:index].language;
     [SavedInfo setTargetSelection:self.targetSelectedLanguage.title];
-    
 }
 
-- (NSString *) sourceSelectedTitle {
-    
-    return _sourceSelectedLanguage.title;
-}
+//- (NSString *)sourceSelectedTitle {
+//    //TODO: we need to clear detected language 
+//    if (self.autoLanguageSelected && self.detectedLanguage) {
+//        return [NSString stringWithFormat:@"(Auto) > %@", self.detectedLanguage];
+//    } else {
+//        return _sourceSelectedLanguage.title;
+//    }
+//}
+//
+//- (NSString *)targetSelectedTitle {
+//    return _targetSelectedLanguage.title; 
+//}
 
-- (NSString *) targetSelectedTitle {
-    
-    return _targetSelectedLanguage.title; 
+- (void)switchAutoButton {
+    self.autoLanguageSelected = !self.autoLanguageSelected;
 }
-
 @end

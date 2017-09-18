@@ -9,7 +9,7 @@
 #import "STLeftSplitView.h"
 #import "STLanguageCell.h"
 #import "STLanguageCellModel.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 #import <QuartzCore/QuartzCore.h>
 
 #define NumberOfRows 5

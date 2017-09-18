@@ -4,12 +4,12 @@
 #use_frameworks!
 
 target 'Swipe Translate' do
-  pod 'ReactiveCocoa', '2.5'
+  pod 'ReactiveObjC'
   pod 'AFNetworking'
 end
 
 target 'Swipe Translate Widget' do
-  pod 'ReactiveCocoa', '2.5'
+  pod 'ReactiveObjC'
   pod 'AFNetworking'
 end
 

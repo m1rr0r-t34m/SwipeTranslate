@@ -12,7 +12,7 @@
 #import "STTranslationManager.h"
 #import "Parser.h"
 #import "STLanguage.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 
 @implementation STMainViewModel
 

@@ -7,7 +7,7 @@
 //
 
 #import "STRightSplitView.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 #import "STTranslationManager.h"
 
 

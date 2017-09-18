@@ -10,7 +10,7 @@
 #import "STLanguagesManager.h"
 #import "STLanguageCellModel.h"
 #import "SavedInfo.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 #import "STLanguage.h"
 #import "STTranslationManager.h"
 

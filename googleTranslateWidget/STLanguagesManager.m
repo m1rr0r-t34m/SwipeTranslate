@@ -9,7 +9,7 @@
 #import "STLanguagesManager.h"
 #import "STLanguage.h"
 #import "SavedInfo.h"
-#import <ReactiveCocoa.h>
+#import <ReactiveObjC.h>
 
 static NSArray <STLanguage *> *cachedAllLanguages;
 

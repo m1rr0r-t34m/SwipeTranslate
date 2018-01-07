@@ -62,6 +62,7 @@ static NSArray <STLanguage *> *cachedAllLanguages;
 
 + (NSArray<STLanguage *> *)randomLanguagesExcluding:(NSArray <STLanguage *> *)excludingArray withCount:(NSUInteger)count {
     NSMutableSet <STLanguage *> *excludingSet = [NSMutableSet setWithArray:excludingArray];
+    [excludingSet addObject:[self autoLanguage]];
     NSUInteger overallCount = excludingArray.count + count;
     
     while (excludingSet.count != overallCount) {
@@ -88,5 +89,19 @@ static NSArray <STLanguage *> *cachedAllLanguages;
 
 + (STLanguage *)autoLanguage {
     return [[STLanguage alloc] initWithKey:AutoLanguageKey andTitle:AutoLanguageTitle];
+}
+
++ (NSArray<STLanguage *> *)languagesForLetter:(NSString *)letter {
+    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSString *language, NSDictionary<NSString *,id> *bindings) {
+        return [[language substringToIndex:1] isEqualToString:letter];
+    }];
+    NSArray *languageTitles = [Languages filteredArrayUsingPredicate:predicate];
+    NSMutableArray *languages = [NSMutableArray new];
+    for (NSString *title in languageTitles) {
+        NSString *key = [self keyForLanguage:title];
+        STLanguage *language = [[STLanguage alloc] initWithKey:key andTitle:title];
+        [languages addObject:language];
+    }
+    return [languages copy];
 }
 @end

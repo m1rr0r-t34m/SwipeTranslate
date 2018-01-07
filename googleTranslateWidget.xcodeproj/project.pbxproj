@@ -46,6 +46,8 @@
 		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
 		CDFF839A1BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
+		CDFFF29620026370002F6805 /* STLanguageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFF29520026370002F6805 /* STLanguageMenu.m */; };
+		CDFFF29A20029927002F6805 /* NSMutableArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFF29920029927002F6805 /* NSMutableArray+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,6 +178,10 @@
 		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
 		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeparatedButton.m; path = todayWidget/SeparatedButton.m; sourceTree = "<group>"; };
 		CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = MainIcon.xcassets; sourceTree = "<group>"; };
+		CDFFF29420026370002F6805 /* STLanguageMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLanguageMenu.h; sourceTree = "<group>"; };
+		CDFFF29520026370002F6805 /* STLanguageMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLanguageMenu.m; sourceTree = "<group>"; };
+		CDFFF29820029927002F6805 /* NSMutableArray+Helpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Helpers.h"; sourceTree = "<group>"; };
+		CDFFF29920029927002F6805 /* NSMutableArray+Helpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Helpers.m"; sourceTree = "<group>"; };
 		D00D167EE596EF8CC1A0CDF4 /* Pods-Swipe Translate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.release.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +227,8 @@
 				CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */,
 				CDC13ED11D73571E0093A9F0 /* STTranslationManager.h */,
 				CDC13ED21D73571E0093A9F0 /* STTranslationManager.m */,
+				CDFFF29820029927002F6805 /* NSMutableArray+Helpers.h */,
+				CDFFF29920029927002F6805 /* NSMutableArray+Helpers.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -450,6 +458,8 @@
 				CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */,
 				CD4BFABE1E4235650089AEC5 /* STLanguageTextField.h */,
 				CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */,
+				CDFFF29420026370002F6805 /* STLanguageMenu.h */,
+				CDFFF29520026370002F6805 /* STLanguageMenu.m */,
 				CDD1FF7B1D663AFE0031FC94 /* Cells */,
 			);
 			name = LeftSplitView;
@@ -693,8 +703,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDFFF29620026370002F6805 /* STLanguageMenu.m in Sources */,
 				CD752FF11D8DEF960036591D /* Parser.m in Sources */,
 				CD733F491C63A6EB007C4D9E /* KeyHandler.m in Sources */,
+				CDFFF29A20029927002F6805 /* NSMutableArray+Helpers.m in Sources */,
 				CDD1FF831D6645920031FC94 /* STMainViewModel.m in Sources */,
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,
 				CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */,

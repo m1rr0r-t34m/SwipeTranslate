@@ -10,7 +10,5 @@
 #import "STLeftSplitViewModel.h"
 
 @interface STLeftSplitView : NSViewController
-
 @property (strong, nonatomic) STLeftSplitViewModel *viewModel;
-
 @end

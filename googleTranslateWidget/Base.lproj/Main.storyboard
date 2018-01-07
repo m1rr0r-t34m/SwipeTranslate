@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13178.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="box content view" minToolsVersion="7.0"/>
@@ -67,12 +67,12 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="hJv-Ja-bsx" kind="relationship" relationship="window.shadowedContentViewController" id="MHs-W1-Nwi"/>
+                        <segue destination="hJv-Ja-bsx" kind="relationship" relationship="window.shadowedContentViewController" id="33N-XI-GAc"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="320"/>
+            <point key="canvasLocation" x="123" y="273"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="7f7-l2-4Pd">
@@ -178,6 +178,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="switchLanguagesButtonPress:" target="xOh-fe-X4i" id="kkV-8d-Ddn"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5bF-Jk-Knd">
                                             <rect key="frame" x="8" y="47" width="35" height="17"/>
@@ -290,12 +293,16 @@
                                                                         <constraint firstItem="9bn-r0-U3c" firstAttribute="centerY" secondItem="1hx-L0-yHL" secondAttribute="centerY" id="ohy-eT-pqc"/>
                                                                     </constraints>
                                                                     <connections>
-                                                                        <outlet property="Label" destination="9bn-r0-U3c" id="5Up-L9-pHk"/>
+                                                                        <outlet property="label" destination="9bn-r0-U3c" id="JK7-sp-ctV"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="xOh-fe-X4i" id="QWl-vx-A3Y"/>
+                                                        <outlet property="delegate" destination="xOh-fe-X4i" id="5oJ-RE-A6c"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <nil key="backgroundColor"/>
@@ -357,12 +364,16 @@
                                                                         <constraint firstItem="NlA-0i-Zdc" firstAttribute="centerY" secondItem="DFK-LE-6JS" secondAttribute="centerY" id="gs8-JE-gvk"/>
                                                                     </constraints>
                                                                     <connections>
-                                                                        <outlet property="Label" destination="NlA-0i-Zdc" id="pVb-mG-DOQ"/>
+                                                                        <outlet property="label" destination="NlA-0i-Zdc" id="ulH-rV-Gkk"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="xOh-fe-X4i" id="5lL-1M-xoH"/>
+                                                        <outlet property="delegate" destination="xOh-fe-X4i" id="n1P-ay-qtm"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                             <nil key="backgroundColor"/>
@@ -400,12 +411,23 @@
                                             <action selector="sourceLanguageButtonPress:" target="xOh-fe-X4i" id="oqc-99-pOQ"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-Gb-vff">
+                                        <rect key="frame" x="184" y="409" width="20" height="31"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="circular" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="l2P-RF-d2G">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="targetLanguageButtonPress:" target="xOh-fe-X4i" id="15S-ht-EuV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="XC9-Ql-v6K" firstAttribute="height" secondItem="E7m-qv-Med" secondAttribute="height" id="BT7-Aq-oED"/>
                                     <constraint firstItem="POV-KS-me0" firstAttribute="centerY" secondItem="PiI-Xn-X6w" secondAttribute="centerY" id="DC2-h7-UC5"/>
                                     <constraint firstItem="POV-KS-me0" firstAttribute="width" secondItem="PiI-Xn-X6w" secondAttribute="width" id="DUF-re-6GI"/>
                                     <constraint firstAttribute="bottom" secondItem="E7m-qv-Med" secondAttribute="bottom" id="FpQ-rS-iSA"/>
+                                    <constraint firstItem="ryt-Gb-vff" firstAttribute="centerX" secondItem="POV-KS-me0" secondAttribute="centerX" id="Ii5-R0-XEg"/>
                                     <constraint firstItem="E7m-qv-Med" firstAttribute="top" secondItem="zfY-eQ-7jT" secondAttribute="bottom" constant="15" id="Ikx-Hg-NRA"/>
                                     <constraint firstAttribute="trailing" secondItem="E7m-qv-Med" secondAttribute="trailing" id="J1r-gg-WCO"/>
                                     <constraint firstItem="PiI-Xn-X6w" firstAttribute="top" secondItem="onf-Vg-RYv" secondAttribute="top" constant="20" id="LJI-Rx-3Ix"/>
@@ -415,9 +437,11 @@
                                     <constraint firstItem="XC9-Ql-v6K" firstAttribute="leading" secondItem="onf-Vg-RYv" secondAttribute="leading" id="SfK-IZ-93p"/>
                                     <constraint firstItem="zfY-eQ-7jT" firstAttribute="leading" secondItem="onf-Vg-RYv" secondAttribute="leading" constant="20" id="Xrc-o3-Gjk"/>
                                     <constraint firstItem="E3C-xN-8Yu" firstAttribute="leading" secondItem="onf-Vg-RYv" secondAttribute="leading" constant="20" id="aDx-zZ-eQL"/>
+                                    <constraint firstItem="ryt-Gb-vff" firstAttribute="centerY" secondItem="zfY-eQ-7jT" secondAttribute="centerY" id="fUH-1M-shU"/>
                                     <constraint firstItem="E7m-qv-Med" firstAttribute="leading" secondItem="onf-Vg-RYv" secondAttribute="leading" id="h4o-ft-c9g"/>
                                     <constraint firstItem="POV-KS-me0" firstAttribute="leading" secondItem="PiI-Xn-X6w" secondAttribute="trailing" constant="14" id="jEm-rn-i6f"/>
                                     <constraint firstItem="XC9-Ql-v6K" firstAttribute="top" secondItem="E3C-xN-8Yu" secondAttribute="bottom" constant="15" id="nyr-wI-Usm"/>
+                                    <constraint firstItem="ryt-Gb-vff" firstAttribute="width" secondItem="POV-KS-me0" secondAttribute="width" id="r9c-xM-DWI"/>
                                     <constraint firstItem="zfY-eQ-7jT" firstAttribute="top" secondItem="XC9-Ql-v6K" secondAttribute="bottom" constant="15" id="uZN-jW-TVR"/>
                                     <constraint firstItem="PiI-Xn-X6w" firstAttribute="leading" secondItem="E3C-xN-8Yu" secondAttribute="trailing" constant="10" id="ufC-IZ-BkL"/>
                                 </constraints>
@@ -435,7 +459,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="SourceLanguageButton" destination="POV-KS-me0" id="5dl-mg-Axi"/>
                         <outlet property="SourceMenuButton" destination="DC2-h7-UC5" id="9fa-oW-PRi"/>
                         <outlet property="autoLanguageButton" destination="PiI-Xn-X6w" id="XI1-EB-LQ3"/>
                         <outlet property="sourceLanguageTable" destination="dCe-Pz-oWf" id="rIc-Ko-w4Y"/>
@@ -574,7 +597,7 @@
                 </viewController>
                 <customObject id="o61-HU-cZI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483.5" y="1459"/>
+            <point key="canvasLocation" x="434" y="1613"/>
         </scene>
     </scenes>
     <resources>

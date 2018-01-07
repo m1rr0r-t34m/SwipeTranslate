@@ -26,4 +26,8 @@
 - (void)setSourceSelected:(NSInteger)index;
 - (void)setTargetSelected:(NSInteger)index;
 - (void)switchAutoButton;
+
+- (void)pushSourceLanguage:(STLanguage *)language;
+- (void)pushTargetLanguage:(STLanguage *)language;
+- (void)switchLanguages;
 @end

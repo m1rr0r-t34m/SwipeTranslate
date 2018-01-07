@@ -13,11 +13,10 @@
 
 - (void)drawSeparatorInRect:(NSRect)dirtyRect {
     if (!self.viewModel.shouldDrawBorder) {
-        
         return;
     }
     
-    NSBezierPath * gridPath = [NSBezierPath bezierPath];
+    NSBezierPath *gridPath = [NSBezierPath bezierPath];
     NSRect rowRect = dirtyRect;
 
     [gridPath moveToPoint:NSMakePoint(rowRect.origin.x, rowRect.origin.y + rowRect.size.height - 0.5)];

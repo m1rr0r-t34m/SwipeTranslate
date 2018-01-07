@@ -7,12 +7,12 @@
 //
 
 #import "STLanguageCellModel.h"
-
+#import "STLanguage.h"
 @implementation STLanguageCellModel
-- (instancetype)initWithLanguage:(STLanguage *)language Title:(NSString *)title {
+- (instancetype)initWithLanguage:(STLanguage *)language {
     if (self = [super init]) {
         _language = language;
-        _title = title;
+        _title = language.title;
     }
     
     return self;

@@ -41,7 +41,7 @@
          }]
          filter:^BOOL(NSAttributedString *result) {
              return [result length] > 0;
-         }];// t//hrottle:0.2];
+         }];// throttle:0.2];
     
     RAC(self, translatedText) = translationSignal;
     

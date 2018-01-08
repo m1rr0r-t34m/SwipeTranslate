@@ -23,6 +23,7 @@
 		CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED801BD9772600789E8E /* SavedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7A1BD9772600789E8E /* SavedInfo.m */; };
 		CD7CED821BD9772600789E8E /* ValidateTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD7CED7C1BD9772600789E8E /* ValidateTextView.m */; };
+		CD85DC9F2003907600402CFF /* STDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD85DC9E2003907600402CFF /* STDatabaseManager.m */; };
 		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
 		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
@@ -128,6 +129,8 @@
 		CD7CED7A1BD9772600789E8E /* SavedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SavedInfo.m; path = todayWidget/SavedInfo.m; sourceTree = "<group>"; };
 		CD7CED7B1BD9772600789E8E /* ValidateTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValidateTextView.h; path = todayWidget/ValidateTextView.h; sourceTree = "<group>"; };
 		CD7CED7C1BD9772600789E8E /* ValidateTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValidateTextView.m; path = todayWidget/ValidateTextView.m; sourceTree = "<group>"; };
+		CD85DC9D2003907600402CFF /* STDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseManager.h; sourceTree = "<group>"; };
+		CD85DC9E2003907600402CFF /* STDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDatabaseManager.m; sourceTree = "<group>"; };
 		CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Swipe Translate Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 		CD55026F1D7197930089484D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CD85DC9D2003907600402CFF /* STDatabaseManager.h */,
+				CD85DC9E2003907600402CFF /* STDatabaseManager.m */,
 				CD5502701D7197E80089484D /* STLanguagesManager.h */,
 				CD5502711D7197E80089484D /* STLanguagesManager.m */,
 				CD74D6B81E8D9BF50033A5D1 /* STLanguage.h */,
@@ -722,6 +727,7 @@
 				CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */,
 				CDD1FF891D66EA880031FC94 /* STLeftSplitView.m in Sources */,
 				CDB84E061CA04FC700A919AA /* iRate.m in Sources */,
+				CD85DC9F2003907600402CFF /* STDatabaseManager.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 target 'Swipe Translate' do
   pod 'ReactiveObjC'
   pod 'AFNetworking'
+  pod 'YapDatabase'
 end
 
 target 'Swipe Translate Widget' do

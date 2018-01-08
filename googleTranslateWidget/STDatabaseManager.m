@@ -27,6 +27,7 @@ static NSUInteger defaultLanguagesCount = 10;
 @end
 
 //TODO: we could make connections async, but why?
+//TODO: we could also handle DB errors later
 @implementation STDatabaseManager
 #pragma mark - Initialization
 + (instancetype)sharedInstance {

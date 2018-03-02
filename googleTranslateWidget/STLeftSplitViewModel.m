@@ -7,13 +7,12 @@
 //
 
 #import "STLeftSplitViewModel.h"
-#import "STLanguagesManager.h"
-#import "STLanguageCellModel.h"
-#import "SavedInfo.h"
 #import <ReactiveObjC.h>
 #import "STLanguage.h"
-#import "STTranslationManager.h"
 #import "NSMutableArray+Helpers.h"
+#import "STServices.h"
+#import "STLanguageCellModel.h"
+#import "STTranslation.h"
 
 @interface STLeftSplitViewModel ()
 @property (strong, nonatomic) RACSubject *dataReloadSubject;
@@ -24,13 +23,20 @@
 @implementation STLeftSplitViewModel
 #pragma mark - Lifecycle
 - (instancetype)init {
+    NSAssert(NO, @"Use designated initializer initWithServices:");
+    self = [super init];
+    return self;
+}
+
+- (instancetype)initWithServices:(id <STServices>)services {
     if(self = [super init]) {
+        _services = services;
         _visibleRowsCount = 10;
         _rowHeight = 40;
         _dataReloadSubject = [RACSubject new];
         _dataReloadSignal = [[_dataReloadSubject startWith:nil] ignore:nil];
-        _sourceSelectedLanguage = [STLanguagesManager selectedSourceLanguage];
-        _targetSelectedLanguage = [STLanguagesManager selectedTargetLanguage];
+        _sourceSelectedLanguage = self.services.databaseService.sourceSelectedLanguage;
+        _targetSelectedLanguage = self.services.databaseService.targetSelectedLanguage;
         
         [self loadInitialData];
         [self bindSignals];
@@ -64,13 +70,25 @@
         [self.dataReloadSubject sendNext:@YES];
     }];
     
-    //TODO: have a look
-    [[[[RACObserve([STTranslationManager manager], detectedLanguage) ignore:nil] distinctUntilChanged] map:^id(NSString *key) {
-        return [STLanguagesManager languageForKey:key];
-    }] subscribeNext:^(NSString *language) {
+    
+    RACSignal *autoSelected = [RACObserve(self, sourceSelectedLanguage) filter:^BOOL(STLanguage *language) {
         @strongify(self);
-        self.sourceSelectedTitle = [NSString stringWithFormat:@"(Auto) > %@", language];
+        return [self.services.languagesService.autoLanguage isEqual:language];
     }];
+    
+    [[RACObserve(self, lastTranslation)
+        combineLatestWith:autoSelected]
+        subscribeNext:^(RACTuple *tuple) {
+            @strongify(self);
+            STTranslation *translation = tuple.first;
+            if (self.autoLanguageSelected) {
+                if (translation.detectedLanguage) {
+                    self.sourceSelectedTitle = [NSString stringWithFormat:@"(Auto) > %@", translation.detectedLanguage.title];
+                } else {
+                    self.sourceSelectedTitle = @"(Auto)";
+                }
+            }
+        }];
     
     RAC(self, sourceSelectedTitle) = [RACObserve(self, sourceSelectedLanguage) map:^id (STLanguage *language) {
         return language.title;
@@ -83,20 +101,21 @@
 
 #pragma mark - Cell viewmodels
 - (void)loadInitialData {
-    NSMutableArray *sourceLanguages = [[STLanguagesManager sourceLanguages] mutableCopy];
+    NSMutableArray *sourceLanguages = [self.services.databaseService.sourceLanguages mutableCopy];
     
     if (!sourceLanguages) sourceLanguages = [NSMutableArray new];
     
-    if (sourceLanguages.count < FavouriteLanguagesCount) {
-        NSArray *randomLanguages = [STLanguagesManager randomLanguagesExcluding:sourceLanguages withCount:FavouriteLanguagesCount - sourceLanguages.count];
+    if (sourceLanguages.count < defaultLanguagesCount) {
+        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:defaultLanguagesCount - sourceLanguages.count];
         [sourceLanguages addObjectsFromArray:randomLanguages];
     }
     
-    NSMutableArray *targetLanguages = [[STLanguagesManager targetLanguages] mutableCopy];
+    NSMutableArray *targetLanguages = [self.services.databaseService.targetLanguages mutableCopy];
+    
     if (!targetLanguages) targetLanguages = [NSMutableArray new];
     
-    if (targetLanguages.count < FavouriteLanguagesCount) {
-        NSArray *randomLanguages = [STLanguagesManager randomLanguagesExcluding:sourceLanguages withCount:FavouriteLanguagesCount - targetLanguages.count];
+    if (targetLanguages.count < defaultLanguagesCount) {
+        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:defaultLanguagesCount - targetLanguages.count];
         [targetLanguages addObjectsFromArray:randomLanguages];
     }
     
@@ -192,7 +211,7 @@
     if (self.autoLanguageSelected) {
         self.sourceSelectedLanguage = self.sourceLanguages[0].language;
     } else {
-        self.sourceSelectedLanguage = [STLanguagesManager autoLanguage];
+        self.sourceSelectedLanguage = [self.services.languagesService autoLanguage];
     }
     
     [self saveLanguages];
@@ -213,20 +232,20 @@
 
 #pragma mark - Helpers
 - (void)saveLanguages {
-    [SavedInfo setSourceLanguages:[[self.sourceLanguages.rac_sequence map:^id(STLanguageCellModel *cellModel) {
-        return cellModel.title;
+    [self.services.databaseService saveSourceLanguages:[[self.sourceLanguages.rac_sequence map:^id(STLanguageCellModel *cellModel) {
+        return cellModel.language;
     }] array]];
     
-    [SavedInfo setTargetLanguages:[[self.targetLanguages.rac_sequence map:^id(STLanguageCellModel *cellModel) {
-        return cellModel.title;
+    [self.services.databaseService saveTargetLanguages:[[self.targetLanguages.rac_sequence map:^id(STLanguageCellModel *cellModel) {
+        return cellModel.language;
     }] array]];
     
-    [SavedInfo setSourceSelection:self.sourceSelectedLanguage.title];
-    [SavedInfo setTargetSelection:self.targetSelectedLanguage.title];
+    [self.services.databaseService saveSourceSelected:self.sourceSelectedLanguage];
+    [self.services.databaseService saveTargetSelected:self.targetSelectedLanguage];
 }
 
 - (BOOL)autoLanguageSelected {
-    return [self.sourceSelectedLanguage isEqual:[STLanguagesManager autoLanguage]];
+    return [self.sourceSelectedLanguage isEqual:[self.services.languagesService autoLanguage]];
 }
 
 - (NSInteger)indexOfLanguage:(STLanguage *)language inCellModelsArray:(NSArray <STLanguageCellModel *> *)cellModels {

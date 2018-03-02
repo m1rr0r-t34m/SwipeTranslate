@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class STTranslation;
 
 @interface STRightSplitViewModel : NSObject
-
 @property (strong, nonatomic) NSString *inputText;
 @property (strong, nonatomic) NSAttributedString *outputText;
-
+@property (strong, nonatomic) STTranslation *translation;
 @end

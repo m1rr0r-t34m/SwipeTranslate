@@ -1,17 +1,20 @@
 //
-//  STDatabaseManager.h
+//  STDatabaseService.h
 //  Swipe Translate
 //
-//  Created by Mark Vasiv on 08/01/2018.
+//  Created by Mark Vasiv on 19/01/2018.
 //  Copyright © 2018 Mark Vasiv. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "STLanguagesService.h"
+
 @class STLanguage;
 
-@interface STDatabaseManager : NSObject
-#pragma mark - Initialization
-+ (instancetype)sharedInstance;
+static NSUInteger defaultLanguagesCount = 10;
+
+@protocol STDatabaseService <NSObject>
+- (instancetype)initWithLanguagesService:(id <STLanguagesService>)service;
 #pragma mark - Select
 - (NSArray <STLanguage *> *)sourceLanguages;
 - (NSArray <STLanguage *> *)targetLanguages;

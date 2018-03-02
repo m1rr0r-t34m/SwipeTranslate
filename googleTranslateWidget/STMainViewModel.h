@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "STServices.h"
+@class STTranslation;
 
 @interface STMainViewModel : NSObject
-
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) NSString *sourceLanguage;
 @property (strong, nonatomic) NSString *targetLanguage;
-
 @property (strong, nonatomic) NSAttributedString *translatedText;
-
+@property (strong, nonatomic) STTranslation *translation;
+@property (strong, nonatomic) id <STServices> services;
+- (instancetype)initWithServices:(id <STServices>)services;
 @end

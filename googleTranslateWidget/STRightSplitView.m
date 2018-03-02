@@ -8,7 +8,7 @@
 
 #import "STRightSplitView.h"
 #import <ReactiveObjC.h>
-#import "STTranslationManager.h"
+//#import "STTranslationManager.h"
 
 
 @interface STRightSplitView () <NSTextViewDelegate>
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        _ViewModel = [STRightSplitViewModel new];
+        _viewModel = [STRightSplitViewModel new];
     }
     return self;
 }
@@ -47,7 +47,7 @@
 - (void)setupSourceTextView {
     
     RACSignal *PlaceholderAlphaSignal =
-    [[RACObserve(self.ViewModel, inputText)
+    [[RACObserve(self.viewModel, inputText)
         map:^id(NSString *Text) {
             return @(Text.length == 0);
         }]
@@ -58,7 +58,7 @@
     @weakify(self);
     
     RACSignal *SourceTextViewElasticitySignal =
-    [[RACObserve(self.ViewModel, inputText) merge:RACObserve(self, clearPressed)]
+    [[RACObserve(self.viewModel, inputText) merge:RACObserve(self, clearPressed)]
      map:^id(id value) {
          @strongify(self);
          
@@ -80,30 +80,17 @@
 }
 
 - (void)bindViewModel {
-    RAC(self.ViewModel, inputText) = self.sourceTextView.rac_textSignal;
+    RAC(self.viewModel, inputText) = self.sourceTextView.rac_textSignal;
     
     @weakify(self);
-    [RACObserve(self.ViewModel, inputText) subscribeNext:^(NSString *modelText) {
-        @strongify(self);
-        self.sourceTextView.string = modelText;
-        
-        if(![modelText length]) {
-            [[STTranslationManager manager] cancelCurrentSession];
-            self.targetTextView.string = @"";
-        }
-    }];
-    [[RACObserve(self.ViewModel, outputText) ignore:nil] subscribeNext:^(NSAttributedString *modelText) {
+    [[RACObserve(self.viewModel, outputText) ignore:nil] subscribeNext:^(NSAttributedString *modelText) {
         @strongify(self);
         self.targetTextView.textStorage.attributedString = modelText;
     }];
 }
 
 - (IBAction)clearButtonPress:(id)sender {
-    [self.ViewModel setInputText:@""];
+    [self.viewModel setInputText:@""];
     self.clearPressed = @(YES);
 }
-
-#pragma mark - Text Views
-
-
 @end

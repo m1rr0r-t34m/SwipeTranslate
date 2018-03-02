@@ -7,7 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "STLanguagesService.h"
+
 @class RACSignal;
 @interface STLanguageMenu : NSMenu
 @property (strong, nonatomic) RACSignal *selectSignal;
+- (instancetype)initWithLanguagesService:(id <STLanguagesService>)service;
 @end

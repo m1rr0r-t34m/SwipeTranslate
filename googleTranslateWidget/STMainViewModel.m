@@ -7,48 +7,45 @@
 //
 
 #import "STMainViewModel.h"
-
-#import "STLanguagesManager.h"
-#import "STTranslationManager.h"
-#import "Parser.h"
+#import "STTranslation.h"
 #import "STLanguage.h"
 #import <ReactiveObjC.h>
 
-@implementation STMainViewModel
+@interface STMainViewModel()
+//@property (strong, nonatomic) id <STServices> services;
+@end
 
+@implementation STMainViewModel
 - (instancetype)init {
-    if(self = [super init]) {
+    NSAssert(NO, @"Use designated initializer initWithServices:");
+    self = [super init];
+    return self;
+}
+
+- (instancetype)initWithServices:(id <STServices>)services {
+    if (self = [super init]) {
+        _services = services;
         [self setupBindings];
     }
     return self;
 }
 
-- (void) setupBindings {
-    RACSignal *translationNeedSignal = [RACSignal combineLatest:@[[RACObserve(self, sourceText) ignore:nil],
-                                                                  [RACObserve(self, sourceLanguage) ignore:nil],
-                                                                  [RACObserve(self, targetLanguage) ignore:nil]]];
+- (void)setupBindings {
+    RACSignal *textSignal = [RACObserve(self, sourceText) ignore:nil];
+    RACSignal *sourceLanguageSignal = [RACObserve(self, sourceLanguage) ignore:nil];
+    RACSignal *targetLanguageSignal = [RACObserve(self, targetLanguage) ignore:nil];
     
-    [self rac_liftSelector:@selector(performTranslationFor:from:to:) withSignalOfArguments:[translationNeedSignal throttle:0.5]];
-    
-    RACSignal *translationSignal =
-    [[[[RACObserve([STTranslationManager manager], result)
-         ignore:nil]
-         filter:^BOOL(NSDictionary *receivedData) {
-             return [[receivedData allKeys] count];
-         }]
-         map:^id(NSDictionary *receivedData) {
-             return [Parser parsedResult:receivedData];
-         }]
-         filter:^BOOL(NSAttributedString *result) {
-             return [result length] > 0;
-         }];// throttle:0.2];
-    
-    RAC(self, translatedText) = translationSignal;
-    
+    @weakify(self);
+    [[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]]
+        map:^RACSignal *(RACTuple *tuple) {
+            @strongify(self);
+            RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
+            return [self.services.translationService translationForText:text fromLanguage:source toLanguage:target];
+        }]
+        switchToLatest]
+        subscribeNext:^(STTranslation *translation) {
+            @strongify(self);
+            self.translation = translation;
+        }];
 }
-
-- (void) performTranslationFor:(NSString *)text from:(STLanguage *)source to:(STLanguage *)target {
-    [[STTranslationManager manager] getTranslationForString:text SourceLanguage:source.key AndTargetLanguage:target.key];
-}
-
 @end

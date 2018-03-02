@@ -459,7 +459,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="SourceMenuButton" destination="DC2-h7-UC5" id="9fa-oW-PRi"/>
                         <outlet property="autoLanguageButton" destination="PiI-Xn-X6w" id="XI1-EB-LQ3"/>
                         <outlet property="sourceLanguageTable" destination="dCe-Pz-oWf" id="rIc-Ko-w4Y"/>
                         <outlet property="sourceLanguageTableScroll" destination="XC9-Ql-v6K" id="eOZ-VM-VXX"/>

@@ -10,6 +10,7 @@
 #import "STLeftSplitView.h"
 #import "STRightSplitView.h"
 #import "STMainViewModel.h"
+#import "STServicesImpl.h"
 
 @interface STMainViewController () <NSSplitViewDelegate>
 
@@ -28,7 +29,9 @@
 #pragma mark - Initialization
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if(self = [super initWithCoder:coder]) {
-        _viewModel = [STMainViewModel new];
+        //TODO: Architectural bug
+        //Services should be passed here from AppDelegate
+        _viewModel = [[STMainViewModel alloc] initWithServices:[STServicesImpl new]];
     }
     
     return self;
@@ -57,10 +60,11 @@
 }
 
 - (void)setupFlow {
-    RAC(self.viewModel, sourceText) = [RACObserve(self.rightView.ViewModel, inputText) ignore:nil];
+    RAC(self.viewModel, sourceText) = [RACObserve(self.rightView.viewModel, inputText) ignore:nil];
     RAC(self.viewModel, sourceLanguage) = [RACObserve(self.leftView.viewModel, sourceSelectedLanguage) ignore:nil];
     RAC(self.viewModel, targetLanguage) = [RACObserve(self.leftView.viewModel, targetSelectedLanguage) ignore:nil];
-    RAC(self.rightView.ViewModel, outputText) = [RACObserve(self.viewModel, translatedText) ignore:nil];
+    RAC(self.rightView.viewModel, translation) = [RACObserve(self.viewModel, translation) ignore:nil];
+    RAC(self.leftView.viewModel, lastTranslation) = [RACObserve(self.viewModel, translation) ignore:nil];
 }
 
 - (void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize:(NSSize)oldSize {
@@ -98,10 +102,14 @@
 
 #pragma mark - Segues
 - (void)prepareForSegue:(NSStoryboardSegue *)segue sender:(id)sender {
-    if([segue.identifier isEqualToString:@"EmbedLeftView"])
+    if([segue.identifier isEqualToString:@"EmbedLeftView"]) {
         self.leftView = segue.destinationController;
-    else if([segue.identifier isEqualToString:@"EmbedRightView"])
+        self.leftView.viewModel = [[STLeftSplitViewModel alloc] initWithServices:self.viewModel.services];
+    }
+    else if([segue.identifier isEqualToString:@"EmbedRightView"]) {
         self.rightView = segue.destinationController;
+    }
+    
 }
 
 @end

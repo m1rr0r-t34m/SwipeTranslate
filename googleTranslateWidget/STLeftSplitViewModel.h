@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "STServices.h"
 
 @class STLanguageCellModel;
 @class STLanguage;
 @class RACSignal;
+@class STTranslation;
 
 @interface STLeftSplitViewModel : NSObject
 @property (strong, nonatomic) RACSignal *dataReloadSignal;
@@ -22,11 +24,12 @@
 @property (strong, nonatomic) NSString *targetSelectedTitle;
 @property (assign, nonatomic) CGFloat rowHeight;
 @property (assign, nonatomic) NSUInteger visibleRowsCount;
-
+@property (strong, nonatomic) id <STServices> services;
+@property (strong, nonatomic) STTranslation *lastTranslation;
+- (instancetype)initWithServices:(id <STServices>)services;
 - (void)setSourceSelected:(NSInteger)index;
 - (void)setTargetSelected:(NSInteger)index;
 - (void)switchAutoButton;
-
 - (void)pushSourceLanguage:(STLanguage *)language;
 - (void)pushTargetLanguage:(STLanguage *)language;
 - (void)switchLanguages;

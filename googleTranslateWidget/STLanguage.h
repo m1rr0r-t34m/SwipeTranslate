@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface STLanguage : NSObject <NSCopying, NSCoding>
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *key;

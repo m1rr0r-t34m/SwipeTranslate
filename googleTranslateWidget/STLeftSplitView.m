@@ -32,21 +32,13 @@ static NSUInteger maxNumberOfRows = 10;
 
 @implementation STLeftSplitView
 #pragma mark - Initialization
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    if(self  = [super initWithCoder:coder]) {
-        _viewModel = [STLeftSplitViewModel new];
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self.sourceLanguageTable setRefusesFirstResponder:YES];
     [self.targetLanguageTable setRefusesFirstResponder:YES];
-    [self.sourceLanguageTable reloadData];
-    [self.targetLanguageTable reloadData];
+    //[self.sourceLanguageTable reloadData];
+    //[self.targetLanguageTable reloadData];
     
     RAC(self.sourceLanguageTitleTextField, stringValue) = RACObserve(self.viewModel, sourceSelectedTitle);
     RAC(self.targetLanguageTitleTextField, stringValue) = RACObserve(self.viewModel, targetSelectedTitle);
@@ -63,8 +55,8 @@ static NSUInteger maxNumberOfRows = 10;
 }
 
 - (void)setupMenus {
-    self.sourceLanguageMenu = [STLanguageMenu new];
-    self.targetLanguageMenu = [STLanguageMenu new];
+    self.sourceLanguageMenu = [[STLanguageMenu alloc] initWithLanguagesService:self.viewModel.services.languagesService];
+    self.targetLanguageMenu = [[STLanguageMenu alloc] initWithLanguagesService:self.viewModel.services.languagesService];
     
     [self.sourceLanguageMenu.selectSignal subscribeNext:^(STLanguage *language) {
         [self.viewModel pushSourceLanguage:language];

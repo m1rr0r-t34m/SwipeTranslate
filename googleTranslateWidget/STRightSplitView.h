@@ -10,7 +10,5 @@
 #import "STRightSplitViewModel.h"
 
 @interface STRightSplitView : NSViewController
-
-@property (strong, nonatomic) STRightSplitViewModel *ViewModel;
-
+@property (strong, nonatomic) STRightSplitViewModel *viewModel;
 @end

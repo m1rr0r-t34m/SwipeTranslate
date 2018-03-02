@@ -1,45 +1,41 @@
 //
-//  STDatabaseManager.m
+//  STDatabaseService.m
 //  Swipe Translate
 //
-//  Created by Mark Vasiv on 08/01/2018.
+//  Created by Mark Vasiv on 19/01/2018.
 //  Copyright © 2018 Mark Vasiv. All rights reserved.
 //
 
-#import "STDatabaseManager.h"
+#import "STDatabaseServiceImpl.h"
 #import <YapDatabase.h>
 #import "STLanguage.h"
-#import "STLanguagesManager.h"
+#import "STLanguagesService.h"
 
 static NSString *databaseName = @"yap";
-static STDatabaseManager *instance;
-
 static NSString *kSourceLanguages = @"source";
 static NSString *kTargetLanguages = @"target";
 static NSString *kSourceSelected = @"sourceSelected";
 static NSString *kTargetSelected = @"targetSelected";
-static NSUInteger defaultLanguagesCount = 10;
 
-@interface STDatabaseManager()
+
+@interface STDatabaseServiceImpl()
 @property (strong, nonatomic) YapDatabase *database;
 @property (strong, nonatomic) YapDatabaseConnection *connection;
 @property (strong, nonatomic) NSMutableDictionary *persistentCache;
+@property (strong, nonatomic) id <STLanguagesService> languagesService;
 @end
 
-//TODO: we could make connections async, but why?
-//TODO: we could also handle DB errors later
-@implementation STDatabaseManager
+@implementation STDatabaseServiceImpl
 #pragma mark - Initialization
-+ (instancetype)sharedInstance {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [STDatabaseManager new];
-    });
-    return instance;
+- (instancetype)init {
+    NSAssert(NO, @"Use designated initializer initWithLanguagesService:");
+    self = [super init];
+    return self;
 }
 
-- (instancetype)init {
+- (instancetype)initWithLanguagesService:(id <STLanguagesService>)service {
     if (self = [super init]) {
+        _languagesService = service;
         _database = [[YapDatabase alloc] initWithPath:[[self documentsPath] stringByAppendingPathComponent:databaseName]];
         _connection = [_database newConnection];
         _persistentCache = [NSMutableDictionary new];
@@ -75,8 +71,8 @@ static NSUInteger defaultLanguagesCount = 10;
 }
 
 - (void)fillInitialData {
-    NSArray *sourceLanguages = [STLanguagesManager randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
-    NSArray *targetLanguages = [STLanguagesManager randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
+    NSArray *sourceLanguages = [self.languagesService randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
+    NSArray *targetLanguages = [self.languagesService randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
     [self.connection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
         [transaction setObject:sourceLanguages forKey:kSourceLanguages inCollection:nil];
         [transaction setObject:targetLanguages forKey:kTargetLanguages inCollection:nil];

@@ -146,7 +146,9 @@
         }
         
         NSMutableDictionary *restructuredDict = [NSMutableDictionary new];
-        [restructuredDict setObject:transcription forKey:kTranscription];
+        if (transcription) {
+            [restructuredDict setObject:transcription forKey:kTranscription];
+        }
         [restructuredDict setObject:translationKeys forKey:kTranslationKeys];
         [restructuredDict setObject:translationDict forKey:kTranslationDict];
         

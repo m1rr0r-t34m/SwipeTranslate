@@ -26,6 +26,8 @@
 		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
 		CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CD9FB25820496EDF003C81C7 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB25720496EDF003C81C7 /* STConstants.m */; };
+		CD9FB287204D8B29003C81C7 /* STDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB286204D8B29003C81C7 /* STDraggableView.m */; };
+		CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */; };
 		CDA5AB2120122CA000AF5919 /* STDatabaseServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */; };
 		CDA5AB26201241EA00AF5919 /* STParserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB25201241EA00AF5919 /* STParserServiceImpl.m */; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
@@ -109,8 +111,6 @@
 		CD253CDD1BDABDF000662162 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		CD2608451C6E543E0017E10F /* NSAttributedString+Trimming.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Trimming.h"; sourceTree = "<group>"; };
 		CD2608461C6E543E0017E10F /* NSAttributedString+Trimming.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Trimming.m"; sourceTree = "<group>"; };
-		CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableSet+TouchSet.h"; sourceTree = "<group>"; };
-		CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableSet+TouchSet.m"; sourceTree = "<group>"; };
 		CD4BFABE1E4235650089AEC5 /* STLanguageTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageTextField.h; sourceTree = "<group>"; };
 		CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageTextField.m; sourceTree = "<group>"; };
 		CD6F632320151B5F009A5720 /* STTranslation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STTranslation.h; sourceTree = "<group>"; };
@@ -137,6 +137,10 @@
 		CD9DA14A1BE564CC00B1D0CA /* InputTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputTextView.m; path = googleTranslateWidget/InputTextView.m; sourceTree = "<group>"; };
 		CD9FB2532048552D003C81C7 /* STConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = "<group>"; };
 		CD9FB25720496EDF003C81C7 /* STConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STConstants.m; sourceTree = "<group>"; };
+		CD9FB285204D8B29003C81C7 /* STDraggableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDraggableView.h; sourceTree = "<group>"; };
+		CD9FB286204D8B29003C81C7 /* STDraggableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDraggableView.m; sourceTree = "<group>"; };
+		CDA2D07E204EEDC3002B34F7 /* STSidebarAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STSidebarAnimator.h; sourceTree = "<group>"; };
+		CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSidebarAnimator.m; sourceTree = "<group>"; };
 		CDA5AB1F20122CA000AF5919 /* STDatabaseServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseServiceImpl.h; sourceTree = "<group>"; };
 		CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDatabaseServiceImpl.m; sourceTree = "<group>"; };
 		CDA5AB2220122CD200AF5919 /* STDatabaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseService.h; sourceTree = "<group>"; };
@@ -266,8 +270,6 @@
 				754CE1061C67E47100A2FB5A /* FavouritesListView.m */,
 				75B196671C6D304100796584 /* FavouritesDataHandler.h */,
 				75B196681C6D304100796584 /* FavouritesDataHandler.m */,
-				CD33F7F51C67FE5A00B6D06C /* NSMutableSet+TouchSet.h */,
-				CD33F7F61C67FE5A00B6D06C /* NSMutableSet+TouchSet.m */,
 				75F5A8201BF5412C009A5CBC /* MainApplicationMenu.h */,
 				75F5A8211BF5412C009A5CBC /* MainApplicationMenu.m */,
 				CD9DA1491BE564CC00B1D0CA /* InputTextView.h */,
@@ -344,6 +346,17 @@
 			children = (
 			);
 			name = "Core Services";
+			sourceTree = "<group>";
+		};
+		CDA2D081204F0344002B34F7 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				CD9FB285204D8B29003C81C7 /* STDraggableView.h */,
+				CD9FB286204D8B29003C81C7 /* STDraggableView.m */,
+				CDA2D07E204EEDC3002B34F7 /* STSidebarAnimator.h */,
+				CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */,
+			);
+			name = Sidebar;
 			sourceTree = "<group>";
 		};
 		CDB84E071CA04FE500A919AA /* iRate */ = {
@@ -452,6 +465,7 @@
 				CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */,
 				CDD1FF951D66EF6E0031FC94 /* STRightSplitViewModel.h */,
 				CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */,
+				CDA2D081204F0344002B34F7 /* Sidebar */,
 			);
 			name = RightSplitView;
 			sourceTree = "<group>";
@@ -743,11 +757,13 @@
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,
 				CDF5F03E2007A00800491C7A /* STServicesImpl.m in Sources */,
 				CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */,
+				CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */,
 				CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */,
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,
 				CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
+				CD9FB287204D8B29003C81C7 /* STDraggableView.m in Sources */,
 				CDA5AB2120122CA000AF5919 /* STDatabaseServiceImpl.m in Sources */,
 				CD74D6B71E8D96A60033A5D1 /* STLanguageCellModel.m in Sources */,
 				CD0A5D8420403D7C00C5984D /* STAPIServiceImpl.m in Sources */,

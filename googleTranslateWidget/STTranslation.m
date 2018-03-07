@@ -54,16 +54,18 @@
         return NO;
     }
     
-    BOOL equality = (self.type == translation.type) && ([self.inputText isEqualToString:translation.inputText]) && ([self.parserResult isEqual:translation.parserResult] && [self.sourceLanguage isEqual:translation.sourceLanguage] && [self.targetLanguage isEqual:translation.targetLanguage]);
+    BOOL equality = ([self.inputText isEqualToString:translation.inputText]) && ([self.parserResult isEqual:translation.parserResult] && [self.targetLanguage isEqual:translation.targetLanguage]);
     
     if (self.type == STTranslationTypeAuto) {
-        equality = equality && [self.detectedLanguage isEqual:translation.detectedLanguage];
+        equality = equality && ([self.detectedLanguage isEqual:translation.detectedLanguage] || [self.detectedLanguage isEqualTo:translation.sourceLanguage]);
+    } else {
+        equality = equality && ([self.sourceLanguage isEqual:translation.sourceLanguage] || [self.sourceLanguage isEqualTo:translation.detectedLanguage]);
     }
     
     return equality;
 }
 
 - (NSUInteger)hash {
-    return self.sourceLanguage.hash ^ self.targetLanguage.hash ^ self.inputText.hash ^ self.parserResult.hash;
+    return self.inputText.hash ^ self.parserResult.hash;
 }
 @end

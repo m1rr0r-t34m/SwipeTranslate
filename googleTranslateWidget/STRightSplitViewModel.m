@@ -10,11 +10,19 @@
 #import "STTranslation.h"
 #import "STParserResult.h"
 #import <ReactiveObjC.h>
+#import "STServices.h"
+#import "STFavouriteCellModel.h"
+
+@interface STRightSplitViewModel()
+@property (strong, nonatomic) id <STServices> services;
+@end
 
 @implementation STRightSplitViewModel
-- (instancetype)init {
+- (instancetype)initWithServices:(id <STServices>)services {
     if (self = [super init]) {
+        _services = services;
         [self setupBindings];
+        [self fetchFavouriteTranslations];
     }
     
     return self;
@@ -26,6 +34,15 @@
         @strongify(self);
         return [self textForTranslationResult:translation];
     }];
+}
+
+- (void)fetchFavouriteTranslations {
+    NSArray *favourites = [self.services.databaseService favouriteTranslations];
+    @weakify(self);
+    self.favouriteViewModels = [favourites.rac_sequence map:^id (STTranslation *translation) {
+        @strongify(self);
+        return [self favouriteCellModelForTranslation:translation];
+    }].array;
 }
 
 - (NSAttributedString *)dictionaryTextForResult:(STParserResult *)parserResult {
@@ -106,5 +123,37 @@
     } else {
         return [self dictionaryTextForResult:translation.parserResult];
     }
+}
+
+- (STFavouriteCellModel *)favouriteCellModelForTranslation:(STTranslation *)translation {
+    NSString *outputText = [self textForTranslationResult:translation].string;
+    outputText = [outputText stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+
+    return [[STFavouriteCellModel alloc] initWithInput:translation.inputText output:outputText];
+}
+- (void)saveFavouriteTranslation {
+    NSArray *favourites = [self.services.databaseService favouriteTranslations];
+    BOOL found = NO;
+    for (STTranslation *translation in favourites) {
+        if ([translation isEqual:self.translation]) {
+            found = YES;
+        }
+    }
+    
+    NSMutableArray *favouriteCellModels = [self.favouriteViewModels mutableCopy];
+    STFavouriteCellModel *cellModel = [self favouriteCellModelForTranslation:self.translation];
+    if (!found) {
+        [self.services.databaseService saveFavouriteTranslation:self.translation];
+        [favouriteCellModels insertObject:cellModel atIndex:0];
+    } else {
+        [self.services.databaseService removeFavouriteTranslation:self.translation];
+        for (STFavouriteCellModel *model in self.favouriteViewModels) {
+            if ([model.translation isEqual:self.translation]) {
+                [favouriteCellModels removeObject:model];
+            }
+        }
+    }
+    
+    self.favouriteViewModels = [favouriteCellModels copy];
 }
 @end

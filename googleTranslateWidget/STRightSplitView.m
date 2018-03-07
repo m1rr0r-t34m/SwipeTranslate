@@ -12,7 +12,8 @@
 #import "STSidebarAnimator.h"
 #import <QuartzCore/CAMediaTimingFunction.h>
 
-@interface STRightSplitView () <NSTextViewDelegate>
+@interface STRightSplitView () <NSTextViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
+@property (strong) IBOutlet NSButton *favouriteButton;
 @property (unsafe_unretained) IBOutlet NSTextView *sourceTextView;
 @property (unsafe_unretained) IBOutlet NSTextView *targetTextView;
 @property (weak) IBOutlet NSTextField *placeholderLabel;
@@ -20,6 +21,7 @@
 @property (strong, nonatomic) NSNumber *clearPressed;
 @property (strong) IBOutlet NSView *favouritesContainer;
 @property (strong) IBOutlet NSLayoutConstraint *favouritesContainerRight;
+@property (strong) IBOutlet NSTableView *favouritesTableView;
 @property (strong, nonatomic) STSidebarAnimator *sidebarAnimator;
 @end
 
@@ -38,8 +40,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.favouritesContainer.wantsLayer = YES;
-    self.favouritesContainer.layer.backgroundColor = [NSColor greenColor].CGColor;
+
     self.view.acceptsTouchEvents = YES;
     self.view.wantsRestingTouches = YES;
     self.view.allowedTouchTypes = NSTouchTypeDirect | NSTouchTypeIndirect;
@@ -51,8 +52,21 @@ static CGFloat rightFavouritesMenuConstant = -400;
     [self bindViewModel];
     [self setupSourceTextView];
     [self setupFavouritesMenu];
+    
+    self.favouritesTableView.backgroundColor = [NSColor clearColor];
+    self.favouritesTableView.enclosingScrollView.backgroundColor = [NSColor clearColor];
+    [self.favouritesTableView setFocusRingType:NSFocusRingTypeNone];
+    [self.favouritesTableView setRefusesFirstResponder:YES];
+    self.favouritesContainer.layer.zPosition = 1;
+    
 }
 
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
+    return self.viewModel.favouriteViewModels.count;
+}
+- (nullable id)tableView:(NSTableView *)tableView objectValueForTableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row {
+    return self.viewModel.favouriteViewModels[row];
+}
 - (void)setupSourceTextView {
     
     RACSignal *PlaceholderAlphaSignal =
@@ -128,5 +142,9 @@ static CGFloat rightFavouritesMenuConstant = -400;
 - (IBAction)clearButtonPress:(id)sender {
     [self.viewModel setInputText:@""];
     self.clearPressed = @(YES);
+}
+
+- (IBAction)favouriteButtonPress:(id)sender {
+    [self.viewModel saveFavouriteTranslation];
 }
 @end

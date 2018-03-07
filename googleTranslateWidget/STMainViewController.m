@@ -108,6 +108,7 @@
     }
     else if([segue.identifier isEqualToString:@"EmbedRightView"]) {
         self.rightView = segue.destinationController;
+        self.rightView.viewModel = [[STRightSplitViewModel alloc] initWithServices:self.viewModel.services];
     }
     
 }

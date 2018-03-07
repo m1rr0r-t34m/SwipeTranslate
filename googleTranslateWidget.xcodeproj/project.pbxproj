@@ -28,6 +28,8 @@
 		CD9FB25820496EDF003C81C7 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB25720496EDF003C81C7 /* STConstants.m */; };
 		CD9FB287204D8B29003C81C7 /* STDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB286204D8B29003C81C7 /* STDraggableView.m */; };
 		CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */; };
+		CDA2D0842050000C002B34F7 /* STFavouriteCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */; };
+		CDA2D087205000AA002B34F7 /* STFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D086205000AA002B34F7 /* STFavouriteCell.m */; };
 		CDA5AB2120122CA000AF5919 /* STDatabaseServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */; };
 		CDA5AB26201241EA00AF5919 /* STParserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB25201241EA00AF5919 /* STParserServiceImpl.m */; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
@@ -141,6 +143,10 @@
 		CD9FB286204D8B29003C81C7 /* STDraggableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDraggableView.m; sourceTree = "<group>"; };
 		CDA2D07E204EEDC3002B34F7 /* STSidebarAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STSidebarAnimator.h; sourceTree = "<group>"; };
 		CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSidebarAnimator.m; sourceTree = "<group>"; };
+		CDA2D0822050000C002B34F7 /* STFavouriteCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouriteCellModel.h; sourceTree = "<group>"; };
+		CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouriteCellModel.m; sourceTree = "<group>"; };
+		CDA2D085205000AA002B34F7 /* STFavouriteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouriteCell.h; sourceTree = "<group>"; };
+		CDA2D086205000AA002B34F7 /* STFavouriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouriteCell.m; sourceTree = "<group>"; };
 		CDA5AB1F20122CA000AF5919 /* STDatabaseServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseServiceImpl.h; sourceTree = "<group>"; };
 		CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDatabaseServiceImpl.m; sourceTree = "<group>"; };
 		CDA5AB2220122CD200AF5919 /* STDatabaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseService.h; sourceTree = "<group>"; };
@@ -465,6 +471,10 @@
 				CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */,
 				CDD1FF951D66EF6E0031FC94 /* STRightSplitViewModel.h */,
 				CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */,
+				CDA2D085205000AA002B34F7 /* STFavouriteCell.h */,
+				CDA2D086205000AA002B34F7 /* STFavouriteCell.m */,
+				CDA2D0822050000C002B34F7 /* STFavouriteCellModel.h */,
+				CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */,
 				CDA2D081204F0344002B34F7 /* Sidebar */,
 			);
 			name = RightSplitView;
@@ -769,11 +779,13 @@
 				CD0A5D8420403D7C00C5984D /* STAPIServiceImpl.m in Sources */,
 				CDF5F03A2007921800491C7A /* STLanguagesServiceImpl.m in Sources */,
 				CD7CED7F1BD9772600789E8E /* SavedInfo.m in Sources */,
+				CDA2D087205000AA002B34F7 /* STFavouriteCell.m in Sources */,
 				CD9FB25820496EDF003C81C7 /* STConstants.m in Sources */,
 				CD6F632520151B5F009A5720 /* STTranslation.m in Sources */,
 				CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */,
 				CDD1FF891D66EA880031FC94 /* STLeftSplitView.m in Sources */,
 				CDB84E061CA04FC700A919AA /* iRate.m in Sources */,
+				CDA2D0842050000C002B34F7 /* STFavouriteCellModel.m in Sources */,
 				CDF5F0422007A0D700491C7A /* STTranslationServiceImpl.m in Sources */,
 				CDCFCCE01B8E690300547F5C /* main.m in Sources */,
 				CDF5F0452007A32300491C7A /* STNetworkWrapper.m in Sources */,

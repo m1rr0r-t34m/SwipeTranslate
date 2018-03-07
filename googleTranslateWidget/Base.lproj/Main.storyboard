@@ -519,7 +519,7 @@
                                     <constraint firstAttribute="width" constant="40" id="Fzf-py-KI1"/>
                                 </constraints>
                             </customView>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-yl-nEK" userLabel="Output Text View">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Q-yl-nEK" userLabel="Output Text View">
                                 <rect key="frame" x="70" y="30" width="783" height="425"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="HYe-Dd-OxT">
                                     <rect key="frame" x="0.0" y="0.0" width="783" height="425"/>
@@ -540,8 +540,8 @@
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="3by-qb-nPJ">
-                                    <rect key="frame" x="767" y="0.0" width="16" height="425"/>
+                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="3by-qb-nPJ">
+                                    <rect key="frame" x="-100" y="-100" width="16" height="425"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>

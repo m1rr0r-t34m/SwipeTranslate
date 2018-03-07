@@ -388,7 +388,7 @@
                                         </scroller>
                                     </scrollView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PiI-Xn-X6w">
-                                        <rect key="frame" x="150" y="865" width="20" height="20"/>
+                                        <rect key="frame" x="151" y="865" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="liZ-J7-sxT"/>
                                             <constraint firstAttribute="width" secondItem="PiI-Xn-X6w" secondAttribute="height" multiplier="1:1" id="qQV-1C-F2a"/>
@@ -402,7 +402,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="POV-KS-me0">
-                                        <rect key="frame" x="184" y="859" width="20" height="31"/>
+                                        <rect key="frame" x="185" y="859" width="20" height="31"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="circular" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="gRC-eG-Pil">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -412,7 +412,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ryt-Gb-vff">
-                                        <rect key="frame" x="184" y="409" width="20" height="31"/>
+                                        <rect key="frame" x="185" y="409" width="20" height="31"/>
                                         <buttonCell key="cell" type="bevel" bezelStyle="circular" image="ShowMoreIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="l2P-RF-d2G">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -443,7 +443,6 @@
                                     <constraint firstItem="XC9-Ql-v6K" firstAttribute="top" secondItem="E3C-xN-8Yu" secondAttribute="bottom" constant="15" id="nyr-wI-Usm"/>
                                     <constraint firstItem="ryt-Gb-vff" firstAttribute="width" secondItem="POV-KS-me0" secondAttribute="width" id="r9c-xM-DWI"/>
                                     <constraint firstItem="zfY-eQ-7jT" firstAttribute="top" secondItem="XC9-Ql-v6K" secondAttribute="bottom" constant="15" id="uZN-jW-TVR"/>
-                                    <constraint firstItem="PiI-Xn-X6w" firstAttribute="leading" secondItem="E3C-xN-8Yu" secondAttribute="trailing" constant="10" id="ufC-IZ-BkL"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -452,6 +451,7 @@
                             <constraint firstItem="onf-Vg-RYv" firstAttribute="top" secondItem="uY8-V0-u9h" secondAttribute="bottom" id="Vdf-45-tpu"/>
                             <constraint firstAttribute="bottom" secondItem="onf-Vg-RYv" secondAttribute="bottom" id="c6h-VN-tkS"/>
                             <constraint firstAttribute="trailing" secondItem="uY8-V0-u9h" secondAttribute="trailing" constant="20" id="hib-bT-LTS"/>
+                            <constraint firstItem="POV-KS-me0" firstAttribute="trailing" secondItem="u4M-hd-3Bp" secondAttribute="trailing" constant="-5" id="qdB-H7-C6W"/>
                             <constraint firstItem="uY8-V0-u9h" firstAttribute="top" secondItem="YIL-Ql-cbp" secondAttribute="bottom" multiplier="0.025" priority="900" id="rgi-PA-kTd"/>
                             <constraint firstItem="uY8-V0-u9h" firstAttribute="leading" secondItem="YIL-Ql-cbp" secondAttribute="leading" constant="20" id="wY9-bt-5jE"/>
                             <constraint firstItem="uY8-V0-u9h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YIL-Ql-cbp" secondAttribute="top" constant="25" id="yTh-C3-WfG"/>

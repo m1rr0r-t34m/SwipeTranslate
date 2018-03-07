@@ -28,4 +28,5 @@ static NSUInteger defaultLanguagesCount = 10;
 - (void)saveSourceSelected:(STLanguage *)language;
 - (void)saveTargetSelected:(STLanguage *)language;
 - (void)saveFavouriteTranslation:(STTranslation *)translation;
+- (void)removeFavouriteTranslation:(STTranslation *)translation;
 @end

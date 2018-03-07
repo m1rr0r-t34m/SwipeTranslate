@@ -141,6 +141,12 @@ static NSString *kFavourites = @"favourites";
     [self setObject:[favourites copy] forKey:kFavourites];
 }
 
+- (void)removeFavouriteTranslation:(STTranslation *)translation {
+    NSMutableArray *favourites = [[self favouriteTranslations] mutableCopy];
+    [favourites removeObject:translation];
+    [self setObject:[favourites copy] forKey:kFavourites];
+}
+
 - (void)setObject:(id)object forKey:(NSString *)key {
     self.persistentCache[key] = object;
     [self.connection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {

@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
     STTranslationTypeAuto
 } STTranslationType;
 
-@interface STTranslation : NSObject
+@interface STTranslation : NSObject <NSCoding>
 @property (assign, nonatomic) STTranslationType type;
 @property (strong, nonatomic) NSString *inputText;
 @property (strong, nonatomic) STParserResult *parserResult;

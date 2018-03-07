@@ -24,7 +24,7 @@ static NSString *kMeanings = @"meanings";
 static NSString *kExamples = @"examples";
 static NSString *kTranslatedExamples = @"translatedExamples";
 
-@interface STParserResult : NSObject
+@interface STParserResult : NSObject <NSCoding>
 @property (assign, nonatomic) STParsedResultType type;
 @property (strong, nonatomic) NSDictionary *parsedResponse;
 @property (strong, nonatomic) STLanguage *detectedLanguage;

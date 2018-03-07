@@ -54,7 +54,7 @@
         
         NSString *translatedText = rawData[@"text"][0];
         NSString *detected = rawData[@"detected"][@"lang"];
-        if (detected) {
+        if (detected && detected.length) {
             result.detectedLanguage = [[STLanguage alloc] initWithKey:detected andTitle:[self.languageService languageForKey:detected]];
         }
         

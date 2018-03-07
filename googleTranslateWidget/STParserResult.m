@@ -7,8 +7,10 @@
 //
 
 #import "STParserResult.h"
+#import "STLanguage.h"
 
 @implementation STParserResult
+#pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeInteger:self.type forKey:@"type"];
     [aCoder encodeObject:self.parsedResponse forKey:@"parsedResponse"];
@@ -23,5 +25,32 @@
     }
     
     return self;
+}
+
+#pragma mark - Equality
+- (BOOL)isEqual:(id)object {
+    if(![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToParserResult:object];
+}
+
+- (BOOL)isEqualToParserResult:(STParserResult *)parserResult {
+    if (!parserResult) {
+        return NO;
+    }
+    
+    BOOL equality = (self.type == parserResult.type) && ([self.parsedResponse isEqual:parserResult.parsedResponse]);
+    
+    if (self.detectedLanguage) {
+        equality = equality && ([self.detectedLanguage isEqual:parserResult.detectedLanguage]);
+    }
+    
+    return equality;
+}
+
+- (NSUInteger)hash {
+    return self.type ^ self.parsedResponse.hash;
 }
 @end

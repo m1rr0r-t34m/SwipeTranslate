@@ -8,6 +8,7 @@
 
 #import "STTranslation.h"
 #import "STParserResult.h"
+#import "STLanguage.h"
 
 @implementation STTranslation
 + (instancetype)emptyTranslation {
@@ -37,5 +38,32 @@
     }
     
     return self;
+}
+
+#pragma mark - Equalilty
+- (BOOL)isEqual:(id)object {
+    if(![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToTranslation:object];
+}
+
+- (BOOL)isEqualToTranslation:(STTranslation *)translation {
+    if(!translation) {
+        return NO;
+    }
+    
+    BOOL equality = (self.type == translation.type) && ([self.inputText isEqualToString:translation.inputText]) && ([self.parserResult isEqual:translation.parserResult] && [self.sourceLanguage isEqual:translation.sourceLanguage] && [self.targetLanguage isEqual:translation.targetLanguage]);
+    
+    if (self.type == STTranslationTypeAuto) {
+        equality = equality && [self.detectedLanguage isEqual:translation.detectedLanguage];
+    }
+    
+    return equality;
+}
+
+- (NSUInteger)hash {
+    return self.sourceLanguage.hash ^ self.targetLanguage.hash ^ self.inputText.hash ^ self.parserResult.hash;
 }
 @end

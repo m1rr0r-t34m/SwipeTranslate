@@ -10,6 +10,7 @@
 #import "STLanguagesService.h"
 
 @class STLanguage;
+@class STTranslation;
 
 static NSUInteger defaultLanguagesCount = 10;
 
@@ -20,9 +21,11 @@ static NSUInteger defaultLanguagesCount = 10;
 - (NSArray <STLanguage *> *)targetLanguages;
 - (STLanguage *)sourceSelectedLanguage;
 - (STLanguage *)targetSelectedLanguage;
-#pragma mark - Insert
+- (NSArray <STTranslation *> *)favouriteTranslations;
+#pragma mark - Insert / Remove
 - (void)saveSourceLanguages:(NSArray <STLanguage *> *)languages;
 - (void)saveTargetLanguages:(NSArray <STLanguage *> *)languages;
 - (void)saveSourceSelected:(STLanguage *)language;
 - (void)saveTargetSelected:(STLanguage *)language;
+- (void)saveFavouriteTranslation:(STTranslation *)translation;
 @end

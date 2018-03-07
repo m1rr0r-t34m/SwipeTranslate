@@ -9,6 +9,7 @@
 #import "STDatabaseServiceImpl.h"
 #import <YapDatabase.h>
 #import "STLanguage.h"
+#import "STTranslation.h"
 #import "STLanguagesService.h"
 
 static NSString *databaseName = @"yap";
@@ -16,6 +17,7 @@ static NSString *kSourceLanguages = @"source";
 static NSString *kTargetLanguages = @"target";
 static NSString *kSourceSelected = @"sourceSelected";
 static NSString *kTargetSelected = @"targetSelected";
+static NSString *kFavourites = @"favourites";
 
 
 @interface STDatabaseServiceImpl()
@@ -55,14 +57,15 @@ static NSString *kTargetSelected = @"targetSelected";
     [self.connection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
         NSArray *sourceLanguages;
         NSArray *targetLanguages;
+        NSArray *favourites;
         STLanguage *sourceSelected;
         STLanguage *targetSelected;
         [transaction getObject:&sourceLanguages metadata:nil forKey:kSourceLanguages inCollection:nil];
         [transaction getObject:&targetLanguages metadata:nil forKey:kTargetLanguages inCollection:nil];
         [transaction getObject:&sourceSelected metadata:nil forKey:kSourceSelected inCollection:nil];
         [transaction getObject:&targetSelected metadata:nil forKey:kTargetSelected inCollection:nil];
-        
-        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || sourceLanguages.count < defaultLanguagesCount || targetLanguages.count < defaultLanguagesCount) {
+        [transaction getObject:&favourites metadata:nil forKey:kFavourites inCollection:nil];
+        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || sourceLanguages.count < defaultLanguagesCount || targetLanguages.count < defaultLanguagesCount || !favourites) {
             dataAvailable = NO;
         }
     }];
@@ -78,6 +81,7 @@ static NSString *kTargetSelected = @"targetSelected";
         [transaction setObject:targetLanguages forKey:kTargetLanguages inCollection:nil];
         [transaction setObject:sourceLanguages[0] forKey:kSourceSelected inCollection:nil];
         [transaction setObject:targetLanguages[0] forKey:kTargetSelected inCollection:nil];
+        [transaction setObject:[NSArray new] forKey:kFavourites inCollection:nil];
     }];
 }
 
@@ -98,6 +102,10 @@ static NSString *kTargetSelected = @"targetSelected";
     return [self objectForKey:kTargetSelected];
 }
 
+- (NSArray *)favouriteTranslations {
+    return [self objectForKey:kFavourites];
+}
+
 - (id)objectForKey:(NSString *)key {
     __block id object = self.persistentCache[key];
     if (!object) {
@@ -110,7 +118,7 @@ static NSString *kTargetSelected = @"targetSelected";
     return object;
 }
 
-#pragma mark - Insert
+#pragma mark - Insert / Remove
 - (void)saveSourceLanguages:(NSArray *)languages {
     [self setObject:languages forKey:kSourceLanguages];
 }
@@ -125,6 +133,12 @@ static NSString *kTargetSelected = @"targetSelected";
 
 - (void)saveTargetSelected:(STLanguage *)language {
     [self setObject:language forKey:kTargetSelected];
+}
+
+- (void)saveFavouriteTranslation:(STTranslation *)translation {
+    NSMutableArray *favourites = [[self favouriteTranslations] mutableCopy];
+    [favourites addObject:translation];
+    [self setObject:[favourites copy] forKey:kFavourites];
 }
 
 - (void)setObject:(id)object forKey:(NSString *)key {

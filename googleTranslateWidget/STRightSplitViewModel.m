@@ -12,15 +12,25 @@
 #import <ReactiveObjC.h>
 #import "STServices.h"
 #import "STFavouriteCellModel.h"
+#import "STFavouriteUpdate.h"
+#import "STMainViewModel.h"
 
 @interface STRightSplitViewModel()
 @property (strong, nonatomic) id <STServices> services;
+@property (strong, nonatomic) RACSubject *favouritesUpdateSubject;
+@property (strong, nonatomic) STTranslation *previousTranslation;
+@property (strong, nonatomic) STTranslation *currentTranslation;
+@property (strong, nonatomic) STMainViewModel *mainViewModel;
 @end
 
 @implementation STRightSplitViewModel
-- (instancetype)initWithServices:(id <STServices>)services {
+- (instancetype)initWithMainViewModel:(STMainViewModel *)mainViewModel  {
     if (self = [super init]) {
-        _services = services;
+        _services = mainViewModel.services;
+        _favouritesUpdateSubject = [RACSubject new];
+        _favouritesUpdateSignal = [_favouritesUpdateSubject deliverOnMainThread];
+        _mainViewModel = mainViewModel;
+        _favouritesSelectedIndex = -1;
         [self setupBindings];
         [self fetchFavouriteTranslations];
     }
@@ -28,21 +38,140 @@
     return self;
 }
 
+- (void)setSourceText:(NSString *)text {
+    self.inputText = text;
+    [self.mainViewModel setSourceText:text];
+}
+
 - (void)setupBindings {
+    RAC(self, translating) = RACObserve(self.mainViewModel, translating);
+    
     @weakify(self);
-    RAC(self, outputText) = [RACObserve(self, translation) map:^id (STTranslation *translation) {
+    [RACObserve(self.mainViewModel, translation) subscribeNext:^(STTranslation *translation) {
         @strongify(self);
-        return [self textForTranslationResult:translation];
+        self.currentTranslation = translation;
+        self.previousTranslation = translation;
+    }];
+    
+    [RACObserve(self, currentTranslation) subscribeNext:^(STTranslation *translation) {
+        @strongify(self);
+        self.outputText = [self textForTranslationResult:translation];
+        self.inputText = translation.inputText;
+        if (!self.inputText) self.inputText = [NSString new];
+        if (!self.outputText) self.outputText = [NSAttributedString new];
+        self.canSaveOrRemoveCurrentTranslation = (translation && translation.inputText && translation.parserResult && translation.parserResult.parsedResponse);
+        self.currentTranslationIsSaved = [self translationIsSaved:translation];
     }];
 }
 
+- (void)showSavedTranslation:(NSInteger)index {
+    if (index != NSNotFound && index != -1) {
+        self.currentTranslation = self.favouriteViewModels[index].translation;
+    } else if (![self.previousTranslation isEqual:self.currentTranslation]) {
+        self.currentTranslation = self.previousTranslation;
+    } else {
+        self.currentTranslation = [STTranslation emptyTranslation];
+    }
+    self.favouritesSelectedIndex = index;
+}
+
+#pragma mark - Favourite translations
 - (void)fetchFavouriteTranslations {
     NSArray *favourites = [self.services.databaseService favouriteTranslations];
     @weakify(self);
-    self.favouriteViewModels = [favourites.rac_sequence map:^id (STTranslation *translation) {
+    self.favouriteViewModels = [[[favourites.rac_sequence map:^id (STTranslation *translation) {
         @strongify(self);
         return [self favouriteCellModelForTranslation:translation];
-    }].array;
+    }] array] mutableCopy];
+    [self.favouritesUpdateSubject sendNext:[STFavouriteUpdate updateWithType:STFavouriteUpdateTypeReload index:0]];
+}
+
+- (STFavouriteCellModel *)favouriteCellModelForTranslation:(STTranslation *)translation {
+    NSString *outputText = [self textForTranslationResult:translation].string;
+    outputText = [outputText stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+    STFavouriteCellModel *model = [STFavouriteCellModel new];
+    model.inputText = translation.inputText;
+    model.outputText = outputText;
+    model.translation = translation;
+    
+    @weakify(self);
+    model.command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
+        @strongify(self);
+        return [self removeTranslationSignalBlock:translation];
+    }];
+    return model;
+}
+
+- (NSInteger)indexOfCurrentTranslation {
+    return [self indexOfTranslation:self.currentTranslation];
+}
+
+- (NSInteger)indexOfTranslation:(STTranslation *)translation {
+    NSInteger index = -1;
+    for (STFavouriteCellModel *model in self.favouriteViewModels) {
+        if ([model.translation isEqual:translation]) {
+            index = [self.favouriteViewModels indexOfObject:model];
+            break;
+        }
+    }
+    
+    return index;
+}
+
+- (void)saveOrRemoveCurrentTranslation {
+    if (self.currentTranslationIsSaved) {
+        [self removeTranslation:self.currentTranslation];
+    } else {
+        [self saveTranslation:self.currentTranslation];
+    }
+}
+
+- (void)saveTranslation:(STTranslation *)translation {
+    STFavouriteCellModel *model = [self favouriteCellModelForTranslation:translation];
+    [self.favouriteViewModels insertObject:model atIndex:0];
+    [self.favouritesUpdateSubject sendNext:[STFavouriteUpdate updateWithType:STFavouriteUpdateTypeInsert index:0]];
+    [self.services.databaseService saveFavouriteTranslation:translation];
+    self.currentTranslationIsSaved = [self translationIsSaved:translation];
+}
+
+- (void)removeTranslation:(STTranslation *)translation {
+    NSInteger index = [self indexOfTranslation:translation];
+    [self.favouriteViewModels removeObjectAtIndex:index];
+    [self.favouritesUpdateSubject sendNext:[STFavouriteUpdate updateWithType:STFavouriteUpdateTypeRemove index:index]];
+    [self.services.databaseService removeFavouriteTranslation:translation];
+    self.currentTranslationIsSaved = [self translationIsSaved:translation];
+    self.favouritesSelectedIndex = -1;
+}
+
+- (RACSignal *)removeTranslationSignalBlock:(STTranslation *)translation {
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self removeTranslation:translation];
+        [subscriber sendCompleted];
+        return nil;
+    }];
+}
+
+- (BOOL)translationIsSaved:(STTranslation *)checkTranslation {
+    NSInteger count = [[[[self.favouriteViewModels.rac_sequence map:^id (STFavouriteCellModel *value) {
+        return value.translation;
+    }] filter:^BOOL(STTranslation *translation) {
+        return [translation isEqual:checkTranslation];
+    }] array] count];
+    
+    return count > 0;
+}
+
+#pragma mark - Translation result
+- (NSAttributedString *)textForTranslationResult:(STTranslation *)translation {
+    if (!translation || !translation.parserResult || !translation.parserResult.parsedResponse || !translation.parserResult.parsedResponse.count) {
+        return [NSAttributedString new];
+    } else if (translation.parserResult.type == STParsedResultTypeTranslation) {
+        return [self translationTextForResult:translation.parserResult];
+    } else {
+        return [self dictionaryTextForResult:translation.parserResult];
+    }
 }
 
 - (NSAttributedString *)dictionaryTextForResult:(STParserResult *)parserResult {
@@ -113,47 +242,5 @@
 
 - (NSAttributedString *)translationTextForResult:(STParserResult *)parserResult {
     return [[NSAttributedString alloc] initWithString:parserResult.parsedResponse[kTranslatedText] attributes:@{NSFontAttributeName : [NSFont systemFontOfSize:16.0]}];
-}
-
-- (NSAttributedString *)textForTranslationResult:(STTranslation *)translation {
-    if (!translation || !translation.parserResult || !translation.parserResult.parsedResponse || !translation.parserResult.parsedResponse.count) {
-        return [NSAttributedString new];
-    } else if (translation.parserResult.type == STParsedResultTypeTranslation) {
-        return [self translationTextForResult:translation.parserResult];
-    } else {
-        return [self dictionaryTextForResult:translation.parserResult];
-    }
-}
-
-- (STFavouriteCellModel *)favouriteCellModelForTranslation:(STTranslation *)translation {
-    NSString *outputText = [self textForTranslationResult:translation].string;
-    outputText = [outputText stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-
-    return [[STFavouriteCellModel alloc] initWithInput:translation.inputText output:outputText];
-}
-- (void)saveFavouriteTranslation {
-    NSArray *favourites = [self.services.databaseService favouriteTranslations];
-    BOOL found = NO;
-    for (STTranslation *translation in favourites) {
-        if ([translation isEqual:self.translation]) {
-            found = YES;
-        }
-    }
-    
-    NSMutableArray *favouriteCellModels = [self.favouriteViewModels mutableCopy];
-    STFavouriteCellModel *cellModel = [self favouriteCellModelForTranslation:self.translation];
-    if (!found) {
-        [self.services.databaseService saveFavouriteTranslation:self.translation];
-        [favouriteCellModels insertObject:cellModel atIndex:0];
-    } else {
-        [self.services.databaseService removeFavouriteTranslation:self.translation];
-        for (STFavouriteCellModel *model in self.favouriteViewModels) {
-            if ([model.translation isEqual:self.translation]) {
-                [favouriteCellModels removeObject:model];
-            }
-        }
-    }
-    
-    self.favouriteViewModels = [favouriteCellModels copy];
 }
 @end

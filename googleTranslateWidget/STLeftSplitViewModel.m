@@ -13,11 +13,13 @@
 #import "STServices.h"
 #import "STLanguageCellModel.h"
 #import "STTranslation.h"
+#import "STMainViewModel.h"
 
 @interface STLeftSplitViewModel ()
 @property (strong, nonatomic) RACSubject *dataReloadSubject;
 @property (assign, nonatomic) BOOL autoLanguageSelected;
 @property (strong, nonatomic) NSString *detectedLanguage;
+@property (strong, nonatomic) STMainViewModel *mainViewModel;
 @end
 
 @implementation STLeftSplitViewModel
@@ -28,9 +30,10 @@
     return self;
 }
 
-- (instancetype)initWithServices:(id <STServices>)services {
+- (instancetype)initWithMainViewModel:(STMainViewModel *)mainViewModel {
     if(self = [super init]) {
-        _services = services;
+        _mainViewModel = mainViewModel;
+        _services = mainViewModel.services;
         _visibleRowsCount = 10;
         _rowHeight = 40;
         _dataReloadSubject = [RACSubject new];
@@ -76,7 +79,7 @@
         return [self.services.languagesService.autoLanguage isEqual:language];
     }];
     
-    [[RACObserve(self, lastTranslation)
+    [[RACObserve(self.mainViewModel, translation)
         combineLatestWith:autoSelected]
         subscribeNext:^(RACTuple *tuple) {
             @strongify(self);
@@ -96,6 +99,16 @@
     
     RAC(self, targetSelectedTitle) = [RACObserve(self, targetSelectedLanguage) map:^id (STLanguage *language) {
         return language.title;
+    }];
+    
+    [RACObserve(self, sourceSelectedLanguage) subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        [self.mainViewModel setSourceLanguage:language];;
+    }];
+    
+    [RACObserve(self, targetSelectedLanguage) subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        [self.mainViewModel setTargetLanguage:language];;
     }];
 }
 

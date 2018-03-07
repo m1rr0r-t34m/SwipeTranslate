@@ -9,12 +9,4 @@
 #import "STFavouriteCellModel.h"
 
 @implementation STFavouriteCellModel
-- (instancetype)initWithInput:(NSString *)input output:(NSString *)output {
-    if (self = [super init]) {
-        _inputText = input;
-        _outputText = output;
-    }
-    
-    return self;
-}
 @end

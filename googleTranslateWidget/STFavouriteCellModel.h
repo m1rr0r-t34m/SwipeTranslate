@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @class STTranslation;
+@class RACCommand;
 
 @interface STFavouriteCellModel : NSObject
 @property (strong, nonatomic) NSString *inputText;
 @property (strong, nonatomic) NSString *outputText;
 @property (strong, nonatomic) STTranslation *translation;
-- (instancetype)initWithInput:(NSString *)input output:(NSString *)output;
+@property (strong, nonatomic) RACCommand *command;
 @end

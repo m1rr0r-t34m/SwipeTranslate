@@ -8,10 +8,12 @@
 
 #import "STFavouriteCell.h"
 #import "STFavouriteCellModel.h"
+#import <ReactiveObjC.h>
 
 @interface STFavouriteCell()
 @property (strong) IBOutlet NSTextField *inputLabel;
 @property (strong) IBOutlet NSTextField *outputLabel;
+@property (strong) IBOutlet NSButton *removeButton;
 @end
 
 @implementation STFavouriteCell
@@ -19,13 +21,16 @@
     NSAttributedString *input = [[NSAttributedString alloc] initWithString:model.inputText attributes:[self inputTextStyle]];
     NSAttributedString *output = [[NSAttributedString alloc] initWithString:model.outputText attributes:[self outputTextStyle]];
     
+    self.removeButton.rac_command = model.command;
     self.inputLabel.attributedStringValue = input;
     self.outputLabel.attributedStringValue = output;
     self.needsDisplay = YES;
 }
 
 - (void)setObjectValue:(id)objectValue {
-    [self fillWithModel:(STFavouriteCellModel *)objectValue];
+    if (objectValue) {
+        [self fillWithModel:(STFavouriteCellModel *)objectValue];
+    }
 }
 
 -(void)awakeFromNib {
@@ -43,23 +48,27 @@
     //text fields
     NSTextField *input = [self createTextField];
     NSTextField *output = [self createTextField];
-    //input.font = [NSFont systemFontOfSize:18 weight:NSFontWeightLight];
-    //output.font = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
-    //input.textColor = [NSColor blackColor];
-    //output.textColor = [NSColor colorWithCalibratedRed:0.2 green:0.2 blue:0.2 alpha:1];
+    
     
     [self addSubview:input];
     [self addSubview:output];
     
     [[input.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15] setActive:YES];
-    [[input.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:15] setActive:YES];
+    [[input.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-20] setActive:YES];
     [[input.topAnchor constraintEqualToAnchor:self.topAnchor constant:10] setActive:YES];
     [[input.heightAnchor constraintEqualToConstant:25] setActive:YES];
     
     [[output.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15] setActive:YES];
-    [[output.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:15] setActive:YES];
+    [[output.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-20] setActive:YES];
     [[output.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-10] setActive:YES];
     [[output.heightAnchor constraintEqualToConstant:25] setActive:YES];
+    
+    NSButton *removeButton = [self createRemoveButton];
+    [self addSubview:removeButton];
+    [[removeButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:10] setActive:YES];
+    [[removeButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:0] setActive:YES];
+    [[removeButton.widthAnchor constraintEqualToConstant:20] setActive:YES];
+    [[removeButton.heightAnchor constraintEqualToConstant:20] setActive:YES];
     
     self.inputLabel = input;
     self.outputLabel = output;
@@ -72,7 +81,7 @@
 
 - (NSDictionary *)outputTextStyle {
     NSFont *outputStyleFont = [NSFont systemFontOfSize:14 weight:NSFontWeightLight];
-    return @{NSFontAttributeName : outputStyleFont, NSForegroundColorAttributeName : [NSColor grayColor]};
+    return @{NSFontAttributeName : outputStyleFont, NSForegroundColorAttributeName : [NSColor colorWithCalibratedRed:0 green:0 blue:0 alpha:0.6]};
     
 }
 
@@ -85,5 +94,16 @@
     field.selectable = NO;
     field.backgroundColor = [NSColor clearColor];
     return field;
+}
+
+- (NSButton *)createRemoveButton {
+    NSButton *button = [NSButton new];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    button.image = [NSImage imageNamed:@"ClearButtonMain"];
+    button.bordered = NO;
+    button.imageScaling = NSImageScaleProportionallyUpOrDown;
+    self.removeButton = button;
+    
+    return button;
 }
 @end

@@ -13,6 +13,7 @@
 @class STLanguage;
 @class RACSignal;
 @class STTranslation;
+@class STMainViewModel;
 
 @interface STLeftSplitViewModel : NSObject
 @property (strong, nonatomic) RACSignal *dataReloadSignal;
@@ -26,7 +27,7 @@
 @property (assign, nonatomic) NSUInteger visibleRowsCount;
 @property (strong, nonatomic) id <STServices> services;
 @property (strong, nonatomic) STTranslation *lastTranslation;
-- (instancetype)initWithServices:(id <STServices>)services;
+- (instancetype)initWithMainViewModel:(STMainViewModel *)mainViewModel;
 - (void)setSourceSelected:(NSInteger)index;
 - (void)setTargetSelected:(NSInteger)index;
 - (void)switchAutoButton;

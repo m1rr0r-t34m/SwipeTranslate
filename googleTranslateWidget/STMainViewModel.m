@@ -10,26 +10,25 @@
 #import "STTranslation.h"
 #import "STLanguage.h"
 #import <ReactiveObjC.h>
+#import "STServicesImpl.h"
 
 @interface STMainViewModel()
-//@property (strong, nonatomic) id <STServices> services;
+@property (readwrite, nonatomic) STTranslation *translation;
+@property (readwrite, nonatomic) id <STServices> services;
+@property (readwrite, assign, nonatomic) BOOL translating;
 @end
 
 @implementation STMainViewModel
+#pragma mark - Initializations
 - (instancetype)init {
-    NSAssert(NO, @"Use designated initializer initWithServices:");
-    self = [super init];
-    return self;
-}
-
-- (instancetype)initWithServices:(id <STServices>)services {
     if (self = [super init]) {
-        _services = services;
+        _services = [STServicesImpl new];
         [self setupBindings];
     }
     return self;
 }
 
+#pragma mark - Bindings
 - (void)setupBindings {
     RACSignal *textSignal = [RACObserve(self, sourceText) ignore:nil];
     RACSignal *sourceLanguageSignal = [RACObserve(self, sourceLanguage) ignore:nil];
@@ -40,11 +39,13 @@
         map:^RACSignal *(RACTuple *tuple) {
             @strongify(self);
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
+            self.translating = YES;
             return [self.services.translationService translationForText:text fromLanguage:source toLanguage:target];
         }]
         switchToLatest]
         subscribeNext:^(STTranslation *translation) {
             @strongify(self);
+            self.translating = NO;
             self.translation = translation;
         }];
 }

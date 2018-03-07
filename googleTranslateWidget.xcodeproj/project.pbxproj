@@ -30,6 +30,7 @@
 		CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */; };
 		CDA2D0842050000C002B34F7 /* STFavouriteCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */; };
 		CDA2D087205000AA002B34F7 /* STFavouriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D086205000AA002B34F7 /* STFavouriteCell.m */; };
+		CDA2D08A20503EC7002B34F7 /* STFavouriteUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D08920503EC7002B34F7 /* STFavouriteUpdate.m */; };
 		CDA5AB2120122CA000AF5919 /* STDatabaseServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */; };
 		CDA5AB26201241EA00AF5919 /* STParserServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA5AB25201241EA00AF5919 /* STParserServiceImpl.m */; };
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
@@ -147,6 +148,8 @@
 		CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouriteCellModel.m; sourceTree = "<group>"; };
 		CDA2D085205000AA002B34F7 /* STFavouriteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouriteCell.h; sourceTree = "<group>"; };
 		CDA2D086205000AA002B34F7 /* STFavouriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouriteCell.m; sourceTree = "<group>"; };
+		CDA2D08820503EC7002B34F7 /* STFavouriteUpdate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouriteUpdate.h; sourceTree = "<group>"; };
+		CDA2D08920503EC7002B34F7 /* STFavouriteUpdate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouriteUpdate.m; sourceTree = "<group>"; };
 		CDA5AB1F20122CA000AF5919 /* STDatabaseServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseServiceImpl.h; sourceTree = "<group>"; };
 		CDA5AB2020122CA000AF5919 /* STDatabaseServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STDatabaseServiceImpl.m; sourceTree = "<group>"; };
 		CDA5AB2220122CD200AF5919 /* STDatabaseService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDatabaseService.h; sourceTree = "<group>"; };
@@ -475,6 +478,8 @@
 				CDA2D086205000AA002B34F7 /* STFavouriteCell.m */,
 				CDA2D0822050000C002B34F7 /* STFavouriteCellModel.h */,
 				CDA2D0832050000C002B34F7 /* STFavouriteCellModel.m */,
+				CDA2D08820503EC7002B34F7 /* STFavouriteUpdate.h */,
+				CDA2D08920503EC7002B34F7 /* STFavouriteUpdate.m */,
 				CDA2D081204F0344002B34F7 /* Sidebar */,
 			);
 			name = RightSplitView;
@@ -767,6 +772,7 @@
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,
 				CDF5F03E2007A00800491C7A /* STServicesImpl.m in Sources */,
 				CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */,
+				CDA2D08A20503EC7002B34F7 /* STFavouriteUpdate.m in Sources */,
 				CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */,
 				CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */,
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,

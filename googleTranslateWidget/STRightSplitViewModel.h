@@ -10,12 +10,21 @@
 #import "STServices.h"
 @class STTranslation;
 @class STFavouriteCellModel;
+@class RACSignal;
+@class STMainViewModel;
 
 @interface STRightSplitViewModel : NSObject
-- (instancetype)initWithServices:(id <STServices>)services;
+@property (assign, nonatomic) BOOL currentTranslationIsSaved;
+@property (assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
+@property (assign, nonatomic) BOOL translating;
 @property (strong, nonatomic) NSString *inputText;
 @property (strong, nonatomic) NSAttributedString *outputText;
-@property (strong, nonatomic) STTranslation *translation;
-@property (strong, nonatomic) NSArray <STFavouriteCellModel *> *favouriteViewModels;
-- (void)saveFavouriteTranslation;
+@property (strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
+@property (strong, nonatomic) RACSignal *favouritesUpdateSignal;
+@property (assign, nonatomic) NSInteger favouritesSelectedIndex;
+- (instancetype)initWithMainViewModel:(STMainViewModel *)mainViewModel;
+- (void)saveOrRemoveCurrentTranslation;
+- (void)showSavedTranslation:(NSInteger)index;
+- (void)setSourceText:(NSString *)text;
+- (NSInteger)indexOfCurrentTranslation;
 @end

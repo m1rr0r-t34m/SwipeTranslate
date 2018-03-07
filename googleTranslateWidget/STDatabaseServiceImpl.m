@@ -137,7 +137,7 @@ static NSString *kFavourites = @"favourites";
 
 - (void)saveFavouriteTranslation:(STTranslation *)translation {
     NSMutableArray *favourites = [[self favouriteTranslations] mutableCopy];
-    [favourites addObject:translation];
+    [favourites insertObject:translation atIndex:0];
     [self setObject:[favourites copy] forKey:kFavourites];
 }
 

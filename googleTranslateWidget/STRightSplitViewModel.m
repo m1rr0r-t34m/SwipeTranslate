@@ -61,6 +61,9 @@
         if (!self.outputText) self.outputText = [NSAttributedString new];
         self.canSaveOrRemoveCurrentTranslation = (translation && translation.inputText && translation.parserResult && translation.parserResult.parsedResponse);
         self.currentTranslationIsSaved = [self translationIsSaved:translation];
+        if (self.currentTranslationIsSaved) {
+            self.favouritesSelectedIndex = [self indexOfCurrentTranslation];
+        }
     }];
 }
 
@@ -132,6 +135,7 @@
     [self.favouritesUpdateSubject sendNext:[STFavouriteUpdate updateWithType:STFavouriteUpdateTypeInsert index:0]];
     [self.services.databaseService saveFavouriteTranslation:translation];
     self.currentTranslationIsSaved = [self translationIsSaved:translation];
+    self.favouritesSelectedIndex = 0;
 }
 
 - (void)removeTranslation:(STTranslation *)translation {

@@ -133,7 +133,9 @@ static CGFloat rightFavouritesMenuConstant = -400;
     
     [[[RACObserve(self.viewModel, inputText) ignore:nil] distinctUntilChanged] subscribeNext:^(NSString *text) {
         @strongify(self);
-        self.sourceTextView.string = text;
+        if (![text isEqual:self.sourceTextView.string]) {
+            self.sourceTextView.string = text;
+        }
     }];
     
     [[RACObserve(self.viewModel, outputText) ignore:nil] subscribeNext:^(NSAttributedString *modelText) {

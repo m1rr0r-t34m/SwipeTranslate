@@ -33,6 +33,7 @@
 		CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDABD4DB1BC6B4F2004D05A1 /* AppDelegate.m */; };
 		CDB84E051CA04FC700A919AA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDB84E021CA04FC700A919AA /* iRate.bundle */; };
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
+		CDBACD372051F020007B0139 /* STFavouritesHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBACD362051F020007B0139 /* STFavouritesHintView.m */; };
 		CDC45BEB20516EE600A6EB84 /* STMainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC45BEA20516EE500A6EB84 /* STMainApplicationMenu.m */; };
 		CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
@@ -134,6 +135,8 @@
 		CDB84E021CA04FC700A919AA /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		CDB84E031CA04FC700A919AA /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		CDB84E041CA04FC700A919AA /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		CDBACD352051F020007B0139 /* STFavouritesHintView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouritesHintView.h; sourceTree = "<group>"; };
+		CDBACD362051F020007B0139 /* STFavouritesHintView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouritesHintView.m; sourceTree = "<group>"; };
 		CDC45BE920516EE500A6EB84 /* STMainApplicationMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMainApplicationMenu.h; sourceTree = "<group>"; };
 		CDC45BEA20516EE500A6EB84 /* STMainApplicationMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMainApplicationMenu.m; sourceTree = "<group>"; };
 		CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -292,6 +295,8 @@
 				CD9FB286204D8B29003C81C7 /* STDraggableView.m */,
 				CDA2D07E204EEDC3002B34F7 /* STSidebarAnimator.h */,
 				CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */,
+				CDBACD352051F020007B0139 /* STFavouritesHintView.h */,
+				CDBACD362051F020007B0139 /* STFavouritesHintView.m */,
 			);
 			name = Sidebar;
 			sourceTree = "<group>";
@@ -702,6 +707,7 @@
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,
 				CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */,
+				CDBACD372051F020007B0139 /* STFavouritesHintView.m in Sources */,
 				CDABD4DC1BC6B4F2004D05A1 /* AppDelegate.m in Sources */,
 				CD9FB287204D8B29003C81C7 /* STDraggableView.m in Sources */,
 				CDA5AB2120122CA000AF5919 /* STDatabaseServiceImpl.m in Sources */,

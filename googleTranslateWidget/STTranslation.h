@@ -23,4 +23,5 @@ typedef enum : NSUInteger {
 @property (strong, nonatomic) STLanguage *targetLanguage;
 @property (strong, nonatomic) STLanguage *detectedLanguage;
 + (instancetype)emptyTranslation;
+- (BOOL)isEmpty;
 @end

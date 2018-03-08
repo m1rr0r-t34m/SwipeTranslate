@@ -19,6 +19,8 @@
 @property (readonly, assign, nonatomic) BOOL currentTranslationIsSaved;
 @property (readonly, assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
 @property (readonly, assign, nonatomic) BOOL translating;
+@property (readonly, assign, nonatomic) BOOL shouldShowFavouritesHint;
+@property (assign, nonatomic) BOOL usedFavourites;
 @property (readonly, strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
 @property (readonly, strong, nonatomic) RACSignal *favouritesUpdateSignal;
 @property (readonly, assign, nonatomic) NSInteger favouritesSelectedIndex;

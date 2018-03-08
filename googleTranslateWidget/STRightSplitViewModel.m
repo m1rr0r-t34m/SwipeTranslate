@@ -25,6 +25,7 @@
 @property (readwrite, strong, nonatomic) RACSignal *favouritesUpdateSignal;
 @property (strong, nonatomic) RACSubject *favouritesUpdateSubject;
 
+@property (readwrite, assign, nonatomic) BOOL shouldShowFavouritesHint;
 @property (readwrite, assign, nonatomic) BOOL currentTranslationIsSaved;
 @property (readwrite, assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
 @property (readwrite, assign, nonatomic) BOOL translating;
@@ -38,6 +39,7 @@
         _favouritesUpdateSignal = [_favouritesUpdateSubject deliverOnMainThread];
         _mainViewModel = mainViewModel;
         _favouritesSelectedIndex = -1;
+        _usedFavourites = [self.services.databaseService hasUsedFavouriteBar].boolValue;
         [self setupBindings];
         [self fetchFavouriteTranslations];
     }
@@ -65,6 +67,11 @@
         self.canSaveOrRemoveCurrentTranslation = (translation && translation.inputText && translation.parserResult && translation.parserResult.parsedResponse);
         self.currentTranslationIsSaved = [self translationIsSaved:translation];
         self.favouritesSelectedIndex = [self indexOfCurrentTranslation];
+    }];
+    
+    [[RACObserve(self, usedFavourites) distinctUntilChanged] subscribeNext:^(NSNumber *used) {
+        @strongify(self);
+        [self.services.databaseService saveHasUsedFavouriteBar:used];
     }];
 }
 
@@ -121,6 +128,7 @@
 }
 
 - (void)saveOrRemoveCurrentTranslation {
+    self.shouldShowFavouritesHint = YES;
     if (self.currentTranslationIsSaved) {
         [self removeTranslation:self.currentTranslation];
     } else {

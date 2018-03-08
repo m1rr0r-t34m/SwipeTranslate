@@ -17,6 +17,10 @@
     return translation;
 }
 
+- (BOOL)isEmpty {
+    return !self.inputText;
+}
+
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeInteger:self.type forKey:@"type"];

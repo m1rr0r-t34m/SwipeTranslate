@@ -18,6 +18,7 @@ static NSString *kTargetLanguages = @"target";
 static NSString *kSourceSelected = @"sourceSelected";
 static NSString *kTargetSelected = @"targetSelected";
 static NSString *kFavourites = @"favourites";
+static NSString *kUsedFavourites = @"usedFavourites";
 
 
 @interface STDatabaseServiceImpl()
@@ -61,12 +62,14 @@ static NSString *kFavourites = @"favourites";
         NSArray *favourites;
         STLanguage *sourceSelected;
         STLanguage *targetSelected;
+        NSNumber *usedFavourites;
         [transaction getObject:&sourceLanguages metadata:nil forKey:kSourceLanguages inCollection:nil];
         [transaction getObject:&targetLanguages metadata:nil forKey:kTargetLanguages inCollection:nil];
         [transaction getObject:&sourceSelected metadata:nil forKey:kSourceSelected inCollection:nil];
         [transaction getObject:&targetSelected metadata:nil forKey:kTargetSelected inCollection:nil];
         [transaction getObject:&favourites metadata:nil forKey:kFavourites inCollection:nil];
-        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || sourceLanguages.count < defaultLanguagesCount || targetLanguages.count < defaultLanguagesCount || !favourites) {
+        [transaction getObject:&usedFavourites metadata:nil forKey:kUsedFavourites inCollection:nil];
+        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || sourceLanguages.count < defaultLanguagesCount || targetLanguages.count < defaultLanguagesCount || !favourites || !usedFavourites) {
             dataAvailable = NO;
         }
     }];
@@ -83,6 +86,7 @@ static NSString *kFavourites = @"favourites";
         [transaction setObject:sourceLanguages[0] forKey:kSourceSelected inCollection:nil];
         [transaction setObject:targetLanguages[0] forKey:kTargetSelected inCollection:nil];
         [transaction setObject:[NSArray new] forKey:kFavourites inCollection:nil];
+        [transaction setObject:@(NO) forKey:kUsedFavourites inCollection:nil];
     }];
 }
 
@@ -121,6 +125,10 @@ static NSString *kFavourites = @"favourites";
 
 - (NSArray *)favouriteTranslations {
     return [self objectForKey:kFavourites];
+}
+
+- (NSNumber *)hasUsedFavouriteBar {
+    return [self objectForKey:kUsedFavourites];
 }
 
 - (id)objectForKey:(NSString *)key {
@@ -162,6 +170,10 @@ static NSString *kFavourites = @"favourites";
     NSMutableArray *favourites = [[self favouriteTranslations] mutableCopy];
     [favourites removeObject:translation];
     [self setObject:[favourites copy] forKey:kFavourites];
+}
+
+- (void)saveHasUsedFavouriteBar:(NSNumber *)used {
+    [self setObject:used forKey:kUsedFavourites];
 }
 
 - (void)setObject:(id)object forKey:(NSString *)key {

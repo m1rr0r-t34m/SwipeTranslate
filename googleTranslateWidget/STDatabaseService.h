@@ -22,6 +22,7 @@ static NSUInteger defaultLanguagesCount = 10;
 - (STLanguage *)sourceSelectedLanguage;
 - (STLanguage *)targetSelectedLanguage;
 - (NSArray <STTranslation *> *)favouriteTranslations;
+- (NSNumber *)hasUsedFavouriteBar;
 #pragma mark - Insert / Remove
 - (void)saveSourceLanguages:(NSArray <STLanguage *> *)languages;
 - (void)saveTargetLanguages:(NSArray <STLanguage *> *)languages;
@@ -29,4 +30,5 @@ static NSUInteger defaultLanguagesCount = 10;
 - (void)saveTargetSelected:(STLanguage *)language;
 - (void)saveFavouriteTranslation:(STTranslation *)translation;
 - (void)removeFavouriteTranslation:(STTranslation *)translation;
+- (void)saveHasUsedFavouriteBar:(NSNumber *)used;
 @end

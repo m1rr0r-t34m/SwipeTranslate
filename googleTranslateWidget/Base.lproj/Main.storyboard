@@ -660,6 +660,45 @@
                                     <constraint firstAttribute="width" constant="400" id="tTu-1H-a2y"/>
                                 </constraints>
                             </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="sw3-4Q-q1L" customClass="STFavouritesHintView">
+                                <rect key="frame" x="0.0" y="0.0" width="903" height="70"/>
+                                <subviews>
+                                    <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="NZ7-Ju-C88">
+                                        <rect key="frame" x="0.0" y="0.0" width="903" height="70"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0x6-nJ-0Lf">
+                                                <rect key="frame" x="318" y="27" width="268" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" alignment="center" title="To open the bar drag two fingers to the left" id="oWy-YB-4bN">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yXD-7d-7Ly">
+                                                <rect key="frame" x="100" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="yXD-7d-7Ly" secondAttribute="height" multiplier="1:1" id="qe7-72-DoM"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="HintArrowLeft" id="GpJ-GZ-56h"/>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yXD-7d-7Ly" firstAttribute="top" secondItem="NZ7-Ju-C88" secondAttribute="top" id="L1Z-em-Qyf"/>
+                                            <constraint firstItem="0x6-nJ-0Lf" firstAttribute="centerX" secondItem="NZ7-Ju-C88" secondAttribute="centerX" id="V1h-D0-Kzr"/>
+                                            <constraint firstItem="yXD-7d-7Ly" firstAttribute="leading" secondItem="NZ7-Ju-C88" secondAttribute="leading" constant="100" id="VsN-uL-rr4"/>
+                                            <constraint firstAttribute="bottom" secondItem="yXD-7d-7Ly" secondAttribute="bottom" id="W1Z-TJ-6vF"/>
+                                            <constraint firstItem="0x6-nJ-0Lf" firstAttribute="centerY" secondItem="NZ7-Ju-C88" secondAttribute="centerY" id="nNo-9a-VPg"/>
+                                        </constraints>
+                                    </visualEffectView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NZ7-Ju-C88" firstAttribute="leading" secondItem="sw3-4Q-q1L" secondAttribute="leading" id="Aod-pg-bq2"/>
+                                    <constraint firstAttribute="bottom" secondItem="NZ7-Ju-C88" secondAttribute="bottom" id="Aw9-Pr-qjP"/>
+                                    <constraint firstItem="NZ7-Ju-C88" firstAttribute="top" secondItem="sw3-4Q-q1L" secondAttribute="top" id="J9G-cd-krL"/>
+                                    <constraint firstAttribute="height" constant="70" id="dlb-o4-8tM"/>
+                                    <constraint firstAttribute="trailing" secondItem="NZ7-Ju-C88" secondAttribute="trailing" id="fLL-E5-8GM"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sbc-cg-33x" firstAttribute="top" secondItem="sbH-9V-EgQ" secondAttribute="top" constant="2" id="0VI-PF-6xk"/>
@@ -670,13 +709,16 @@
                             <constraint firstItem="JPE-AV-FTk" firstAttribute="leading" secondItem="SQQ-iM-ddv" secondAttribute="leading" constant="70" id="BJi-AW-qJG"/>
                             <constraint firstItem="sbH-9V-EgQ" firstAttribute="height" secondItem="SQQ-iM-ddv" secondAttribute="height" multiplier="0.25" id="Egv-ao-0Q3"/>
                             <constraint firstItem="ABY-ei-i8G" firstAttribute="top" secondItem="XkX-uv-W0y" secondAttribute="top" id="Ffp-A4-cKu"/>
+                            <constraint firstAttribute="trailing" secondItem="sw3-4Q-q1L" secondAttribute="trailing" id="OpE-lA-CqZ"/>
                             <constraint firstAttribute="bottom" secondItem="w2q-Ru-0Zd" secondAttribute="bottom" constant="30" id="Pvl-jH-Pdc"/>
                             <constraint firstItem="sbH-9V-EgQ" firstAttribute="leading" secondItem="w2q-Ru-0Zd" secondAttribute="trailing" constant="15" id="Qfk-8Q-1y1"/>
                             <constraint firstItem="sbc-cg-33x" firstAttribute="leading" secondItem="sbH-9V-EgQ" secondAttribute="leading" constant="6" id="Uaj-xh-ata"/>
                             <constraint firstItem="Z2Q-yl-nEK" firstAttribute="leading" secondItem="w2q-Ru-0Zd" secondAttribute="trailing" constant="15" id="Vsb-Q3-lrW"/>
+                            <constraint firstItem="sw3-4Q-q1L" firstAttribute="leading" secondItem="SQQ-iM-ddv" secondAttribute="leading" id="XoG-rL-qcK"/>
                             <constraint firstItem="ABY-ei-i8G" firstAttribute="trailing" secondItem="XkX-uv-W0y" secondAttribute="trailing" constant="20" id="bWr-bH-aUw"/>
                             <constraint firstAttribute="trailing" secondItem="p6Q-T2-YCs" secondAttribute="trailing" id="fje-g6-SIr"/>
                             <constraint firstItem="JPE-AV-FTk" firstAttribute="top" secondItem="sbH-9V-EgQ" secondAttribute="bottom" constant="1" id="gmS-Yv-BFl"/>
+                            <constraint firstAttribute="bottom" secondItem="sw3-4Q-q1L" secondAttribute="bottom" id="gmt-tS-0o5"/>
                             <constraint firstItem="3Gk-UF-w2n" firstAttribute="centerY" secondItem="JPE-AV-FTk" secondAttribute="centerY" id="msM-4F-5Wp"/>
                             <constraint firstItem="sbH-9V-EgQ" firstAttribute="top" secondItem="SQQ-iM-ddv" secondAttribute="top" constant="30" id="nxR-wg-Xun"/>
                             <constraint firstAttribute="bottom" secondItem="p6Q-T2-YCs" secondAttribute="bottom" id="qCb-FO-tCd"/>
@@ -692,6 +734,10 @@
                         <outlet property="favouriteButton" destination="8WB-iP-02f" id="9S1-4s-JRu"/>
                         <outlet property="favouritesContainer" destination="p6Q-T2-YCs" id="QeC-nc-cfK"/>
                         <outlet property="favouritesContainerRight" destination="fje-g6-SIr" id="gfh-ed-Coy"/>
+                        <outlet property="favouritesHintView" destination="sw3-4Q-q1L" id="5hq-va-6Xl"/>
+                        <outlet property="favouritesHintViewArrowLeft" destination="VsN-uL-rr4" id="e5U-Bh-LIg"/>
+                        <outlet property="favouritesHintViewBottom" destination="gmt-tS-0o5" id="ijg-fv-V6K"/>
+                        <outlet property="favouritesHintViewLabel" destination="0x6-nJ-0Lf" id="0JX-BW-biN"/>
                         <outlet property="favouritesTableView" destination="X0h-mJ-a2m" id="ifJ-BX-aU1"/>
                         <outlet property="placeholderLabel" destination="sbc-cg-33x" id="WnB-u5-LKg"/>
                         <outlet property="sourceTextView" destination="XkX-uv-W0y" id="dkr-8m-XSu"/>
@@ -708,6 +754,7 @@
         <image name="ClearButtonMain" width="16" height="16"/>
         <image name="FavouritesButton" width="256" height="256"/>
         <image name="FavouritesButtonPressed" width="256" height="256"/>
+        <image name="HintArrowLeft" width="383" height="383"/>
         <image name="ShowMoreIcon" width="256" height="256"/>
         <image name="buttonCell:mKz-vr-8Re:image" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">

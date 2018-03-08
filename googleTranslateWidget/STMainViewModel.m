@@ -34,7 +34,7 @@
     RACSignal *targetLanguageSignal = [RACObserve(self, targetLanguage) ignore:nil];
     
     @weakify(self);
-    [[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] throttle:0.1] filter:^BOOL(RACTuple *tuple) {
+    [[[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] throttle:0.1] filter:^BOOL(RACTuple *tuple) {
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
             return ![self.translation.inputText isEqualToString:text] || ![self.translation.sourceLanguage isEqual:source] || ![self.translation.targetLanguage isEqual:target];
         }]
@@ -45,6 +45,14 @@
             return [self.services.translationService translationForText:text fromLanguage:source toLanguage:target];
         }]
         switchToLatest]
+        catch:^RACSignal *(NSError *error) {
+            @strongify(self);
+            STTranslation *translation = [STTranslation emptyTranslation];
+            translation.inputText = self.sourceText;
+            translation.sourceLanguage = self.sourceLanguage;
+            translation.targetLanguage = self.targetLanguage;
+            return [RACSignal return:translation];
+        }]
         subscribeNext:^(STTranslation *translation) {
             @strongify(self);
             self.translating = NO;
@@ -53,7 +61,7 @@
     
     [RACObserve(self, translation) subscribeNext:^(STTranslation *translation) {
         @strongify(self);
-        if (translation) {
+        if (translation && ![translation isEmpty]) {
             self.sourceText = translation.inputText;
             self.sourceLanguage = translation.sourceLanguage;
             self.targetLanguage = translation.targetLanguage;

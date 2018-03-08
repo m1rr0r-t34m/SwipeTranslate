@@ -14,6 +14,7 @@
 #import <QuartzCore/CATransaction.h>
 #import "STFavouriteUpdate.h"
 #import "STMainApplicationMenu.h"
+#import "STFavouritesHintView.h"
 
 @interface STRightSplitView () <NSTextViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
 @property (strong) IBOutlet NSProgressIndicator *activityIndicator;
@@ -27,6 +28,10 @@
 @property (strong) IBOutlet NSLayoutConstraint *favouritesContainerRight;
 @property (strong) IBOutlet NSTableView *favouritesTableView;
 @property (strong, nonatomic) STSidebarAnimator *sidebarAnimator;
+@property (strong) IBOutlet STFavouritesHintView *favouritesHintView;
+@property (strong) IBOutlet NSLayoutConstraint *favouritesHintViewBottom;
+@property (strong) IBOutlet NSLayoutConstraint *favouritesHintViewArrowLeft;
+@property (strong) IBOutlet NSTextField *favouritesHintViewLabel;
 @end
 
 static CGFloat leftFavouritesMenuConstant = -100;
@@ -56,6 +61,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
     [self setupSourceTextView];
     [self setupFavouritesMenu];
     [self setupFileMenu];
+    [self setupFavouritesHintView];
 }
 
 #pragma mark - Setup
@@ -68,6 +74,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
     [NSApp.mainMenu addItem:fileMenu];
     
 }
+
 - (void)setupSourceTextView {
     RACSignal *placeholderAlphaSignal = [[RACObserve(self.viewModel, inputText) map:^id(NSString *Text) {
         return @(Text.length == 0);
@@ -127,6 +134,8 @@ static CGFloat rightFavouritesMenuConstant = -400;
         return;
     }
     
+    self.viewModel.usedFavourites = YES;
+    
     STSidebarAnimatorUpdate *update;
     if (self.favouritesContainerRight.constant == leftFavouritesMenuConstant) {
         update = [self.sidebarAnimator updateWithDirection:STSidebarMoveDirectionClose];
@@ -139,6 +148,10 @@ static CGFloat rightFavouritesMenuConstant = -400;
 - (void)updateFavouritesBarPosition:(STSidebarAnimatorUpdate *)update {
     self.favouritesContainerRight.constant = update.constant;
     
+    if (update.constant > rightFavouritesMenuConstant + 40) {
+        self.viewModel.usedFavourites = YES;
+    }
+    
     if (!update.animated) {
         [self.view layoutSubtreeIfNeeded];
     } else {
@@ -149,6 +162,26 @@ static CGFloat rightFavouritesMenuConstant = -400;
             [self.view layoutSubtreeIfNeeded];
         } completionHandler:nil];
     }
+}
+
+- (void)setupFavouritesHintView {
+    self.favouritesHintViewBottom.constant = -70;
+    self.favouritesHintView.arrowLeft = self.favouritesHintViewArrowLeft;
+    self.favouritesHintView.bottom = self.favouritesHintViewBottom;
+    self.favouritesHintView.label = self.favouritesHintViewLabel;
+    
+    @weakify(self);
+    [[[RACObserve(self.viewModel, shouldShowFavouritesHint) distinctUntilChanged]
+        combineLatestWith:[RACObserve(self.viewModel, usedFavourites) distinctUntilChanged]]
+        subscribeNext:^(RACTuple *tuple) {
+            RACTupleUnpack(NSNumber *shouldShow, NSNumber *used) = tuple;
+            @strongify(self);
+            if (shouldShow.boolValue && !used.boolValue && !self.favouritesHintView.isShown) {
+                [self.favouritesHintView show];
+            } else if (self.favouritesHintView.isShown) {
+                [self.favouritesHintView hide];
+            }
+    }];
 }
 
 - (void)bindViewModel {

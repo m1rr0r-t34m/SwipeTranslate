@@ -41,7 +41,7 @@
     translation.type = autoLanguage? STTranslationTypeAuto : STTranslationTypeNormal;
     
     @weakify(self);
-    return [[[[self.apiService translationForText:text fromLanguage:source toLanguage:target]
+    return [[[self.apiService translationForText:text fromLanguage:source toLanguage:target]
               flattenMap:^RACSignal *(STParserResult *result) {
                   @strongify(self);
                   RACSignal *forwardSignal = [RACSignal return:result];
@@ -59,8 +59,7 @@
                  translation.targetLanguage = target;
                  translation.parserResult = response;
                  return translation;
-             }]
-             catchTo:[RACSignal return:[STTranslation emptyTranslation]]];
+             }];
 }
 
 - (BOOL)textIsWhiteSpace:(NSString *)text {

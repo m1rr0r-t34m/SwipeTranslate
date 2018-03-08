@@ -16,7 +16,7 @@
 #define TranslationBaseURL @"https://translate.yandex.net/api/v1.5/tr.json/translate"
 #define DictionaryBaseURL @"https://dictionary.yandex.net/api/v1/dicservice.json/lookup"
 
-#define TranslationKeys @[/*@"trnsl.1.1.20180301T131042Z.020bf4004a465716.c1c40e66bb6039f508e8a7a8c182765082a0f6cd",*/\
+#define TranslationKeys @[@"trnsl.1.1.20180301T131042Z.020bf4004a465716.c1c40e66bb6039f508e8a7a8c182765082a0f6cd",\
                             @"trnsl.1.1.20151022T101327Z.947a48f231e6aa6e.7e71b163761e2e6791c492f9448b63e1c1f27a2e", \
                             @"trnsl.1.1.20160205T220026Z.f79840726332a14f.3c6ff3304b4bafc4d2a932d887dc44da76d81514", \
                             @"trnsl.1.1.20160116T172821Z.1f08aedad7321adc.c61d63de33f7b02ef4fc0ff70bab33484e4f099b", \

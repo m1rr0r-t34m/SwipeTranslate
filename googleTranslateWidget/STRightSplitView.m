@@ -55,6 +55,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
     [self setupSourceTextView];
     [self setupFavouritesMenu];
     
+    self.favouritesTableView.target = self;
     self.favouritesTableView.action = @selector(handleTableViewTap);
 }
 

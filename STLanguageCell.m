@@ -25,4 +25,18 @@
     [gridPath stroke];    
 }
 
+- (void)setObjectValue:(id)objectValue {
+    if (objectValue) {
+        [self fillWithModel:(STLanguageCellModel *)objectValue];
+    }
+}
+
+- (void)fillWithModel:(STLanguageCellModel *)model {
+    [self.label setStringValue:model.title];
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    [self.label setTextColor:[NSColor blackColor]];
+}
 @end

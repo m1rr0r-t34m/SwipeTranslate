@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class STLanguageCellModel;
 
-@interface STLanguageCell : NSTableRowView
+@interface STLanguageCell : NSTableCellView
 @property (weak) IBOutlet NSTextField *label;
 @property (strong, nonatomic) STLanguageCellModel *viewModel;
 @end

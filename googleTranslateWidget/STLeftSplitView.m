@@ -35,11 +35,6 @@ static NSUInteger maxNumberOfRows = 10;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.sourceLanguageTable setRefusesFirstResponder:YES];
-    [self.targetLanguageTable setRefusesFirstResponder:YES];
-    //[self.sourceLanguageTable reloadData];
-    //[self.targetLanguageTable reloadData];
-    
     RAC(self.sourceLanguageTitleTextField, stringValue) = RACObserve(self.viewModel, sourceSelectedTitle);
     RAC(self.targetLanguageTitleTextField, stringValue) = RACObserve(self.viewModel, targetSelectedTitle);
 
@@ -52,18 +47,40 @@ static NSUInteger maxNumberOfRows = 10;
         [self.sourceLanguageTable reloadData];
         [self.targetLanguageTable reloadData];
     }];
+    
+    self.sourceLanguageTable.refusesFirstResponder = YES;
+    self.targetLanguageTable.refusesFirstResponder = YES;
+    self.sourceLanguageTable.focusRingType = NSFocusRingTypeNone;
+    self.targetLanguageTable.focusRingType = NSFocusRingTypeNone;
+    
+    self.sourceLanguageTable.target = self;
+    self.targetLanguageTable.target = self;
+    self.sourceLanguageTable.action = @selector(handleTableViewTap:);
+    self.targetLanguageTable.action = @selector(handleTableViewTap:);
+    
+    [RACObserve(self.viewModel, autoLanguageSelected) subscribeNext:^(NSNumber *autoSelected) {
+        @strongify(self);
+        if (autoSelected.boolValue) {
+            self.autoLanguageButton.image = [NSImage imageNamed:@"AutoButtonPushed"];
+        } else {
+            self.autoLanguageButton.image = [NSImage imageNamed:@"AutoButtonIcon"];
+        }
+    }];
 }
 
 - (void)setupMenus {
     self.sourceLanguageMenu = [[STLanguageMenu alloc] initWithLanguagesService:self.viewModel.services.languagesService];
     self.targetLanguageMenu = [[STLanguageMenu alloc] initWithLanguagesService:self.viewModel.services.languagesService];
     
+    @weakify(self);
     [self.sourceLanguageMenu.selectSignal subscribeNext:^(STLanguage *language) {
-        [self.viewModel pushSourceLanguage:language];
+        @strongify(self);
+        [self.viewModel setSourceSelectedLanguage:language];
     }];
     
     [self.targetLanguageMenu.selectSignal subscribeNext:^(STLanguage *language) {
-        [self.viewModel pushTargetLanguage:language];
+        @strongify(self);
+        [self.viewModel setTargetSelectedLanguage:language];
     }];
 }
 
@@ -120,24 +137,19 @@ static NSUInteger maxNumberOfRows = 10;
 }
 
 #pragma mark - Table Views
-- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
-    STLanguageCell *cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
+- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     STLanguageCellModel *cellModel;
-    
     if (tableView == self.sourceLanguageTable) {
         cellModel = self.viewModel.sourceLanguages[row];
-    } else if (tableView == self.targetLanguageTable) {
+    } else {
         cellModel = self.viewModel.targetLanguages[row];
     }
-    
-    [cell setViewModel:cellModel];
-    [cell.label setTextColor:[NSColor blackColor]];
-    [cell.label setStringValue:cellModel.title];
     
     if (cellModel.selected) {
         [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
-    return cell;
+    
+    return cellModel;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {
@@ -148,11 +160,11 @@ static NSUInteger maxNumberOfRows = 10;
     return self.viewModel.visibleRowsCount;
 }
 
-- (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    if (notification.object == self.sourceLanguageTable) {
-        [self.viewModel setSourceSelected:[[self sourceLanguageTable] selectedRow]];
-    } else if(notification.object == self.targetLanguageTable) {
-        [self.viewModel setTargetSelected:[[self targetLanguageTable] selectedRow]];
+- (void)handleTableViewTap:(NSTableView *)tableView {
+    if (tableView == self.sourceLanguageTable) {
+        [self.viewModel setSourceSelectedIndex:[self.sourceLanguageTable selectedRow]];
+    } else if(tableView == self.targetLanguageTable) {
+        [self.viewModel setTargetSelectedIndex:[self.targetLanguageTable selectedRow]];
     }
 }
 

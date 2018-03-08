@@ -16,10 +16,17 @@
 #import "STMainViewModel.h"
 
 @interface STLeftSplitViewModel ()
-@property (strong, nonatomic) RACSubject *dataReloadSubject;
-@property (assign, nonatomic) BOOL autoLanguageSelected;
-@property (strong, nonatomic) NSString *detectedLanguage;
+@property (readwrite, strong, nonatomic) id <STServices> services;
 @property (strong, nonatomic) STMainViewModel *mainViewModel;
+@property (readwrite, strong, nonatomic) RACSignal *dataReloadSignal;
+@property (strong, nonatomic) RACSubject *dataReloadSubject;
+@property (strong, nonatomic) STLanguage *sourceLanguage;
+@property (strong, nonatomic) STLanguage *targetLanguage;
+@property (readwrite, strong, nonatomic) NSArray <STLanguageCellModel *> *sourceLanguages;
+@property (readwrite, strong, nonatomic) NSArray <STLanguageCellModel *> *targetLanguages;
+@property (readwrite, strong, nonatomic) NSString *sourceSelectedTitle;
+@property (readwrite, strong, nonatomic) NSString *targetSelectedTitle;
+@property (readwrite, assign, nonatomic) BOOL autoLanguageSelected;
 @end
 
 @implementation STLeftSplitViewModel
@@ -38,9 +45,11 @@
         _rowHeight = 40;
         _dataReloadSubject = [RACSubject new];
         _dataReloadSignal = [[_dataReloadSubject startWith:nil] ignore:nil];
-        _sourceSelectedLanguage = self.services.databaseService.sourceSelectedLanguage;
-        _targetSelectedLanguage = self.services.databaseService.targetSelectedLanguage;
-        
+        _sourceLanguage = self.services.databaseService.sourceSelectedLanguage;
+        _targetLanguage = self.services.databaseService.targetSelectedLanguage;
+        _mainViewModel.sourceLanguage = _sourceLanguage;
+        _mainViewModel.targetLanguage = _targetLanguage;
+        _autoLanguageSelected = [self isLanguageAuto:_sourceLanguage];
         [self loadInitialData];
         [self bindSignals];
     }
@@ -52,8 +61,8 @@
     [RACObserve(self, visibleRowsCount) subscribeNext:^(NSNumber *count) {
         @strongify(self);
         NSUInteger rowsCount = [count unsignedIntegerValue];
-        NSUInteger sourceIndex = [self indexOfLanguage:self.sourceSelectedLanguage inCellModelsArray:self.sourceLanguages];
-        NSUInteger targetIndex = [self indexOfLanguage:self.targetSelectedLanguage inCellModelsArray:self.targetLanguages];;
+        NSUInteger sourceIndex = [self indexOfLanguage:self.sourceLanguage inCellModelsArray:self.sourceLanguages];
+        NSUInteger targetIndex = [self indexOfLanguage:self.targetLanguage inCellModelsArray:self.targetLanguages];;
 
         NSMutableArray *sourceLanguages = [self.sourceLanguages mutableCopy];
         if (sourceIndex != NSNotFound && sourceIndex > rowsCount - 1) {
@@ -74,17 +83,12 @@
     }];
     
     
-    RACSignal *autoSelected = [RACObserve(self, sourceSelectedLanguage) filter:^BOOL(STLanguage *language) {
-        @strongify(self);
-        return [self.services.languagesService.autoLanguage isEqual:language];
-    }];
-    
     [[RACObserve(self.mainViewModel, translation)
-        combineLatestWith:autoSelected]
+        combineLatestWith:RACObserve(self, autoLanguageSelected)]
         subscribeNext:^(RACTuple *tuple) {
             @strongify(self);
             STTranslation *translation = tuple.first;
-            if (self.autoLanguageSelected) {
+            if ([tuple.second boolValue]) {
                 if (translation.detectedLanguage) {
                     self.sourceSelectedTitle = [NSString stringWithFormat:@"(Auto) > %@", translation.detectedLanguage.title];
                 } else {
@@ -93,23 +97,28 @@
             }
         }];
     
-    RAC(self, sourceSelectedTitle) = [RACObserve(self, sourceSelectedLanguage) map:^id (STLanguage *language) {
+    RAC(self, sourceSelectedTitle) = [RACObserve(self, sourceLanguage) map:^id (STLanguage *language) {
         return language.title;
     }];
     
-    RAC(self, targetSelectedTitle) = [RACObserve(self, targetSelectedLanguage) map:^id (STLanguage *language) {
+    RAC(self, targetSelectedTitle) = [RACObserve(self, targetLanguage) map:^id (STLanguage *language) {
         return language.title;
     }];
     
-    [RACObserve(self, sourceSelectedLanguage) subscribeNext:^(STLanguage *language) {
-        @strongify(self);
-        [self.mainViewModel setSourceLanguage:language];;
-    }];
     
-    [RACObserve(self, targetSelectedLanguage) subscribeNext:^(STLanguage *language) {
-        @strongify(self);
-        [self.mainViewModel setTargetLanguage:language];;
-    }];
+    [[[[RACObserve(self.mainViewModel, translation) distinctUntilChanged]
+        filter:^BOOL(STTranslation *translation) {
+            return translation && translation.sourceLanguage && translation.targetLanguage;
+        }]
+        filter:^BOOL(STTranslation *translation) {
+            @strongify(self);
+            return ![translation.sourceLanguage isEqual:self.sourceLanguage] || [translation.targetLanguage isEqual:self.targetLanguage];
+        }]
+        subscribeNext:^(STTranslation *translation) {
+            @strongify(self);
+            [self setSourceLanguage:translation.sourceLanguage];
+            [self setTargetLanguage:translation.targetLanguage];
+        }];
 }
 
 #pragma mark - Cell viewmodels
@@ -132,8 +141,8 @@
         [targetLanguages addObjectsFromArray:randomLanguages];
     }
     
-    NSArray <STLanguageCellModel *> *sourceLanguageViewModels = [self viewModelsForLanguages:sourceLanguages withSelectedSignal:RACObserve(self, sourceSelectedLanguage)];
-    NSArray <STLanguageCellModel *> *targetLanguageViewModels = [self viewModelsForLanguages:targetLanguages withSelectedSignal:RACObserve(self, targetSelectedLanguage)];
+    NSArray <STLanguageCellModel *> *sourceLanguageViewModels = [self viewModelsForLanguages:sourceLanguages withSelectedSignal:RACObserve(self, sourceLanguage)];
+    NSArray <STLanguageCellModel *> *targetLanguageViewModels = [self viewModelsForLanguages:targetLanguages withSelectedSignal:RACObserve(self, targetLanguage)];
     
     NSUInteger countOfSourceSelected = [[[sourceLanguageViewModels.rac_sequence filter:^BOOL(STLanguageCellModel *cellModel) {
         return cellModel.selected;
@@ -176,29 +185,42 @@
 }
 
 #pragma mark - Select languages
-- (void)setSourceSelected:(NSInteger)index {
-    self.sourceSelectedLanguage = [self.sourceLanguages objectAtIndex:index].language;
-    [self saveLanguages];
+- (void)setSourceSelectedIndex:(NSInteger)index {
+    STLanguage *language = [self.sourceLanguages objectAtIndex:index].language;
+    [self setSourceSelectedLanguage:language];
 }
 
-- (void)setTargetSelected:(NSInteger)index {
-    self.targetSelectedLanguage = [self.targetLanguages objectAtIndex:index].language;
-    [self saveLanguages];
+- (void)setTargetSelectedIndex:(NSInteger)index {
+    STLanguage *language = [self.targetLanguages objectAtIndex:index].language;
+    [self setTargetSelectedLanguage:language];
 }
 
-- (void)pushSourceLanguage:(STLanguage *)language {
-    self.sourceLanguages = [self pushLanguage:language toCollection:self.sourceLanguages withSelectedSignal:RACObserve(self, sourceSelectedLanguage)];
-    self.sourceSelectedLanguage = language;
-    [self saveLanguages];
+- (void)setSourceSelectedLanguage:(STLanguage *)language {
+    if ([self.sourceLanguage isEqual:language]) {
+        return;
+    }
+    if ([self isLanguageAuto:language]) {
+        self.autoLanguageSelected = YES;
+    } else {
+        self.autoLanguageSelected = NO;
+        self.sourceLanguages = [self pushLanguage:language toCollection:self.sourceLanguages withSelectedSignal:RACObserve(self, sourceLanguage)];
+    }
+    self.sourceLanguage = language;
     [self updateBorders];
+    [self saveLanguages];
+    self.mainViewModel.sourceLanguage = self.sourceLanguage;
     [self.dataReloadSubject sendNext:@YES];
 }
 
-- (void)pushTargetLanguage:(STLanguage *)language {
-    self.targetLanguages = [self pushLanguage:language toCollection:self.targetLanguages withSelectedSignal:RACObserve(self, targetSelectedLanguage)];
-    self.targetSelectedLanguage = language;
-    [self saveLanguages];
+- (void)setTargetSelectedLanguage:(STLanguage *)language {
+    if ([self.targetLanguage isEqual:language]) {
+        return;
+    }
+    self.targetLanguages = [self pushLanguage:language toCollection:self.targetLanguages withSelectedSignal:RACObserve(self, targetLanguage)];
+    self.targetLanguage = language;
     [self updateBorders];
+    [self saveLanguages];
+    self.mainViewModel.targetLanguage = self.targetLanguage;
     [self.dataReloadSubject sendNext:@YES];
 }
 
@@ -222,24 +244,21 @@
 
 - (void)switchAutoButton {
     if (self.autoLanguageSelected) {
-        self.sourceSelectedLanguage = self.sourceLanguages[0].language;
+        [self setSourceSelectedIndex:0];
     } else {
-        self.sourceSelectedLanguage = [self.services.languagesService autoLanguage];
+        [self setSourceSelectedLanguage:[self.services.languagesService autoLanguage]];
     }
-    
-    [self saveLanguages];
-    [self.dataReloadSubject sendNext:@YES];
 }
 
 - (void)switchLanguages {
-    STLanguage *source = self.sourceSelectedLanguage;
-    STLanguage *target = self.targetSelectedLanguage;
+    STLanguage *source = self.sourceLanguage;
+    STLanguage *target = self.targetLanguage;
     
     if (self.autoLanguageSelected) {
         //TODO: Do we need to do something here?
     } else {
-        [self pushSourceLanguage:target];
-        [self pushTargetLanguage:source];
+        [self setSourceSelectedLanguage:target];
+        [self setTargetSelectedLanguage:source];
     }
 }
 
@@ -253,12 +272,12 @@
         return cellModel.language;
     }] array]];
     
-    [self.services.databaseService saveSourceSelected:self.sourceSelectedLanguage];
-    [self.services.databaseService saveTargetSelected:self.targetSelectedLanguage];
+    [self.services.databaseService saveSourceSelected:self.sourceLanguage];
+    [self.services.databaseService saveTargetSelected:self.targetLanguage];
 }
 
-- (BOOL)autoLanguageSelected {
-    return [self.sourceSelectedLanguage isEqual:[self.services.languagesService autoLanguage]];
+- (BOOL)isLanguageAuto:(STLanguage *)language {
+    return [language isEqual:[self.services.languagesService autoLanguage]];
 }
 
 - (NSInteger)indexOfLanguage:(STLanguage *)language inCellModelsArray:(NSArray <STLanguageCellModel *> *)cellModels {

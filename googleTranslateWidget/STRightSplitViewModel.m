@@ -17,10 +17,17 @@
 
 @interface STRightSplitViewModel()
 @property (strong, nonatomic) id <STServices> services;
-@property (strong, nonatomic) RACSubject *favouritesUpdateSubject;
-@property (strong, nonatomic) STTranslation *previousTranslation;
-@property (strong, nonatomic) STTranslation *currentTranslation;
 @property (strong, nonatomic) STMainViewModel *mainViewModel;
+@property (strong, nonatomic) STTranslation *currentTranslation;
+@property (readwrite, strong, nonatomic) NSAttributedString *outputText;
+@property (readwrite, strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
+@property (readwrite, assign, nonatomic) NSInteger favouritesSelectedIndex;
+@property (readwrite, strong, nonatomic) RACSignal *favouritesUpdateSignal;
+@property (strong, nonatomic) RACSubject *favouritesUpdateSubject;
+
+@property (readwrite, assign, nonatomic) BOOL currentTranslationIsSaved;
+@property (readwrite, assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
+@property (readwrite, assign, nonatomic) BOOL translating;
 @end
 
 @implementation STRightSplitViewModel
@@ -45,35 +52,27 @@
 
 - (void)setupBindings {
     RAC(self, translating) = RACObserve(self.mainViewModel, translating);
-    
+    RAC(self, currentTranslation) = RACObserve(self.mainViewModel, translation);
+
     @weakify(self);
-    [RACObserve(self.mainViewModel, translation) subscribeNext:^(STTranslation *translation) {
-        @strongify(self);
-        self.currentTranslation = translation;
-        self.previousTranslation = translation;
-    }];
-    
     [RACObserve(self, currentTranslation) subscribeNext:^(STTranslation *translation) {
         @strongify(self);
         self.outputText = [self textForTranslationResult:translation];
         self.inputText = translation.inputText;
+        self.mainViewModel.sourceText = translation.inputText;
         if (!self.inputText) self.inputText = [NSString new];
         if (!self.outputText) self.outputText = [NSAttributedString new];
         self.canSaveOrRemoveCurrentTranslation = (translation && translation.inputText && translation.parserResult && translation.parserResult.parsedResponse);
         self.currentTranslationIsSaved = [self translationIsSaved:translation];
-        if (self.currentTranslationIsSaved) {
-            self.favouritesSelectedIndex = [self indexOfCurrentTranslation];
-        }
+        self.favouritesSelectedIndex = [self indexOfCurrentTranslation];
     }];
 }
 
 - (void)showSavedTranslation:(NSInteger)index {
     if (index != NSNotFound && index != -1) {
-        self.currentTranslation = self.favouriteViewModels[index].translation;
-    } else if (![self.previousTranslation isEqual:self.currentTranslation]) {
-        self.currentTranslation = self.previousTranslation;
+        self.mainViewModel.translation = self.favouriteViewModels[index].translation;
     } else {
-        self.currentTranslation = [STTranslation emptyTranslation];
+        self.mainViewModel.translation = nil;
     }
     self.favouritesSelectedIndex = index;
 }

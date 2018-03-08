@@ -9,11 +9,10 @@
 #import <Foundation/Foundation.h>
 @class STLanguage;
 
-@interface STLanguageCellModel : NSObject
+@interface STLanguageCellModel : NSObject <NSCopying>
 @property (strong, nonatomic) STLanguage *language;
 @property (strong, nonatomic) NSString *title;
 @property (assign, nonatomic) BOOL selected;
 @property (assign, nonatomic) BOOL shouldDrawBorder;
-
 - (instancetype)initWithLanguage:(STLanguage *)language;
 @end

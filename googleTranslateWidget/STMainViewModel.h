@@ -11,10 +11,9 @@
 @class STTranslation;
 
 @interface STMainViewModel : NSObject
-@property (readonly, nonatomic) STTranslation *translation;
 @property (readonly, nonatomic) id <STServices> services;
+@property (strong, nonatomic) STTranslation *translation;
 @property (readonly, assign, nonatomic) BOOL translating;
-
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) STLanguage *sourceLanguage;
 @property (strong, nonatomic) STLanguage *targetLanguage;

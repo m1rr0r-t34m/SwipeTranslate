@@ -53,7 +53,7 @@ static NSString *kFavourites = @"favourites";
 #pragma mark - Initial data check
 - (BOOL)performInitialDataCheck {
     __block BOOL dataAvailable = YES;
-    
+
     [self.connection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
         NSArray *sourceLanguages;
         NSArray *targetLanguages;

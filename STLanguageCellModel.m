@@ -17,4 +17,15 @@
     
     return self;
 }
+
+#pragma mark - NSCopying
+- (id)copyWithZone:(NSZone *)zone {
+    STLanguageCellModel *copy = [[STLanguageCellModel allocWithZone:zone] init];
+    copy.language = [self.language copy];
+    copy.title = [self.title copy];
+    copy.selected = self.selected;
+    copy.shouldDrawBorder = self.shouldDrawBorder;
+    
+    return copy;
+}
 @end

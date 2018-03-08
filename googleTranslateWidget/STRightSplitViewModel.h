@@ -14,14 +14,15 @@
 @class STMainViewModel;
 
 @interface STRightSplitViewModel : NSObject
-@property (assign, nonatomic) BOOL currentTranslationIsSaved;
-@property (assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
-@property (assign, nonatomic) BOOL translating;
 @property (strong, nonatomic) NSString *inputText;
-@property (strong, nonatomic) NSAttributedString *outputText;
-@property (strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
-@property (strong, nonatomic) RACSignal *favouritesUpdateSignal;
-@property (assign, nonatomic) NSInteger favouritesSelectedIndex;
+@property (readonly, strong, nonatomic) NSAttributedString *outputText;
+@property (readonly, assign, nonatomic) BOOL currentTranslationIsSaved;
+@property (readonly, assign, nonatomic) BOOL canSaveOrRemoveCurrentTranslation;
+@property (readonly, assign, nonatomic) BOOL translating;
+@property (readonly, strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
+@property (readonly, strong, nonatomic) RACSignal *favouritesUpdateSignal;
+@property (readonly, assign, nonatomic) NSInteger favouritesSelectedIndex;
+
 - (instancetype)initWithMainViewModel:(STMainViewModel *)mainViewModel;
 - (void)saveOrRemoveCurrentTranslation;
 - (void)showSavedTranslation:(NSInteger)index;

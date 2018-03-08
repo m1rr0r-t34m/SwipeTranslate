@@ -20,6 +20,8 @@ static CGFloat defaultFastSpeed = 400;
 @end
 
 @interface STSidebarAnimator()
+@property (readwrite, assign, nonatomic) BOOL active;
+@property (readwrite, strong, nonatomic) RACSignal *updateSignal;
 @property (weak, nonatomic) STDraggableView *observedView;
 @property (assign, nonatomic) CGFloat leftConstant;
 @property (assign, nonatomic) CGFloat currentConstant;
@@ -39,6 +41,7 @@ static CGFloat defaultFastSpeed = 400;
         _rightConstant = rightConstraint;
         _updateSubject = [RACSubject new];
         _updateSignal = [_updateSubject deliverOnMainThread];
+        _active = NO;
         [self setupFlow];
     }
     
@@ -83,6 +86,7 @@ static CGFloat defaultFastSpeed = 400;
         update.constant = self.currentConstant;
         [self.updateSubject sendNext:update];
         lastMoveDistance = distance;
+        self.active = YES;
     }];
     
     [inactiveGestureSignal subscribeNext:^(STDragUpdate *update) {
@@ -111,6 +115,7 @@ static CGFloat defaultFastSpeed = 400;
         }
         
         [self.updateSubject sendNext:[self updateWithMoveDirection:direction andSpeed:speed]];
+        self.active = NO;
     }];
 }
 
@@ -132,6 +137,6 @@ static CGFloat defaultFastSpeed = 400;
 }
 
 - (STSidebarAnimatorUpdate *)updateWithDirection:(STSidebarMoveDirection)direction {
-    return [self updateWithMoveDirection:direction andSpeed:defaultMediumSpeed];
+    return [self updateWithMoveDirection:direction andSpeed:defaultFastSpeed];
 }
 @end

@@ -41,6 +41,7 @@ static NSString *kFavourites = @"favourites";
         _database = [[YapDatabase alloc] initWithPath:[[self documentsPath] stringByAppendingPathComponent:databaseName]];
         _connection = [_database newConnection];
         _persistentCache = [NSMutableDictionary new];
+        [self removeOldFavouritesFile];
         BOOL dataAvailable = [self performInitialDataCheck];
         if (!dataAvailable) {
             [self fillInitialData];
@@ -53,7 +54,7 @@ static NSString *kFavourites = @"favourites";
 #pragma mark - Initial data check
 - (BOOL)performInitialDataCheck {
     __block BOOL dataAvailable = YES;
-
+    
     [self.connection readWithBlock:^(YapDatabaseReadTransaction *transaction) {
         NSArray *sourceLanguages;
         NSArray *targetLanguages;
@@ -83,6 +84,22 @@ static NSString *kFavourites = @"favourites";
         [transaction setObject:targetLanguages[0] forKey:kTargetSelected inCollection:nil];
         [transaction setObject:[NSArray new] forKey:kFavourites inCollection:nil];
     }];
+}
+
+- (void)removeOldFavouritesFile {
+    NSString *favouritesPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Library"];
+    favouritesPath = [favouritesPath stringByAppendingPathComponent:@"Application Support"];
+    favouritesPath = [favouritesPath stringByAppendingPathComponent:@"mark.Swipe-Translate"];
+    favouritesPath = [favouritesPath stringByAppendingPathComponent:@"Favourites.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:favouritesPath]) {
+        NSError *error;
+        if (![fileManager removeItemAtPath:favouritesPath error:&error]) {
+            NSLog(@"STDatabaseService failed removing old favourites file: %@", error);
+        }
+        
+    }
 }
 
 #pragma mark - Select

@@ -7,15 +7,14 @@
 //
 
 #import "AppDelegate.h"
+#import "STMainApplicationMenu.h"
 
 @implementation AppDelegate
-
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     return YES;
 }
--(void)applicationDidFinishLaunching:(NSNotification *)notification {
-}
 
-//TODO:
-// Почему outputText это textView а не таблица, например?
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [NSApp.mainMenu addItem:[STMainApplicationMenu editMenu]];
+}
 @end

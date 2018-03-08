@@ -23,7 +23,8 @@ typedef enum : NSUInteger {
 } STSidebarMoveDirection;
 
 @interface STSidebarAnimator : NSObject
-@property (strong, nonatomic) RACSignal *updateSignal;
+@property (readonly, assign, nonatomic) BOOL active;
+@property (readonly, strong, nonatomic) RACSignal *updateSignal;
 - (instancetype)initWithDraggableView:(STDraggableView *)view
                       rightConstraint:(CGFloat)rightConstraint
                        leftConstraint:(CGFloat)leftConstraint

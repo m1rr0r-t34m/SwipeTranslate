@@ -13,6 +13,7 @@
 #import <QuartzCore/CAMediaTimingFunction.h>
 #import <QuartzCore/CATransaction.h>
 #import "STFavouriteUpdate.h"
+#import "STMainApplicationMenu.h"
 
 @interface STRightSplitView () <NSTextViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
 @property (strong) IBOutlet NSProgressIndicator *activityIndicator;
@@ -54,12 +55,19 @@ static CGFloat rightFavouritesMenuConstant = -400;
     [self bindViewModel];
     [self setupSourceTextView];
     [self setupFavouritesMenu];
-    
-    self.favouritesTableView.target = self;
-    self.favouritesTableView.action = @selector(handleTableViewTap);
+    [self setupFileMenu];
 }
 
 #pragma mark - Setup
+- (void)setupFileMenu {
+    STMainApplicationMenu *fileMenu = [STMainApplicationMenu fileMenuWithTarget:self
+                                                                openBarSelector:@selector(openOrCloseFavouritesBar)
+                                                           openBarEnabledSignal:[RACObserve(self.sidebarAnimator, active) not]
+                                                        saveTranslationSelector:@selector(favouriteButtonPress:)
+                                                   saveTranslationEnabledSignal:RACObserve(self.viewModel, canSaveOrRemoveCurrentTranslation)];
+    [NSApp.mainMenu addItem:fileMenu];
+    
+}
 - (void)setupSourceTextView {
     RACSignal *placeholderAlphaSignal = [[RACObserve(self.viewModel, inputText) map:^id(NSString *Text) {
         return @(Text.length == 0);
@@ -94,12 +102,13 @@ static CGFloat rightFavouritesMenuConstant = -400;
 
 - (void)setupFavouritesMenu {
     self.favouritesContainerRight.constant = rightFavouritesMenuConstant;
-    
     self.favouritesTableView.refusesFirstResponder = YES;
     self.favouritesTableView.focusRingType = NSFocusRingTypeNone;
     self.favouritesContainer.wantsLayer = YES;
     self.favouritesContainer.layer.backgroundColor = [NSColor grayColor].CGColor;
     self.favouritesContainer.layer.zPosition = 1;
+    self.favouritesTableView.target = self;
+    self.favouritesTableView.action = @selector(handleTableViewTap);
     
     self.sidebarAnimator = [[STSidebarAnimator alloc] initWithDraggableView:(STDraggableView *)self.view
                                                             rightConstraint:rightFavouritesMenuConstant
@@ -109,19 +118,37 @@ static CGFloat rightFavouritesMenuConstant = -400;
     @weakify(self);
     [self.sidebarAnimator.updateSignal subscribeNext:^(STSidebarAnimatorUpdate *update) {
         @strongify(self);
-        self.favouritesContainerRight.constant = update.constant;
-        
-        if (!update.animated) {
-            [self.view layoutSubtreeIfNeeded];
-        } else {
-            [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-                context.allowsImplicitAnimation = YES;
-                context.duration = update.duration;
-                context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                [self.view layoutSubtreeIfNeeded];
-            } completionHandler:nil];
-        }
+        [self updateFavouritesBarPosition:update];
     }];
+}
+
+- (void)openOrCloseFavouritesBar {
+    if (self.sidebarAnimator.active) {
+        return;
+    }
+    
+    STSidebarAnimatorUpdate *update;
+    if (self.favouritesContainerRight.constant == leftFavouritesMenuConstant) {
+        update = [self.sidebarAnimator updateWithDirection:STSidebarMoveDirectionClose];
+    } else {
+        update = [self.sidebarAnimator updateWithDirection:STSidebarMoveDirectionOpen];
+    }
+    [self updateFavouritesBarPosition:update];
+}
+
+- (void)updateFavouritesBarPosition:(STSidebarAnimatorUpdate *)update {
+    self.favouritesContainerRight.constant = update.constant;
+    
+    if (!update.animated) {
+        [self.view layoutSubtreeIfNeeded];
+    } else {
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            context.allowsImplicitAnimation = YES;
+            context.duration = update.duration;
+            context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+            [self.view layoutSubtreeIfNeeded];
+        } completionHandler:nil];
+    }
 }
 
 - (void)bindViewModel {

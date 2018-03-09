@@ -14,6 +14,7 @@
 @property (strong) IBOutlet NSTextField *inputLabel;
 @property (strong) IBOutlet NSTextField *outputLabel;
 @property (strong) IBOutlet NSButton *removeButton;
+@property (strong) IBOutlet NSBox *separator;
 @end
 
 @implementation STFavouriteCell
@@ -27,23 +28,8 @@
     self.needsDisplay = YES;
 }
 
-- (void)setObjectValue:(id)objectValue {
-    if (objectValue) {
-        [self fillWithModel:(STFavouriteCellModel *)objectValue];
-    }
-}
-
--(void)awakeFromNib {
+- (void)awakeFromNib {
     [super awakeFromNib];
-    
-    
-    //border
-    self.wantsLayer = YES;
-    NSColor *borderColor = [NSColor colorWithRed:0 green:0 blue:0 alpha:0.1];
-    CALayer *cellBorder = [CALayer layer];
-    cellBorder.frame = CGRectMake(0.0f, 0, self.frame.size.width, 1.0f);
-    cellBorder.backgroundColor = borderColor.CGColor;
-    [self.layer addSublayer:cellBorder];
     
     //text fields
     NSTextField *input = [self createTextField];
@@ -54,24 +40,41 @@
     [self addSubview:output];
     
     [[input.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15] setActive:YES];
-    [[input.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-20] setActive:YES];
+    [[input.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-30] setActive:YES];
     [[input.topAnchor constraintEqualToAnchor:self.topAnchor constant:10] setActive:YES];
     [[input.heightAnchor constraintEqualToConstant:25] setActive:YES];
     
     [[output.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15] setActive:YES];
-    [[output.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-20] setActive:YES];
+    [[output.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-30] setActive:YES];
     [[output.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-10] setActive:YES];
     [[output.heightAnchor constraintEqualToConstant:25] setActive:YES];
     
     NSButton *removeButton = [self createRemoveButton];
     [self addSubview:removeButton];
     [[removeButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:10] setActive:YES];
-    [[removeButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:0] setActive:YES];
+    [[removeButton.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-10] setActive:YES];
     [[removeButton.widthAnchor constraintEqualToConstant:20] setActive:YES];
     [[removeButton.heightAnchor constraintEqualToConstant:20] setActive:YES];
     
+    NSBox *separator = [self createSeparator];
+    [self addSubview:separator];
+    [[separator.leftAnchor constraintEqualToAnchor:self.leftAnchor] setActive:YES];
+    [[separator.rightAnchor constraintEqualToAnchor:self.rightAnchor] setActive:YES];
+    [[separator.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-1] setActive:YES];
+    
     self.inputLabel = input;
     self.outputLabel = output;
+    self.removeButton = removeButton;
+    self.separator = separator;
+}
+
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    if (selected) {
+        self.separator.alphaValue = 0;
+    } else {
+        self.separator.alphaValue = 1;
+    }
 }
 
 - (NSDictionary *)inputTextStyle {
@@ -102,8 +105,20 @@
     button.image = [NSImage imageNamed:@"ClearButtonMain"];
     button.bordered = NO;
     button.imageScaling = NSImageScaleProportionallyUpOrDown;
-    self.removeButton = button;
     
     return button;
+}
+
+- (NSBox *)createSeparator {
+    NSBox *separator = [NSBox new];
+    separator.translatesAutoresizingMaskIntoConstraints = NO;
+    separator.boxType = NSBoxSeparator;
+    
+    return separator;
+}
+
+- (void)drawSelectionInRect:(NSRect)dirtyRect {
+    NSRect biggerRect = CGRectMake(dirtyRect.origin.x, dirtyRect.origin.y, dirtyRect.size.width + 10, dirtyRect.size.height);
+    [super drawSelectionInRect:biggerRect];
 }
 @end

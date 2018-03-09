@@ -15,6 +15,7 @@
 #import "STFavouriteUpdate.h"
 #import "STMainApplicationMenu.h"
 #import "STFavouritesHintView.h"
+#import "STFavouriteCell.h"
 
 @interface STRightSplitView () <NSTextViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
 @property (strong) IBOutlet NSProgressIndicator *activityIndicator;
@@ -81,6 +82,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
     }] distinctUntilChanged];
     
     RAC(self.placeholderLabel, alphaValue) = placeholderAlphaSignal;
+    RAC(self.clearButton, hidden) = placeholderAlphaSignal;
     
     @weakify(self);
     
@@ -111,9 +113,6 @@ static CGFloat rightFavouritesMenuConstant = -400;
     self.favouritesContainerRight.constant = rightFavouritesMenuConstant;
     self.favouritesTableView.refusesFirstResponder = YES;
     self.favouritesTableView.focusRingType = NSFocusRingTypeNone;
-    //self.favouritesContainer.wantsLayer = YES;
-    //self.favouritesContainer.layer.backgroundColor = [NSColor grayColor].CGColor;
-    //self.favouritesContainer.layer.zPosition = 1;
     self.favouritesTableView.target = self;
     self.favouritesTableView.action = @selector(handleTableViewTap);
     
@@ -264,8 +263,10 @@ static CGFloat rightFavouritesMenuConstant = -400;
     return self.viewModel.favouriteViewModels.count;
 }
 
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    return self.viewModel.favouriteViewModels[row];
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+    STFavouriteCell *cell = [tableView makeViewWithIdentifier:@"favouriteCell" owner:self];
+    [cell fillWithModel:self.viewModel.favouriteViewModels[row]];
+    return cell;
 }
 
 - (void)handleTableViewTap {

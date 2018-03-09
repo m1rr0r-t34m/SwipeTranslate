@@ -54,8 +54,9 @@
 
 - (void)setupBindings {
     RAC(self, translating) = RACObserve(self.mainViewModel, translating);
-    RAC(self, currentTranslation) = RACObserve(self.mainViewModel, translation);
+    //RAC(self, currentTranslation) = RACObserve(self.mainViewModel, translation);
     RACChannelTo(self, inputText) = RACChannelTo(self.mainViewModel, sourceText);
+    RACChannelTo(self, currentTranslation) = RACChannelTo(self.mainViewModel, translation);
     
     @weakify(self);
     [RACObserve(self, currentTranslation) subscribeNext:^(STTranslation *translation) {
@@ -75,15 +76,6 @@
         @strongify(self);
         [self.services.databaseService saveHasUsedFavouriteBar:used];
     }];
-}
-
-- (void)showSavedTranslation:(NSInteger)index {
-    if (index != NSNotFound && index != -1) {
-        [self.mainViewModel setSavedTranslation:self.favouriteViewModels[index].translation];
-    } else {
-        [self.mainViewModel setSavedTranslation:nil];
-    }
-    self.favouritesSelectedIndex = index;
 }
 
 #pragma mark - Favourite translations
@@ -113,20 +105,13 @@
     return model;
 }
 
-- (NSInteger)indexOfCurrentTranslation {
-    return [self indexOfTranslation:self.currentTranslation];
-}
-
-- (NSInteger)indexOfTranslation:(STTranslation *)translation {
-    NSInteger index = -1;
-    for (STFavouriteCellModel *model in self.favouriteViewModels) {
-        if ([model.translation isEqual:translation]) {
-            index = [self.favouriteViewModels indexOfObject:model];
-            break;
-        }
+- (void)showSavedTranslation:(NSInteger)index {
+    if (index != NSNotFound && index != -1) {
+        self.currentTranslation = self.favouriteViewModels[index].translation;
+    } else {
+        self.currentTranslation = nil;
     }
-    
-    return index;
+    self.favouritesSelectedIndex = index;
 }
 
 - (void)saveOrRemoveCurrentTranslation {
@@ -174,6 +159,22 @@
     }] array] count];
     
     return count > 0;
+}
+
+- (NSInteger)indexOfCurrentTranslation {
+    return [self indexOfTranslation:self.currentTranslation];
+}
+
+- (NSInteger)indexOfTranslation:(STTranslation *)translation {
+    NSInteger index = -1;
+    for (STFavouriteCellModel *model in self.favouriteViewModels) {
+        if ([model.translation isEqual:translation]) {
+            index = [self.favouriteViewModels indexOfObject:model];
+            break;
+        }
+    }
+    
+    return index;
 }
 
 #pragma mark - Translation result

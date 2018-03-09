@@ -64,14 +64,17 @@
             self.translation = translation;
         }];
     
-//    [RACObserve(self, translation) subscribeNext:^(STTranslation *translation) {
-//        @strongify(self);
-//        if (translation && ![translation isEmpty]) {
-//            self.sourceText = translation.inputText;
-//            self.sourceLanguage = translation.sourceLanguage;
-//            self.targetLanguage = translation.targetLanguage;
-//        }
-//    }];
+    [RACObserve(self, translation) subscribeNext:^(STTranslation *translation) {
+        @strongify(self);
+        if (translation && ![translation isEmpty]) {
+            self.sourceLanguage = translation.sourceLanguage;
+            self.targetLanguage = translation.targetLanguage;
+        } else {
+            self.sourceLanguage = self.sourceLanguage;
+            self.targetLanguage = self.targetLanguage;
+        }
+        self.sourceText = translation.inputText;
+    }];
 }
 
 - (void)setSavedTranslation:(STTranslation *)translation {

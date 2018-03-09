@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class STFavouriteCellModel;
 
-@interface STFavouriteCell : NSTableCellView
-
+@interface STFavouriteCell : NSTableRowView
+- (void)fillWithModel:(STFavouriteCellModel *)model;
 @end

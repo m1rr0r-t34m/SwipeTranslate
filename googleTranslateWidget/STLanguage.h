@@ -12,4 +12,5 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *key;
 - (instancetype)initWithKey:(NSString *)key andTitle:(NSString *)title;
+- (BOOL)isAuto;
 @end

@@ -24,7 +24,6 @@
     copy.language = [self.language copy];
     copy.title = [self.title copy];
     copy.selected = self.selected;
-    copy.shouldDrawBorder = self.shouldDrawBorder;
     
     return copy;
 }

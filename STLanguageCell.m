@@ -9,34 +9,25 @@
 #import "STLanguageCell.h"
 #import "STLanguageCellModel.h"
 
+@interface STLanguageCell()
+@property (weak) IBOutlet NSTextField *label;
+@property (strong, nonatomic) STLanguageCellModel *model;
+@property (strong) IBOutlet NSBox *separator;
+@end
+
 @implementation STLanguageCell
-
-- (void)drawSeparatorInRect:(NSRect)dirtyRect {
-    if (!self.viewModel.shouldDrawBorder) {
-        return;
-    }
-    
-    NSBezierPath *gridPath = [NSBezierPath bezierPath];
-    NSRect rowRect = dirtyRect;
-
-    [gridPath moveToPoint:NSMakePoint(rowRect.origin.x, rowRect.origin.y + rowRect.size.height - 0.5)];
-    [gridPath lineToPoint:NSMakePoint(rowRect.origin.x + rowRect.size.width, rowRect.origin.y + rowRect.size.height - 0.5 )];
-    [[NSColor colorWithCalibratedRed:0.756 green:0.756 blue:0.756 alpha:0.65] set];
-    [gridPath stroke];    
-}
-
-- (void)setObjectValue:(id)objectValue {
-    if (objectValue) {
-        [self fillWithModel:(STLanguageCellModel *)objectValue];
-    }
-}
-
 - (void)fillWithModel:(STLanguageCellModel *)model {
+    self.model = model;
     [self.label setStringValue:model.title];
 }
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    [self.label setTextColor:[NSColor blackColor]];
+- (void)setSelected:(BOOL)selected {
+    [super setSelected:selected];
+    if (self.selected) {
+        self.separator.alphaValue = 0;
+    } else {
+        self.separator.alphaValue = 1;
+    }
+    
 }
 @end

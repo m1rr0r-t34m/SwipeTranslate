@@ -17,6 +17,10 @@
     return self;
 }
 
+- (BOOL)isAuto {
+    return [self.key isEqualToString:@"auto"];
+}
+
 - (BOOL)isEqual:(id)object {
     if(![object isKindOfClass:[self class]]) {
         return NO;

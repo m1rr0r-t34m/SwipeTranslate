@@ -57,7 +57,38 @@
 }
 
 - (void)bindSignals {
+    RACChannelTo(self, sourceLanguage) = RACChannelTo(self.mainViewModel, sourceLanguage);
+    RACChannelTo(self, targetLanguage) = RACChannelTo(self.mainViewModel, targetLanguage);
+    
     @weakify(self);
+    [[RACObserve(self, sourceLanguage) ignore:nil] subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        [self pushSourceLanguage:language];
+    }];
+    
+    [[RACObserve(self, targetLanguage) ignore:nil] subscribeNext:^(STLanguage *language) {
+        @strongify(self);
+        [self pushTargetLanguage:language];
+    }];
+    
+    RAC(self, sourceSelectedTitle) = [RACObserve(self, sourceLanguage) map:^id (STLanguage *language) {
+        @strongify(self);
+        STLanguage *detectedLanguage = self.mainViewModel.translation.detectedLanguage;
+        if ([language isAuto]) {
+            if (detectedLanguage) {
+                return [NSString stringWithFormat:@"(Auto) > %@", detectedLanguage.title];
+            } else {
+                return @"(Auto)";
+            }
+        } else {
+            return language.title;
+        }
+    }];
+    
+    RAC(self, targetSelectedTitle) = [RACObserve(self, targetLanguage) map:^id (STLanguage *language) {
+        return language.title;
+    }];
+    
     [RACObserve(self, visibleRowsCount) subscribeNext:^(NSNumber *count) {
         @strongify(self);
         NSUInteger rowsCount = [count unsignedIntegerValue];
@@ -78,45 +109,8 @@
         self.targetLanguages = [targetLanguages copy];
         
         [self saveLanguages];
-        [self updateBorders];
         [self.dataReloadSubject sendNext:@YES];
     }];
-    
-    [[RACObserve(self.mainViewModel, translation)
-        combineLatestWith:RACObserve(self, autoLanguageSelected)]
-        subscribeNext:^(RACTuple *tuple) {
-            @strongify(self);
-            STTranslation *translation = tuple.first;
-            if ([tuple.second boolValue]) {
-                if (translation.detectedLanguage) {
-                    self.sourceSelectedTitle = [NSString stringWithFormat:@"(Auto) > %@", translation.detectedLanguage.title];
-                } else {
-                    self.sourceSelectedTitle = @"(Auto)";
-                }
-            }
-        }];
-    
-    RAC(self, sourceSelectedTitle) = [RACObserve(self, sourceLanguage) map:^id (STLanguage *language) {
-        return language.title;
-    }];
-    
-    RAC(self, targetSelectedTitle) = [RACObserve(self, targetLanguage) map:^id (STLanguage *language) {
-        return language.title;
-    }];
-    
-    [[[[RACObserve(self.mainViewModel, translation) distinctUntilChanged]
-        filter:^BOOL(STTranslation *translation) {
-            return translation && translation.sourceLanguage && translation.targetLanguage;
-        }]
-        filter:^BOOL(STTranslation *translation) {
-            @strongify(self);
-            return ![translation.sourceLanguage isEqual:self.sourceLanguage] || ![translation.targetLanguage isEqual:self.targetLanguage];
-        }]
-        subscribeNext:^(STTranslation *translation) {
-            @strongify(self);
-            [self pushSourceLanguage:translation.sourceLanguage];
-            [self pushTargetLanguage:translation.targetLanguage];
-        }];
 }
 
 #pragma mark - Cell viewmodels
@@ -158,9 +152,6 @@
         targetLanguageViewModels.firstObject.selected = YES;
     }
     
-    sourceLanguageViewModels.lastObject.shouldDrawBorder = NO;
-    targetLanguageViewModels.lastObject.shouldDrawBorder = NO;
-    
     self.sourceLanguages = sourceLanguageViewModels;
     self.targetLanguages = targetLanguageViewModels;
     [self.dataReloadSubject sendNext:@YES];
@@ -178,7 +169,6 @@
     [selectedSignal subscribeNext:^(STLanguage *selected) {
         model.selected = [model.language isEqual:selected];
     }];
-    model.shouldDrawBorder = YES;
     return model;
 }
 
@@ -197,8 +187,7 @@
     if ([self.sourceLanguage isEqual:language]) {
         return;
     }
-    [self pushSourceLanguage:language];
-    self.mainViewModel.sourceLanguage = self.sourceLanguage;
+    self.sourceLanguage = language;
     [self.mainViewModel allowTranslation];
 }
 
@@ -206,28 +195,23 @@
     if ([self.targetLanguage isEqual:language]) {
         return;
     }
-    [self pushTargetLanguage:language];
-    self.mainViewModel.targetLanguage = self.targetLanguage;
+    self.targetLanguage = language;
     [self.mainViewModel allowTranslation];
 }
 
 - (void)pushSourceLanguage:(STLanguage *)language {
-    self.sourceLanguage = language;
     if ([self isLanguageAuto:language]) {
         self.autoLanguageSelected = YES;
     } else {
         self.autoLanguageSelected = NO;
         self.sourceLanguages = [self pushLanguage:language toCollection:self.sourceLanguages withSelectedSignal:RACObserve(self, sourceLanguage)];
     }
-    [self updateBorders];
     [self saveLanguages];
     [self.dataReloadSubject sendNext:@YES];
 }
 
 - (void)pushTargetLanguage:(STLanguage *)language {
     self.targetLanguages = [self pushLanguage:language toCollection:self.targetLanguages withSelectedSignal:RACObserve(self, targetLanguage)];
-    self.targetLanguage = language;
-    [self updateBorders];
     [self saveLanguages];
     [self.dataReloadSubject sendNext:@YES];
 }
@@ -296,16 +280,5 @@
     }
     
     return NSNotFound;
-}
-
-- (void)updateBorders {
-    for (STLanguageCellModel *cellModel in self.sourceLanguages) {
-        cellModel.shouldDrawBorder = YES;
-    }
-    for (STLanguageCellModel *cellModel in self.targetLanguages) {
-        cellModel.shouldDrawBorder = YES;
-    }
-    self.sourceLanguages.lastObject.shouldDrawBorder = NO;
-    self.targetLanguages.lastObject.shouldDrawBorder = NO;
 }
 @end

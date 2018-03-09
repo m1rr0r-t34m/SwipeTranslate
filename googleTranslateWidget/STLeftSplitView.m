@@ -137,19 +137,23 @@ static NSUInteger maxNumberOfRows = 10;
 }
 
 #pragma mark - Table Views
-- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+- (NSTableRowView *)tableView:(NSTableView *)tableView rowViewForRow:(NSInteger)row {
+    STLanguageCell *cell = [tableView makeViewWithIdentifier:@"languageCell" owner:self];
     STLanguageCellModel *cellModel;
+    
     if (tableView == self.sourceLanguageTable) {
         cellModel = self.viewModel.sourceLanguages[row];
     } else {
         cellModel = self.viewModel.targetLanguages[row];
     }
     
+    [cell fillWithModel:cellModel];
+    
     if (cellModel.selected) {
         [tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
     }
     
-    return cellModel;
+    return cell;
 }
 
 - (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row {

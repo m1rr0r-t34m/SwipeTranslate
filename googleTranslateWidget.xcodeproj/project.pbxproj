@@ -34,6 +34,7 @@
 		CDB84E051CA04FC700A919AA /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CDB84E021CA04FC700A919AA /* iRate.bundle */; };
 		CDB84E061CA04FC700A919AA /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB84E041CA04FC700A919AA /* iRate.m */; };
 		CDBACD372051F020007B0139 /* STFavouritesHintView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBACD362051F020007B0139 /* STFavouritesHintView.m */; };
+		CDBACD3A2052AD28007B0139 /* STSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDBACD392052AD28007B0139 /* STSplitView.m */; };
 		CDC45BEB20516EE600A6EB84 /* STMainApplicationMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC45BEA20516EE500A6EB84 /* STMainApplicationMenu.m */; };
 		CDCDCCBF1CA1636F00E11E13 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */; };
 		CDCFCCE01B8E690300547F5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CDCFCCDF1B8E690300547F5C /* main.m */; };
@@ -137,6 +138,8 @@
 		CDB84E041CA04FC700A919AA /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		CDBACD352051F020007B0139 /* STFavouritesHintView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STFavouritesHintView.h; sourceTree = "<group>"; };
 		CDBACD362051F020007B0139 /* STFavouritesHintView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STFavouritesHintView.m; sourceTree = "<group>"; };
+		CDBACD382052AD28007B0139 /* STSplitView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STSplitView.h; sourceTree = "<group>"; };
+		CDBACD392052AD28007B0139 /* STSplitView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STSplitView.m; sourceTree = "<group>"; };
 		CDC45BE920516EE500A6EB84 /* STMainApplicationMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STMainApplicationMenu.h; sourceTree = "<group>"; };
 		CDC45BEA20516EE500A6EB84 /* STMainApplicationMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STMainApplicationMenu.m; sourceTree = "<group>"; };
 		CDCDCCBE1CA1636F00E11E13 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -440,6 +443,8 @@
 				CDD1FF791D663A560031FC94 /* STMainViewController.m */,
 				CDD1FF811D6645920031FC94 /* STMainViewModel.h */,
 				CDD1FF821D6645920031FC94 /* STMainViewModel.m */,
+				CDBACD382052AD28007B0139 /* STSplitView.h */,
+				CDBACD392052AD28007B0139 /* STSplitView.m */,
 			);
 			name = "Main View";
 			sourceTree = "<group>";
@@ -704,6 +709,7 @@
 				CDA2D08A20503EC7002B34F7 /* STFavouriteUpdate.m in Sources */,
 				CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */,
 				CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */,
+				CDBACD3A2052AD28007B0139 /* STSplitView.m in Sources */,
 				CDD1FF7E1D663B260031FC94 /* STLanguageCell.m in Sources */,
 				CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */,
 				CDD1FF7A1D663A560031FC94 /* STMainViewController.m in Sources */,

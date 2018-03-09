@@ -111,9 +111,9 @@ static CGFloat rightFavouritesMenuConstant = -400;
     self.favouritesContainerRight.constant = rightFavouritesMenuConstant;
     self.favouritesTableView.refusesFirstResponder = YES;
     self.favouritesTableView.focusRingType = NSFocusRingTypeNone;
-    self.favouritesContainer.wantsLayer = YES;
-    self.favouritesContainer.layer.backgroundColor = [NSColor grayColor].CGColor;
-    self.favouritesContainer.layer.zPosition = 1;
+    //self.favouritesContainer.wantsLayer = YES;
+    //self.favouritesContainer.layer.backgroundColor = [NSColor grayColor].CGColor;
+    //self.favouritesContainer.layer.zPosition = 1;
     self.favouritesTableView.target = self;
     self.favouritesTableView.action = @selector(handleTableViewTap);
     

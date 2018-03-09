@@ -80,10 +80,8 @@
 - (void)showSavedTranslation:(NSInteger)index {
     if (index != NSNotFound && index != -1) {
         [self.mainViewModel setSavedTranslation:self.favouriteViewModels[index].translation];
-        //self.mainViewModel.translation = self.favouriteViewModels[index].translation;
     } else {
         [self.mainViewModel setSavedTranslation:nil];
-        //self.mainViewModel.translation = nil;
     }
     self.favouritesSelectedIndex = index;
 }

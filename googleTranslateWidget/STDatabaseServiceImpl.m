@@ -78,8 +78,8 @@ static NSString *kUsedFavourites = @"usedFavourites";
 }
 
 - (void)fillInitialData {
-    NSArray *sourceLanguages = [self.languagesService randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
-    NSArray *targetLanguages = [self.languagesService randomLanguagesExcluding:nil withCount:defaultLanguagesCount];
+    NSArray *sourceLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:defaultLanguagesCount];
+    NSArray *targetLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:defaultLanguagesCount];
     [self.connection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
         [transaction setObject:sourceLanguages forKey:kSourceLanguages inCollection:nil];
         [transaction setObject:targetLanguages forKey:kTargetLanguages inCollection:nil];

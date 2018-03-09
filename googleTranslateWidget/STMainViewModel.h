@@ -17,4 +17,6 @@
 @property (strong, nonatomic) NSString *sourceText;
 @property (strong, nonatomic) STLanguage *sourceLanguage;
 @property (strong, nonatomic) STLanguage *targetLanguage;
+- (void)setSavedTranslation:(STTranslation *)translation;
+- (void)allowTranslation;
 @end

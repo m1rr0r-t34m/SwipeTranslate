@@ -76,8 +76,8 @@ static CGFloat rightFavouritesMenuConstant = -400;
 }
 
 - (void)setupSourceTextView {
-    RACSignal *placeholderAlphaSignal = [[RACObserve(self.viewModel, inputText) map:^id(NSString *Text) {
-        return @(Text.length == 0);
+    RACSignal *placeholderAlphaSignal = [[RACObserve(self.viewModel, inputText) map:^id(NSString *text) {
+        return @(!text || text.length == 0);
     }] distinctUntilChanged];
     
     RAC(self.placeholderLabel, alphaValue) = placeholderAlphaSignal;
@@ -192,10 +192,14 @@ static CGFloat rightFavouritesMenuConstant = -400;
         [self.favouritesTableView deselectAll:nil];
     }];
     
-    [[[RACObserve(self.viewModel, inputText) ignore:nil] distinctUntilChanged] subscribeNext:^(NSString *text) {
+    [[RACObserve(self.viewModel, inputText) distinctUntilChanged] subscribeNext:^(NSString *text) {
         @strongify(self);
-        if (![text isEqual:self.sourceTextView.string]) {
-            self.sourceTextView.string = text;
+        if (![self.sourceTextView.string isEqual:text]) {
+            if (!text) {
+                self.sourceTextView.string = @"";
+            } else {
+                self.sourceTextView.string = text;
+            }
         }
     }];
     

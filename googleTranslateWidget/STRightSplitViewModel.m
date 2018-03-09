@@ -49,19 +49,21 @@
 
 - (void)setSourceText:(NSString *)text {
     self.inputText = text;
-    [self.mainViewModel setSourceText:text];
+    [self.mainViewModel allowTranslation];
 }
 
 - (void)setupBindings {
     RAC(self, translating) = RACObserve(self.mainViewModel, translating);
     RAC(self, currentTranslation) = RACObserve(self.mainViewModel, translation);
-
+    RACChannelTo(self, inputText) = RACChannelTo(self.mainViewModel, sourceText);
+    
     @weakify(self);
     [RACObserve(self, currentTranslation) subscribeNext:^(STTranslation *translation) {
         @strongify(self);
         self.outputText = [self textForTranslationResult:translation];
-        self.inputText = translation.inputText;
-        self.mainViewModel.sourceText = translation.inputText;
+        if (self.inputText && translation.inputText && ![self.inputText isEqualToString:translation.inputText]) {
+            self.inputText = translation.inputText;
+        }
         if (!self.inputText) self.inputText = [NSString new];
         if (!self.outputText) self.outputText = [NSAttributedString new];
         self.canSaveOrRemoveCurrentTranslation = (translation && translation.inputText && translation.parserResult && translation.parserResult.parsedResponse);
@@ -77,9 +79,11 @@
 
 - (void)showSavedTranslation:(NSInteger)index {
     if (index != NSNotFound && index != -1) {
-        self.mainViewModel.translation = self.favouriteViewModels[index].translation;
+        [self.mainViewModel setSavedTranslation:self.favouriteViewModels[index].translation];
+        //self.mainViewModel.translation = self.favouriteViewModels[index].translation;
     } else {
-        self.mainViewModel.translation = nil;
+        [self.mainViewModel setSavedTranslation:nil];
+        //self.mainViewModel.translation = nil;
     }
     self.favouritesSelectedIndex = index;
 }

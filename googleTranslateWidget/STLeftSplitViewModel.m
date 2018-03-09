@@ -82,7 +82,6 @@
         [self.dataReloadSubject sendNext:@YES];
     }];
     
-    
     [[RACObserve(self.mainViewModel, translation)
         combineLatestWith:RACObserve(self, autoLanguageSelected)]
         subscribeNext:^(RACTuple *tuple) {
@@ -105,19 +104,18 @@
         return language.title;
     }];
     
-    
     [[[[RACObserve(self.mainViewModel, translation) distinctUntilChanged]
         filter:^BOOL(STTranslation *translation) {
             return translation && translation.sourceLanguage && translation.targetLanguage;
         }]
         filter:^BOOL(STTranslation *translation) {
             @strongify(self);
-            return ![translation.sourceLanguage isEqual:self.sourceLanguage] || [translation.targetLanguage isEqual:self.targetLanguage];
+            return ![translation.sourceLanguage isEqual:self.sourceLanguage] || ![translation.targetLanguage isEqual:self.targetLanguage];
         }]
         subscribeNext:^(STTranslation *translation) {
             @strongify(self);
-            [self setSourceLanguage:translation.sourceLanguage];
-            [self setTargetLanguage:translation.targetLanguage];
+            [self pushSourceLanguage:translation.sourceLanguage];
+            [self pushTargetLanguage:translation.targetLanguage];
         }];
 }
 
@@ -199,28 +197,38 @@
     if ([self.sourceLanguage isEqual:language]) {
         return;
     }
-    if ([self isLanguageAuto:language]) {
-        self.autoLanguageSelected = YES;
-    } else {
-        self.autoLanguageSelected = NO;
-        self.sourceLanguages = [self pushLanguage:language toCollection:self.sourceLanguages withSelectedSignal:RACObserve(self, sourceLanguage)];
-    }
-    self.sourceLanguage = language;
-    [self updateBorders];
-    [self saveLanguages];
+    [self pushSourceLanguage:language];
     self.mainViewModel.sourceLanguage = self.sourceLanguage;
-    [self.dataReloadSubject sendNext:@YES];
+    [self.mainViewModel allowTranslation];
 }
 
 - (void)setTargetSelectedLanguage:(STLanguage *)language {
     if ([self.targetLanguage isEqual:language]) {
         return;
     }
+    [self pushTargetLanguage:language];
+    self.mainViewModel.targetLanguage = self.targetLanguage;
+    [self.mainViewModel allowTranslation];
+}
+
+- (void)pushSourceLanguage:(STLanguage *)language {
+    self.sourceLanguage = language;
+    if ([self isLanguageAuto:language]) {
+        self.autoLanguageSelected = YES;
+    } else {
+        self.autoLanguageSelected = NO;
+        self.sourceLanguages = [self pushLanguage:language toCollection:self.sourceLanguages withSelectedSignal:RACObserve(self, sourceLanguage)];
+    }
+    [self updateBorders];
+    [self saveLanguages];
+    [self.dataReloadSubject sendNext:@YES];
+}
+
+- (void)pushTargetLanguage:(STLanguage *)language {
     self.targetLanguages = [self pushLanguage:language toCollection:self.targetLanguages withSelectedSignal:RACObserve(self, targetLanguage)];
     self.targetLanguage = language;
     [self updateBorders];
     [self saveLanguages];
-    self.mainViewModel.targetLanguage = self.targetLanguage;
     [self.dataReloadSubject sendNext:@YES];
 }
 

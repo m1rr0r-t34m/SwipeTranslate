@@ -15,6 +15,8 @@
 @interface STMainViewModel()
 @property (readwrite, nonatomic) id <STServices> services;
 @property (readwrite, assign, nonatomic) BOOL translating;
+@property (strong, nonatomic) RACSignal *allowTranslationSignal;
+@property (strong, nonatomic) RACSubject *allowTranslationSubject;
 @end
 
 @implementation STMainViewModel
@@ -22,6 +24,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         _services = [STServicesImpl new];
+        _allowTranslationSubject = [RACSubject new];
+        _allowTranslationSignal = [_allowTranslationSubject deliverOnMainThread];
         [self setupBindings];
     }
     return self;
@@ -34,7 +38,8 @@
     RACSignal *targetLanguageSignal = [RACObserve(self, targetLanguage) ignore:nil];
     
     @weakify(self);
-    [[[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] throttle:0.1] filter:^BOOL(RACTuple *tuple) {
+    [[[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] sample:self.allowTranslationSignal]
+        filter:^BOOL(RACTuple *tuple) {
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
             return ![self.translation.inputText isEqualToString:text] || ![self.translation.sourceLanguage isEqual:source] || ![self.translation.targetLanguage isEqual:target];
         }]
@@ -59,13 +64,24 @@
             self.translation = translation;
         }];
     
-    [RACObserve(self, translation) subscribeNext:^(STTranslation *translation) {
-        @strongify(self);
-        if (translation && ![translation isEmpty]) {
-            self.sourceText = translation.inputText;
-            self.sourceLanguage = translation.sourceLanguage;
-            self.targetLanguage = translation.targetLanguage;
-        }
-    }];
+//    [RACObserve(self, translation) subscribeNext:^(STTranslation *translation) {
+//        @strongify(self);
+//        if (translation && ![translation isEmpty]) {
+//            self.sourceText = translation.inputText;
+//            self.sourceLanguage = translation.sourceLanguage;
+//            self.targetLanguage = translation.targetLanguage;
+//        }
+//    }];
+}
+
+- (void)setSavedTranslation:(STTranslation *)translation {
+    self.translation = translation;
+    self.sourceText = translation.inputText;
+    self.sourceLanguage = translation.sourceLanguage;
+    self.targetLanguage = translation.targetLanguage;
+}
+
+- (void)allowTranslation {
+    [self.allowTranslationSubject sendNext:@YES];
 }
 @end

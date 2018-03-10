@@ -119,8 +119,8 @@
     
     if (!sourceLanguages) sourceLanguages = [NSMutableArray new];
     
-    if (sourceLanguages.count < defaultLanguagesCount) {
-        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:defaultLanguagesCount - sourceLanguages.count];
+    if (sourceLanguages.count < languagesCount) {
+        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:languagesCount - sourceLanguages.count];
         [sourceLanguages addObjectsFromArray:randomLanguages];
     }
     
@@ -128,8 +128,8 @@
     
     if (!targetLanguages) targetLanguages = [NSMutableArray new];
     
-    if (targetLanguages.count < defaultLanguagesCount) {
-        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:defaultLanguagesCount - targetLanguages.count];
+    if (targetLanguages.count < languagesCount) {
+        NSArray *randomLanguages = [self.services.languagesService randomLanguagesExcluding:sourceLanguages withCount:languagesCount - targetLanguages.count];
         [targetLanguages addObjectsFromArray:randomLanguages];
     }
     

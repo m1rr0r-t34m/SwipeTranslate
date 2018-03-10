@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7FBFCE8591BBC2BBA64E987A8465F94E'
-               BlueprintName = 'Pods-Swipe Translate'
+               BlueprintIdentifier = 'EC317E2B5442FE0D5C928DC1E13827E8'
+               BlueprintName = 'YapDatabase-macOS10.10'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Swipe Translate.a'>
+               BuildableName = 'libYapDatabase-macOS10.10.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

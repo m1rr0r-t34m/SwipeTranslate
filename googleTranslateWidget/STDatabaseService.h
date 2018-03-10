@@ -12,7 +12,9 @@
 @class STLanguage;
 @class STTranslation;
 
-static NSUInteger defaultLanguagesCount = 10;
+static NSUInteger languagesCount = 10;
+static NSUInteger widgetSourceLanguagesCount = 2;
+static NSUInteger widgetTargetLanguagesCount = 3;
 
 @protocol STDatabaseService <NSObject>
 - (instancetype)initWithLanguagesService:(id <STLanguagesService>)service;
@@ -23,6 +25,11 @@ static NSUInteger defaultLanguagesCount = 10;
 - (STLanguage *)targetSelectedLanguage;
 - (NSArray <STTranslation *> *)favouriteTranslations;
 - (NSNumber *)hasUsedFavouriteBar;
+- (NSArray <STLanguage *> *)widgetSourceLanguages;
+- (NSArray <STLanguage *> *)widgetTargetLanguages;
+- (STLanguage *)widgetSourceSelectedLanguage;
+- (STLanguage *)widgetTargetSelectedLanguage;
+- (STTranslation *)widgetLastTranslation;
 #pragma mark - Insert / Remove
 - (void)saveSourceLanguages:(NSArray <STLanguage *> *)languages;
 - (void)saveTargetLanguages:(NSArray <STLanguage *> *)languages;
@@ -31,4 +38,9 @@ static NSUInteger defaultLanguagesCount = 10;
 - (void)saveFavouriteTranslation:(STTranslation *)translation;
 - (void)removeFavouriteTranslation:(STTranslation *)translation;
 - (void)saveHasUsedFavouriteBar:(NSNumber *)used;
+- (void)saveWidgetSourceLanguages:(NSArray <STLanguage *> *)languages;
+- (void)saveWidgetTargetLanguages:(NSArray <STLanguage *> *)languages;
+- (void)saveWidgetSourceSelected:(STLanguage *)language;
+- (void)saveWidgetTargetSelected:(STLanguage *)language;
+- (void)saveWidgetLastTranslation:(STTranslation *)translation;
 @end

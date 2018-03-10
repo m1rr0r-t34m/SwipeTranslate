@@ -1,8 +1,8 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/ReactiveObjC" "${PODS_ROOT}/Headers/Public/YapDatabase"
-LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack" "$PODS_CONFIGURATION_BUILD_DIR/ReactiveObjC" "$PODS_CONFIGURATION_BUILD_DIR/YapDatabase"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking-macOS10.10" "$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack-macOS10.10" "$PODS_CONFIGURATION_BUILD_DIR/ReactiveObjC-macOS10.10" "$PODS_CONFIGURATION_BUILD_DIR/YapDatabase-macOS10.10"
 OTHER_CFLAGS = $(inherited) -DYAP_STANDARD_SQLITE $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/CocoaLumberjack" -isystem "${PODS_ROOT}/Headers/Public/ReactiveObjC" -isystem "${PODS_ROOT}/Headers/Public/YapDatabase"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"CocoaLumberjack" -l"ReactiveObjC" -l"YapDatabase" -l"c++" -l"sqlite3" -framework "CoreServices" -framework "Foundation" -framework "Security" -framework "SystemConfiguration"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking-macOS10.10" -l"CocoaLumberjack-macOS10.10" -l"ReactiveObjC-macOS10.10" -l"YapDatabase-macOS10.10" -l"c++" -l"sqlite3" -framework "CoreServices" -framework "Foundation" -framework "Security" -framework "SystemConfiguration"
 PODS_BUILD_DIR = $BUILD_DIR
 PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.

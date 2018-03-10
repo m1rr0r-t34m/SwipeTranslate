@@ -19,7 +19,11 @@ static NSString *kSourceSelected = @"sourceSelected";
 static NSString *kTargetSelected = @"targetSelected";
 static NSString *kFavourites = @"favourites";
 static NSString *kUsedFavourites = @"usedFavourites";
-
+static NSString *kWidgetSourceLanguages = @"sourceWidget";
+static NSString *kWidgetTargetLanguages = @"targetWidget";
+static NSString *kWidgetSourceSelected = @"sourceSelectedWidget";
+static NSString *kWidgetTargetSelected = @"targetSelectedWidget";
+static NSString *kWidgetTranslation = @"translationWidget";
 
 @interface STDatabaseServiceImpl()
 @property (strong, nonatomic) YapDatabase *database;
@@ -63,13 +67,23 @@ static NSString *kUsedFavourites = @"usedFavourites";
         STLanguage *sourceSelected;
         STLanguage *targetSelected;
         NSNumber *usedFavourites;
+        NSArray *widgetSourceLanguages;
+        NSArray *widgetTargetLanguages;
+        STLanguage *widgetSourceSelected;
+        STLanguage *widgetTargetSelected;
+        STTranslation *widgetTranslation;
         [transaction getObject:&sourceLanguages metadata:nil forKey:kSourceLanguages inCollection:nil];
         [transaction getObject:&targetLanguages metadata:nil forKey:kTargetLanguages inCollection:nil];
         [transaction getObject:&sourceSelected metadata:nil forKey:kSourceSelected inCollection:nil];
         [transaction getObject:&targetSelected metadata:nil forKey:kTargetSelected inCollection:nil];
         [transaction getObject:&favourites metadata:nil forKey:kFavourites inCollection:nil];
         [transaction getObject:&usedFavourites metadata:nil forKey:kUsedFavourites inCollection:nil];
-        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || sourceLanguages.count < defaultLanguagesCount || targetLanguages.count < defaultLanguagesCount || !favourites || !usedFavourites) {
+        [transaction getObject:&widgetSourceLanguages metadata:nil forKey:kWidgetSourceLanguages inCollection:nil];
+        [transaction getObject:&widgetTargetLanguages metadata:nil forKey:kWidgetTargetLanguages inCollection:nil];
+        [transaction getObject:&widgetSourceSelected metadata:nil forKey:kWidgetSourceSelected inCollection:nil];
+        [transaction getObject:&widgetTargetSelected metadata:nil forKey:kWidgetTargetSelected inCollection:nil];
+        [transaction getObject:&widgetTranslation metadata:nil forKey:kWidgetTranslation inCollection:nil];
+        if (!sourceLanguages || !targetLanguages || !sourceSelected || !targetSelected || !sourceLanguages.count || !targetLanguages.count || !favourites || !usedFavourites || !widgetSourceLanguages || !widgetSourceLanguages.count || !widgetTargetLanguages || !widgetSourceSelected || !widgetTargetSelected || !widgetTranslation) {
             dataAvailable = NO;
         }
     }];
@@ -78,8 +92,10 @@ static NSString *kUsedFavourites = @"usedFavourites";
 }
 
 - (void)fillInitialData {
-    NSArray *sourceLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:defaultLanguagesCount];
-    NSArray *targetLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:defaultLanguagesCount];
+    NSArray *sourceLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:languagesCount];
+    NSArray *targetLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:languagesCount];
+    NSArray *widgetSourceLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:widgetSourceLanguagesCount];
+    NSArray *widgetTargetLanguages = [self.languagesService randomLanguagesExcluding:@[[self.languagesService autoLanguage]] withCount:widgetTargetLanguagesCount];
     [self.connection readWriteWithBlock:^(YapDatabaseReadWriteTransaction *transaction) {
         [transaction setObject:sourceLanguages forKey:kSourceLanguages inCollection:nil];
         [transaction setObject:targetLanguages forKey:kTargetLanguages inCollection:nil];
@@ -87,6 +103,11 @@ static NSString *kUsedFavourites = @"usedFavourites";
         [transaction setObject:targetLanguages[0] forKey:kTargetSelected inCollection:nil];
         [transaction setObject:[NSArray new] forKey:kFavourites inCollection:nil];
         [transaction setObject:@(NO) forKey:kUsedFavourites inCollection:nil];
+        [transaction setObject:widgetSourceLanguages forKey:kWidgetSourceLanguages inCollection:nil];
+        [transaction setObject:widgetTargetLanguages forKey:kWidgetTargetLanguages inCollection:nil];
+        [transaction setObject:widgetSourceLanguages[0] forKey:kWidgetSourceSelected inCollection:nil];
+        [transaction setObject:widgetTargetLanguages[0] forKey:kWidgetTargetSelected inCollection:nil];
+        [transaction setObject:[STTranslation emptyTranslation] forKey:kWidgetTranslation inCollection:nil];
     }];
 }
 
@@ -129,6 +150,26 @@ static NSString *kUsedFavourites = @"usedFavourites";
 
 - (NSNumber *)hasUsedFavouriteBar {
     return [self objectForKey:kUsedFavourites];
+}
+
+- (NSArray *)widgetSourceLanguages {
+    return [self objectForKey:kWidgetSourceLanguages];
+}
+
+- (NSArray *)widgetTargetLanguages {
+    return [self objectForKey:kWidgetTargetLanguages];
+}
+
+- (STLanguage *)widgetSourceSelectedLanguage {
+    return [self objectForKey:kWidgetSourceSelected];
+}
+
+- (STLanguage *)widgetTargetSelectedLanguage {
+    return [self objectForKey:kWidgetTargetSelected];
+}
+
+- (STTranslation *)widgetLastTranslation {
+    return [self objectForKey:kWidgetTranslation];
 }
 
 - (id)objectForKey:(NSString *)key {
@@ -174,6 +215,26 @@ static NSString *kUsedFavourites = @"usedFavourites";
 
 - (void)saveHasUsedFavouriteBar:(NSNumber *)used {
     [self setObject:used forKey:kUsedFavourites];
+}
+
+- (void)saveWidgetSourceLanguages:(NSArray *)languages {
+    [self setObject:languages forKey:kWidgetSourceLanguages];
+}
+
+- (void)saveWidgetTargetLanguages:(NSArray *)languages {
+    [self setObject:languages forKey:kWidgetTargetLanguages];
+}
+
+- (void)saveWidgetSourceSelected:(STLanguage *)language {
+    [self setObject:language forKey:kWidgetSourceSelected];
+}
+
+- (void)saveWidgetTargetSelected:(STLanguage *)language {
+    [self setObject:language forKey:kWidgetTargetSelected];
+}
+
+- (void)saveWidgetLastTranslation:(STTranslation *)translation {
+    [self setObject:translation forKey:kWidgetTranslation];
 }
 
 - (void)setObject:(id)object forKey:(NSString *)key {

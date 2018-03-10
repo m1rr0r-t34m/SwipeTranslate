@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '7FBFCE8591BBC2BBA64E987A8465F94E'
-               BlueprintName = 'Pods-Swipe Translate'
+               BlueprintIdentifier = 'D0ABD00B77DAA66B6A981F9CD045B668'
+               BlueprintName = 'ReactiveObjC-macOS10.13'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libPods-Swipe Translate.a'>
+               BuildableName = 'libReactiveObjC-macOS10.13.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

@@ -190,45 +190,6 @@
     return RACTuplePack(@(success), @(code));
 }
 
-//TODO: move to widget's ViewModel
-- (NSAttributedString *)dictionaryOutputForWidgetWithDictionary:(NSDictionary *)receivedData {
-    NSMutableAttributedString *outputText = [NSMutableAttributedString new];
-    NSAttributedString *newLineString = [[NSAttributedString alloc] initWithString:@"\n"];
-    
-    NSColor *whiteColor = [NSColor whiteColor];
-    NSFont *mainFont = [NSFont systemFontOfSize:12.0];
-    NSDictionary *mainAttributes = @{NSFontAttributeName : mainFont, NSForegroundColorAttributeName : whiteColor};
-    NSFont *firstTranslationFont = [NSFont systemFontOfSize:16.0];
-    NSDictionary *firstTranslationAttributes = @{NSFontAttributeName : firstTranslationFont, NSForegroundColorAttributeName : whiteColor};
-    
-    NSString *transcription = receivedData[kTranscription];
-    if ([transcription length]) {
-        [outputText appendAttributedString: [[NSAttributedString alloc] initWithString: [NSString stringWithFormat: @"[%@]",transcription] attributes:mainAttributes]];
-        [outputText appendAttributedString:newLineString];
-    }
-    
-    NSArray *translationKeys = receivedData[kTranslationKeys];
-    NSDictionary *translationDict = receivedData[kTranslationDict];
-    NSArray *translations = translationDict[translationKeys[0]];
-    
-    for (NSDictionary *translation in translations) {
-        NSString *translatedText = [[NSString alloc] initWithString:translation[kTranslatedText]];
-        if (translation == translations.firstObject) {
-            [outputText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@", translatedText] attributes:firstTranslationAttributes]];
-        } else {
-            [outputText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@", translatedText] attributes:mainAttributes]];
-        }
-        
-        NSArray *synonims = translation[kTranslatedSynonims];
-        for (NSString *synonim in synonims) {
-            [outputText appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@", %@",synonim] attributes:mainAttributes]];
-        }
-    }
-
-    
-    return outputText;
-}
-
 - (NSError *)parserEmptyDataError {
     return [NSError errorWithDomain:STParserErrorDomain code:100 userInfo:@{STParserErrorType : @"Empty Data"}];
 }

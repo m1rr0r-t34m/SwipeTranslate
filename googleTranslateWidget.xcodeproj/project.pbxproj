@@ -318,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				CDB84E071CA04FE500A919AA /* iRate */,
+				CDF5F0362007919700491C7A /* Model */,
 				CDCFCCD91B8E690300547F5C /* MainApp */,
 				CDBACD432052F44D007B0139 /* Widget */,
 				CD8EEB851B8E69AA00E2991B /* Frameworks */,
@@ -346,7 +347,6 @@
 				CDCFCCE61B8E690300547F5C /* Main.storyboard */,
 				CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */,
 				CD9FB2592049788D003C81C7 /* Helpers */,
-				CDF5F0362007919700491C7A /* Model */,
 				CDD1FF911D66EDE20031FC94 /* Main View */,
 				CDD1FF901D66EDCC0031FC94 /* Left Split View */,
 				CDD1FF8F1D66EDC00031FC94 /* Right Split View */,
@@ -463,6 +463,7 @@
 				CDF5F0442007A32300491C7A /* STNetworkWrapper.m */,
 			);
 			name = Model;
+			path = googleTranslateWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

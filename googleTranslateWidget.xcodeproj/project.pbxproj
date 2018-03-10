@@ -9,19 +9,13 @@
 /* Begin PBXBuildFile section */
 		3A027B4784FC1670EB3E7BFD /* libPods-Swipe Translate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */; };
 		5D47B4ED99D5D968619CFC95 /* libPods-Widget.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18EDDA4DF74C7EE2F89D993C /* libPods-Widget.a */; };
-		75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F8671E1BA649AE00392E74 /* PopupMenu.m */; };
 		CD0A5D8420403D7C00C5984D /* STAPIServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A5D8320403D7C00C5984D /* STAPIServiceImpl.m */; };
 		CD0A5D8720406A6000C5984D /* STParserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0A5D8620406A6000C5984D /* STParserResult.m */; };
-		CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD12BB701BD849D8003ED768 /* WidgetView.m */; };
 		CD1A16DA1BF557AB00EA90D3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CD1A16D91BF557AB00EA90D3 /* Credits.rtf */; };
 		CD4BFAC01E4235650089AEC5 /* STLanguageTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */; };
 		CD6F632520151B5F009A5720 /* STTranslation.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6F632420151B5F009A5720 /* STTranslation.m */; };
 		CD74D6B71E8D96A60033A5D1 /* STLanguageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74D6B61E8D96A60033A5D1 /* STLanguageCellModel.m */; };
 		CD74D6BA1E8D9BF50033A5D1 /* STLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */; };
-		CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */; };
-		CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */; };
-		CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */; };
-		CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CD9FB25820496EDF003C81C7 /* STConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB25720496EDF003C81C7 /* STConstants.m */; };
 		CD9FB287204D8B29003C81C7 /* STDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9FB286204D8B29003C81C7 /* STDraggableView.m */; };
 		CDA2D080204EEDC3002B34F7 /* STSidebarAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = CDA2D07F204EEDC3002B34F7 /* STSidebarAnimator.m */; };
@@ -65,25 +59,16 @@
 		CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */; };
 		CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */; };
 		CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */; };
-		CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CDE4D2B91B971C78003188DB /* SeparatedButton.m */; };
 		CDF5F03A2007921800491C7A /* STLanguagesServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F0392007921800491C7A /* STLanguagesServiceImpl.m */; };
 		CDF5F03E2007A00800491C7A /* STServicesImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F03D2007A00800491C7A /* STServicesImpl.m */; };
 		CDF5F0422007A0D700491C7A /* STTranslationServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F0412007A0D700491C7A /* STTranslationServiceImpl.m */; };
 		CDF5F0452007A32300491C7A /* STNetworkWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F0442007A32300491C7A /* STNetworkWrapper.m */; };
 		CDFF83991BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
-		CDFF839A1BC69A32002AF1E4 /* MainIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFF83981BC69A32002AF1E4 /* MainIcon.xcassets */; };
 		CDFFF29620026370002F6805 /* STLanguageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFF29520026370002F6805 /* STLanguageMenu.m */; };
 		CDFFF29A20029927002F6805 /* NSMutableArray+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = CDFFF29920029927002F6805 /* NSMutableArray+Helpers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CD8EEB941B8E69AA00E2991B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CDCFCCCF1B8E690200547F5C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CD8EEB831B8E69AA00E2991B;
-			remoteInfo = todayWidget;
-		};
 		CDBACD4F2052F44D007B0139 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CDCFCCCF1B8E690200547F5C /* Project object */;
@@ -101,7 +86,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				CDBACD512052F44D007B0139 /* Widget.appex in Embed App Extensions */,
-				CD8EEB961B8E69AA00E2991B /* Swipe Translate Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,8 +97,6 @@
 		18EDDA4DF74C7EE2F89D993C /* libPods-Widget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Widget.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554B2043A2444DF8BA1F51B0 /* libPods-Swipe Translate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Swipe Translate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		75836E071BB7025100C8D020 /* googleTranslateWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = googleTranslateWidget.entitlements; sourceTree = "<group>"; };
-		75F8671D1BA6499E00392E74 /* PopupMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopupMenu.h; path = todayWidget/PopupMenu.h; sourceTree = "<group>"; };
-		75F8671E1BA649AE00392E74 /* PopupMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopupMenu.m; path = todayWidget/PopupMenu.m; sourceTree = "<group>"; };
 		A7D61FF587E0E6EACB2C79A2 /* Pods-Swipe Translate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipe Translate.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Swipe Translate/Pods-Swipe Translate.debug.xcconfig"; sourceTree = "<group>"; };
 		B5BC5B8EA27021947DB4E3FC /* Pods-Widget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Widget.release.xcconfig"; path = "Pods/Target Support Files/Pods-Widget/Pods-Widget.release.xcconfig"; sourceTree = "<group>"; };
 		CD0A5D8120403D6800C5984D /* STAPIService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAPIService.h; sourceTree = "<group>"; };
@@ -122,8 +104,6 @@
 		CD0A5D8320403D7C00C5984D /* STAPIServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAPIServiceImpl.m; sourceTree = "<group>"; };
 		CD0A5D8520406A6000C5984D /* STParserResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STParserResult.h; sourceTree = "<group>"; };
 		CD0A5D8620406A6000C5984D /* STParserResult.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STParserResult.m; sourceTree = "<group>"; };
-		CD12BB6F1BD849D8003ED768 /* WidgetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WidgetView.h; path = todayWidget/WidgetView.h; sourceTree = "<group>"; };
-		CD12BB701BD849D8003ED768 /* WidgetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WidgetView.m; path = todayWidget/WidgetView.m; sourceTree = "<group>"; };
 		CD1A16D91BF557AB00EA90D3 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		CD4BFABE1E4235650089AEC5 /* STLanguageTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguageTextField.h; sourceTree = "<group>"; };
 		CD4BFABF1E4235650089AEC5 /* STLanguageTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageTextField.m; sourceTree = "<group>"; };
@@ -133,14 +113,7 @@
 		CD74D6B61E8D96A60033A5D1 /* STLanguageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguageCellModel.m; sourceTree = "<group>"; };
 		CD74D6B81E8D9BF50033A5D1 /* STLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLanguage.h; sourceTree = "<group>"; };
 		CD74D6B91E8D9BF50033A5D1 /* STLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLanguage.m; sourceTree = "<group>"; };
-		CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Swipe Translate Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8EEB861B8E69AA00E2991B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
-		CD8EEB8A1B8E69AA00E2991B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD8EEB8B1B8E69AA00E2991B /* todayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = todayWidget.entitlements; sourceTree = "<group>"; };
-		CD8EEB8D1B8E69AA00E2991B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
-		CD8EEB901B8E69AA00E2991B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
-		CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		CD9FB2532048552D003C81C7 /* STConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STConstants.h; sourceTree = "<group>"; };
 		CD9FB25720496EDF003C81C7 /* STConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STConstants.m; sourceTree = "<group>"; };
 		CD9FB285204D8B29003C81C7 /* STDraggableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STDraggableView.h; sourceTree = "<group>"; };
@@ -200,8 +173,6 @@
 		CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLeftSplitViewModel.m; sourceTree = "<group>"; };
 		CDD1FF951D66EF6E0031FC94 /* STRightSplitViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRightSplitViewModel.h; sourceTree = "<group>"; };
 		CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRightSplitViewModel.m; sourceTree = "<group>"; };
-		CDE4D2B81B971C78003188DB /* SeparatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SeparatedButton.h; path = todayWidget/SeparatedButton.h; sourceTree = "<group>"; };
-		CDE4D2B91B971C78003188DB /* SeparatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SeparatedButton.m; path = todayWidget/SeparatedButton.m; sourceTree = "<group>"; };
 		CDF5F037200791D500491C7A /* STLanguagesService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLanguagesService.h; sourceTree = "<group>"; };
 		CDF5F0382007921800491C7A /* STLanguagesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLanguagesServiceImpl.h; sourceTree = "<group>"; };
 		CDF5F0392007921800491C7A /* STLanguagesServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLanguagesServiceImpl.m; sourceTree = "<group>"; };
@@ -223,14 +194,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CD8EEB811B8E69AA00E2991B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD8EEB871B8E69AA00E2991B /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CDBACD3E2052F44D007B0139 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -273,41 +236,6 @@
 				18EDDA4DF74C7EE2F89D993C /* libPods-Widget.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CD8EEB881B8E69AA00E2991B /* Widget */ = {
-			isa = PBXGroup;
-			children = (
-				CD8EEB8F1B8E69AA00E2991B /* TodayViewController.h */,
-				CD8EEB901B8E69AA00E2991B /* TodayViewController.m */,
-				CD8EEB921B8E69AA00E2991B /* TodayViewController.xib */,
-				CD8EEB891B8E69AA00E2991B /* Supporting Files */,
-			);
-			name = Widget;
-			path = todayWidget;
-			sourceTree = "<group>";
-		};
-		CD8EEB891B8E69AA00E2991B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				CD8EEB8A1B8E69AA00E2991B /* Info.plist */,
-				CD8EEB8B1B8E69AA00E2991B /* todayWidget.entitlements */,
-				CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CD8F79981C08CFBD0094742F /* CustomWidgetClasses */ = {
-			isa = PBXGroup;
-			children = (
-				75F8671D1BA6499E00392E74 /* PopupMenu.h */,
-				75F8671E1BA649AE00392E74 /* PopupMenu.m */,
-				CDE4D2B81B971C78003188DB /* SeparatedButton.h */,
-				CDE4D2B91B971C78003188DB /* SeparatedButton.m */,
-				CD12BB6F1BD849D8003ED768 /* WidgetView.h */,
-				CD12BB701BD849D8003ED768 /* WidgetView.m */,
-			);
-			name = CustomWidgetClasses;
 			sourceTree = "<group>";
 		};
 		CD9FB2592049788D003C81C7 /* Helpers */ = {
@@ -391,8 +319,6 @@
 			children = (
 				CDB84E071CA04FE500A919AA /* iRate */,
 				CDCFCCD91B8E690300547F5C /* MainApp */,
-				CD8F79981C08CFBD0094742F /* CustomWidgetClasses */,
-				CD8EEB881B8E69AA00E2991B /* Widget */,
 				CDBACD432052F44D007B0139 /* Widget */,
 				CD8EEB851B8E69AA00E2991B /* Frameworks */,
 				CDCFCCD81B8E690300547F5C /* Products */,
@@ -405,7 +331,6 @@
 			isa = PBXGroup;
 			children = (
 				CDCFCCD71B8E690300547F5C /* Swipe Translate.app */,
-				CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */,
 				CDBACD412052F44D007B0139 /* Widget.appex */,
 			);
 			name = Products;
@@ -543,23 +468,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "Swipe Translate Widget" */;
-			buildPhases = (
-				CD8EEB801B8E69AA00E2991B /* Sources */,
-				CD8EEB811B8E69AA00E2991B /* Frameworks */,
-				CD8EEB821B8E69AA00E2991B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Swipe Translate Widget";
-			productName = todayWidget;
-			productReference = CD8EEB841B8E69AA00E2991B /* Swipe Translate Widget.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		CDBACD402052F44D007B0139 /* Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDBACD522052F44D007B0139 /* Build configuration list for PBXNativeTarget "Widget" */;
@@ -594,7 +502,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */,
 				CDBACD502052F44D007B0139 /* PBXTargetDependency */,
 			);
 			name = "Swipe Translate";
@@ -611,15 +518,6 @@
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Mark Vasiv";
 				TargetAttributes = {
-					CD8EEB831B8E69AA00E2991B = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = LX39229ZDY;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
-							};
-						};
-					};
 					CDBACD402052F44D007B0139 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -660,23 +558,12 @@
 			projectRoot = "";
 			targets = (
 				CDCFCCD61B8E690300547F5C /* Swipe Translate */,
-				CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */,
 				CDBACD402052F44D007B0139 /* Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD8EEB821B8E69AA00E2991B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDFF839A1BC69A32002AF1E4 /* MainIcon.xcassets in Resources */,
-				CD8EEB931B8E69AA00E2991B /* TodayViewController.xib in Resources */,
-				CD8EEB8E1B8E69AA00E2991B /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CDBACD3F2052F44D007B0139 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -785,16 +672,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		CD8EEB801B8E69AA00E2991B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CDE4D2BA1B971C78003188DB /* SeparatedButton.m in Sources */,
-				CD12BB711BD849D8003ED768 /* WidgetView.m in Sources */,
-				75F8671F1BA649AE00392E74 /* PopupMenu.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CDBACD3D2052F44D007B0139 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -859,11 +736,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CD8EEB951B8E69AA00E2991B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CD8EEB831B8E69AA00E2991B /* Swipe Translate Widget */;
-			targetProxy = CD8EEB941B8E69AA00E2991B /* PBXContainerItemProxy */;
-		};
 		CDBACD502052F44D007B0139 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CDBACD402052F44D007B0139 /* Widget */;
@@ -872,14 +744,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CD8EEB8C1B8E69AA00E2991B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD8EEB8D1B8E69AA00E2991B /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		CDBACD472052F44D007B0139 /* STWidgetViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -907,42 +771,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		CD8EEB971B8E69AA00E2991B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = todayWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate.today;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a91097d-7b7e-4adc-8453-767477e60345";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		CD8EEB981B8E69AA00E2991B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = todayWidget/todayWidget.entitlements;
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = todayWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = com.SwipeTranslate.today;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a91097d-7b7e-4adc-8453-767477e60345";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		CDBACD532052F44D007B0139 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D058C5256B64FF7F1069D3A7 /* Pods-Widget.debug.xcconfig */;
@@ -1120,15 +948,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD8EEB991B8E69AA00E2991B /* Build configuration list for PBXNativeTarget "Swipe Translate Widget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD8EEB971B8E69AA00E2991B /* Debug */,
-				CD8EEB981B8E69AA00E2991B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CDBACD522052F44D007B0139 /* Build configuration list for PBXNativeTarget "Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

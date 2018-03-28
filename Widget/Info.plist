@@ -38,5 +38,19 @@
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2018 Mark Vasiv. All rights reserved.</string>
+    <key>Fabric</key>
+    <dict>
+        <key>APIKey</key>
+        <string>77d5ef9be715947f2b62a420bfa583c983918389</string>
+        <key>Kits</key>
+        <array>
+            <dict>
+                <key>KitInfo</key>
+                <dict/>
+                <key>KitName</key>
+                <string>Crashlytics</string>
+            </dict>
+        </array>
+    </dict>
 </dict>
 </plist>

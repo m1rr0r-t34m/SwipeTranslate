@@ -14,6 +14,7 @@
 
 @interface STTranslationServiceImpl()
 @property (strong, nonatomic) id <STAPIService> apiService;
+@property (strong, nonatomic) id <STTrackingService> trackingService;
 @end
 
 @implementation STTranslationServiceImpl
@@ -23,9 +24,10 @@
     return self;
 }
 
-- (instancetype)initWithAPIService:(id <STAPIService>)apiService {
+- (instancetype)initWithAPIService:(id <STAPIService>)apiService trackingService:(id <STTrackingService>)trackingService {
     if (self = [super init]) {
         _apiService = apiService;
+        _trackingService = trackingService;
     }
     
     return self;
@@ -35,6 +37,8 @@
     if ([self textIsWhiteSpace:text]) {
         return [RACSignal return:[STTranslation emptyTranslation]];
     }
+    
+    [self.trackingService trackTranslationFromLanguage:source toLanguage:target];
     
     __block STTranslation *translation = [STTranslation new];
     BOOL autoLanguage = [source.key isEqualToString:@"auto"];

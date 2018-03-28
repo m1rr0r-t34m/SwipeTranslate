@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "STMainApplicationMenu.h"
 
+
 @implementation AppDelegate
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
     return YES;
@@ -16,5 +17,6 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     [NSApp.mainMenu addItem:[STMainApplicationMenu editMenu]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"NSApplicationCrashOnExceptions": @YES }];
 }
 @end

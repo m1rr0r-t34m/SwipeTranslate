@@ -30,8 +30,8 @@
         _parserService = [[STParserServiceImpl alloc] initWithLanguageService:self.languagesService];
         _databaseService = [[STDatabaseServiceImpl alloc] initWithLanguagesService:self.languagesService];
         _apiService = [[STAPIServiceImpl alloc] initWithParserService:self.parserService];
-        _translationService = [[STTranslationServiceImpl alloc] initWithAPIService:self.apiService];
         _trackingService = [STTrackingServiceImpl new];
+        _translationService = [[STTranslationServiceImpl alloc] initWithAPIService:self.apiService trackingService:self.trackingService];
     }
     
     return self;

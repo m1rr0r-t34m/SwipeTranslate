@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "STTranslationService.h"
 #import "STAPIService.h"
+#import "STTrackingService.h"
 
 @interface STTranslationServiceImpl : NSObject <STTranslationService>
-- (instancetype)initWithAPIService:(id <STAPIService>)apiService;
+- (instancetype)initWithAPIService:(id <STAPIService>)apiService trackingService:(id <STTrackingService>)trackingService;
 @end

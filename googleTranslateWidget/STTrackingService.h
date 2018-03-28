@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+@class STLanguage;
 
 @protocol STTrackingService <NSObject>
-- (void)trackLaunchMainApp;
 - (void)trackLaunchWidget;
 - (void)trackOpenSidebar;
+- (void)trackTranslationFromLanguage:(STLanguage *)from toLanguage:(STLanguage *)to;
 @end

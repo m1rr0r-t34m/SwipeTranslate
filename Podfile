@@ -8,6 +8,8 @@ target 'Swipe Translate' do
   pod 'AFNetworking'
   pod 'YapDatabase'
   pod 'Mixpanel'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end
 
 target 'Widget' do
@@ -15,5 +17,7 @@ target 'Widget' do
   pod 'AFNetworking'
   pod 'YapDatabase'
   pod 'Mixpanel'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end
 

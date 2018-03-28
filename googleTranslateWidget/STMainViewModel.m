@@ -27,13 +27,8 @@
         _allowTranslationSubject = [RACSubject new];
         _allowTranslationSignal = [_allowTranslationSubject deliverOnMainThread];
         [self setupBindings];
-        [self setupTracking];
     }
     return self;
-}
-
-- (void)setupTracking {
-    [self.services.trackingService trackLaunchMainApp];
 }
 
 #pragma mark - Bindings

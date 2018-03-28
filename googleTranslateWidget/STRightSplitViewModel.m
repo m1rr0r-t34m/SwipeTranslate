@@ -54,7 +54,6 @@
 
 - (void)setupBindings {
     RAC(self, translating) = RACObserve(self.mainViewModel, translating);
-    //RAC(self, currentTranslation) = RACObserve(self.mainViewModel, translation);
     RACChannelTo(self, inputText) = RACChannelTo(self.mainViewModel, sourceText);
     RACChannelTo(self, currentTranslation) = RACChannelTo(self.mainViewModel, translation);
     

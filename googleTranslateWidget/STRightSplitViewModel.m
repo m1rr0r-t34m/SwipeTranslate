@@ -256,4 +256,9 @@
 - (NSAttributedString *)translationTextForResult:(STParserResult *)parserResult {
     return [[NSAttributedString alloc] initWithString:parserResult.parsedResponse[kTranslatedText] attributes:@{NSFontAttributeName : [NSFont systemFontOfSize:16.0]}];
 }
+
+#pragma mark - Tracking
+- (void)trackOpenSidebar {
+    [self.services.trackingService trackOpenSidebar];
+}
 @end

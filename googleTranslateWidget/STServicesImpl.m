@@ -12,6 +12,7 @@
 #import "STDatabaseServiceImpl.h"
 #import "STParserServiceImpl.h"
 #import "STAPIServiceImpl.h"
+#import "STTrackingServiceImpl.h"
 
 @interface STServicesImpl()
 @property (strong, nonatomic) id <STLanguagesService> languagesService;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) id <STDatabaseService> databaseService;
 @property (strong, nonatomic) id <STParserService> parserService;
 @property (strong, nonatomic) id <STAPIService> apiService;
+@property (strong, nonatomic) id <STTrackingService> trackingService;
 @end
 
 @implementation STServicesImpl
@@ -29,6 +31,7 @@
         _databaseService = [[STDatabaseServiceImpl alloc] initWithLanguagesService:self.languagesService];
         _apiService = [[STAPIServiceImpl alloc] initWithParserService:self.parserService];
         _translationService = [[STTranslationServiceImpl alloc] initWithAPIService:self.apiService];
+        _trackingService = [STTrackingServiceImpl new];
     }
     
     return self;

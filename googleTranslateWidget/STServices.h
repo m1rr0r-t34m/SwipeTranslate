@@ -10,10 +10,11 @@
 #import "STLanguagesService.h"
 #import "STTranslationService.h"
 #import "STDatabaseService.h"
-#import "STParserService.h"
+#import "STTrackingService.h"
 
 @protocol STServices <NSObject>
 - (id <STLanguagesService>)languagesService;
 - (id <STTranslationService>)translationService;
 - (id <STDatabaseService>)databaseService;
+- (id <STTrackingService>)trackingService;
 @end

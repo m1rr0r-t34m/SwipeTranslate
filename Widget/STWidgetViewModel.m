@@ -39,6 +39,7 @@
         _allowTranslation = [RACSubject new];
         [self loadInitialData];
         [self bindSignals];
+        [self setupTracking];
     }
     
     return self;
@@ -46,6 +47,10 @@
 
 - (id <STLanguagesService>)languagesService {
     return self.services.languagesService;
+}
+
+- (void)setupTracking {
+    [self.services.trackingService trackLaunchWidget];
 }
 
 #pragma mark - Setup

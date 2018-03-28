@@ -59,6 +59,8 @@
 		CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF8B1D66EBF50031FC94 /* STRightSplitView.m */; };
 		CDD1FF941D66EE260031FC94 /* STLeftSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */; };
 		CDD1FF971D66EF6E0031FC94 /* STRightSplitViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */; };
+		CDF22A77206BBC66008EC220 /* STTrackingServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF22A76206BBC66008EC220 /* STTrackingServiceImpl.m */; };
+		CDF22A79206BBEEB008EC220 /* STTrackingServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF22A76206BBC66008EC220 /* STTrackingServiceImpl.m */; };
 		CDF5F03A2007921800491C7A /* STLanguagesServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F0392007921800491C7A /* STLanguagesServiceImpl.m */; };
 		CDF5F03E2007A00800491C7A /* STServicesImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F03D2007A00800491C7A /* STServicesImpl.m */; };
 		CDF5F0422007A0D700491C7A /* STTranslationServiceImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF5F0412007A0D700491C7A /* STTranslationServiceImpl.m */; };
@@ -173,6 +175,9 @@
 		CDD1FF931D66EE260031FC94 /* STLeftSplitViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLeftSplitViewModel.m; sourceTree = "<group>"; };
 		CDD1FF951D66EF6E0031FC94 /* STRightSplitViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRightSplitViewModel.h; sourceTree = "<group>"; };
 		CDD1FF961D66EF6E0031FC94 /* STRightSplitViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRightSplitViewModel.m; sourceTree = "<group>"; };
+		CDF22A75206BBC66008EC220 /* STTrackingServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STTrackingServiceImpl.h; sourceTree = "<group>"; };
+		CDF22A76206BBC66008EC220 /* STTrackingServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STTrackingServiceImpl.m; sourceTree = "<group>"; };
+		CDF22A78206BBD9C008EC220 /* STTrackingService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STTrackingService.h; sourceTree = "<group>"; };
 		CDF5F037200791D500491C7A /* STLanguagesService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLanguagesService.h; sourceTree = "<group>"; };
 		CDF5F0382007921800491C7A /* STLanguagesServiceImpl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STLanguagesServiceImpl.h; sourceTree = "<group>"; };
 		CDF5F0392007921800491C7A /* STLanguagesServiceImpl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STLanguagesServiceImpl.m; sourceTree = "<group>"; };
@@ -461,6 +466,9 @@
 				CDF5F0412007A0D700491C7A /* STTranslationServiceImpl.m */,
 				CDF5F0432007A32300491C7A /* STNetworkWrapper.h */,
 				CDF5F0442007A32300491C7A /* STNetworkWrapper.m */,
+				CDF22A78206BBD9C008EC220 /* STTrackingService.h */,
+				CDF22A75206BBC66008EC220 /* STTrackingServiceImpl.h */,
+				CDF22A76206BBC66008EC220 /* STTrackingServiceImpl.m */,
 			);
 			name = Model;
 			path = googleTranslateWidget;
@@ -680,6 +688,7 @@
 				CDBACD6120542573007B0139 /* STLanguage.m in Sources */,
 				CDBACD6420542AA8007B0139 /* STLanguageMenu.m in Sources */,
 				CDBACD5D20542483007B0139 /* STParserServiceImpl.m in Sources */,
+				CDF22A79206BBEEB008EC220 /* STTrackingServiceImpl.m in Sources */,
 				CDBACD5B2054247D007B0139 /* STDatabaseServiceImpl.m in Sources */,
 				CDBACD5F20542489007B0139 /* STNetworkWrapper.m in Sources */,
 				CDBACD5A20542479007B0139 /* STLanguagesServiceImpl.m in Sources */,
@@ -701,6 +710,7 @@
 				CDFFF29620026370002F6805 /* STLanguageMenu.m in Sources */,
 				CDFFF29A20029927002F6805 /* NSMutableArray+Helpers.m in Sources */,
 				CDA5AB26201241EA00AF5919 /* STParserServiceImpl.m in Sources */,
+				CDF22A77206BBC66008EC220 /* STTrackingServiceImpl.m in Sources */,
 				CD0A5D8720406A6000C5984D /* STParserResult.m in Sources */,
 				CDD1FF831D6645920031FC94 /* STMainViewModel.m in Sources */,
 				CDD1FF8D1D66EBF50031FC94 /* STRightSplitView.m in Sources */,

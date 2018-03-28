@@ -7,11 +7,13 @@ target 'Swipe Translate' do
   pod 'ReactiveObjC'
   pod 'AFNetworking'
   pod 'YapDatabase'
+  pod 'Mixpanel'
 end
 
 target 'Widget' do
   pod 'ReactiveObjC'
   pod 'AFNetworking'
   pod 'YapDatabase'
+  pod 'Mixpanel'
 end
 

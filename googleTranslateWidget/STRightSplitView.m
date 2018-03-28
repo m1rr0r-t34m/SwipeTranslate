@@ -159,7 +159,11 @@ static CGFloat rightFavouritesMenuConstant = -400;
             context.duration = update.duration;
             context.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
             [self.view layoutSubtreeIfNeeded];
-        } completionHandler:nil];
+        } completionHandler:^{
+            if (update.constant > rightFavouritesMenuConstant + 40) {
+                [self.viewModel trackOpenSidebar];
+            }
+        }];
     }
 }
 

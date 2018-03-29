@@ -38,7 +38,7 @@
     RACSignal *targetLanguageSignal = [RACObserve(self, targetLanguage) ignore:nil];
     
     @weakify(self);
-    [[[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] sample:self.allowTranslationSignal]
+    [[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] sample:self.allowTranslationSignal]
         filter:^BOOL(RACTuple *tuple) {
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
             return ![self.translation.inputText isEqualToString:text] || ![self.translation.sourceLanguage isEqual:source] || ![self.translation.targetLanguage isEqual:target];
@@ -47,17 +47,9 @@
             @strongify(self);
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
             self.translating = YES;
-            return [self.services.translationService translationForText:text fromLanguage:source toLanguage:target];
+            return [self errorFreeTranslationForText:text fromLanguage:source toLanguage:target];
         }]
         switchToLatest]
-        catch:^RACSignal *(NSError *error) {
-            @strongify(self);
-            STTranslation *translation = [STTranslation emptyTranslation];
-            translation.inputText = self.sourceText;
-            translation.sourceLanguage = self.sourceLanguage;
-            translation.targetLanguage = self.targetLanguage;
-            return [RACSignal return:translation];
-        }]
         subscribeNext:^(STTranslation *translation) {
             @strongify(self);
             self.translating = NO;
@@ -86,5 +78,18 @@
 
 - (void)allowTranslation {
     [self.allowTranslationSubject sendNext:@YES];
+}
+
+- (RACSignal *)errorFreeTranslationForText:(NSString *)text fromLanguage:(STLanguage *)source toLanguage:(STLanguage *)target {
+    @weakify(self);
+    return [[self.services.translationService translationForText:text fromLanguage:source toLanguage:target]
+            catch:^RACSignal *(NSError *error) {
+                @strongify(self);
+                STTranslation *translation = [STTranslation emptyTranslation];
+                translation.inputText = self.sourceText;
+                translation.sourceLanguage = self.sourceLanguage;
+                translation.targetLanguage = self.targetLanguage;
+                return [RACSignal return:translation];
+            }];
 }
 @end

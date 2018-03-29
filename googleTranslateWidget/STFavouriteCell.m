@@ -31,10 +31,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    //text fields
     NSTextField *input = [self createTextField];
     NSTextField *output = [self createTextField];
-    
     
     [self addSubview:input];
     [self addSubview:output];
@@ -43,11 +41,13 @@
     [[input.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-30] setActive:YES];
     [[input.topAnchor constraintEqualToAnchor:self.topAnchor constant:10] setActive:YES];
     [[input.heightAnchor constraintEqualToConstant:25] setActive:YES];
+    [[input.widthAnchor constraintEqualToConstant:self.frame.size.width - 45] setActive:YES];
     
     [[output.leftAnchor constraintEqualToAnchor:self.leftAnchor constant:15] setActive:YES];
     [[output.rightAnchor constraintEqualToAnchor:self.rightAnchor constant:-30] setActive:YES];
     [[output.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-10] setActive:YES];
     [[output.heightAnchor constraintEqualToConstant:25] setActive:YES];
+    [[output.widthAnchor constraintEqualToConstant:self.frame.size.width - 45] setActive:YES];
     
     NSButton *removeButton = [self createRemoveButton];
     [self addSubview:removeButton];
@@ -96,6 +96,7 @@
     field.editable = NO;
     field.selectable = NO;
     field.backgroundColor = [NSColor clearColor];
+    field.maximumNumberOfLines = 1;
     return field;
 }
 

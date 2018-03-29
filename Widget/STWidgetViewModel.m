@@ -96,6 +96,7 @@
     [[[[[[[RACSignal combineLatest:@[textSignal, sourceLanguageSignal, targetLanguageSignal]] sample:[self.allowTranslation deliverOnMainThread]]
         filter:^BOOL(RACTuple *tuple) {
             RACTupleUnpack(NSString *text, STLanguage *source, STLanguage *target) = tuple;
+            @strongify(self);
             return ![self.translation.inputText isEqualToString:text] || ![self.translation.sourceLanguage isEqual:source] || ![self.translation.targetLanguage isEqual:target];
         }]
         map:^RACSignal *(RACTuple *tuple) {

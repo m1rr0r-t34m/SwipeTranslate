@@ -19,7 +19,6 @@
 @property (readwrite, strong, nonatomic) NSArray <STLanguage *> *targetLanguages;
 @property (readwrite, assign, nonatomic) NSInteger sourceSelectedIndex;
 @property (readwrite, assign, nonatomic) NSInteger targetSelectedIndex;
-@property (readwrite, strong, nonatomic) NSString *inputText;
 @property (readwrite, strong, nonatomic) NSAttributedString *outputText;
 @property (readwrite, strong, nonatomic) STLanguage *detectedLanguage;
 
@@ -204,6 +203,11 @@
     }
     [self selectTargetLanguage:source];
     [self selectSourceLanguage:target];
+}
+
+- (void)clearAll {
+    self.inputText = @"";
+    [self.allowTranslation sendNext:@YES];
 }
 
 #pragma mark - Text handling

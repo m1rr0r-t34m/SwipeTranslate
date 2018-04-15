@@ -31,4 +31,5 @@
 - (void)setSourceText:(NSString *)text;
 - (NSInteger)indexOfCurrentTranslation;
 - (void)trackOpenSidebar;
+- (void)clearAll;
 @end

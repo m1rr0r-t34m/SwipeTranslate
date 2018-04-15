@@ -16,7 +16,7 @@
 @property (readonly, strong, nonatomic) NSArray <STLanguage *> *targetLanguages;
 @property (readonly, assign, nonatomic) NSInteger sourceSelectedIndex;
 @property (readonly, assign, nonatomic) NSInteger targetSelectedIndex;
-@property (readonly, strong, nonatomic) NSString *inputText;
+@property (strong, nonatomic) NSString *inputText;
 @property (readonly, strong, nonatomic) NSAttributedString *outputText;
 @property (readonly, strong, nonatomic) id <STLanguagesService> languagesService;
 @property (readonly, strong, nonatomic) STLanguage *detectedLanguage;
@@ -27,4 +27,5 @@
 - (void)selectTargetLanguage:(STLanguage *)language;
 - (void)updateInputText:(NSString *)text;
 - (void)switchLanguages;
+- (void)clearAll;
 @end

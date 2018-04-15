@@ -14,6 +14,7 @@
 #import "STLanguageMenu.h"
 
 @interface STWidgetViewController () <NCWidgetProviding>
+@property (strong) IBOutlet NSButton *clearButton;
 @property (strong) IBOutlet NSSegmentedControl *sourceSegmentedControl;
 @property (strong) IBOutlet NSSegmentedControl *targetSegmentedControl;
 @property (strong) IBOutlet NSButton *swapButton;
@@ -120,10 +121,14 @@
         self.outputTextView.textStorage.attributedString = modelText;
     }];
     
-    [[[self.inputTextView.rac_textSignal skip:1] distinctUntilChanged] subscribeNext:^(NSString *text) {
+    [[self.inputTextView.rac_textSignal skip:1] subscribeNext:^(NSString *text) {
         @strongify(self);
         [self.viewModel updateInputText:text];
     }];
+    
+    RAC(self.clearButton, hidden) = [[RACObserve(self.viewModel, inputText) map:^id(NSString *text) {
+        return @(!text || text.length == 0);
+    }] distinctUntilChanged];
 }
 
 #pragma mark - Language selection
@@ -147,6 +152,10 @@
 
 - (IBAction)swapButtonPress:(id)sender {
     [self.viewModel switchLanguages];
+}
+
+- (IBAction)clearButtonPress:(id)sender {
+    [self.viewModel clearAll];
 }
 
 #pragma mark - Cleanup

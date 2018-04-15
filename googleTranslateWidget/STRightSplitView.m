@@ -77,9 +77,9 @@ static CGFloat rightFavouritesMenuConstant = -400;
 }
 
 - (void)setupSourceTextView {
-    RACSignal *placeholderAlphaSignal = [[RACObserve(self.viewModel, inputText) map:^id(NSString *text) {
+    RACSignal *placeholderAlphaSignal = [RACObserve(self.viewModel, inputText) map:^id(NSString *text) {
         return @(!text || text.length == 0);
-    }] distinctUntilChanged];
+    }];
     
     RAC(self.placeholderLabel, alphaValue) = placeholderAlphaSignal;
     RAC(self.clearButton, hidden) = placeholderAlphaSignal;
@@ -189,7 +189,7 @@ static CGFloat rightFavouritesMenuConstant = -400;
 
 - (void)bindViewModel {
     @weakify(self);
-    [[self.sourceTextView.rac_textSignal distinctUntilChanged] subscribeNext:^(NSString *text) {
+    [self.sourceTextView.rac_textSignal subscribeNext:^(NSString *text) {
         @strongify(self);
         [self.viewModel setSourceText:text];
         [self.favouritesTableView deselectAll:nil];
@@ -288,7 +288,10 @@ static CGFloat rightFavouritesMenuConstant = -400;
 
 #pragma mark - Button press
 - (IBAction)clearButtonPress:(id)sender {
-    [self.viewModel setInputText:@""];
+    [self.viewModel clearAll];
+    //[self.viewModel setInputText:@""];
+    //[self.viewModel setOutputText:[NSAttributedString new]];
+    //[self.viewModel setSourceText:@""];
     self.clearPressed = @(YES);
 }
 

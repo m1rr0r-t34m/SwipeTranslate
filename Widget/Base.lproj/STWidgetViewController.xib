@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="STWidgetViewController">
             <connections>
+                <outlet property="clearButton" destination="JfB-Z5-T9G" id="56K-Tr-2dm"/>
                 <outlet property="inputTextView" destination="edh-d6-mfG" id="NRz-jA-qrN"/>
                 <outlet property="outputTextView" destination="Mdv-ts-OhJ" id="rRt-OV-dFs"/>
                 <outlet property="sourceSegmentedControl" destination="BeO-J8-bqK" id="PjE-Rp-uyt"/>
@@ -34,16 +35,16 @@
                     </segmentedCell>
                 </segmentedControl>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIN-QQ-KiH">
-                    <rect key="frame" x="20" y="238" width="512" height="130"/>
+                    <rect key="frame" x="20" y="238" width="492" height="130"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="xGM-7P-yhu">
-                        <rect key="frame" x="0.0" y="0.0" width="512" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="492" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" smartInsertDelete="YES" id="edh-d6-mfG">
-                                <rect key="frame" x="0.0" y="0.0" width="512" height="130"/>
+                                <rect key="frame" x="0.0" y="0.0" width="492" height="130"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="512" height="130"/>
+                                <size key="minSize" width="492" height="130"/>
                                 <size key="maxSize" width="532" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </textView>
@@ -58,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Ngz-Jx-p2S">
-                        <rect key="frame" x="496" y="0.0" width="16" height="130"/>
+                        <rect key="frame" x="476" y="0.0" width="16" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -68,7 +69,7 @@
                         <constraint firstAttribute="width" constant="30" id="28W-dU-MYM"/>
                         <constraint firstAttribute="width" secondItem="LjJ-XA-Qvo" secondAttribute="height" multiplier="1:1" id="qZM-Ms-fwJ"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonMainIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AGf-O2-wIi">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="SwapButtonIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="AGf-O2-wIi">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -77,16 +78,16 @@
                     </connections>
                 </button>
                 <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ick-Oo-y59">
-                    <rect key="frame" x="20" y="10" width="512" height="130"/>
+                    <rect key="frame" x="20" y="10" width="492" height="130"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="9JR-ri-9Av">
-                        <rect key="frame" x="0.0" y="0.0" width="512" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="492" height="130"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsCharacterPickerTouchBarItem="NO" usesRuler="YES" allowsNonContiguousLayout="YES" textCompletion="NO" id="Mdv-ts-OhJ">
-                                <rect key="frame" x="0.0" y="-1" width="512" height="130"/>
+                                <rect key="frame" x="0.0" y="-1" width="492" height="130"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="512" height="130"/>
+                                <size key="minSize" width="492" height="130"/>
                                 <size key="maxSize" width="532" height="10000000"/>
                                 <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </textView>
@@ -101,7 +102,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="gkG-Gl-O40">
-                        <rect key="frame" x="496" y="0.0" width="16" height="130"/>
+                        <rect key="frame" x="476" y="0.0" width="16" height="130"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -123,6 +124,20 @@
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JfB-Z5-T9G">
+                    <rect key="frame" x="522" y="353" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Ma1-gw-rcw"/>
+                        <constraint firstAttribute="width" secondItem="JfB-Z5-T9G" secondAttribute="height" multiplier="1:1" id="pJg-Pl-ttj"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="ClearButtonMain" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="1h0-Dt-SZ0">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clearButtonPress:" target="-2" id="uyj-jY-IfB"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="45m-Xi-ja0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="1ZF-PV-HJ3"/>
@@ -130,6 +145,7 @@
                 <constraint firstItem="L1z-mn-caX" firstAttribute="top" secondItem="ick-Oo-y59" secondAttribute="bottom" id="C10-wg-SDC"/>
                 <constraint firstItem="ick-Oo-y59" firstAttribute="top" secondItem="45m-Xi-ja0" secondAttribute="bottom" constant="10" id="Daq-Bb-ne9"/>
                 <constraint firstItem="udW-Rz-sNk" firstAttribute="top" secondItem="nIN-QQ-KiH" secondAttribute="bottom" id="EEQ-rc-qjl"/>
+                <constraint firstItem="JfB-Z5-T9G" firstAttribute="width" secondItem="JfB-Z5-T9G" secondAttribute="height" multiplier="1:1" id="JfN-yi-6Jq"/>
                 <constraint firstAttribute="trailing" secondItem="45m-Xi-ja0" secondAttribute="trailing" constant="10" id="L9r-Fs-fzY"/>
                 <constraint firstItem="45m-Xi-ja0" firstAttribute="top" secondItem="LjJ-XA-Qvo" secondAttribute="bottom" constant="20" id="Ly0-9f-YUs"/>
                 <constraint firstItem="L1z-mn-caX" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="MQz-ps-afz"/>
@@ -140,17 +156,20 @@
                 <constraint firstItem="nIN-QQ-KiH" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Z1y-Jr-59B"/>
                 <constraint firstItem="udW-Rz-sNk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="a6r-4r-aR9"/>
                 <constraint firstItem="ick-Oo-y59" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="cgc-0I-d9I"/>
-                <constraint firstAttribute="trailing" secondItem="ick-Oo-y59" secondAttribute="trailing" constant="20" id="k4R-Mw-GC3"/>
+                <constraint firstAttribute="trailing" secondItem="ick-Oo-y59" secondAttribute="trailing" constant="40" id="k4R-Mw-GC3"/>
                 <constraint firstItem="LjJ-XA-Qvo" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="lml-2Y-oLk"/>
                 <constraint firstItem="LjJ-XA-Qvo" firstAttribute="top" secondItem="nIN-QQ-KiH" secondAttribute="bottom" constant="20" id="lrU-XC-Nnw"/>
-                <constraint firstAttribute="trailing" secondItem="nIN-QQ-KiH" secondAttribute="trailing" constant="20" id="nZ2-IK-fbZ"/>
+                <constraint firstAttribute="trailing" secondItem="nIN-QQ-KiH" secondAttribute="trailing" constant="40" id="nZ2-IK-fbZ"/>
                 <constraint firstAttribute="trailing" secondItem="udW-Rz-sNk" secondAttribute="trailing" id="o46-0K-DHo"/>
+                <constraint firstAttribute="trailing" secondItem="JfB-Z5-T9G" secondAttribute="trailing" constant="10" id="qVX-zA-BNE"/>
+                <constraint firstItem="JfB-Z5-T9G" firstAttribute="top" secondItem="BeO-J8-bqK" secondAttribute="bottom" constant="5" id="qxc-qX-WKs"/>
                 <constraint firstItem="BeO-J8-bqK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="sbA-lz-Jmc"/>
             </constraints>
             <point key="canvasLocation" x="255" y="486.5"/>
         </customView>
     </objects>
     <resources>
-        <image name="SwapButtonMainIcon" width="256" height="256"/>
+        <image name="ClearButtonMain" width="16" height="16"/>
+        <image name="SwapButtonIcon" width="256" height="256"/>
     </resources>
 </document>

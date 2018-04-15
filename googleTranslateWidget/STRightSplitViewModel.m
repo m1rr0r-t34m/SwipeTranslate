@@ -19,11 +19,11 @@
 @property (strong, nonatomic) id <STServices> services;
 @property (strong, nonatomic) STMainViewModel *mainViewModel;
 @property (strong, nonatomic) STTranslation *currentTranslation;
-@property (readwrite, strong, nonatomic) NSAttributedString *outputText;
 @property (readwrite, strong, nonatomic) NSMutableArray <STFavouriteCellModel *> *favouriteViewModels;
 @property (readwrite, assign, nonatomic) NSInteger favouritesSelectedIndex;
 @property (readwrite, strong, nonatomic) RACSignal *favouritesUpdateSignal;
 @property (strong, nonatomic) RACSubject *favouritesUpdateSubject;
+@property (readwrite, strong, nonatomic) NSAttributedString *outputText;
 
 @property (readwrite, assign, nonatomic) BOOL shouldShowFavouritesHint;
 @property (readwrite, assign, nonatomic) BOOL currentTranslationIsSaved;
@@ -75,6 +75,11 @@
         @strongify(self);
         [self.services.databaseService saveHasUsedFavouriteBar:used];
     }];
+}
+
+- (void)clearAll {
+    self.mainViewModel.sourceText = @"";
+    [self.mainViewModel allowTranslation];
 }
 
 #pragma mark - Favourite translations
